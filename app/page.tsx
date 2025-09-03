@@ -1,3 +1,4 @@
+import { RiMapPinLine, RiSendPlaneLine, RiTrophyLine } from '@remixicon/react';
 import { Metadata } from 'next';
 import Image from 'next/image';
 
@@ -12,25 +13,27 @@ function Badge({
   children,
   variant = 'blue',
   size = 'medium',
+  className,
 }: {
   children: React.ReactNode;
   variant?: 'blue' | 'gray';
   size?: 'small' | 'medium';
+  className?: string;
 }) {
   const baseClasses =
-    'inline-flex items-center justify-center rounded-full font-medium';
+    'inline-flex items-center justify-center font-medium';
   const variantClasses = {
     blue: 'bg-[#122368] text-white',
     gray: 'bg-[#99a0ae] text-white',
   };
   const sizeClasses = {
-    small: 'px-2 py-0.5 text-xs',
-    medium: 'px-2 py-0.5 text-sm',
+    small: 'px-2 py-0.5 text-label-xs',
+    medium: 'px-2 py-0.5 text-label-sm',
   };
 
   return (
     <span
-      className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]}`}
+      className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
     >
       {children}
     </span>
@@ -81,7 +84,7 @@ export default function Home() {
               <div className='flex h-10 w-10 items-center justify-center rounded-full bg-[#122368]'>
                 <span className='text-xl font-bold text-white'>S</span>
               </div>
-              <span className='text-3xl font-semibold tracking-tight text-[#122368]'>
+              <span className='text-3xl font-semibold tracking-tight text-primary-base'>
                 AIBE
               </span>
             </div>
@@ -90,31 +93,31 @@ export default function Home() {
             <nav className='text-lg hidden items-center gap-8 font-medium text-black md:flex'>
               <a
                 href='#about'
-                className='transition-colors hover:text-[#122368]'
+                className='transition-colors hover:text-primary-base'
               >
                 About AIBE
               </a>
               <a
                 href='#events'
-                className='transition-colors hover:text-[#122368]'
+                className='transition-colors hover:text-primary-base'
               >
                 Events & Prizes
               </a>
               <a
                 href='#membership'
-                className='transition-colors hover:text-[#122368]'
+                className='transition-colors hover:text-primary-base'
               >
                 Membership
               </a>
               <a
                 href='/blog'
-                className='transition-colors hover:text-[#122368]'
+                className='transition-colors hover:text-primary-base'
               >
                 Blog
               </a>
               <a
                 href='#contact'
-                className='transition-colors hover:text-[#122368]'
+                className='transition-colors hover:text-primary-base'
               >
                 Contact
               </a>
@@ -158,7 +161,7 @@ export default function Home() {
                 <div className='relative h-[500px] w-full overflow-hidden rounded-lg bg-gradient-to-br from-[#122368] to-[#1b8231]'>
                   {/* Placeholder para imagem hero */}
                   <div className='text-2xl absolute inset-0 flex items-center justify-center font-semibold text-white'>
-                    Hero Image
+                    Hero 
                   </div>
 
                   {/* Elementos decorativos */}
@@ -173,16 +176,16 @@ export default function Home() {
 
       {/* Highlights Section */}
       <section className='bg-[#f3f8ff] py-16'>
-        <div className='mx-auto max-w-7xl px-8'>
+        <div className='mx-auto max-w-[1200px] px-8'>
           <div className='flex flex-col items-end justify-between gap-8 md:flex-row'>
             <div className='flex-1 space-y-4'>
               <div className='flex items-center gap-2'>
-                <div className='h-4 w-4 rounded-full bg-[#99a0ae]'></div>
-                <span className='text-xs font-medium uppercase tracking-wider text-[#99a0ae]'>
+                <div className='h-1 w-1 rounded-full bg-[#99a0ae]'></div>
+                <span className='text-label-xs font-medium uppercase tracking-wider text-[#99a0ae]'>
                   Highlights
                 </span>
               </div>
-              <h2 className='text-3xl font-semibold leading-tight text-black'>
+              <h2 className='text-title-h4 text-black'>
                 AIBE Annual Workshop 2025 Dates Announced!
               </h2>
             </div>
@@ -195,15 +198,15 @@ export default function Home() {
 
       {/* Features Section */}
       <section className='py-16'>
-        <div className='mx-auto max-w-7xl px-8'>
-          <div className='mb-16 text-center'>
-            <div className='mb-4 flex items-center justify-center gap-2'>
-              <div className='h-4 w-4 rounded-full bg-[#99a0ae]'></div>
-              <span className='text-xs font-medium uppercase tracking-wider text-[#99a0ae]'>
+        <div className='mx-auto max-w-[1200px] px-8'>
+          <div className='mb-8 text-start'>
+            <div className='mb-4 flex items-center justify-start gap-2'>
+              <div className='h-1 w-1 rounded-full bg-[#99a0ae]'></div>
+              <span className='text-label-xs font-medium uppercase tracking-wider text-[#99a0ae]'>
                 Features
               </span>
             </div>
-            <h2 className='text-5xl font-semibold leading-tight tracking-tight text-black'>
+            <h2 className='text-title-h2 text-black'>
               Our Main Initiatives
             </h2>
           </div>
@@ -211,10 +214,10 @@ export default function Home() {
           <div className='grid gap-8 md:grid-cols-3'>
             {/* Academic Mobility */}
             <div className='rounded-lg border border-[#e1e4ea] bg-[#f3f3f3] p-6'>
-              <div className='mb-4 flex h-8 w-8 items-center justify-center rounded-lg bg-[#122368]'>
-                <span className='text-lg text-white'>📍</span>
+              <div className='mb-4 flex h-8 w-8 items-center justify-center rounded-lg '>
+               <RiMapPinLine className='text-primary-base' />
               </div>
-              <h3 className='text-2xl mb-4 font-semibold text-black'>
+              <h3 className='text-title-h4 mb-4 font-semibold text-black'>
                 Academic Mobility
               </h3>
               <p className='text-[#525866]'>
@@ -222,13 +225,14 @@ export default function Home() {
                 between Brazil and Italy.
               </p>
             </div>
+        
 
             {/* Events and Awards */}
             <div className='rounded-lg border border-[#e1e4ea] bg-[#f3f3f3] p-6'>
-              <div className='mb-4 flex h-8 w-8 items-center justify-center rounded-lg bg-[#122368]'>
-                <span className='text-lg text-white'>🏆</span>
+              <div className='mb-4 flex h-8 w-8 items-center justify-center rounded-lg '>
+                <RiTrophyLine className='text-primary-base' />
               </div>
-              <h3 className='text-2xl mb-4 font-semibold text-black'>
+              <h3 className='text-title-h4 mb-4 font-semibold text-black'>
                 Events and Awards
               </h3>
               <p className='text-[#525866]'>
@@ -239,10 +243,10 @@ export default function Home() {
 
             {/* Research Sharing */}
             <div className='rounded-lg border border-[#e1e4ea] bg-[#f3f3f3] p-6'>
-              <div className='mb-4 flex h-8 w-8 items-center justify-center rounded-lg bg-[#122368]'>
-                <span className='text-lg text-white'>📤</span>
+              <div className='mb-4 flex h-8 w-8 items-center justify-center rounded-lg '>
+              <RiSendPlaneLine className='text-primary-base' />
               </div>
-              <h3 className='text-2xl mb-4 font-semibold text-black'>
+              <h3 className='text-title-h4 mb-4 font-semibold text-black'>
                 Research Sharing
               </h3>
               <p className='text-[#525866]'>
@@ -260,12 +264,12 @@ export default function Home() {
           <div className='mb-16 flex flex-col items-end justify-between gap-8 lg:flex-row'>
             <div className='flex-1 space-y-4'>
               <div className='flex items-center gap-2'>
-                <div className='h-4 w-4 rounded-full bg-[#99a0ae]'></div>
-                <span className='text-xs font-medium uppercase tracking-wider text-[#99a0ae]'>
+                <div className='h-1 w-1 rounded-full bg-[#99a0ae]'></div>
+                <span className='text-label-xs font-medium uppercase tracking-wider text-[#99a0ae]'>
                   About AIBE
                 </span>
               </div>
-              <h2 className='text-5xl font-semibold leading-tight text-white'>
+              <h2 className='text-title-h2 text-white'>
                 AIBE at a glance
               </h2>
             </div>
@@ -308,10 +312,10 @@ export default function Home() {
         <div className='mx-auto max-w-7xl px-8'>
           <div className='grid gap-8 md:grid-cols-3'>
             <div className='space-y-4 text-center'>
-              <div className='text-8xl font-semibold leading-none text-[#122368]'>
+              <div className='text-title-h0 font-semibold leading-none text-primary-base'>
                 279
               </div>
-              <h3 className='text-2xl font-semibold text-black'>
+              <h3 className='text-title-h4 font-semibold text-black'>
                 Participating Researchers
               </h3>
               <p className='text-[#525866]'>
@@ -320,10 +324,10 @@ export default function Home() {
             </div>
 
             <div className='space-y-4 text-center'>
-              <div className='text-8xl font-semibold leading-none text-[#122368]'>
+              <div className='text-title-h0 font-semibold leading-none text-primary-base'>
                 63
               </div>
-              <h3 className='text-2xl font-semibold text-black'>
+              <h3 className='text-title-h4 font-semibold text-black'>
                 Institutions Involved
               </h3>
               <p className='text-[#525866]'>
@@ -333,10 +337,10 @@ export default function Home() {
             </div>
 
             <div className='space-y-4 text-center'>
-              <div className='text-8xl font-semibold leading-none text-[#122368]'>
+              <div className='text-title-h0 font-semibold leading-none text-primary-base'>
                 34
               </div>
-              <h3 className='text-2xl font-semibold text-black'>
+              <h3 className='text-title-h4 font-semibold text-black'>
                 Students Supported
               </h3>
               <p className='text-[#525866]'>
@@ -360,12 +364,12 @@ export default function Home() {
               </div>
               <div className='flex-1 space-y-6'>
                 <div className='flex items-center gap-2'>
-                  <div className='h-4 w-4 rounded-full bg-[#99a0ae]'></div>
-                  <span className='text-xs font-medium uppercase tracking-wider text-[#99a0ae]'>
+                  <div className='h-1 w-1 rounded-full bg-[#99a0ae]'></div>
+                  <span className='text-label-xs font-medium uppercase tracking-wider text-[#99a0ae]'>
                     Events & Prizes
                   </span>
                 </div>
-                <h2 className='text-5xl font-semibold leading-tight tracking-tight text-black'>
+                <h2 className='text-title-h2 text-black'>
                   The AIBE Annual Workshop
                 </h2>
                 <p className='text-lg text-[#525866]'>
@@ -387,12 +391,12 @@ export default function Home() {
               </div>
               <div className='flex-1 space-y-6'>
                 <div className='flex items-center gap-2'>
-                  <div className='h-4 w-4 rounded-full bg-[#99a0ae]'></div>
-                  <span className='text-xs font-medium uppercase tracking-wider text-[#99a0ae]'>
+                  <div className='h-1 w-1 rounded-full bg-[#99a0ae]'></div>
+                  <span className='text-label-xs font-medium uppercase tracking-wider text-[#99a0ae]'>
                     Events & Prizes
                   </span>
                 </div>
-                <h2 className='text-5xl font-semibold leading-tight tracking-tight text-black'>
+                <h2 className='text-title-h2 text-black'>
                   Giorgio Mortara Prize
                 </h2>
                 <p className='text-lg text-[#525866]'>
@@ -414,12 +418,12 @@ export default function Home() {
           <div className='mb-16 flex flex-col items-end justify-between gap-8 md:flex-row'>
             <div className='flex-1 space-y-4'>
               <div className='flex items-center gap-2'>
-                <div className='h-4 w-4 rounded-full bg-[#99a0ae]'></div>
-                <span className='text-xs font-medium uppercase tracking-wider text-[#99a0ae]'>
+                <div className='h-1 w-1 rounded-full bg-[#99a0ae]'></div>
+                <span className='text-label-xs font-medium uppercase tracking-wider text-[#99a0ae]'>
                   Blog
                 </span>
               </div>
-              <h2 className='text-5xl font-semibold leading-tight text-black'>
+              <h2 className='text-title-h2 text-black'>
                 Our latest news
               </h2>
             </div>
@@ -441,7 +445,7 @@ export default function Home() {
                 <span className='text-black'>•</span>
                 <span className='text-sm text-black'>July 3, 2024</span>
               </div>
-              <h3 className='text-2xl font-semibold leading-tight text-black'>
+              <h3 className='text-title-h5 font-semibold leading-tight text-black'>
                 Meeting with the Italian Consul-General in São Paulo, Domenico
                 Fornara
               </h3>
@@ -463,7 +467,7 @@ export default function Home() {
                 <span className='text-black'>•</span>
                 <span className='text-sm text-black'>June 26, 2024</span>
               </div>
-              <h3 className='text-2xl font-semibold leading-tight text-black'>
+              <h3 className='text-title-h5 font-semibold leading-tight text-black'>
                 Academic cooperation as a driver of innovation in economics
               </h3>
               <p className='text-[#525866]'>
@@ -485,7 +489,7 @@ export default function Home() {
                 <span className='text-black'>•</span>
                 <span className='text-sm text-black'>June 14, 2024</span>
               </div>
-              <h3 className='text-2xl font-semibold leading-tight text-black'>
+              <h3 className='text-title-h5 font-semibold leading-tight text-black'>
                 AIBE presented at FAPESP's "Day of Italy" event
               </h3>
               <p className='text-[#525866]'>
@@ -501,7 +505,7 @@ export default function Home() {
       <section className='relative overflow-hidden bg-[#122368] py-24'>
         <div className='relative z-10 mx-auto max-w-7xl px-8'>
           <div className='space-y-8 text-center'>
-            <h2 className='text-5xl mx-auto max-w-4xl font-semibold leading-tight tracking-tight text-white'>
+            <h2 className='text-title-h2 mx-auto max-w-4xl text-white'>
               Join AIBE and Strengthen Academic Cooperation
             </h2>
             <p className='text-lg mx-auto max-w-3xl text-[#cacfd8]'>
@@ -522,66 +526,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Duplicate Features Section at the end */}
-      <section className='py-16'>
-        <div className='mx-auto max-w-7xl px-8'>
-          <div className='mb-16 text-center'>
-            <div className='mb-4 flex items-center justify-center gap-2'>
-              <div className='h-4 w-4 rounded-full bg-[#99a0ae]'></div>
-              <span className='text-xs font-medium uppercase tracking-wider text-[#99a0ae]'>
-                Features
-              </span>
-            </div>
-            <h2 className='text-5xl font-semibold leading-tight tracking-tight text-black'>
-              Our Main Initiatives
-            </h2>
-          </div>
-
-          <div className='grid gap-8 md:grid-cols-3'>
-            {/* Academic Mobility */}
-            <div className='rounded-lg border border-[#e1e4ea] bg-[#f3f3f3] p-6'>
-              <div className='mb-4 flex h-8 w-8 items-center justify-center rounded-lg bg-[#122368]'>
-                <span className='text-lg text-white'>📍</span>
-              </div>
-              <h3 className='text-2xl mb-4 font-semibold text-black'>
-                Academic Mobility
-              </h3>
-              <p className='text-[#525866]'>
-                Encouraging the exchange of researchers, faculty, and students
-                between Brazil and Italy.
-              </p>
-            </div>
-
-            {/* Events and Awards */}
-            <div className='rounded-lg border border-[#e1e4ea] bg-[#f3f3f3] p-6'>
-              <div className='mb-4 flex h-8 w-8 items-center justify-center rounded-lg bg-[#122368]'>
-                <span className='text-lg text-white'>🏆</span>
-              </div>
-              <h3 className='text-2xl mb-4 font-semibold text-black'>
-                Events and Awards
-              </h3>
-              <p className='text-[#525866]'>
-                Annual workshops and the Giorgio Mortara Prize strengthen
-                scientific cooperation.
-              </p>
-            </div>
-
-            {/* Research Sharing */}
-            <div className='rounded-lg border border-[#e1e4ea] bg-[#f3f3f3] p-6'>
-              <div className='mb-4 flex h-8 w-8 items-center justify-center rounded-lg bg-[#122368]'>
-                <span className='text-lg text-white'>📤</span>
-              </div>
-              <h3 className='text-2xl mb-4 font-semibold text-black'>
-                Research Sharing
-              </h3>
-              <p className='text-[#525866]'>
-                Newsletters, publications, and research opportunities for the
-                academic community.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Footer */}
       <footer className='bg-[#122368] text-white'>
@@ -591,7 +536,7 @@ export default function Home() {
             <div className='space-y-8 md:col-span-2'>
               <div className='flex items-center gap-3'>
                 <div className='flex h-12 w-12 items-center justify-center rounded-full bg-white'>
-                  <span className='text-2xl font-bold text-[#122368]'>A</span>
+                  <span className='text-2xl font-bold text-primary-base'>A</span>
                 </div>
                 <span className='text-4xl font-semibold tracking-tight text-white'>
                   AIBE
@@ -600,13 +545,13 @@ export default function Home() {
 
               <div className='flex gap-3'>
                 <div className='flex h-6 w-6 items-center justify-center rounded-md bg-white'>
-                  <span className='text-sm text-[#122368]'>in</span>
+                  <span className='text-sm text-primary-base'>in</span>
                 </div>
                 <div className='flex h-6 w-6 items-center justify-center rounded-md bg-white'>
-                  <span className='text-sm text-[#122368]'>X</span>
+                  <span className='text-sm text-primary-base'>X</span>
                 </div>
                 <div className='flex h-6 w-6 items-center justify-center rounded-md bg-white'>
-                  <span className='text-sm text-[#122368]'>BS</span>
+                  <span className='text-sm text-primary-base'>BS</span>
                 </div>
               </div>
             </div>

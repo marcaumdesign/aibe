@@ -4,19 +4,19 @@ import tailwindcssAnimate from 'tailwindcss-animate';
 
 export const texts = {
   'title-h1': [
-    '3.5rem',
+    '56px',
     {
-      lineHeight: '4rem',
-      letterSpacing: '-0.05em',
+      lineHeight: '64px',
+      letterSpacing: '-3.92px',
       fontWeight: '600',
     },
   ],
   'title-h2': [
-    '3rem',
+    '48px',
     {
-      lineHeight: '3.5rem',
-      letterSpacing: '-0.01em',
-      fontWeight: '500',
+      lineHeight: '56px',
+      letterSpacing: '-3.36px',
+      fontWeight: '600',
     },
   ],
   'title-h3': [
@@ -28,27 +28,35 @@ export const texts = {
     },
   ],
   'title-h4': [
-    '2rem',
+    '30px',
     {
-      lineHeight: '2.5rem',
-      letterSpacing: '-0.005em',
-      fontWeight: '500',
+      lineHeight: '34px',
+      letterSpacing: '-1.461px',
+      fontWeight: '600',
     },
   ],
   'title-h5': [
-    '1.5rem',
+    '24px',
     {
-      lineHeight: '2rem',
-      letterSpacing: '0em',
-      fontWeight: '500',
+      lineHeight: '32px',
+      letterSpacing: '-0.96px',
+      fontWeight: '600',
     },
   ],
   'title-h6': [
-    '1.25rem',
+    '20px',
     {
-      lineHeight: '1.75rem',
-      letterSpacing: '0em',
-      fontWeight: '500',
+      lineHeight: '28px',
+      letterSpacing: '-0.701px',
+      fontWeight: '600',
+    },
+  ],
+  'title-h0': [
+    '96px',
+    {
+      lineHeight: '64px',
+      letterSpacing: '-6.72px',
+      fontWeight: '600',
     },
   ],
   'label-xl': [
@@ -84,9 +92,9 @@ export const texts = {
     },
   ],
   'label-xs': [
-    '.75rem',
+    '12px',
     {
-      lineHeight: '1rem',
+      lineHeight: '16px',
       letterSpacing: '0em',
       fontWeight: '500',
     },
