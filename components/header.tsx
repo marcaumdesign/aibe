@@ -19,8 +19,17 @@ export default function Header() {
             alt=''
             className='size-9 object-contain'
           />
-          AlignUI
+          AIBE
         </Link>
+
+        <nav className='flex items-center gap-6'>
+          <Link
+            href='/blog'
+            className='text-text-weak-600 text-label-sm transition-colors hover:text-text-strong-950'
+          >
+            Blog
+          </Link>
+        </nav>
 
         <DynamicThemeSwitch />
       </header>

@@ -7,8 +7,8 @@ export const texts = {
     '3.5rem',
     {
       lineHeight: '4rem',
-      letterSpacing: '-0.01em',
-      fontWeight: '500',
+      letterSpacing: '-0.05em',
+      fontWeight: '600',
     },
   ],
   'title-h2': [
