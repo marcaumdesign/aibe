@@ -6,5 +6,12 @@
   "tailwindCSS.experimental.classRegex": [
     ["([\"'`][^\"'`]*.*?[\"'`])", "[\"'`]([^\"'`]*).*?[\"'`]"]
   ],
-  "tailwindCSS.classAttributes": ["class", "className", ".*ClassName"]
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    ".*ClassName"
+  ],
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  }
 }
