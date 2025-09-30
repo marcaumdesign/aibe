@@ -68,7 +68,7 @@ export default function Footer() {
               <a href="/about#context" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
                 <p className="leading-[24px] text-nowrap whitespace-pre">AIBE in Context</p>
               </a>
-              <a href="/about#team" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
+              <a href="/about/team" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
                 <p className="leading-[24px] text-nowrap whitespace-pre">Team</p>
               </a>
             </div>

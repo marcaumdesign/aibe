@@ -3,6 +3,7 @@
 import { RiMapPinLine, RiSendPlaneLine, RiTrophyLine, RiLinkedinFill, RiTwitterXFill, RiBlueskyFill } from '@remixicon/react';
 import { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Root as Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 
@@ -187,8 +188,10 @@ export default function Home() {
                   AIBE Annual Workshop 2025 Dates Announced!
                 </h2>
               </div>
-              <Button variant='primary' size='medium' className='h-hug'>
-                See Details
+              <Button variant='primary' size='medium' className='h-hug' asChild>
+                <Link href='/events/workshop'>
+                  See Details
+                </Link>
               </Button>
             </div>
           </div>
@@ -267,8 +270,10 @@ export default function Home() {
                 AIBE at a glance
               </h2>
             </div>
-            <Button variant='neutral' mode='lighter' size='medium' className='h-hug'>
-              About AIBE
+            <Button variant='neutral' mode='lighter' size='medium' className='h-hug' asChild>
+              <Link href='/about'>
+                About AIBE
+              </Link>
             </Button>
           </div>
 
@@ -365,8 +370,10 @@ export default function Home() {
                   An academic event held alternately in both countries,
                   dedicated to knowledge exchange and scientific dialogue.
                 </p>
-                <Button variant='primary' size='medium' className='h-hug'>
-                  See More
+                <Button variant='primary' size='medium' className='h-hug' asChild>
+                  <Link href='/events/workshop2024'>
+                    See More
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -393,8 +400,10 @@ export default function Home() {
                   Annual recognition for the best paper authored by young
                   Brazilian and Italian researchers in academic collaboration.
                 </p>
-                <Button variant='primary' size='medium' className='h-hug'>
-                  See More
+                <Button variant='primary' size='medium' className='h-hug' asChild>
+                  <Link href='/events'>
+                    See More
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -414,8 +423,10 @@ export default function Home() {
                 Our latest news
               </h2>
             </div>
-            <Button variant='primary' size='medium' className='h-hug'>
-              See More
+            <Button variant='primary' size='medium' className='h-hug' asChild>
+              <Link href='/blog'>
+                See More
+              </Link>
             </Button>
           </div>
 
@@ -533,175 +544,6 @@ export default function Home() {
 
 
 
-      {/* Footer */}
-      <footer className='bg-[#122368] text-white h-hug py-16'>
-        <div className='mx-auto max-w-[1200px] w-full'>
-          <div className='flex flex-col gap-16'>
-            <div className='flex justify-between flex-col md:flex-row'>
-              {/* Logo and Social */}
-              <div className='inline-flex flex-col justify-start items-start gap-8'>
-                <div className='flex h-hug items-center gap-3'>
-                  <Image
-                    src='/images/logo branca.svg'
-                    alt='AIBE Logo'
-                    width={172}
-                    height={63}
-                    className='h-hug w-[172px]'
-                  />
-                </div>
-
-                <div className='flex gap-3'>
-                  <a
-                    href='https://linkedin.com/company/aibe'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='flex h-6 w-6 items-center justify-center'
-                  >
-                    <RiLinkedinFill className='h-6 w-6 text-white' style={{ aspectRatio: '1' }} />
-                  </a>
-                  <a
-                    href='https://x.com/aibe'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='flex h-6 w-6 items-center justify-center'
-                  >
-                    <RiTwitterXFill className='h-6 w-6 text-white' />
-                  </a>
-                  <a
-                    href='https://bsky.app/profile/aibe'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='flex h-6 w-6 items-center justify-center'
-                  >
-                    <RiBlueskyFill className='h-6 w-6 text-white' />
-                  </a>
-                </div>
-              </div>
-
-              {/* Navigation Links */}
-              <div className='inline-flex justify-end items-start gap-8'>
-                <div className='inline-flex flex-col justify-start items-start gap-4'>
-                  <h4 className='text-subheading-xs uppercase text-[#cacfd8] h-hug'>
-                    Home
-                  </h4>
-                  <div className='flex flex-col gap-1 text-white'>
-                    <a
-                      href='home/features'
-                      className='text-paragraph-md h-hug transition-colors hover:text-gray-300'
-                    >
-                      Features
-                    </a>
-                    <a
-                      href='home/about'
-                      className='text-paragraph-md h-hug transition-colors hover:text-gray-300'
-                    >
-                      About Us
-                    </a>
-                    <a
-                      href='home/workshop'
-                      className='text-paragraph-md h-hug transition-colors hover:text-gray-300'
-                    >
-                      AIBE Workshop
-                    </a>
-                    <a
-                      href='home/prize'
-                      className='text-paragraph-md h-hug transition-colors hover:text-gray-300'
-                    >
-                      Giorgio Mortara
-                    </a>
-                  </div>
-                </div>
-
-                <div className='inline-flex flex-col justify-start items-start gap-4'>
-                  <h4 className='text-subheading-xs uppercase text-[#cacfd8] h-hug'>
-                    About Us
-                  </h4>
-                  <div className='flex flex-col gap-1 text-white'>
-                    <a
-                      href='about-us/about'
-                      className='text-paragraph-md h-hug transition-colors hover:text-gray-300'
-                    >
-                      About AIBE
-                    </a>
-                    <a
-                      href='about-us/context'
-                      className='text-paragraph-md h-hug transition-colors hover:text-gray-300'
-                    >
-                      AIBE in Context
-                    </a>
-                    <a
-                      href='about-us/team'
-                      className='text-paragraph-md h-hug transition-colors hover:text-gray-300'
-                    >
-                      Team
-                    </a>
-                  </div>
-                </div>
-
-                <div className='inline-flex flex-col justify-start items-start gap-4'>
-                  <h4 className='text-subheading-xs uppercase text-[#cacfd8] h-hug'>
-                    Events & Prizes
-                  </h4>
-                  <div className='flex flex-col gap-1 text-white'>
-                    <a
-                      href='events-and-prizes/workshop'
-                      className='text-paragraph-md h-hug transition-colors hover:text-gray-300'
-                    >
-                      AIBE Workshop
-                    </a>
-                    <a
-                      href='events-and-prizes/giorgio-mortara'
-                      className='text-paragraph-md h-hug transition-colors hover:text-gray-300'
-                    >
-                      Giorgio Mortara
-                    </a>
-                  </div>
-                </div>
-
-                <div className='inline-flex flex-col justify-start items-start gap-4'>
-                  <h4 className='text-subheading-xs uppercase text-[#cacfd8] h-hug'>
-                    Resources
-                  </h4>
-                  <div className='flex flex-col gap-1 text-white'>
-                    <a
-                      href='/blog'
-                      className='text-paragraph-md h-hug transition-colors hover:text-gray-300'
-                    >
-                      Blog
-                    </a>
-                  </div>
-                </div>
-
-                <div className='inline-flex flex-col justify-start items-start gap-4'>
-                  <h4 className='text-subheading-xs uppercase text-[#cacfd8] h-hug'>
-                    Contact
-                  </h4>
-                  <div className='flex flex-col gap-1 text-white'>
-                    <a
-                      href='contact/membership'
-                      className='text-paragraph-md h-hug transition-colors hover:text-gray-300'
-                    >
-                      Membership
-                    </a>
-                    <a
-                      href='contact/offices'
-                      className='text-paragraph-md h-hug transition-colors hover:text-gray-300'
-                    >
-                      Offices
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <p className='text-left text-paragraph-md text-white'>
-                Copyright © 2024 AIBE. All Rights Reserved
-              </p>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

@@ -2,15 +2,28 @@
 
 import { RiFundsBoxLine, RiFundsLine, RiGlobalLine, RiTeamLine, RiArrowLeftLine, RiArrowRightLine } from "@remixicon/react";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+
+// Tipo para os membros do board
+interface BoardMember {
+  id: number;
+  name: string;
+  position: string;
+  image: string;
+  affiliation?: string;
+  bio?: string;
+}
 
 // Dados das pessoas do board of directors
-const boardMembers = [
+const boardMembers: BoardMember[] = [
   {
     id: 1,
     name: "Fernando L. Aiube",
     position: "Associate Professor",
-    image: "/images/Fernando.png"
+    image: "/images/Fernando.png",
+    affiliation: "State University of Rio de Janeiro (UERJ) & Institute of Pure and Applied Mathematics (IMPA)",
+    bio: "Fernando Aiube is a financial economist specializing in corporate finance, derivatives, econometrics, energy markets, and real options. His previous experience includes roles as an oil engineer at Petrobras, in both the Exploration & Production Department, and the Financial Department. During his academic career, Fernando has also worked with Italian co-authors."
   },
   {
     id: 2,
@@ -20,27 +33,111 @@ const boardMembers = [
   },
   {
     id: 3,
-    name: "Andrea Ugolini",
-    position: "Assistant Professor",
-    image: "/images/Andrea.png"
+    name: "Tito Cordella",
+    position: "Full Professor",
+    image: "/images/titocordella.png"
   },
   {
     id: 4,
+    name: "Chiara Falco",
+    position: "Assistant Professor",
+    image: "/images/chiarafalco.png"
+  },
+  {
+    id: 5,
+    name: "Alan de Gennaro",
+    position: "Associate Professor",
+    image: "/images/alandegennaro.png"
+  },
+  {
+    id: 6,
+    name: "Rafael F. Schiozer",
+    position: "Full Professor",
+    image: "/images/rafaelfschozer.png"
+  },
+  {
+    id: 7,
     name: "Luca J. Uberti",
     position: "Assistant Professor",
     image: "/images/Luca.png"
+  },
+  {
+    id: 8,
+    name: "Andrea Ugolini",
+    position: "Assistant Professor",
+    image: "/images/Andrea.png"
   }
 ];
 
 export default function About() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedDirector, setSelectedDirector] = useState<BoardMember | null>(null);
+
+  // Estados para os contadores
+  const [researchers, setResearchers] = useState(0);
+  const [institutions, setInstitutions] = useState(0);
+  const [students, setStudents] = useState(0);
+
+  // Hook para detectar quando a seção entra na viewport
+  const { ref: statsRef, isIntersecting } = useIntersectionObserver({
+    threshold: 0.3,
+    rootMargin: '0px 0px 0px 0px',
+  });
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % boardMembers.length);
+    setCurrentIndex((prev) => (prev + 1) % boardMembers.length);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + boardMembers.length) % boardMembers.length);
+    setCurrentIndex((prev) =>
+      prev === 0 ? boardMembers.length - 1 : prev - 1
+    );
+  };
+
+  // Criar array com os 4 diretores a serem exibidos
+  const slidesToShow = [];
+  for (let i = 0; i < 4; i++) {
+    slidesToShow.push(boardMembers[(currentIndex + i) % boardMembers.length]);
+  }
+
+  // Função de easing ease-in-out
+  const easeInOutCubic = (t: number): number => {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  };
+
+  // Animar contadores quando a seção entra na viewport
+  useEffect(() => {
+    if (!isIntersecting) return;
+
+    const duration = 4000; // 4 segundos
+    const targetResearchers = 279;
+    const targetInstitutions = 63;
+    const targetStudents = 34;
+    const startTime = Date.now();
+
+    const animate = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeInOutCubic(progress);
+
+      setResearchers(Math.floor(easedProgress * targetResearchers));
+      setInstitutions(Math.floor(easedProgress * targetInstitutions));
+      setStudents(Math.floor(easedProgress * targetStudents));
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    animate();
+  }, [isIntersecting]);
+
+  const openDirectorModal = (director: BoardMember) => {
+    setSelectedDirector(director);
+  };
+
+  const closeDirectorModal = () => {
+    setSelectedDirector(null);
   };
 
   return (
@@ -52,7 +149,7 @@ export default function About() {
           <div id="about-aibe" className="bg-white box-border content-stretch flex flex-col gap-[10px] items-start justify-start overflow-clip pb-0 pt-[64px] px-0 relative shrink-0 w-full">
             <div className="content-stretch flex flex-col gap-[32px] items-center justify-start relative shrink-0 w-full">
               <div className="content-stretch flex flex-col gap-[16px] items-center justify-start relative shrink-0 w-full">
-                <div className="box-border content-stretch flex gap-[2px] items-center justify-center overflow-clip px-[8px] py-[2px] relative rounded-[4px] shrink-0">
+                <div className="box-border content-stretch flex gap-[2px] items-center justify-center overflow-clip px-[8px] py-[2px] relative  shrink-0">
                   <div className="font-medium leading-[0] not-italic relative shrink-0 text-[#99a0ae] text-[12px] text-nowrap tracking-[0.48px] uppercase">
                     <p className="leading-[16px] whitespace-pre">About AIBE</p>
                   </div>
@@ -62,7 +159,7 @@ export default function About() {
                 </div>
               </div>
               <div
-                className="bg-center bg-cover bg-no-repeat h-[447px] rounded-[4px] shrink-0 w-full"
+                className="bg-center bg-cover bg-no-repeat h-[447px]  shrink-0 w-full"
                 style={{ backgroundImage: `url('/images/hero.png')` }}
               />
             </div>
@@ -130,13 +227,16 @@ export default function About() {
       </div>
 
       {/* Statistics Section */}
-      <div className="content-stretch flex flex-col gap-[77px] items-center justify-center relative shrink-0 w-full">
+      <div
+        ref={statsRef as React.RefObject<HTMLDivElement>}
+        className="content-stretch flex flex-col gap-[77px] items-center justify-center relative shrink-0 w-full"
+      >
         <div className="box-border content-stretch flex flex-col gap-[64px] items-center justify-start max-w-[1200px] px-0 py-[32px] relative shrink-0 w-full">
           <div className="content-stretch flex items-center justify-start overflow-clip relative shrink-0 w-full">
             <div className="basis-0 content-stretch flex gap-[16px] grow items-center justify-center min-h-px min-w-px relative shrink-0">
-              <div className="basis-0 box-border content-stretch flex flex-col gap-[12.011px] grow items-center justify-start leading-[0] min-h-px min-w-px not-italic p-[16px] relative rounded-[4px] shrink-0">
+              <div className="basis-0 box-border content-stretch flex flex-col gap-[12.011px] grow items-center justify-start leading-[0] min-h-px min-w-px not-italic p-[16px] relative  shrink-0">
                 <div className="font-semibold relative shrink-0 text-[#122368] text-[96px] text-nowrap tracking-[-6.72px]">
-                  <p className="leading-[64px] whitespace-pre">279</p>
+                  <p className="leading-[64px] whitespace-pre">{researchers}</p>
                 </div>
                 <div className="font-semibold min-w-full relative shrink-0 text-[29.226px] text-black text-center tracking-[-1.4613px]">
                   <p className="leading-[34.097px]">Participating Researchers</p>
@@ -147,9 +247,9 @@ export default function About() {
               </div>
             </div>
             <div className="basis-0 content-stretch flex gap-[16px] grow items-center justify-center min-h-px min-w-px relative shrink-0">
-              <div className="basis-0 box-border content-stretch flex flex-col gap-[12.011px] grow items-center justify-start leading-[0] min-h-px min-w-px not-italic p-[16px] relative rounded-[4px] shrink-0">
+              <div className="basis-0 box-border content-stretch flex flex-col gap-[12.011px] grow items-center justify-start leading-[0] min-h-px min-w-px not-italic p-[16px] relative  shrink-0">
                 <div className="font-semibold relative shrink-0 text-[#122368] text-[96px] text-nowrap tracking-[-6.72px]">
-                  <p className="leading-[64px] whitespace-pre">63</p>
+                  <p className="leading-[64px] whitespace-pre">{institutions}</p>
                 </div>
                 <div className="font-semibold min-w-full relative shrink-0 text-[29.226px] text-black text-center tracking-[-1.4613px]">
                   <p className="leading-[34.097px]">Institutions Involved</p>
@@ -160,9 +260,9 @@ export default function About() {
               </div>
             </div>
             <div className="basis-0 content-stretch flex gap-[16px] grow items-center justify-center min-h-px min-w-px relative shrink-0">
-              <div className="basis-0 box-border content-stretch flex flex-col gap-[12.011px] grow items-center justify-start leading-[0] min-h-px min-w-px not-italic p-[16px] relative rounded-[4px] shrink-0">
+              <div className="basis-0 box-border content-stretch flex flex-col gap-[12.011px] grow items-center justify-start leading-[0] min-h-px min-w-px not-italic p-[16px] relative  shrink-0">
                 <div className="font-semibold relative shrink-0 text-[#122368] text-[96px] text-nowrap tracking-[-6.72px]">
-                  <p className="leading-[64px] whitespace-pre">34</p>
+                  <p className="leading-[64px] whitespace-pre">{students}</p>
                 </div>
                 <div className="font-semibold min-w-full relative shrink-0 text-[29.226px] text-black text-center tracking-[-1.4613px]">
                   <p className="leading-[34.097px]">Students Supported</p>
@@ -238,7 +338,7 @@ export default function About() {
         <div className="box-border content-stretch flex flex-col gap-[32px] items-start justify-start max-w-[1200px] p-[32px] relative shrink-0 w-full">
           <div className="content-stretch flex gap-[16px] items-end justify-between max-w-[1200px] relative shrink-0 w-full">
             <div className="content-stretch flex flex-col gap-[16px] items-start justify-start relative shrink-0 ml-[64px]">
-              <div className="box-border content-stretch flex items-center justify-center overflow-clip pl-[2px] pr-[8px] py-[2px] relative rounded-[4px] shrink-0 gap-[6px]">
+              <div className="box-border content-stretch flex items-center justify-center overflow-clip pl-[2px] pr-[8px] py-[2px] relative  shrink-0 gap-[6px]">
                 <div className="relative shrink-0 size-[4px]">
                   <div className="bg-[#99a0ae] rounded-full size-full"></div>
                 </div>
@@ -259,53 +359,40 @@ export default function About() {
             </div>
           </div>
 
-          {/* Carousel Container */}
-          <div className="content-stretch flex gap-[32px] items-center justify-end max-w-[1200px] relative shrink-0 w-full">
+          {/* Carousel Container - SIMPLES */}
+          <div className="flex gap-[32px] items-center justify-center w-full">
             {/* Left Arrow */}
             <button
               onClick={prevSlide}
-              className="overflow-clip relative shrink-0 size-[24px] hover:opacity-70 transition-opacity"
+              className="flex-shrink-0 w-[24px] h-[24px] hover:opacity-70 transition-opacity"
             >
               <RiArrowLeftLine className="w-full h-full text-[#525866]" />
             </button>
 
             {/* Carousel Content */}
-            <div className="flex-1 flex items-center justify-center overflow-hidden relative h-[400px]">
-              <div
-                className="flex transition-transform duration-700 ease-in-out"
-                style={{
-                  transform: `translateX(-${currentIndex * 100}%)`,
-                  width: `${boardMembers.length * 100}%`
-                }}
-              >
-                {boardMembers.map((member, index) => (
+            <div className="flex-1">
+              <div className="flex gap-[16px] px-[8px]">
+                {slidesToShow.map((member, index) => (
                   <div
-                    key={member.id}
-                    className="flex-shrink-0 w-full flex flex-col items-center justify-center px-[32px]"
-                    style={{ width: `${100 / boardMembers.length}%` }}
+                    key={`${member.id}-${currentIndex}-${index}`}
+                    className={`flex-1 flex flex-col items-center text-center ${member.id === 1 ? 'cursor-pointer hover:opacity-80 transition-opacity' : ''}`}
+                    onClick={() => member.id === 1 && openDirectorModal(member)}
                   >
-                    <div className="content-stretch flex flex-col gap-[16px] items-center justify-start relative shrink-0">
-                      <div className="content-stretch flex gap-[15px] items-center justify-center relative shrink-0 w-full">
-                        <div className="basis-0 grow h-[295px] min-h-px min-w-px overflow-clip relative shrink-0 flex items-center justify-center">
-                          <div className="bg-[#f3f3f3] h-[295px] w-[246px] overflow-hidden relative">
-                            <Image
-                              src={member.image}
-                              alt={member.name}
-                              fill
-                              className="object-cover object-center"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="content-stretch flex flex-col gap-[8px] items-center justify-start leading-[0] not-italic relative shrink-0 text-center w-full">
-                        <div className="font-semibold relative shrink-0 text-[24px] text-black tracking-[-0.96px] w-full">
-                          <p className="leading-[32px]">{member.name}</p>
-                        </div>
-                        <div className="font-normal relative shrink-0 text-[#525866] text-[18px] tracking-[-0.36px] w-full">
-                          <p className="leading-[24px]">{member.position}</p>
-                        </div>
-                      </div>
+                    <div className="w-full h-[295px] bg-[#f3f3f3]  overflow-hidden mb-4">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        width={246}
+                        height={295}
+                        className="w-full h-full object-cover object-center"
+                      />
                     </div>
+                    <h3 className="font-semibold text-[24px] text-black tracking-[-0.96px] mb-2">
+                      {member.name}
+                    </h3>
+                    <p className="font-normal text-[#525866] text-[18px] tracking-[-0.36px]">
+                      {member.position}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -314,7 +401,7 @@ export default function About() {
             {/* Right Arrow */}
             <button
               onClick={nextSlide}
-              className="overflow-clip relative shrink-0 size-[24px] hover:opacity-70 transition-opacity"
+              className="flex-shrink-0 w-[24px] h-[24px] hover:opacity-70 transition-opacity"
             >
               <RiArrowRightLine className="w-full h-full text-[#525866]" />
             </button>
@@ -350,6 +437,70 @@ export default function About() {
           </div>
         </div>
       </div>
+
+      {/* Director Modal */}
+      {selectedDirector && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white max-w-xl w-full max-h-[90vh] overflow-y-auto relative">
+            {/* Close Button */}
+            <button
+              onClick={closeDirectorModal}
+              className="absolute top-4 left-4 bg-[#122368] text-white w-8 h-8 flex items-center justify-center hover:opacity-80 transition-opacity"
+            >
+              <span className="text-lg font-bold">×</span>
+            </button>
+
+            {/* Modal Content */}
+            <div className="p-8 pt-16 pb-20">
+              <div className="flex flex-col items-start text-left">
+                {/* Profile Image */}
+                <div className="w-48 h-48 bg-[#f3f3f3] overflow-hidden mb-6">
+                  <Image
+                    src={selectedDirector.image}
+                    alt={selectedDirector.name}
+                    width={192}
+                    height={192}
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
+
+                {/* Name and Title */}
+                <h2 className="font-semibold text-[32px] text-black tracking-[-1.28px] mb-2">
+                  {selectedDirector.name}
+                </h2>
+                <h3 className="font-semibold text-[24px] text-black tracking-[-0.96px] mb-4">
+                  {selectedDirector.position}
+                </h3>
+
+                {/* Affiliation */}
+                <p className="font-normal text-[#525866] text-[18px] tracking-[-0.36px] mb-6 text-left">
+                  {selectedDirector.affiliation}
+                </p>
+
+                {/* Biography */}
+                <p className="font-normal text-[#525866] text-[18px] tracking-[-0.36px] text-left leading-relaxed mb-8 w-full">
+                  {selectedDirector.bio}
+                </p>
+
+                {/* Explore Profile Button */}
+                <button className="bg-[#122368] text-white px-6 py-3 hover:opacity-80 transition-opacity">
+                  Explore Profile
+                </button>
+              </div>
+            </div>
+
+            {/* Navigation Arrows */}
+            <div className="absolute bottom-4 left-4 right-4 flex justify-between">
+              <button className="bg-[#122368] text-white w-10 h-10 rounded flex items-center justify-center hover:opacity-80 transition-opacity">
+                <RiArrowLeftLine className="w-5 h-5" />
+              </button>
+              <button className="bg-[#122368] text-white w-10 h-10 rounded flex items-center justify-center hover:opacity-80 transition-opacity">
+                <RiArrowRightLine className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );

@@ -1,5 +1,5 @@
 import Image from "next/image"
-import * as Button from "@/components/ui/button"
+import { Root as Button } from "@/components/ui/button"
 
 export default function CTA() {
   return (
@@ -26,9 +26,9 @@ export default function CTA() {
             </p>
           </div>
 
-          <Button.Root className="w-fit text-text-strong-900 bg-neutral-50 hover:bg-neutral-200">
+          <Button variant='neutral' mode='lighter' size='medium' className='h-hug w-fit'>
             Become a Member
-          </Button.Root>
+          </Button>
         </div>
       </div>
 
