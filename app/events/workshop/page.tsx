@@ -158,7 +158,7 @@ export default function AIBEWorkshopPage() {
               (to be indicated in your application). A conference dinner will be held on July 3, 2025.
             </p>
             <p className="text-text-sub-600 leading-relaxed mb-6 text-paragraph-md">
-              We acknowledge financial support from Banca d'Italia, FAPESP, University of Milano-Bicocca,
+              We acknowledge financial support from Banca d&apos;Italia, FAPESP, University of Milano-Bicocca,
               FGV-EAESP, Fundo Garantidor de Créditos (FGC), and Istituto Italiano di Cultura - San Paolo.
             </p>
 
