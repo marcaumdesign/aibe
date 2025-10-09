@@ -598,6 +598,9 @@ const config = {
       none: defaultTheme.boxShadow.none,
     },
     extend: {
+      screens: {
+        mobile: { max: '767px' },
+      },
       fontFamily: {
         sans: ['var(--font-sans)'],
         mono: ['var(--font-geist-mono)'],
