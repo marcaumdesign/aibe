@@ -9,7 +9,7 @@ import { Root as Badge } from '@/components/ui/badge';
 
 export const revalidate = 60;
 
-type Props = { params: { slug: string } };
+type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
   try {
@@ -22,7 +22,8 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    const article = await fetchArticleBySlug(params.slug);
+    const { slug } = await params;
+    const article = await fetchArticleBySlug(slug);
     if (!article) return { title: 'Artigo não encontrado' };
     return {
       title: `${article.title} - AIBE Blog`,
@@ -40,7 +41,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ArticlePage({ params }: Props) {
-  const article = await fetchArticleBySlug(params.slug);
+  const { slug } = await params;
+  const article = await fetchArticleBySlug(slug);
   if (!article) return notFound();
 
   const formatDate = (dateString: string) =>
