@@ -1,7 +1,6 @@
 'use client';
 
 import { RiMapPinLine, RiSendPlaneLine, RiTrophyLine } from '@remixicon/react';
-import { Metadata } from 'next';
 import Image from 'next/image';
 import { Root as Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
@@ -289,7 +288,7 @@ export default function Home() {
               </p>
               <p className='text-paragraph-lg text-white'>
                 AIBE is governed by a Board of Directors, who
-                are elected for three years by the Members' Assembly.
+                are elected for three years by the Members&apos; Assembly.
               </p>
             </div>
           </div>
@@ -490,11 +489,11 @@ export default function Home() {
                 <span className='text-paragraph-md text-black'>June 14, 2024</span>
               </div>
               <h3 className='text-title-h5 text-black'>
-                AIBE presented at FAPESP's "Day of Italy" event
+                AIBE presented at FAPESP&apos;s &quot;Day of Italy&quot; event
               </h3>
               <p className='text-sub-600 text-paragraph-lg'>
                 The presentation emphasized Italian-Brazilian academic
-                cooperation and the association's scientific initiatives.
+                cooperation and the association&apos;s scientific initiatives.
               </p>
             </article>
           </div>

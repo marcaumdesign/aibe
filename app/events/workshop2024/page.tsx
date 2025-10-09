@@ -1,76 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
-import { RiAddLine } from '@remixicon/react';
 import { Root as Button } from "@/components/ui/button";
 
-// Componente Accordion para FAQ
-function AccordionItem({
-  question,
-  answer,
-  isOpen,
-  onClick
-}: {
-  question: string;
-  answer: string;
-  isOpen: boolean;
-  onClick: () => void;
-}) {
-  return (
-    <div className="border-b border-gray-200">
-      <button
-        className="w-full py-6 text-left flex items-center gap-4 focus:outline-none"
-        onClick={onClick}
-      >
-        <RiAddLine
-          className={`w-6 h-6 text-gray-600 transition-transform duration-200 ${isOpen ? 'rotate-45' : ''
-            }`}
-        />
-        <span className="text-text-strong-950 text-title-h6">{question}</span>
-      </button>
-      {isOpen && (
-        <div className="pb-6">
-          <p className="text-gray-600 leading-relaxed">{answer}</p>
-        </div>
-      )}
-    </div>
-  );
-}
-
 export default function AIBEWorkshop2024Page() {
-  const [openFaq, setOpenFaq] = useState(0);
-
-  const toggleFaq = (index: number) => {
-    setOpenFaq(openFaq === index ? -1 : index);
-  };
-
-  const faqData = [
-    {
-      question: "Quando e onde o Workshop acontecerá?",
-      answer: "O AIBE Workshop 2024 foi realizado em 3-4 de julho de 2024 na São Paulo School of Business Administration (EAESP-FGV), São Paulo, Brasil."
-    },
-    {
-      question: "Havia taxa de inscrição?",
-      answer: "Não, não havia taxa de inscrição. A AIBE cobriu viagem e hospedagem para participantes selecionados."
-    },
-    {
-      question: "Quem podia se candidatar?",
-      answer: "Aceitamos submissões de pesquisadores em qualquer estágio da carreira. O workshop foi direcionado especialmente a italianos e estrangeiros em instituições italianas, brasileiros e estrangeiros em instituições brasileiras, italianos e brasileiros em instituições estrangeiras, e outros interessados em interagir com essas comunidades."
-    },
-    {
-      question: "Qual foi o tema principal do Workshop 2024?",
-      answer: "O tema principal foi 'Digital Payments & Financial Inclusion', focando em pesquisa de ponta em finanças digitais, fintech e inclusão financeira."
-    },
-    {
-      question: "Quem foi o palestrante principal?",
-      answer: "O palestrante principal foi Nicola Borri, Lian Group Chair em Fintech e Blockchain Technology & Professor Associado de Finanças na Universidade Luiss."
-    },
-    {
-      question: "Como podia se candidatar para apresentar um paper?",
-      answer: "Você podia se candidatar submetendo um paper através do nosso sistema de submissão. Era necessário fornecer comprovante de filiação à AIBE, que pode ser obtida através da nossa página de filiação. A filiação é válida por 1 ano e custa 2 euros."
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -145,8 +78,8 @@ export default function AIBEWorkshop2024Page() {
         <section className="mb-16">
           <div className="prose prose-lg max-w-none">
             <p className="text-text-sub-600 leading-relaxed mb-6 text-paragraph-md">
-              The 2025 AIBE Workshop will be held at EAESP-FGV in São Paulo on 3-4 July. The event is jointly organized by EAESP-FGV and the University of Milano-Bicocca, and is hosted by the Center for Microfinance and Financial Inclusion Studies (FGVcemif).
-              This year's Workshop aims to present cutting-edge research on all aspects of digital finance and financial inclusion. We invite submissions from any area of economics, with any geographic focus. A non-exclusive list of topics is provided below. We expect to put together some 6 contributed sessions with around 12 papers, each of which will be assigned a discussant. The workshop will also feature a keynote session (Nicola Borri) and a policy roundtable. Confirmed speakers on the policy roundtable include: Daniela Russo (European Central Bank), Paulo Picchetti (Banco Central do Brasil), e Massimo Cirasino (Payment Systems Academy, Italy).
+              The 2025 AIBE Workshop will be held at EAESP-FGV in São Paulo on 3-4 July. The event is jointly organized by EAESP-FGV and the University of Milano-Bicocca, and is hosted by the Center for Microfinance and Financial Inclusion Studies (FGVcemif).
+              This year&apos;s Workshop aims to present cutting-edge research on all aspects of digital finance and financial inclusion. We invite submissions from any area of economics, with any geographic focus. A non-exclusive list of topics is provided below. We expect to put together some 6 contributed sessions with around 12 papers, each of which will be assigned a discussant. The workshop will also feature a keynote session (Nicola Borri) and a policy roundtable. Confirmed speakers on the policy roundtable include: Daniela Russo (European Central Bank), Paulo Picchetti (Banco Central do Brasil), e Massimo Cirasino (Payment Systems Academy, Italy).
             </p>
           </div>
         </section>

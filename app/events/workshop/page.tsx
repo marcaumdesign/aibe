@@ -146,8 +146,8 @@ export default function AIBEWorkshopPage() {
         <section className="mb-16">
           <div className="prose prose-lg max-w-none">
             <p className="text-text-sub-600 leading-relaxed mb-6 text-paragraph-md">
-              The 2025 AIBE Workshop will be held at EAESP-FGV in São Paulo on 3-4 July. The event is jointly organized by EAESP-FGV and the University of Milano-Bicocca, and is hosted by the Center for Microfinance and Financial Inclusion Studies (FGVcemif).
-              This year's Workshop aims to present cutting-edge research on all aspects of digital finance and financial inclusion. We invite submissions from any area of economics, with any geographic focus. A non-exclusive list of topics is provided below. We expect to put together some 6 contributed sessions with around 12 papers, each of which will be assigned a discussant. The workshop will also feature a keynote session (Nicola Borri) and a policy roundtable. Confirmed speakers on the policy roundtable include: Daniela Russo (European Central Bank), Paulo Picchetti (Banco Central do Brasil), e Massimo Cirasino (Payment Systems Academy, Italy).
+              The 2025 AIBE Workshop will be held at EAESP-FGV in São Paulo on 3-4 July. The event is jointly organized by EAESP-FGV and the University of Milano-Bicocca, and is hosted by the Center for Microfinance and Financial Inclusion Studies (FGVcemif).
+              This year&apos;s Workshop aims to present cutting-edge research on all aspects of digital finance and financial inclusion. We invite submissions from any area of economics, with any geographic focus. A non-exclusive list of topics is provided below. We expect to put together some 6 contributed sessions with around 12 papers, each of which will be assigned a discussant. The workshop will also feature a keynote session (Nicola Borri) and a policy roundtable. Confirmed speakers on the policy roundtable include: Daniela Russo (European Central Bank), Paulo Picchetti (Banco Central do Brasil), e Massimo Cirasino (Payment Systems Academy, Italy).
             </p>
 
             <h3 className="text-text-strong-950 mb-4 text-title-h5">
@@ -169,7 +169,7 @@ export default function AIBEWorkshopPage() {
               We welcome paper submissions from researchers at any career stage, including specifically, but not exclusively: Italians and foreigners based at Italian research institutions; Brazilians and foreigners based at Brazilian research institutions; Italians and Brazilians based at foreign institutions. Other researchers with an interest in interacting with the Brazilian and Italian research communities are also welcome to apply.
             </p>
             <p className="text-text-sub-600 leading-relaxed mb-6 text-paragraph-md">
-              To submit a paper, applicants should provide proof of AIBE membership. Annual membership can be obtained here. It is valid for 1 year and starts at 2 euros.{" "}
+              To submit a paper, applicants should provide proof of AIBE membership. Annual membership can be obtained here. It is valid for 1 year and starts at 2 euros.
               <a href="/membership" className="text-primary-base hover:underline">
               </a>
 

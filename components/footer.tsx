@@ -1,4 +1,6 @@
 import { RiLinkedinFill, RiTwitterXFill, RiBlueskyFill } from "@remixicon/react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -7,8 +9,8 @@ export default function Footer() {
         {/* Logo and Social Media */}
         <div className="content-stretch flex flex-col -gap-2 items-start justify-center relative shrink-0 w-[300px]">
           <div className="content-stretch flex items-center justify-start leading-[0] relative shrink-0">
-            <div className="relative h-[62px]">
-              <img alt="" className="block max-w-none size-full" src="/images/logo branca.svg" />
+            <div className="relative h-[62px] w-[113px]">
+              <Image alt="AIBE Logo" fill className="object-contain" src="/images/logo branca.svg" />
             </div>
           </div>
           <div className="content-stretch flex gap-[8px] items-start justify-start relative shrink-0">
@@ -38,21 +40,21 @@ export default function Footer() {
               <p className="leading-[16px]">Home</p>
             </div>
             <div className="content-stretch flex flex-col font-normal gap-[4px] items-start justify-start leading-[0] not-italic relative shrink-0 text-[16px] text-nowrap text-white tracking-[-0.32px] w-full">
-              <a href="/#features" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
+              <Link href="/#features" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
                 <p className="leading-[24px] text-nowrap whitespace-pre">Features</p>
-              </a>
-              <a href="/about" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
+              </Link>
+              <Link href="/about" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
                 <p className="leading-[24px] text-nowrap whitespace-pre">About Us</p>
-              </a>
-              <a href="/events" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
+              </Link>
+              <Link href="/events" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
                 <p className="leading-[24px] text-nowrap whitespace-pre">AIBE Workshop</p>
-              </a>
-              <a href="/events#giorgio-mortara" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
+              </Link>
+              <Link href="/events#giorgio-mortara" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
                 <p className="leading-[24px] text-nowrap whitespace-pre">Giorgio Mortara</p>
-              </a>
-              <a href="/blog" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
+              </Link>
+              <Link href="/blog" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
                 <p className="leading-[24px] text-nowrap whitespace-pre">Blog</p>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -62,15 +64,15 @@ export default function Footer() {
               <p className="leading-[16px]">about us</p>
             </div>
             <div className="content-stretch flex flex-col font-normal gap-[4px] h-[136px] items-start justify-start leading-[0] not-italic relative shrink-0 text-[16px] text-nowrap text-white tracking-[-0.32px]">
-              <a href="/about" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
+              <Link href="/about" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
                 <p className="leading-[24px] text-nowrap whitespace-pre">About AIBE</p>
-              </a>
-              <a href="/about#context" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
+              </Link>
+              <Link href="/about#context" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
                 <p className="leading-[24px] text-nowrap whitespace-pre">AIBE in Context</p>
-              </a>
-              <a href="/about/team" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
+              </Link>
+              <Link href="/about/team" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
                 <p className="leading-[24px] text-nowrap whitespace-pre">Team</p>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -80,12 +82,12 @@ export default function Footer() {
               <p className="leading-[16px] whitespace-pre">{`Events & prizes`}</p>
             </div>
             <div className="content-stretch flex flex-col font-normal gap-[4px] items-start justify-start leading-[0] not-italic relative shrink-0 text-[16px] text-nowrap text-white tracking-[-0.32px] w-full">
-              <a href="/events" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
+              <Link href="/events" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
                 <p className="leading-[24px] text-nowrap whitespace-pre">AIBE Workshop</p>
-              </a>
-              <a href="/events#giorgio-mortara" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
+              </Link>
+              <Link href="/events#giorgio-mortara" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
                 <p className="leading-[24px] text-nowrap whitespace-pre">Giorgio Mortara</p>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -95,9 +97,9 @@ export default function Footer() {
               <p className="leading-[16px]">resources</p>
             </div>
             <div className="content-stretch flex flex-col gap-[4px] h-[134px] items-start justify-start relative shrink-0 w-full">
-              <a href="/blog" className="font-normal leading-[0] not-italic relative shrink-0 text-[16px] text-nowrap text-white tracking-[-0.32px] hover:text-[#cacfd8] transition-colors">
+              <Link href="/blog" className="font-normal leading-[0] not-italic relative shrink-0 text-[16px] text-nowrap text-white tracking-[-0.32px] hover:text-[#cacfd8] transition-colors">
                 <p className="leading-[24px] whitespace-pre">Blog</p>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -107,12 +109,12 @@ export default function Footer() {
               <p className="leading-[16px]">Contact</p>
             </div>
             <div className="content-stretch flex flex-col font-normal gap-[4px] h-[134px] items-start justify-start leading-[0] not-italic relative shrink-0 text-[16px] text-nowrap text-white tracking-[-0.32px] w-full">
-              <a href="/membership" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
+              <Link href="/membership" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
                 <p className="leading-[24px] text-nowrap whitespace-pre">Membership</p>
-              </a>
-              <a href="/contact" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
+              </Link>
+              <Link href="/contact" className="relative shrink-0 hover:text-[#cacfd8] transition-colors">
                 <p className="leading-[24px] text-nowrap whitespace-pre">Offices</p>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

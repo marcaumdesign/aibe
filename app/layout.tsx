@@ -8,6 +8,7 @@ import { Provider as TooltipProvider } from '@/components/ui/tooltip';
 import { NotificationProvider } from '@/components/ui/notification-provider';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import ServiceWorkerRegister from '@/components/service-worker-register';
 
 const inter = FontSans({
   subsets: ['latin'],
@@ -47,6 +48,7 @@ export default function RootLayout({
           </TooltipProvider>
         </ThemeProvider>
         <NotificationProvider />
+        <ServiceWorkerRegister />
       </body>
     </html>
   );

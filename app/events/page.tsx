@@ -1,42 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 import CTA from "@/components/cta";
 import { Root as Button } from "@/components/ui/button";
 
 export default function EventsPage() {
-  const [formData, setFormData] = useState({
-    manuscript: null as File | null,
-    contactDetails: "",
-    coAuthors: "",
-    affiliations: "",
-    membershipProof: null as File | null,
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, files } = e.target;
-    if (files && files[0]) {
-      setFormData(prev => ({
-        ...prev,
-        [name]: files[0]
-      }));
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
-  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -159,7 +127,7 @@ export default function EventsPage() {
             {/* Biography */}
             <div className="flex-1">
               <p className="text-text-sub-600 leading-relaxed mb-4 text-paragraph-md">
-                Giorgio Mortara (Matua, 1885 - Rio de Janeiro, 1967) was an Italian-Brazilian economist and demographer. During 1924-38, he taught at Bocconi University in Milan. In 1939, he emigrated to Rio de Janeiro to escape the fascist Racial Laws. Hired by the newly founded IBGE (Brazilian Institute for Geography and Statistics), he worked as technical advisor on the 1940 Brazilian National Census. He started the IBGE's Laboratory of Statistics and is regarded as the founder of modern demographic analysis in Brazil. Except for a four-year stint at the Sapienza University of Rome (1956-60), he lived in Rio until the end of his life.
+                Giorgio Mortara (Matua, 1885 - Rio de Janeiro, 1967) was an Italian-Brazilian economist and demographer. During 1924-38, he taught at Bocconi University in Milan. In 1939, he emigrated to Rio de Janeiro to escape the fascist Racial Laws. Hired by the newly founded IBGE (Brazilian Institute for Geography and Statistics), he worked as technical advisor on the 1940 Brazilian National Census. He started the IBGE&apos;s Laboratory of Statistics and is regarded as the founder of modern demographic analysis in Brazil. Except for a four-year stint at the Sapienza University of Rome (1956-60), he lived in Rio until the end of his life.
               </p>
               <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
                 The prize is awarded jointly by the AIBE Board and by the Scientific Committee of the annual AIBE Workshop.

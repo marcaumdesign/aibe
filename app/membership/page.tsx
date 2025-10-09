@@ -2,9 +2,8 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { RiAddLine, RiMapPinLine, RiVipLine, RiSendPlaneLine } from '@remixicon/react';
+import { RiAddLine, RiMapPinLine, RiSendPlaneLine } from '@remixicon/react';
 import { Root as Button } from '@/components/ui/button';
-import CTA from '@/components/cta';
 
 // Componente Badge reutilizável
 function Badge({
@@ -137,7 +136,7 @@ export default function MembershipPage() {
                 Become a Member
               </h1>
               <p className="text-text-sub-600 text-label-lg">
-                Gain access to exclusive events, networking opportunities and the right to<span className="block"> participate in the Members' Assembly.</span>
+                Gain access to exclusive events, networking opportunities and the right to<span className="block"> participate in the Members&apos; Assembly.</span>
               </p>
 
               {/* Flag Icons */}
@@ -260,7 +259,7 @@ export default function MembershipPage() {
                 Voting Rights
               </h5>
               <p className="text-text-sub-600 text-paragraph-lg">
-                Take part in the Annual Members' Assembly and contribute to AIBE's decisions.
+                Take part in the Annual Members&apos; Assembly and contribute to AIBE&apos;s decisions.
               </p>
             </div>
           </div>

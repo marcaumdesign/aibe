@@ -1,9 +1,6 @@
 "use client";
 
 import {
-  RiMailLine,
-  RiFileTextLine,
-  RiShareLine,
   RiLinkedinFill,
   RiTwitterXFill,
 } from "@remixicon/react";

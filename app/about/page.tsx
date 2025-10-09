@@ -1,6 +1,6 @@
 "use client";
 
-import { RiFundsBoxLine, RiFundsLine, RiGlobalLine, RiTeamLine, RiArrowLeftLine, RiArrowRightLine } from "@remixicon/react";
+import { RiFundsLine, RiGlobalLine, RiTeamLine, RiArrowLeftLine, RiArrowRightLine } from "@remixicon/react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
@@ -199,7 +199,7 @@ export default function About() {
                 <div className="font-normal relative shrink-0 text-[#525866] text-[18px] text-justify tracking-[-0.36px] w-full">
                   <p className="leading-[24px]">
                     AIBE is governed by a Board of Directors elected every three years by the
-                    Members' Assembly, ensuring transparency and shared leadership in its
+                    Members&apos; Assembly, ensuring transparency and shared leadership in its
                     activities.
                   </p>
                 </div>
@@ -432,7 +432,7 @@ export default function About() {
               </div>
             </div>
             <div className="absolute inset-[-54.15%_30.74%_83.33%_35.88%]">
-              <img alt="" className="block max-w-none size-full" src="/images/bandeira cta.svg" />
+              <Image alt="" className="block max-w-none size-full" src="/images/bandeira cta.svg" fill />
             </div>
           </div>
         </div>
