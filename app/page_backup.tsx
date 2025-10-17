@@ -2,6 +2,7 @@
 
 import { RiMapPinLine, RiSendPlaneLine, RiTrophyLine } from '@remixicon/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Root as Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import CTA from '@/components/cta';
@@ -67,7 +68,7 @@ export default function Home() {
     <div className='min-h-screen bg-white'>
       {/* Hero Section */}
       <section className='relative bg-white h-[calc(100vh-80px)] flex flex-col'>
-        <div className='w-full max-w-[1200px] mx-auto flex-1 flex items-center'>
+        <div className='w-full max-w-[1200px]  flex-1 flex items-center'>
           {/* Hero Content */}
           <div className='flex flex-col items-center justify-between gap-16 lg:flex-row w-full'>
             <div className='flex-1 flex flex-col gap-8 overflow-hidden items-start'>
@@ -97,9 +98,11 @@ export default function Home() {
               </div>
 
               <div className='flex flex-col gap-4 sm:flex-row items-start'>
-                <Button variant='primary' size='medium' className='h-hug'>
-                  Become a Member
-                </Button>
+                <Link href="/membership">
+                  <Button variant='primary' size='medium' className='h-hug'>
+                    Become a Member
+                  </Button>
+                </Link>
                 <Button variant='neutral' mode='stroke' size='medium' className='h-hug'>
                   Sign In
                 </Button>

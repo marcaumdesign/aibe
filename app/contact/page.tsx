@@ -42,16 +42,16 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Stay Connected Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-16 px-8 mobile:px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-2 mobile:grid-cols-1 gap-12 items-start">
             {/* Left side - Content */}
             <div className="space-y-3">
               <div className="space-y-10">
                 <p className="text-gray-400 font-medium tracking-wider uppercase pl-2" style={{ fontSize: '12px', lineHeight: '16px' }}>
                   CONTACT US
                 </p>
-                <h1 className="font-bold text-black-900" style={{ fontSize: '56px', lineHeight: '64px' }} >
+                <h1 className="text-title-h1 text-black">
                   Stay Connected!
                 </h1>
               </div>
@@ -63,7 +63,7 @@ export default function ContactPage() {
             {/* Right side - Contact Form */}
             <div className="bg-white">
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 mobile:grid-cols-1 gap-4">
                   <div>
                     <input
                       type="text"
@@ -149,15 +149,15 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Us Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-16 pb-44 px-8 mobile:px-4 bg-white relative z-10">
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-bold text-black mb-12 text-center" style={{ fontSize: '48px', lineHeight: '56px' }}>
+          <h2 className="text-title-h2 text-black mb-12 text-left">
             Contact Us
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-3 mobile:grid-cols-1 gap-6">
             {/* Get in touch card */}
-            <div className="p-8 bg-gray-50 border-0 shadow-none">
+            <div className="p-6 bg-gray-100 border-0 shadow-none">
               <div className="flex justify-start mb-4">
                 <Image
                   src="/images/mail-line.png"
@@ -167,12 +167,12 @@ export default function ContactPage() {
                   className="w-8 h-8"
                 />
               </div>
-              <h3 className="font-bold text-black mb-1 text-left" style={{ fontSize: '29.3px', lineHeight: '34.1px' }}>Get in touch</h3>
+              <h3 className="text-title-h4 text-black mb-2 text-left">Get in touch</h3>
               <p className="text-gray-600 text-left">aibe@aibe.website</p>
             </div>
 
             {/* Newsletter Submissions card */}
-            <div className="p-8 bg-gray-50 border-0 shadow-none">
+            <div className="p-6 bg-gray-100 border-0 shadow-none">
               <div className="flex justify-start mb-4">
                 <Image
                   src="/images/news-line.png"
@@ -182,7 +182,7 @@ export default function ContactPage() {
                   className="w-6 h-6"
                 />
               </div>
-              <h3 className="font-bold text-black mb-2 text-left whitespace-nowrap" style={{ fontSize: '29.3px', lineHeight: '34.1px' }}>
+              <h3 className="text-title-h4 text-black mb-2 text-left whitespace-nowrap">
                 Newsletter Submissions
               </h3>
               <p className="text-gray-600 text-left" style={{ fontSize: '18px', lineHeight: '24px' }}>
@@ -191,7 +191,7 @@ export default function ContactPage() {
             </div>
 
             {/* Follow Us card */}
-            <div className="p-8 bg-gray-50 border-0 shadow-none">
+            <div className="p-6 bg-gray-100 border-0 shadow-none">
               <div className="flex justify-start mb-4">
                 <Image
                   src="/images/smartphone-line.png"
@@ -201,7 +201,7 @@ export default function ContactPage() {
                   className="w-8 h-8"
                 />
               </div>
-              <h3 className="font-bold text-black mb-4 text-left" style={{ fontSize: '29.23px', lineHeight: '34.1px' }}>
+              <h3 className="text-title-h4 text-black mb-2 text-left">
                 Follow Us
               </h3>
               <div className="flex justify-start space-x-4">
@@ -226,7 +226,9 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <CTA />
+      <div className="relative mt-24">
+        <CTA />
+      </div>
 
     </div>
   );

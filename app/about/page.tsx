@@ -1,9 +1,12 @@
 "use client";
 
-import { RiFundsLine, RiGlobalLine, RiTeamLine, RiArrowLeftLine, RiArrowRightLine } from "@remixicon/react";
+import { RiFundsBoxLine, RiFundsLine, RiGlobalLine, RiTeamLine, RiArrowLeftLine, RiArrowRightLine } from "@remixicon/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { Root as Button } from "@/components/ui/button";
+import CTA from "@/components/cta";
 
 // Tipo para os membros do board
 interface BoardMember {
@@ -141,26 +144,26 @@ export default function About() {
   };
 
   return (
-    <div className="content-stretch flex flex-col gap-[64px] items-center justify-start relative size-full">
+    <div className="flex flex-col gap-[64px] items-center justify-start relative size-full">
       {/* Hero Section */}
-      <div className="box-border content-stretch flex flex-col gap-[53px] items-center justify-start p-[32px] relative shrink-0 w-full">
-        <div className="content-stretch flex flex-col gap-[53px] items-center justify-start max-w-[1200px] relative shrink-0 w-full">
+      <div className="flex flex-col gap-[53px] items-center justify-start w-full">
+        <div className="flex flex-col gap-[53px] items-center p-8 mobile:p-4 justify-start max-w-[1200px] w-full">
           {/* Hero Content */}
-          <div id="about-aibe" className="bg-white box-border content-stretch flex flex-col gap-[10px] items-start justify-start overflow-clip pb-0 pt-[64px] px-0 relative shrink-0 w-full">
-            <div className="content-stretch flex flex-col gap-[32px] items-center justify-start relative shrink-0 w-full">
-              <div className="content-stretch flex flex-col gap-[16px] items-center justify-start relative shrink-0 w-full">
-                <div className="box-border content-stretch flex gap-[2px] items-center justify-center overflow-clip px-[8px] py-[2px] relative  shrink-0">
-                  <div className="font-medium leading-[0] not-italic relative shrink-0 text-[#99a0ae] text-[12px] text-nowrap tracking-[0.48px] uppercase">
-                    <p className="leading-[16px] whitespace-pre">About AIBE</p>
+          <div id="about-aibe" className="bg-white flex flex-col gap-[10px] items-start justify-start overflow-clip pb-0 pt-[32px] mobile:pt-4 px-0 w-full">
+            <div className="flex flex-col gap-8 items-center justify-start w-full">
+              <div className="flex flex-col gap-4 items-center justify-start w-full">
+                <div className="flex gap-[2px] items-center justify-center overflow-clip px-[8px] py-[2px] relative  shrink-0">
+                  <div className="font-medium not-italic text-[#99a0ae] text-[12px] text-nowrap tracking-[0.48px] uppercase">
+                    <p className="leading-4 whitespace-pre">About AIBE</p>
                   </div>
                 </div>
-                <div className="font-semibold leading-[0] not-italic relative shrink-0 text-[56px] text-black text-center tracking-[-3.92px] w-[648px]">
-                  <p className="leading-[64px]">Science across borders, excellence in cooperation</p>
-                </div>
+                <h1 className="text-title-h1 text-black text-center max-w-[648px]">
+                  Science across borders, excellence in cooperation
+                </h1>
               </div>
               <div
                 className="bg-center bg-cover bg-no-repeat h-[447px]  shrink-0 w-full"
-                style={{ backgroundImage: `url('/images/hero.png')` }}
+                style={{ backgroundImage: `url('/images/brazil-italy.png')` }}
               />
             </div>
           </div>
@@ -168,15 +171,15 @@ export default function About() {
       </div>
 
       {/* About AIBE Section */}
-      <div className="content-stretch flex flex-col gap-[77px] items-center justify-center relative shrink-0 w-full">
-        <div className="box-border content-stretch flex flex-col gap-[64px] items-center justify-start max-w-[1200px] px-0 py-[32px] relative shrink-0 w-full">
-          <div className="content-stretch flex gap-[32px] items-start justify-start overflow-clip relative  w-full">
-            <div className="basis-0 content-stretch flex flex-col gap-[32px] grow items-start justify-start min-h-px min-w-px relative shrink-0">
-              <div className="content-stretch flex flex-col gap-[16px] items-start justify-start leading-[0] not-italic relative shrink-0 w-full">
-                <div className="font-semibold relative shrink-0 text-[29.226px] text-black tracking-[-1.4613px] w-full">
-                  <p className="leading-[34.097px]">About AIBE</p>
-                </div>
-                <div className="font-normal leading-[24px] relative shrink-0 text-[#525866] text-[18px] text-justify tracking-[-0.36px] w-full">
+      <div className="flex flex-col items-center justify-center w-full">
+        <div className="flex flex-col gap-16 items-center justify-start max-w-[1200px] p-8 mobile:p-4 w-full">
+          <div className="flex flex-row mobile:flex-col gap-8 items-start justify-start overflow-clip relative  w-full">
+            <div className="flex flex-col gap-8 max-w-[600px] items-start justify-start">
+              <div className="flex flex-col gap-4 items-start justify-start not-italic w-full">
+                <h2 className="text-title-h4 text-black w-full">
+                  About AIBE
+                </h2>
+                <div className="font-normal leading-[24px] text-[#525866] text-[18px] text-justify tracking-[-0.36px] w-full">
                   <p className="mb-0">
                     The Italian-Brazilian Association of Economics (AIBE) is a bilateral, non-profit
                     institution registered in Italy, dedicated to fostering scientific collaboration
@@ -193,19 +196,19 @@ export default function About() {
                     international research networks.
                   </p>
                 </div>
-                <div className="font-semibold relative shrink-0 text-[29.226px] text-black tracking-[-1.4613px] w-full">
-                  <p className="leading-[34.097px]">Governance</p>
-                </div>
-                <div className="font-normal relative shrink-0 text-[#525866] text-[18px] text-justify tracking-[-0.36px] w-full">
+                <h2 className="text-title-h4 text-black w-full">
+                  Governance
+                </h2>
+                <div className="text-paragraph-lg text-text-sub-600 w-full">
                   <p className="leading-[24px]">
                     AIBE is governed by a Board of Directors elected every three years by the
-                    Members&apos; Assembly, ensuring transparency and shared leadership in its
+                    Members' Assembly, ensuring transparency and shared leadership in its
                     activities.
                   </p>
                 </div>
               </div>
             </div>
-            <div className="relative w-[500px] h-[500px]">
+            <div className="relative w-full min-w-[300px] h-[500px]">
               <Image
                 src='/images/brasil-italia.png'
                 alt='Brasil e Italia'
@@ -216,9 +219,9 @@ export default function About() {
 
 
           </div>
-          <div className="bg-[#122368] box-border content-stretch flex gap-[4px] items-center justify-center overflow-clip p-[10px] relative shrink-0">
-            <div className="box-border content-stretch flex items-center justify-center px-[4px] py-0 relative shrink-0">
-              <div className="font-medium leading-[0] not-italic relative shrink-0 text-[18px] text-center text-nowrap text-white tracking-[-0.54px]">
+          <div className="bg-[#122368] flex gap-[4px] items-center justify-center overflow-clip p-[10px] relative shrink-0">
+            <div className="flex items-center justify-center px-[4px] py-0 relative shrink-0">
+              <div className="font-medium not-italic text-[18px] text-center text-nowrap text-white tracking-[-0.54px]">
                 <p className="leading-[24px] whitespace-pre">Download the AIBE Constitution</p>
               </div>
             </div>
@@ -229,101 +232,95 @@ export default function About() {
       {/* Statistics Section */}
       <div
         ref={statsRef as React.RefObject<HTMLDivElement>}
-        className="content-stretch flex flex-col gap-[77px] items-center justify-center relative shrink-0 w-full"
+        className="flex flex-col  items-center justify-center w-full"
       >
-        <div className="box-border content-stretch flex flex-col gap-[64px] items-center justify-start max-w-[1200px] px-0 py-[32px] relative shrink-0 w-full">
-          <div className="content-stretch flex items-center justify-start overflow-clip relative shrink-0 w-full">
-            <div className="basis-0 content-stretch flex gap-[16px] grow items-center justify-center min-h-px min-w-px relative shrink-0">
-              <div className="basis-0 box-border content-stretch flex flex-col gap-[12.011px] grow items-center justify-start leading-[0] min-h-px min-w-px not-italic p-[16px] relative  shrink-0">
-                <div className="font-semibold relative shrink-0 text-[#122368] text-[96px] text-nowrap tracking-[-6.72px]">
-                  <p className="leading-[64px] whitespace-pre">{researchers}</p>
-                </div>
-                <div className="font-semibold min-w-full relative shrink-0 text-[29.226px] text-black text-center tracking-[-1.4613px]">
-                  <p className="leading-[34.097px]">Participating Researchers</p>
-                </div>
-                <div className="font-normal min-w-full relative shrink-0 text-[#525866] text-[18px] text-center tracking-[-0.36px]">
-                  <p className="leading-[24px]">567 researchers have already taken part in AIBE meetings.</p>
-                </div>
-              </div>
-            </div>
-            <div className="basis-0 content-stretch flex gap-[16px] grow items-center justify-center min-h-px min-w-px relative shrink-0">
-              <div className="basis-0 box-border content-stretch flex flex-col gap-[12.011px] grow items-center justify-start leading-[0] min-h-px min-w-px not-italic p-[16px] relative  shrink-0">
-                <div className="font-semibold relative shrink-0 text-[#122368] text-[96px] text-nowrap tracking-[-6.72px]">
-                  <p className="leading-[64px] whitespace-pre">{institutions}</p>
-                </div>
-                <div className="font-semibold min-w-full relative shrink-0 text-[29.226px] text-black text-center tracking-[-1.4613px]">
-                  <p className="leading-[34.097px]">Institutions Involved</p>
-                </div>
-                <div className="font-normal min-w-full relative shrink-0 text-[#525866] text-[18px] text-center tracking-[-0.36px]">
-                  <p className="leading-[24px]">Partnership with more than XX universities and research centers in Brazil and Italy.</p>
-                </div>
-              </div>
-            </div>
-            <div className="basis-0 content-stretch flex gap-[16px] grow items-center justify-center min-h-px min-w-px relative shrink-0">
-              <div className="basis-0 box-border content-stretch flex flex-col gap-[12.011px] grow items-center justify-start leading-[0] min-h-px min-w-px not-italic p-[16px] relative  shrink-0">
-                <div className="font-semibold relative shrink-0 text-[#122368] text-[96px] text-nowrap tracking-[-6.72px]">
-                  <p className="leading-[64px] whitespace-pre">{students}</p>
-                </div>
-                <div className="font-semibold min-w-full relative shrink-0 text-[29.226px] text-black text-center tracking-[-1.4613px]">
-                  <p className="leading-[34.097px]">Students Supported</p>
-                </div>
-                <div className="font-normal min-w-full relative shrink-0 text-[#525866] text-[18px] text-center tracking-[-0.36px]">
-                  <p className="leading-[24px]">XX students and researchers supported in exchange programs.</p>
-                </div>
+        <div className="flex flex-row mobile:flex-col gap-8 items-center justify-start max-w-[1200px] w-full p-4">
+
+          <div className="flex flex-row mobile:flex-col gap-4 items-center justify-center flex-1">
+            <div className="flex flex-col gap-3 items-center justify-start not-italic p-4 relative w-full">
+
+              <p className="text-title-h0 text-center text-primary-base">{researchers}</p>
+
+              <h3 className="text-title-h4 text-black text-center min-w-full">
+                Participating Researchers
+              </h3>
+              <div className="font-normal min-w-full text-[#525866] text-[18px] text-center tracking-[-0.36px]">
+                <p className="leading-[24px]">567 researchers have already taken part in AIBE meetings.</p>
               </div>
             </div>
           </div>
+          <div className="flex flex-row mobile:flex-col gap-4 items-center justify-center flex-1">
+            <div className="flex flex-col gap-3 items-center justify-start relative w-full">
+
+              <p className="text-title-h0 text-center text-primary-base">{institutions}</p>
+
+              <h3 className="text-title-h4 text-black text-center min-w-full">
+                Institutions Involved
+              </h3>
+              <div className="font-normal min-w-full text-[#525866] text-[18px] text-center tracking-[-0.36px]">
+                <p className="leading-[24px]">Partnership with more than XX universities and research centers in Brazil and Italy.</p>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-row mobile:flex-col gap-4 items-center justify-center flex-1">
+            <div className="flex flex-col gap-3 items-center justify-start not-italic relative w-full">
+
+              <p className="text-title-h0 text-center text-primary-base">{students}</p>
+
+              <h3 className="text-title-h4 text-black text-center min-w-full">
+                Students Supported
+              </h3>
+              <div className="font-normal min-w-full text-[#525866] text-[18px] text-center tracking-[-0.36px]">
+                <p className="leading-[24px]">XX students and researchers supported in exchange programs.</p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
       {/* AIBE in Context Section */}
-      <div className="content-stretch flex flex-col gap-[77px] items-center justify-center relative shrink-0 w-full">
-        <div className="bg-[#f3f8ff] box-border content-stretch flex flex-col gap-[64px] items-center justify-start max-w-[1200px] p-[64px] relative shrink-0 w-full">
-          <div className="content-stretch flex gap-[32px] items-start justify-start overflow-clip relative shrink-0 w-full">
-            <div className="basis-0 content-stretch flex flex-col gap-[32px] grow items-start justify-start min-h-px min-w-px relative shrink-0">
-              <div className="content-stretch flex flex-col gap-[16px] items-start justify-start leading-[0] not-italic relative shrink-0 w-full">
-                <div className="font-semibold relative shrink-0 text-[29.226px] text-black tracking-[-1.4613px] w-full">
-                  <p className="leading-[34.097px]">AIBE in context</p>
-                </div>
-                <div className="font-normal relative shrink-0 text-[#525866] text-[18px] text-justify tracking-[-0.36px] w-full">
-                  <p className="leading-[24px]">AIBE operates in a context of strong cooperation between Brazil and Italy, rooted in historical, cultural, and academic ties. This environment has been reinforced by the Bilateral Agreement on Scientific and Technological Cooperation, in force since 1998, which has enabled joint research projects, funding calls, and greater institutional integration. In recent years, there has also been a significant growth in the presence of Brazilian scholars within the Italian academic system, as well as a steady increase in co-authored publications, consolidating the importance of this international partnership.</p>
+      <div className="flex flex-col gap-[77px] items-center justify-center w-full">
+        <div className="bg-[#f3f8ff] flex flex-col gap-[64px] items-center justify-start max-w-[1200px] px-[64px] mobile:px-4 py-[64px] mobile:py-4 w-full">
+          <div className="flex gap-8 items-start justify-start w-full">
+            <div className="flex flex-col gap-8 items-start justify-start w-full max-w-full">
+              <div className="flex flex-col gap-4 items-start justify-start not-italic w-full">
+                <h2 className="text-title-h4 text-black w-full">
+                  AIBE in context
+                </h2>
+                <div className="text-paragraph-lg text-text-sub-600 w-full overflow-visible">
+                  <p className="leading-[24px] break-words">AIBE operates in a context of strong cooperation between Brazil and Italy, rooted in historical, cultural, and academic ties. This environment has been reinforced by the Bilateral Agreement on Scientific and Technological Cooperation, in force since 1998, which has enabled joint research projects, funding calls, and greater institutional integration. In recent years, there has also been a significant growth in the presence of Brazilian scholars within the Italian academic system, as well as a steady increase in co-authored publications, consolidating the importance of this international partnership.</p>
                 </div>
               </div>
-              <div className="content-stretch flex gap-[16px] items-start justify-start relative shrink-0 w-full">
-                <div className="overflow-clip relative shrink-0 size-[56px]">
-                  <RiGlobalLine className="w-[56px] h-[56px]" />
+              <div className="flex gap-4 items-start justify-start w-full">
+                <div className="flex-shrink-0">
+                  <RiGlobalLine className="w-[56px] h-[56px] text-[#122368]" />
                 </div>
-                <div className="basis-0 content-stretch flex flex-col gap-[8px] grow items-start justify-start leading-[0] min-h-px min-w-px not-italic relative shrink-0">
-                  <div className="flex flex-col font-semibold h-[23.94px] justify-center relative shrink-0 text-[24px] text-black tracking-[-1.2px] w-full">
-                    <p className="leading-[34.097px]">Historical and Institutional Ties</p>
-                  </div>
-                  <div className="font-normal relative shrink-0 text-[#525866] text-[18px] text-justify tracking-[-0.36px] w-full">
+                <div className="flex flex-col gap-[8px] items-start justify-start flex-1">
+                  <p className="text-title-h5">Historical and Institutional Ties</p>
+                  <div className="text-paragraph-lg text-text-sub-600 w-full">
                     <p className="leading-[24px]">Enduring relations between Brazil and Italy, supported by a bilateral science and technology agreement since 1998.</p>
                   </div>
                 </div>
               </div>
-              <div className="content-stretch flex gap-[16px] items-start justify-start relative shrink-0 w-full">
-                <div className="overflow-clip relative shrink-0 size-[56px]">
-                  <RiFundsLine className="w-[56px] h-[56px]" />
+              <div className="flex gap-4 items-start justify-start w-full">
+                <div className="flex-shrink-0">
+                  <RiFundsLine className="w-[56px] h-[56px] text-[#122368]" />
                 </div>
-                <div className="basis-0 content-stretch flex flex-col gap-[8px] grow items-start justify-start leading-[0] min-h-px min-w-px not-italic relative shrink-0">
-                  <div className="flex flex-col font-semibold h-[23.94px] justify-center relative shrink-0 text-[24px] text-black tracking-[-1.2px] w-full">
-                    <p className="leading-[34.097px]">Research Opportunities</p>
-                  </div>
-                  <div className="font-normal relative shrink-0 text-[#525866] text-[18px] text-justify tracking-[-0.36px] w-full">
+                <div className="flex flex-col gap-[8px] items-start justify-start flex-1">
+                  <p className="text-title-h5">Research Opportunities</p>
+                  <div className="text-paragraph-lg text-text-sub-600 w-full">
                     <p className="leading-[24px]">Joint funding calls and collaborative projects connecting universities and research centers.</p>
                   </div>
                 </div>
               </div>
-              <div className="content-stretch flex gap-[16px] items-start justify-start relative shrink-0 w-full">
-                <div className="overflow-clip relative shrink-0 size-[56px]">
-                  <RiTeamLine className="w-[56px] h-[56px]" />
+              <div className="flex gap-4 items-start justify-start w-full">
+                <div className="flex-shrink-0">
+                  <RiTeamLine className="w-[56px] h-[56px] text-[#122368]" />
                 </div>
-                <div className="basis-0 content-stretch flex flex-col gap-[8px] grow items-start justify-start leading-[0] min-h-px min-w-px not-italic relative shrink-0">
-                  <div className="flex flex-col font-semibold h-[23.94px] justify-center relative shrink-0 text-[24px] text-black tracking-[-1.2px] w-full">
-                    <p className="leading-[34.097px]">Expanding Academic Community</p>
-                  </div>
-                  <div className="font-normal relative shrink-0 text-[#525866] text-[18px] text-justify tracking-[-0.36px] w-full">
+                <div className="flex flex-col gap-[8px] items-start justify-start flex-1">
+                  <p className="text-title-h5">Expanding Academic Community</p>
+                  <div className="text-paragraph-lg text-text-sub-600 w-full">
                     <p className="leading-[24px]">A growing number of Brazilian scholars in Italian institutions and co-authored publications between researchers of both countries.</p>
                   </div>
                 </div>
@@ -334,33 +331,38 @@ export default function About() {
       </div>
 
       {/* Board of Directors Carousel Section */}
-      <div className="content-stretch flex flex-col gap-[77px] items-center justify-center relative shrink-0 w-full">
-        <div className="box-border content-stretch flex flex-col gap-[32px] items-start justify-start max-w-[1200px] p-[32px] relative shrink-0 w-full">
-          <div className="content-stretch flex gap-[16px] items-end justify-between max-w-[1200px] relative shrink-0 w-full">
-            <div className="content-stretch flex flex-col gap-[16px] items-start justify-start relative shrink-0 ml-[64px]">
-              <div className="box-border content-stretch flex items-center justify-center overflow-clip pl-[2px] pr-[8px] py-[2px] relative  shrink-0 gap-[6px]">
-                <div className="relative shrink-0 size-[4px]">
+      <div className="flex flex-col gap-[77px] items-center justify-center w-full mobile:mb-[160px]">
+        <div className="flex flex-col gap-8 items-start justify-start max-w-[1200px] p-[32px] mobile:p-4 w-full">
+          <div className="flex flex-row mobile:flex-col gap-4 items-end mobile:items-start justify-between max-w-[1200px] w-full">
+            <div className="flex flex-col gap-4 items-start w-auto mobile:w-full">
+              {/* Tag "Team" - centralizada no mobile */}
+              <div className="flex items-center justify-start mobile:justify-center overflow-clip pl-[2px] pr-[8px] py-[2px] relative shrink-0 gap-[6px] w-auto mobile:w-full">
+                <div className="size-[4px]">
                   <div className="bg-[#99a0ae] rounded-full size-full"></div>
                 </div>
-                <div className="font-normal leading-[0] not-italic relative shrink-0 text-[#99a0ae] text-[10px] text-nowrap tracking-[0.48px] uppercase">
+                <div className="font-normal not-italic text-[#99a0ae] text-[10px] text-nowrap tracking-[0.48px] uppercase">
                   <p className="leading-[14px] whitespace-pre">Team</p>
                 </div>
               </div>
-              <div className="font-semibold leading-[0] not-italic relative shrink-0 text-[48px] text-black tracking-[-1.44px]">
-                <p className="leading-[56px]">Board of directors</p>
-              </div>
+              {/* Título - centralizado no mobile */}
+              <h2 className="text-title-h3 text-center w-full">
+                Board of directors
+              </h2>
             </div>
-            <div className="bg-[#122368] box-border content-stretch flex gap-[4px] items-center justify-center overflow-clip p-[10px] relative shrink-0">
-              <div className="box-border content-stretch flex items-center justify-center px-[4px] py-0 relative shrink-0">
-                <div className="font-medium leading-[0] not-italic relative shrink-0 text-[18px] text-center text-nowrap text-white tracking-[-0.27px]">
-                  <p className="leading-[24px] whitespace-pre">View All</p>
+            {/* Botão View All - visível apenas no desktop */}
+            <Link href="/about/team" className="block mobile:hidden">
+              <div className="bg-[#122368] flex gap-[4px] items-center justify-center overflow-clip p-[10px] relative shrink-0 w-fit cursor-pointer hover:opacity-80 transition-opacity">
+                <div className="flex items-center justify-center px-[4px] py-0 relative shrink-0">
+                  <div className="font-medium not-italic text-[18px] text-center text-nowrap text-white tracking-[-0.27px]">
+                    <p className="leading-[24px] whitespace-pre">View All</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
 
-          {/* Carousel Container - SIMPLES */}
-          <div className="flex gap-[32px] items-center justify-center w-full">
+          {/* Carousel Container - DESKTOP */}
+          <div className="flex mobile:hidden gap-8 items-center justify-center w-full">
             {/* Left Arrow */}
             <button
               onClick={prevSlide}
@@ -371,7 +373,7 @@ export default function About() {
 
             {/* Carousel Content */}
             <div className="flex-1">
-              <div className="flex gap-[16px] px-[8px]">
+              <div className="flex gap-4 px-[8px]">
                 {slidesToShow.map((member, index) => (
                   <div
                     key={`${member.id}-${currentIndex}-${index}`}
@@ -387,7 +389,7 @@ export default function About() {
                         className="w-full h-full object-cover object-center"
                       />
                     </div>
-                    <h3 className="font-semibold text-[24px] text-black tracking-[-0.96px] mb-2">
+                    <h3 className="text-title-h5 text-black mb-2">
                       {member.name}
                     </h3>
                     <p className="font-normal text-[#525866] text-[18px] tracking-[-0.36px]">
@@ -406,36 +408,123 @@ export default function About() {
               <RiArrowRightLine className="w-full h-full text-[#525866]" />
             </button>
           </div>
+
+          {/*Mobile Layout - Carousel horizontal */}
+          <div className="hidden mobile:flex flex-col gap-4 w-full">
+            <div className="flex gap-4 items-center justify-center w-full">
+              {/* Left Arrow */}
+              <button
+                onClick={prevSlide}
+                className="flex-shrink-0 w-[32px] h-[32px] hover:opacity-70 transition-opacity"
+              >
+                <RiArrowLeftLine className="w-full h-full text-[#525866]" />
+              </button>
+
+              {/* Carousel Content - Mobile */}
+              <div className="flex-1 overflow-hidden">
+                <div
+                  className="flex transition-transform duration-300 ease-in-out"
+                  style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                >
+                  {boardMembers.map((member) => (
+                    <div
+                      key={member.id}
+                      className={`w-full flex-shrink-0 flex flex-col items-center text-center px-4 ${member.id === 1 ? 'cursor-pointer hover:opacity-80 transition-opacity' : ''}`}
+                      onClick={() => member.id === 1 && openDirectorModal(member)}
+                    >
+                      <div className="w-[200px] h-[240px] bg-[#f3f3f3] overflow-hidden mb-4">
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          width={200}
+                          height={240}
+                          className="w-full h-full object-cover object-center"
+                        />
+                      </div>
+                      <h3 className="text-title-h6 text-black mb-2">
+                        {member.name}
+                      </h3>
+                      <p className="font-normal text-[#525866] text-[16px] tracking-[-0.32px]">
+                        {member.position}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right Arrow */}
+              <button
+                onClick={nextSlide}
+                className="flex-shrink-0 w-[32px] h-[32px] hover:opacity-70 transition-opacity"
+              >
+                <RiArrowRightLine className="w-full h-full text-[#525866]" />
+              </button>
+            </div>
+
+            {/* Indicadores de posição (bolinhas) */}
+            <div className="flex gap-2 items-center justify-center">
+              {boardMembers.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`h-2 rounded-full transition-all ${index === currentIndex
+                    ? 'bg-[#122368] w-6'
+                    : 'bg-[#d1d5db] w-2'
+                    }`}
+                />
+              ))}
+            </div>
+
+            {/* Botão View All - visível apenas no mobile, após o carrossel */}
+            <Link href="/about/team" className="hidden mobile:flex w-full justify-center mt-4">
+              <div className="bg-[#122368] flex gap-[4px] items-center justify-center overflow-clip p-[10px] relative shrink-0 w-fit cursor-pointer hover:opacity-80 transition-opacity">
+                <div className="flex items-center justify-center px-[4px] py-0 relative shrink-0">
+                  <div className="font-medium not-italic text-[18px] text-center text-nowrap text-white tracking-[-0.27px]">
+                    <p className="leading-[24px] whitespace-pre">View All</p>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
 
       {/* CTA + Footer Section */}
-      <div className="content-stretch flex flex-col items-start justify-start relative shrink-0 w-full mt-[192px]">
-        <div className="bg-[#122368] content-stretch flex flex-col items-center justify-start relative shrink-0 w-full">
+      {/* Desktop/Tablet CTA original */}
+      <div className="flex flex-col items-start justify-start w-full mt-[192px] mobile:hidden">
+        <div className="bg-[#122368] flex flex-col items-center justify-start w-full relative overflow-visible">
           {/* CTA Content */}
-          <div className="box-border content-stretch flex flex-col gap-[32px] items-start justify-start max-w-[1200px] pb-[64px] pt-[98px] px-[32px] relative shrink-0 w-full">
-            <div className="content-stretch flex flex-col gap-[32px] items-center justify-start max-w-[1200px] relative shrink-0 w-full">
-              <div className="content-stretch flex flex-col gap-[16px] items-center justify-start leading-[0] not-italic relative shrink-0 text-center w-full">
-                <div className="font-semibold relative shrink-0 text-[48px] text-white tracking-[-3.36px] w-[588.985px]">
-                  <p className="leading-[56px]">Join AIBE and Strengthen Academic Cooperation</p>
-                </div>
-                <div className="font-normal relative shrink-0 text-[#cacfd8] text-[18px] tracking-[-0.36px] w-[661.628px]">
+          <div className="flex flex-col gap-8 items-start justify-start max-w-[1200px] pb-[64px] pt-[98px] px-[32px] w-full relative">
+            <Image
+              src='/images/bandeira cta.svg'
+              alt='Brazilian and Italian flags'
+              width={402}
+              height={294}
+              className='absolute left-1/2 transform -translate-x-1/2 top-[-200px] w-auto h-[300px] z-20'
+            />
+
+            <div className="flex flex-col gap-8 items-center justify-start max-w-[1200px] w-full">
+              <div className="flex flex-col gap-4 items-center justify-start not-italic text-center w-full">
+                <h2 className="text-title-h2 text-white max-w-[588.985px]">
+                  Join AIBE and Strengthen Academic Cooperation
+                </h2>
+                <div className="font-normal text-[#cacfd8] text-[18px] tracking-[-0.36px] w-[661.628px]">
                   <p className="leading-[24px]">By joining AIBE, you will engage with researchers, access unique opportunities, and support initiatives that unite Brazil and Italy in economic research.</p>
                 </div>
               </div>
-              <div className="bg-white box-border content-stretch flex gap-[4px] items-center justify-center overflow-clip p-[10px] relative shrink-0">
-                <div className="box-border content-stretch flex items-center justify-center px-[4px] py-0 relative shrink-0">
-                  <div className="font-medium leading-[0] not-italic relative shrink-0 text-[#0e121b] text-[18px] text-center text-nowrap tracking-[-0.27px]">
-                    <p className="leading-[24px] whitespace-pre">Become a Member</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="absolute inset-[-54.15%_30.74%_83.33%_35.88%]">
-              <Image alt="" className="block max-w-none size-full" src="/images/bandeira cta.svg" fill />
+              <Link href="/membership">
+                <Button variant='neutral' mode='lighter' size='medium' className='h-hug w-fit'>
+                  Become a Member
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Mobile CTA padronizado (Home) */}
+      <div className="hidden mobile:block w-full">
+        <CTA />
       </div>
 
       {/* Director Modal */}
@@ -465,10 +554,10 @@ export default function About() {
                 </div>
 
                 {/* Name and Title */}
-                <h2 className="font-semibold text-[32px] text-black tracking-[-1.28px] mb-2">
+                <h2 className="text-[32px] leading-[40px] tracking-[-1.28px] text-black mb-2">
                   {selectedDirector.name}
                 </h2>
-                <h3 className="font-semibold text-[24px] text-black tracking-[-0.96px] mb-4">
+                <h3 className="text-title-h5 text-black mb-4">
                   {selectedDirector.position}
                 </h3>
 

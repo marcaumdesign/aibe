@@ -1,313 +1,253 @@
 'use client';
-
 import { useState } from 'react';
 import Image from 'next/image';
-import { RiAddLine, RiMapPinLine, RiSendPlaneLine } from '@remixicon/react';
 import { Root as Button } from '@/components/ui/button';
+import CTA from '@/components/cta';
 
-// Componente Badge reutilizável
-function Badge({
-  children,
-  variant = 'blue',
-  size = 'medium',
-  withDot = false,
-  className,
-}: {
-  children: React.ReactNode;
-  variant?: 'blue' | 'gray' | 'with-dot';
-  size?: 'small' | 'medium';
-  withDot?: boolean;
-  className?: string;
-}) {
-  const getBaseClasses = () => {
-    if (variant === 'with-dot') {
-      return 'inline-flex items-center font-medium';
-    }
-    return 'inline-flex items-center justify-center font-medium';
+const membershipBenefits = [
+  {
+    icon: "/images/map-pin-line.png",
+    title: "Two newsletters per year",
+    description: "Receive two editions per year with updates, news, and academic opportunities."
+  },
+  {
+    icon: "/images/trophy-line.png",
+    title: "Exclusive Access to Events",
+    description: "Attend workshops, seminars, and activities reserved for members only."
+  },
+  {
+    icon: "/images/send-plane-line.png",
+    title: "Voting Rights",
+    description: "Take part in the Annual Members' Assembly and contribute to AIBE's decisions."
+  }
+];
+
+const faqData = [
+  {
+    id: 1,
+    question: "How much does it cost to become a member?",
+    answer: "Membership requires a minimum annual contribution of €2, which is considered a symbolic fee."
+  },
+  {
+    id: 2,
+    question: "How can I pay for my membership?",
+    answer: "You can pay for your membership through our secure online payment system or bank transfer. Details will be provided after registration."
+  },
+  {
+    id: 3,
+    question: "Do I receive proof of membership?",
+    answer: "Yes, you will receive a digital membership certificate and can request a physical certificate if needed."
+  },
+  {
+    id: 4,
+    question: "What benefits do members receive?",
+    answer: "Members receive exclusive access to events, voting rights, newsletters, and networking opportunities within the AIBE community."
+  },
+  {
+    id: 5,
+    question: "Is membership automatically renewed?",
+    answer: "No, membership is valid until December 31st of each year and must be renewed annually."
+  },
+  {
+    id: 6,
+    question: "Who can become a member?",
+    answer: "Anyone with an interest in Brazilian-Italian economic research and academic cooperation can become a member."
+  }
+];
+
+export default function Membership() {
+  const [openFaqId, setOpenFaqId] = useState<number | null>(1);
+
+  const toggleFAQ = (id: number) => {
+    setOpenFaqId(openFaqId === id ? null : id);
   };
-  const variantClasses = {
-    blue: 'bg-[#122368] text-white',
-    gray: 'bg-[#99a0ae] text-white',
-    'with-dot': 'bg-transparent text-text-soft-400',
-  };
-  const sizeClasses = {
-    small: 'px-2 py-0.5 text-label-xs',
-    medium: 'px-2 py-0.5 text-label-sm',
-  };
-
-  const getTextSize = () => {
-    if (variant === 'with-dot') {
-      return 'text-subheading-xs uppercase px-0 py-0';
-    }
-    return sizeClasses[size];
-  };
-
-  const dotClasses = 'h-1 w-1 rounded-full bg-[#99a0ae] mr-2';
-
-  return (
-    <span
-      className={`${getBaseClasses()} ${variantClasses[variant]} ${getTextSize()} ${className}`}
-    >
-      {(variant === 'with-dot' || withDot) && <div className={dotClasses}></div>}
-      {children}
-    </span>
-  );
-}
-
-// Componente Accordion para FAQ
-function AccordionItem({
-  question,
-  answer,
-  isOpen,
-  onClick
-}: {
-  question: string;
-  answer: string;
-  isOpen: boolean;
-  onClick: () => void;
-}) {
-  return (
-    <div className="border-b border-gray-200">
-      <button
-        className="w-full py-6 text-left flex items-center gap-4 focus:outline-none"
-        onClick={onClick}
-      >
-        <RiAddLine
-          className={`w-6 h-6 text-gray-600 transition-transform duration-200 ${isOpen ? 'rotate-45' : ''
-            }`}
-        />
-        <span className="text-text-strong-950 text-title-h6">{question}</span>
-      </button>
-      {isOpen && (
-        <div className="pb-6">
-          <p className="text-gray-600 leading-relaxed">{answer}</p>
-        </div>
-      )}
-    </div>
-  );
-}
-
-export default function MembershipPage() {
-  const [openFaq, setOpenFaq] = useState(0);
-
-  const toggleFaq = (index: number) => {
-    setOpenFaq(openFaq === index ? -1 : index);
-  };
-
-  const faqData = [
-    {
-      question: "How much does it cost to become a member?",
-      answer: "Membership requires a minimum annual contribution of €2, which is considered a symbolic fee."
-    },
-    {
-      question: "How can I pay for my membership?",
-      answer: "You can pay for your membership through our secure online payment system or by bank transfer. Details will be provided during the registration process."
-    },
-    {
-      question: "Do I receive proof of membership?",
-      answer: "Yes, you will receive a digital certificate of membership via email upon successful registration and payment."
-    },
-    {
-      question: "What benefits do members receive?",
-      answer: "Members receive access to exclusive events, two newsletters per year, voting rights in the Annual Members' Assembly, and networking opportunities with Brazilian and Italian economists."
-    },
-    {
-      question: "Is membership automatically renewed?",
-      answer: "No, membership is valid for one year and must be renewed annually. You will receive a reminder email before your membership expires."
-    },
-    {
-      question: "Who can become a member?",
-      answer: "Anyone with an interest in Italian-Brazilian economic relations, including students, researchers, academics, and professionals in the field of economics."
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="pt-24 pb-0 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          {/* Text Section */}
-          <div className="text-center mb-16">
-            <div className="space-y-6">
-              <Badge variant="with-dot" size="medium">
-                MEMBERSHIP
-              </Badge>
-              <h1 className="text-text-strong-950 text-title-h1">
-                Become a Member
-              </h1>
-              <p className="text-text-sub-600 text-label-lg">
-                Gain access to exclusive events, networking opportunities and the right to<span className="block"> participate in the Members&apos; Assembly.</span>
-              </p>
+      <section className="pt-32 pb-16">
+        <div className="mx-auto max-w-[1200px] w-full px-4">
+          <div className="flex flex-col gap-8 mobile:gap-6 text-center">
+            <div className="inline-flex items-center justify-center px-2 py-0.5 bg-transparent text-slate-400 text-subheading-xs uppercase tracking-[0.48px]">
+              <div className="h-1 w-1 rounded-full bg-slate-400 mr-2"></div>
+              MEMBERSHIP
+            </div>
+            <h1 className="text-title-h1 text-black">
+              Become a Member
+            </h1>
+            <p className="text-paragraph-lg text-slate-600 max-w-2xl mx-auto">
+              Gain access to exclusive events, networking opportunities, and the right to participate in the Members' Assembly.
+            </p>
 
-              {/* Flag Icons */}
-              <div className="flex items-center justify-center gap-32">
-                {/* Italia */}
-                <div
-                  className='absolute z-5'
-                  style={{
-                    left: '200px',
-                    top: '350px'
-                  }}
-                >
-                  <div className='relative w-16 h-16'>
-                    {/* Camada 1 - Bandeira (interna) - sem animação */}
-                    <div className='absolute inset-0 rounded-full overflow-hidden z-[100]'>
-                      <Image
-                        src='/images/italy-flag.png'
-                        alt='Italy Flag'
-                        fill
-                        className='object-cover'
-                      />
-                    </div>
-
-                    {/* Camada 2 - Anel médio - animação customizada */}
-                    <div className='absolute inset-0 rounded-full bg-blue-100 scale-125 animate-pulse-custom z-40'></div>
-
-                    {/* Camada 3 - Anel externo - animação mais lenta */}
-                    <div className='absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30'></div>
+            {/* Flags com animação circular - posicionadas sobre a imagem (visíveis no mobile) */}
+            <div className="relative mt-8 mobile:mt-4">
+              {/* Animação Circular - Bandeira da Itália (esquerda) */}
+              <div className="absolute z-50 left-[15%] mobile:left-[8%] -top-2.5 mobile:top-2">
+                <div className="relative w-16 h-16 mobile:w-14 mobile:h-14">
+                  {/* Camada 1 - Bandeira (interna) - sem animação */}
+                  <div className="absolute inset-0 rounded-full overflow-hidden z-[100]">
+                    <Image
+                      src="/images/italy-flag.png"
+                      alt="Italian flag"
+                      fill
+                      className="object-cover"
+                    />
                   </div>
+
+                  {/* Camada 2 - Anel médio - animação customizada */}
+                  <div className="absolute inset-0 rounded-full bg-blue-100 scale-125 animate-pulse-custom z-40"></div>
+
+                  {/* Camada 3 - Anel externo - animação mais lenta */}
+                  <div className="absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30"></div>
                 </div>
-                {/* Brasil */}
-                <div
-                  className='absolute z-50'
-                  style={{
-                    right: '200px',
-                    top: '350px'
-                  }}
-                >
-                  <div className='relative w-16 h-16'>
-                    {/* Camada 1 - Bandeira (interna) - sem animação */}
-                    <div className='absolute inset-0 rounded-full overflow-hidden z-[100]'>
-                      <Image
-                        src='/images/brazil-flag.png'
-                        alt='Brazil Flag'
-                        fill
-                        className='object-cover'
-                      />
-                    </div>
+              </div>
 
-                    {/* Camada 2 - Anel médio - animação customizada */}
-                    <div className='absolute inset-0 rounded-full bg-blue-100 scale-125 animate-pulse-custom z-40'></div>
-
-                    {/* Camada 3 - Anel externo - animação mais lenta */}
-                    <div className='absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30'></div>
+              {/* Animação Circular - Bandeira do Brasil (direita) */}
+              <div className="absolute z-50 right-[15%] mobile:right-[8%] -top-2.5 mobile:top-2">
+                <div className="relative w-16 h-16 mobile:w-14 mobile:h-14">
+                  {/* Camada 1 - Bandeira (interna) - sem animação */}
+                  <div className="absolute inset-0 rounded-full overflow-hidden z-[100]">
+                    <Image
+                      src="/images/brazil-flag.png"
+                      alt="Brazilian flag"
+                      fill
+                      className="object-cover"
+                    />
                   </div>
+
+                  {/* Camada 2 - Anel médio - animação customizada */}
+                  <div className="absolute inset-0 rounded-full bg-blue-100 scale-125 animate-pulse-custom z-40"></div>
+
+                  {/* Camada 3 - Anel externo - animação mais lenta */}
+                  <div className="absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30"></div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Hero Image Section */}
-          <div className="relative w-full h-[400px] lg:h-[500px]">
-            <Image
-              src="/images/person-image.png"
-              alt="AIBE Members Meeting"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Membership Benefits Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-text-strong-950 text-title-h2 mb-12">
-            Membership Benefits
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Newsletter Card */}
-            <div className="bg-gray-100 p-8 rounded-lg">
-              <div className="flex justify-start mb-6">
-                <RiMapPinLine className="text-primary-base w-8 h-8" />
-              </div>
-              <h5 className="text-text-strong-950 text-title-h5 mb-4">
-                Two newsletters per year
-              </h5>
-              <p className="text-text-sub-600 text-paragraph-lg">
-                Receive two editions per year with updates, news, and academic opportunities.
-              </p>
-            </div>
-
-            {/* Events Card */}
-            <div className="bg-gray-100 p-8 rounded-lg">
-              <div className="flex justify-start mb-6">
+            {/* Hero Image */}
+            <div className="mt-6 w-full -mx-4">
+              <div className="relative w-full h-[651.43px] mobile:h-[400px] bg-gray-100 overflow-hidden">
                 <Image
-                  src="/images/trophy-line.png"
-                  alt="Trophy icon"
-                  width={32}
-                  height={32}
-                  className="w-8 h-8"
+                  src="/images/reunion.png"
+                  alt="Team collaboration"
+                  fill
+                  className="object-cover object-center"
+                  priority
                 />
               </div>
-              <h5 className="text-text-strong-950 text-title-h5 mb-4">
-                <div>Exclusive Access to</div>
-                <div>Events</div>
-              </h5>
-              <p className="text-text-sub-600 text-paragraph-lg">
-                Attend workshops, seminars, and activities reserved for members only.
-              </p>
-            </div>
-
-            {/* Voting Rights Card */}
-            <div className="bg-gray-100 p-8 rounded-lg">
-              <div className="flex justify-start mb-6">
-                <RiSendPlaneLine className="text-primary-base w-8 h-8" />
-              </div>
-              <h5 className="text-text-strong-950 text-title-h5 mb-4">
-                Voting Rights
-              </h5>
-              <p className="text-text-sub-600 text-paragraph-lg">
-                Take part in the Annual Members&apos; Assembly and contribute to AIBE&apos;s decisions.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Call to Action Banner */}
-      <section className='flex justify-center'>
-        <div className="container flex justify-center max-w-[1200px] p-16">
-          <div className="w-full p-16 bg-primary-base">
-            <div className="w-full flex flex-col items-center text-center">
-              <h2 className="text-white text-title-h3 mb-5 max-w-[800px]">
-                Become a member of AIBE for 1 year by making a free donation of at least €2!
+      {/* Membership Benefits */}
+      <section className="py-16 mobile:py-12 bg-white px-4">
+        <div className="mx-auto max-w-[1200px] w-full ">
+          <div className="flex flex-col gap-12 mobile:gap-8">
+            <div className="text-left">
+              <h2 className="text-title-h2 text-black mb-4">
+                Membership Benefits
               </h2>
-              <p className="text-white/90 mb-6 text-label-lg">
+            </div>
+
+            <div className="grid grid-cols-3 mobile:grid-cols-1 gap-8 mobile:gap-6">
+              {membershipBenefits.map((benefit, index) => {
+                return (
+                  <div key={index} className="bg-[#F3F3F3] p-8 border-gray-200">
+                    <div className="flex flex-col gap-4">
+                      <div className="w-7 h-7 flex items-center justify-start">
+                        <Image
+                          src={benefit.icon}
+                          alt={benefit.title}
+                          width={28}
+                          height={28}
+                          className="w-7 h-7"
+                        />
+                      </div>
+                      <h3 className="text-title-h5 text-black">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-paragraph-md text-slate-600">
+                        {benefit.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main CTA Banner */}
+      {/* Desktop/Tablet CTA original */}
+      <section className="py-16 mobile:py-12 bg-white mobile:hidden">
+        <div className="mx-auto max-w-[1200px] w-full px-4">
+          <div className="bg-blue-950 py-16 px-8">
+            <div className="text-center flex flex-col gap-6">
+              <h2 className="text-title-h2 text-white max-w-5xl mx-auto leading-tight">
+                Become a member of AIBE for 1 year by<br className="block" />
+                making a free donation of at least €2!
+              </h2>
+              <p className="text-paragraph-lg text-white/90 px-0">
                 Membership is valid until December 31 of the respective year.
               </p>
-              <Button variant="neutral" mode="lighter" size="medium" className="bg-white text-primary-base hover:bg-gray-100 px-8 py-3">
-                Register Now
-              </Button>
+              <div className="mt-6">
+                <Button
+                  variant="neutral"
+                  mode="lighter"
+                  size="medium"
+                  className="w-auto max-w-none mx-auto"
+                >
+                  Register Now
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-
+      {/* Mobile CTA padronizado (Home) - esconder bandeira no mobile aqui */}
+      <div className="hidden mobile:block">
+        <CTA hideFlagOnMobile />
+      </div>
 
       {/* FAQ Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+      <section className=" py-16 mobile:py-12 bg-white px-4">
+        <div className="mx-auto max-w-[1200px] w-full">
+          <div className="flex flex-row mobile:flex-col gap-16 mobile:gap-8">
             {/* Left Column - Title */}
-            <div className="space-y-4">
-              <h2 className="text-text-strong-950 text-title-h2 max-w-[400px]">
-                Frequently Asked Questions
+            <div className="w-1/2 mobile:w-full">
+              <h2 className="text-title-h2 text-black">
+                Frequently Asked <br /> Questions
               </h2>
             </div>
 
             {/* Right Column - FAQ Items */}
-            <div className="space-y-0">
-              {faqData.map((faq, index) => (
-                <AccordionItem
-                  key={index}
-                  question={faq.question}
-                  answer={faq.answer}
-                  isOpen={openFaq === index}
-                  onClick={() => toggleFaq(index)}
-                />
+            <div className="w-1/2 mobile:w-full">
+              {faqData.map((faq) => (
+                <div
+                  key={faq.id}
+                  className="border-b border-gray-200"
+                >
+                  <button
+                    onClick={() => toggleFAQ(faq.id)}
+                    className="w-full py-6 text-left flex items-center gap-4 focus:outline-none"
+                  >
+                    <span
+                      className={`w-6 h-6 text-gray-600 transition-transform duration-200 ${openFaqId === faq.id ? 'rotate-45' : ''
+                        }`}
+                    >
+                      +
+                    </span>
+                    <span className="text-text-strong-950 text-title-h6">{faq.question}</span>
+                  </button>
+                  {openFaqId === faq.id && (
+                    <div className="pb-6">
+                      <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
           </div>

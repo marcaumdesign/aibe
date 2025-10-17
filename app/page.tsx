@@ -66,49 +66,41 @@ export default function Home() {
   return (
     <div className='min-h-screen bg-white'>
       {/* Hero Section */}
-      <section className='relative bg-white h-[calc(100vh-80px)] flex flex-col'>
-        <div className='w-full max-w-[1200px] mx-auto flex-1 flex items-center'>
+      <section className='relative bg-white flex flex-col'>
+        <div className='w-full max-w-[1200px] mx-auto px-8 mobile:px-4 flex-1 flex items-center py-8'>
           {/* Hero Content */}
-          <div className='flex flex-col items-center justify-between gap-16 lg:flex-row w-full'>
-            <div className='flex-1 flex flex-col gap-8 overflow-hidden items-start'>
+          <div className='flex flex-row mobile:flex-col items-center justify-between gap-16 mobile:gap-8 w-full'>
+            <div className='flex-1 flex flex-col gap-8 items-start w-full'>
               <Badge variant='blue' size='medium' className='w-fit'>
                 Italian-Brazilian Association of Economics
               </Badge>
 
-              <div className='flex flex-col gap-4 items-start'>
-                <motion.h1
-                  className='text-title-h1 text-black'
-                  initial={{ opacity: 0, y: -40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                >
+              <div className='flex flex-col gap-4 items-start w-full'>
+                <h1 className='text-title-h1 text-black'>
                   Connecting science, cultures, and economies.
-                </motion.h1>
+                </h1>
 
-                <motion.p
-                  className='text-label-lg text-sub-600'
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.1 }}
-                >
+                <p className='text-label-lg text-sub-600'>
                   A bilateral non-profit association dedicated to research,
                   academic cooperation, and the exchange of knowledge.
-                </motion.p>
+                </p>
               </div>
 
-              <div className='flex flex-col gap-4 sm:flex-row items-start'>
-                <Button variant='primary' size='medium' className='h-hug'>
-                  Become a Member
-                </Button>
-                <Button variant='neutral' mode='stroke' size='medium' className='h-hug'>
+              <div className='flex flex-row mobile:flex-col gap-4 items-start w-auto mobile:w-full'>
+                <Link href="/membership" className='w-auto mobile:w-full'>
+                  <Button variant='primary' size='medium' className='h-hug w-auto mobile:w-full'>
+                    Become a Member
+                  </Button>
+                </Link>
+                <Button variant='neutral' mode='stroke' size='medium' className='h-hug w-auto mobile:w-full'>
                   Sign In
                 </Button>
               </div>
             </div>
 
             {/* Hero Image */}
-            <div className='relative'>
-              <div className='relative w-[500px] h-[600px] z-0'>
+            <div className='relative w-auto mobile:w-full flex justify-center'>
+              <div className='relative w-[500px] mobile:w-full max-w-[500px] h-[600px] mobile:h-[400px] z-0'>
                 <Image
                   src='/images/hero.png'
                   alt='Hero'
@@ -119,7 +111,7 @@ export default function Home() {
 
               {/* Animação Circular */}
               <div
-                className='absolute z-50'
+                className='absolute z-50 block mobile:hidden'
                 style={{
                   left: '-20px',
                   top: '550px'
@@ -146,10 +138,10 @@ export default function Home() {
 
               {/* Segunda Animação Circular */}
               <div
-                className='absolute z-50'
+                className='absolute z-50 block mobile:hidden'
                 style={{
                   left: '450px',
-                  top: '50px'
+                  top: '-10px'
                 }}
               >
                 <div className='relative w-16 h-16'>
@@ -176,10 +168,10 @@ export default function Home() {
         </div>
 
         {/* Highlights Section */}
-        <div className='bg-[#f3f8ff] py-8'>
-          <div className='w-full max-w-[1200px] mx-auto'>
-            <div className='flex flex-col items-end justify-between gap-8 md:flex-row'>
-              <div className='flex-1 space-y-4'>
+        <div className='bg-[#f3f8ff] py-6 md:py-8'>
+          <div className='w-full max-w-[1200px] mx-auto px-4 md:px-8'>
+            <div className='flex flex-col items-start md:items-end justify-between gp-6 md:gap-8 md:flex-row'>
+              <div className='flex-1 space-y-3 md:space-y-4'>
                 <Badge variant='with-dot' size='medium'>
                   Highlights
                 </Badge>
@@ -199,8 +191,8 @@ export default function Home() {
 
 
       {/* Features Section */}
-      <section className='py-32'>
-        <div className='mx-auto max-w-[1200px] w-full flex flex-col gap-8'>
+      <section className='py-8'>
+        <div className='mx-auto max-w-[1200px] w-full flex flex-col gap-8 px-4 md:px-8'>
           <div className='flex flex-col gap-4 text-start'>
             <Badge variant='with-dot' size='medium'>
               Features
@@ -258,39 +250,39 @@ export default function Home() {
       </section>
 
       {/* About AIBE Section */}
-      <section className='bg-primary-base py-16'>
-        <div className='mx-auto max-w-[1200px] gap-8 flex flex-col w-full'>
-          <div className='flex flex-col items-end gap-8 lg:flex-row'>
-            <div className='flex-1 gap-4 flex flex-col'>
+      <section className='bg-primary-base py-12 md:py-16'>
+        <div className='mx-auto max-w-[1200px] gap-6 md:gap-8 flex flex-col w-full px-4'>
+          <div className='flex flex-col items-start md:items-end gap-6 md:gap-8 lg:flex-row'>
+            <div className='flex-1 gap-3 md:gap-4 flex flex-col'>
               <Badge variant='with-dot' size='medium'>
                 About AIBE
               </Badge>
-              <h2 className='text-title-h2 text-white'>
+              <h2 className='text-[48px] md:text-[40px] lg:text-title-h2 text-white leading-tight font-semibold'>
                 AIBE at a glance
               </h2>
             </div>
-            <Button variant='neutral' mode='lighter' size='medium' className='h-hug' asChild>
+            <Button variant='neutral' mode='lighter' size='medium' className='h-hug sm:w-auto' asChild>
               <Link href='/about'>
                 About AIBE
               </Link>
             </Button>
           </div>
 
-          <div className='flex flex-col items-start gap-8 lg:flex-row'>
-            <div className='flex-1 h-[400px]'>
+          <div className='flex flex-col items-start gap-6 md:gap-8 lg:flex-row px-4'>
+            <div className='flex-1 h-[250px] md:h-[350px] lg:h-[400px] w-full'>
               <Image
                 src='/images/estudante.png'
                 alt='AIBE representative with Italian and Brazilian flags'
                 width={400}
                 height={400}
-                className='h-[400px] w-full object-cover'
+                className='h-full w-full object-cover'
               />
             </div>
-            <div className='flex-1 gap-4 flex flex-col text-justify'>
-              <p className='text-paragraph-lg text-white'>
+            <div className='flex-1 gap-3 md:gap-4 flex flex-col text-justify grow'>
+              <p className='text-sm md:text-base lg:text-paragraph-lg text-white'>
                 The AIBE – Italian-Brazilian Association of Economics is a bilateral non-profit organization dedicated to fostering scientific cooperation between Brazil and Italy. The association seeks to strengthen the intellectual and cultural ties that unite both countries, providing a space for dialogue and collaboration with a special focus on the field of economics. We facilitate research collaboration between Brazilian and Italian economists. We also promote links between academia, policy-makers and industry.
               </p>
-              <p className='text-paragraph-lg text-white'>
+              <p className='text-sm md:text-base lg:text-paragraph-lg text-white'>
                 AIBE is governed by a Board of Directors, who
                 are elected for three years by the Members&apos; Assembly.
               </p>
@@ -301,7 +293,7 @@ export default function Home() {
 
       {/* Statistics Section */}
       <section className='py-32'>
-        <div className='mx-auto max-w-[1200px] gap-8 flex flex-col w-full'>
+        <div className='mx-auto max-w-[1200px] gap-8 flex flex-col w-full px-4'>
           <div className='grid gap-4 md:grid-cols-3'>
             <div className='text-center gap-4 flex flex-col'>
               <div className='text-title-h0 text-primary-base'>
@@ -345,10 +337,10 @@ export default function Home() {
 
       {/* Events Section */}
       <section className='py-8'>
-        <div className='mx-auto max-w-[1200px] w-full'>
+        <div className='mx-auto max-w-[1200px] w-full px-4'>
           <div className='flex flex-col gap-16'>
             {/* AIBE Annual Workshop */}
-            <div className='flex flex-col items-center gap-16 lg:flex-row'>
+            <div className='flex flex-col-reverse mobile:flex-col-reverse items-center gap-16 lg:flex-row'>
               <div className='flex-1 flex flex-col gap-4'>
                 <Image
                   src='/images/workshops.jpg'
@@ -378,7 +370,7 @@ export default function Home() {
             </div>
 
             {/* Giorgio Mortara Prize */}
-            <div className='flex flex-col items-center gap-16 lg:flex-row-reverse'>
+            <div className='flex flex-col-reverse mobile:flex-col-reverse items-center gap-16 lg:flex-row-reverse'>
               <div className='flex-1 flex flex-col gap-4'>
                 <Image
                   src='/images/premio.jpg'
@@ -412,8 +404,8 @@ export default function Home() {
 
       {/* Blog Section */}
       <section className='pt-16 pb-52'>
-        <div className='mx-auto max-w-[1200px] gap-8 flex flex-col w-full'>
-          <div className='flex flex-col items-end justify-between gap-8 md:flex-row'>
+        <div className='mx-auto max-w-[1200px] gap-8 flex flex-col w-full px-4'>
+          <div className='flex flex-col items-start justify-between gap-8 md:items-end md:flex-row'>
             <div className='flex-1 gap-4 flex flex-col'>
               <Badge variant='with-dot' size='medium'>
                 Blog
@@ -511,31 +503,33 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className='relative overflow-visible bg-primary-base flex justify-center pb-8 items-end h-[534px]'>
-        <div className='relative z-10 mx-auto max-w-[1200px] p-16 w-full'>
-          <div className='gap-8 flex flex-col text-center relative'>
+      <section className='relative overflow-visible bg-primary-base flex justify-center pb-8 items-end h-[534px] mobile:h-auto mobile:py-16'>
+        <div className='relative z-10 mx-auto max-w-[1200px] p-16 mobile:p-8 w-full'>
+          <div className='gap-8 mobile:gap-6 flex flex-col text-center relative'>
             <Image
               src='/images/bandeira cta.svg'
               alt='Brazilian and Italian flags'
               width={402}
               height={294}
-              className='absolute left-1/2 transform -translate-x-1/2 top-[-330px] w-auto h-[300px] z-20'
+              className='absolute left-1/2 transform -translate-x-1/2 top-[-330px] mobile:top-[-200px] w-auto h-[300px] mobile:h-[200px] z-20'
             />
 
-            <div className='text-center gap-4 flex max-w-[700px] flex-col mx-auto'>
-              <h2 className='text-title-h2 text-white'>
+            <div className='text-center gap-4 mobile:gap-3 flex max-w-[700px] flex-col mx-auto'>
+              <h2 className='text-title-h2 mobile:text-title-h3 text-white'>
                 Join AIBE and Strengthen Academic Cooperation
               </h2>
-              <p className='text-paragraph-lg text-white'>
+              <p className='text-paragraph-lg mobile:text-paragraph-md text-white'>
                 By joining AIBE, you will engage with researchers, access unique
                 opportunities, and support initiatives that unite Brazil and Italy
                 in economic research.
               </p>
             </div>
 
-            <Button variant='neutral' mode='lighter' size='medium' className='h-hug w-fit self-center'>
-              Become a Member
-            </Button>
+            <Link href="/membership">
+              <Button variant='neutral' mode='lighter' size='medium' className='h-hug w-fit mobile:w-full self-center'>
+                Become a Member
+              </Button>
+            </Link>
           </div>
         </div>
 

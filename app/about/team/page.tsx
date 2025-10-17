@@ -60,7 +60,7 @@ export default function Team() {
     <div className='min-h-screen bg-white'>
       {/* Header Section */}
       <section className='pt-32 pb-16'>
-        <div className='mx-auto max-w-[1200px] w-full'>
+        <div className='mx-auto max-w-[1200px] w-full px-4'>
           <div className='flex flex-col gap-8 text-center'>
             <div className='inline-flex items-center justify-center px-2 py-0.5 bg-transparent text-[#99a0ae] text-subheading-xs uppercase tracking-[0.48px]'>
               <div className='h-1 w-1 rounded-full bg-[#99a0ae] mr-2'></div>
@@ -75,8 +75,8 @@ export default function Team() {
 
       {/* Board Members Grid */}
       <section className='pb-32'>
-        <div className='mx-auto max-w-[1200px] w-full'>
-          <div className='grid grid-cols-2 md:grid-cols-4 gap-8'>
+        <div className='mx-auto max-w-[1200px] w-full px-4'>
+          <div className='grid grid-cols-4 mobile:grid-cols-1 gap-8'>
             {boardMembers.map((member) => (
               <div key={member.id} className='flex flex-col gap-4 items-center text-center'>
                 <div className='relative w-[246px] h-[295px] bg-[#f3f3f3] overflow-hidden'>
@@ -88,7 +88,7 @@ export default function Team() {
                   />
                 </div>
                 <div className='flex flex-col gap-2'>
-                  <h3 className='text-title-h5 text-black font-semibold'>
+                  <h3 className='text-title-h5 text-black'>
                     {member.name}
                   </h3>
                   <p className='text-paragraph-lg text-[#525866]'>

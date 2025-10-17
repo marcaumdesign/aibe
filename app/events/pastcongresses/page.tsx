@@ -7,10 +7,10 @@ export default function PastCongressesPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header Spacer */}
-      <div className="h-20"></div>
+      <div className="h-16"></div>
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-10">
         {/* Past Congresses Section */}
         <section className="mb-16">
           {/* Small label */}
@@ -19,12 +19,12 @@ export default function PastCongressesPage() {
           </p>
 
           {/* Main Title */}
-          <h1 className="text-text-strong-950 text-center mb-10 max-w-2xl mx-auto text-title-h2">
+          <h1 className="text-text-strong-950 text-center mb-10 max-w-2xl mx-auto text-title-h2 px-4">
             Past Congresses
           </h1>
 
           {/* Congress Images */}
-          <div className="flex flex-col md:flex-row gap-8 mb-16 -ml-4 md:-ml-8">
+          <div className="flex flex-col md:flex-row gap-8 mb-10 -ml-4 md:-ml-8 px-4">
             {/* AIBE Workshop 2025 */}
             <div className="w-80">
               <div className="aspect-[4/3] relative mb-4">
@@ -59,7 +59,9 @@ export default function PastCongressesPage() {
       </main>
 
       {/* CTA Section */}
-      <CTA />
+      <div className="mt-[260px] mobile:mt-[180px]">
+        <CTA />
+      </div>
     </div>
   );
 }

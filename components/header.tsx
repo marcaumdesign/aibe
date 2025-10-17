@@ -4,12 +4,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import * as  Button from '@/components/ui/button';
+import MobileMenu from '@/components/mobile-menu';
 
 export default function Header() {
   const router = useRouter();
   return (
     <div className='fixed top-0 left-0 right-0 z-50 bg-white border-b border-stroke-soft-200 justify-center items-center flex w-full'>
-      <header className='w-full max-w-[1200px] py-4 flex items-center justify-between'>
+      <header className='w-full max-w-[1200px] px-8 py-4 mobile:p-4 flex items-center justify-between'>
         {/* Logo */}
         <Link href='/' className='flex items-center gap-2'>
           <Image
@@ -22,7 +23,7 @@ export default function Header() {
 
         </Link>
 
-        {/* Navigation */}
+        {/* Navigation (desktop) */}
         <nav className='text-lg hidden items-center gap-8 font-medium text-black md:flex'>
           <div className='relative group'>
             <a
@@ -136,14 +137,24 @@ export default function Header() {
           </a>
         </nav>
 
-        {/* CTA Button */}
-        <Button.Root
-          variant='primary'
-          size='medium'
-          onClick={() => router.push('/membership')}
-        >
-          Become a Member
-        </Button.Root>
+        {/* CTA/Button area */}
+        <div className='flex items-center'>
+          {/* Mobile: Menu button replaces CTA */}
+          <div className='md:hidden'>
+            <MobileMenu />
+          </div>
+          {/* Desktop: Keep CTA */}
+          <div className='hidden md:block'>
+            <Button.Root
+              variant='primary'
+              size='medium'
+              className='rounded-none'
+              onClick={() => router.push('/membership')}
+            >
+              Become a Member
+            </Button.Root>
+          </div>
+        </div>
       </header>
     </div>
   );

@@ -77,13 +77,13 @@ export default function BlogPage() {
             <p className='text-subheading-sm text-text-soft-400 uppercase tracking-wider mb-4'>
               BLOG
             </p>
-            <h1 className='text-title-h2 text-text-strong-950 font-semibold'>
+            <h1 className='text-title-h2 text-text-strong-950'>
               Our latest news
             </h1>
           </div>
 
           {/* Articles Grid */}
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto'>
+          <div className='grid grid-cols-3 mobile:grid-cols-1 gap-8 max-w-7xl mx-auto'>
             {blogArticles.map((article) => (
               <article key={article.id} className='group cursor-pointer'>
                 <Link href={`/blog/${article.slug}`}>
@@ -113,7 +113,7 @@ export default function BlogPage() {
                       </div>
 
                       {/* Title */}
-                      <h2 className='text-title-h6 text-text-strong-950 font-semibold mb-3 line-clamp-2 group-hover:text-blue-500 transition-colors duration-200'>
+                      <h2 className='text-title-h6 text-text-strong-950 mb-3 line-clamp-2 group-hover:text-blue-500 transition-colors duration-200'>
                         {article.title}
                       </h2>
 
