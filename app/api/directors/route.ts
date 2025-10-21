@@ -8,6 +8,42 @@ const STRAPI_URL =
 const STRAPI_TOKEN =
   process.env.STRAPI_TOKEN || process.env.NEXT_PUBLIC_STRAPI_TOKEN || '';
 
+interface StrapiDirector {
+  id: string | number;
+  documentId?: string;
+  attributes: {
+    Name: string;
+    Role: string;
+    Description: string;
+    Biography: string;
+    Link: string;
+    Avatar?: {
+      data?: {
+        attributes?: {
+          url: string;
+          alternativeText: string;
+        };
+      };
+      url?: string;
+      alternativeText?: string;
+    };
+  };
+}
+
+interface Director {
+  id: string | number;
+  documentId?: string;
+  Name: string;
+  Role: string;
+  Description: string;
+  Biography: string;
+  Link: string;
+  Avatar: {
+    url: string;
+    alternativeText: string;
+  };
+}
+
 export async function GET() {
   try {
     console.log('🔄 Proxy API: Buscando diretores do Strapi...');
@@ -41,32 +77,35 @@ export async function GET() {
     );
 
     // Mapear dados do Strapi para o formato esperado
-    const directors = (json?.data || []).map((d: any) => {
-      const attrs = d.attributes || d;
-      return {
-        id: d.id,
-        documentId: d.documentId,
-        Name: attrs.Name,
-        Role: attrs.Role,
-        Description: attrs.Description,
-        Biography: attrs.Biography,
-        Link: attrs.Link,
-        Avatar: {
-          url: attrs.Avatar?.data?.attributes?.url || attrs.Avatar?.url || '',
-          alternativeText:
-            attrs.Avatar?.data?.attributes?.alternativeText ||
-            attrs.Avatar?.alternativeText ||
-            '',
-        },
-      };
-    });
+    const directors: Director[] = (json?.data || []).map(
+      (d: StrapiDirector) => {
+        const attrs = d.attributes || d;
+        return {
+          id: d.id,
+          documentId: d.documentId,
+          Name: attrs.Name,
+          Role: attrs.Role,
+          Description: attrs.Description,
+          Biography: attrs.Biography,
+          Link: attrs.Link,
+          Avatar: {
+            url: attrs.Avatar?.data?.attributes?.url || attrs.Avatar?.url || '',
+            alternativeText:
+              attrs.Avatar?.data?.attributes?.alternativeText ||
+              attrs.Avatar?.alternativeText ||
+              '',
+          },
+        };
+      },
+    );
 
     console.log('✅ Diretores mapeados:', directors.length);
     return NextResponse.json({ directors, success: true });
-  } catch (e: any) {
-    console.error('❌ Erro no proxy:', e);
+  } catch (e: unknown) {
+    const error = e instanceof Error ? e : new Error('Unknown error');
+    console.error('❌ Erro no proxy:', error);
     return NextResponse.json(
-      { error: e?.message || 'Proxy error', directors: [] },
+      { error: error.message || 'Proxy error', directors: [] },
       { status: 500 },
     );
   }
