@@ -4,7 +4,6 @@ import { RiMapPinLine, RiSendPlaneLine, RiTrophyLine } from '@remixicon/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Root as Button } from '@/components/ui/button';
-import { motion } from 'framer-motion';
 
 // export const metadata: Metadata = {
 //   title: 'AIBE - Italian-Brazilian Association of Economics',

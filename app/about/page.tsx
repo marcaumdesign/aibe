@@ -1,12 +1,15 @@
 "use client";
 
-import { RiFundsBoxLine, RiFundsLine, RiGlobalLine, RiTeamLine, RiArrowLeftLine, RiArrowRightLine } from "@remixicon/react";
+import { RiFundsLine, RiGlobalLine, RiTeamLine, RiArrowLeftLine, RiArrowRightLine } from "@remixicon/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { Root as Button } from "@/components/ui/button";
 import CTA from "@/components/cta";
+import type { Director } from "@/lib/strapi";
+import DirectorCard from "@/components/director-card";
+import DirectorModal from "@/components/director-modal";
 
 // Tipo para os membros do board
 interface BoardMember {
@@ -14,19 +17,15 @@ interface BoardMember {
   name: string;
   position: string;
   image: string;
-  affiliation?: string;
-  bio?: string;
 }
 
-// Dados das pessoas do board of directors
-const boardMembers: BoardMember[] = [
+// Dados das pessoas do board of directors - fallback local
+const boardMembersFallback: BoardMember[] = [
   {
     id: 1,
     name: "Fernando L. Aiube",
     position: "Associate Professor",
     image: "/images/Fernando.png",
-    affiliation: "State University of Rio de Janeiro (UERJ) & Institute of Pure and Applied Mathematics (IMPA)",
-    bio: "Fernando Aiube is a financial economist specializing in corporate finance, derivatives, econometrics, energy markets, and real options. His previous experience includes roles as an oil engineer at Petrobras, in both the Exploration & Production Department, and the Financial Department. During his academic career, Fernando has also worked with Italian co-authors."
   },
   {
     id: 2,
@@ -74,7 +73,8 @@ const boardMembers: BoardMember[] = [
 
 export default function About() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedDirector, setSelectedDirector] = useState<BoardMember | null>(null);
+  const [selectedDirector, setSelectedDirector] = useState<Director | null>(null);
+  const [directors, setDirectors] = useState<Director[]>([]);
 
   // Estados para os contadores
   const [researchers, setResearchers] = useState(0);
@@ -87,11 +87,61 @@ export default function About() {
     rootMargin: '0px 0px 0px 0px',
   });
 
+  // Carregar diretores via API proxy
+  useEffect(() => {
+    async function loadDirectors() {
+      try {
+        console.log('📡 Buscando diretores via API proxy...');
+        const res = await fetch('/api/directors', {
+          cache: 'no-store',
+        });
+
+        if (!res.ok) {
+          console.error('❌ Erro na API proxy:', res.status);
+          setDirectors([]);
+          return;
+        }
+
+        const json = await res.json();
+        const data = json.directors || [];
+        console.log('📥 Diretores carregados via API:', data.length);
+        setDirectors(data);
+      } catch (error) {
+        console.error('❌ Erro ao buscar diretores:', error);
+        setDirectors([]);
+      }
+    }
+    loadDirectors();
+  }, []);
+
+  // Debug: monitorar quando selectedDirector muda
+  useEffect(() => {
+    console.log('🔄 selectedDirector mudou:', selectedDirector);
+  }, [selectedDirector]);
+
+  // Deriva dados do Strapi no shape do carrossel (recalcula quando directors mudar)
+  const boardMembers = useMemo(() => {
+    if (directors.length === 0) {
+      console.log('⚠️ Usando fallback local (directors vazio)');
+      return boardMembersFallback;
+    }
+
+    console.log('✅ Usando dados do Strapi para carrossel:', directors.length, 'diretores');
+    return directors.map((d) => ({
+      id: d.id,
+      name: d.Name,
+      position: d.Role,
+      image: d.Avatar?.url || '',
+    }));
+  }, [directors]);
+
   const nextSlide = () => {
+    if (boardMembers.length === 0) return;
     setCurrentIndex((prev) => (prev + 1) % boardMembers.length);
   };
 
   const prevSlide = () => {
+    if (boardMembers.length === 0) return;
     setCurrentIndex((prev) =>
       prev === 0 ? boardMembers.length - 1 : prev - 1
     );
@@ -99,7 +149,7 @@ export default function About() {
 
   // Criar array com os 4 diretores a serem exibidos
   const slidesToShow = [];
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < Math.min(4, boardMembers.length); i++) {
     slidesToShow.push(boardMembers[(currentIndex + i) % boardMembers.length]);
   }
 
@@ -135,12 +185,58 @@ export default function About() {
     animate();
   }, [isIntersecting]);
 
-  const openDirectorModal = (director: BoardMember) => {
-    setSelectedDirector(director);
+  const openDirectorModal = (memberName: string) => {
+    console.log('🎯 Tentando abrir modal para:', memberName);
+    console.log('📋 Diretores disponíveis do Strapi:', directors.map(d => d.Name));
+
+    if (directors.length === 0) {
+      console.warn('⚠️ Array de diretores ainda vazio. Aguarde o carregamento do Strapi.');
+      return;
+    }
+
+    // Buscar o diretor correspondente do Strapi pelo NOME (busca flexível)
+    const directorFromStrapi = directors.find(d => {
+      const strapiName = d.Name?.trim().toLowerCase() || '';
+      const searchName = memberName.trim().toLowerCase();
+
+      // Tenta match exato primeiro
+      if (strapiName === searchName) return true;
+
+      // Tenta match parcial (caso tenha diferenças mínimas)
+      if (strapiName.includes(searchName) || searchName.includes(strapiName)) return true;
+
+      return false;
+    });
+
+    console.log('✅ Diretor encontrado:', directorFromStrapi);
+
+    if (directorFromStrapi) {
+      setSelectedDirector(directorFromStrapi);
+      console.log('✨ Modal deve abrir agora!');
+    } else {
+      console.error('❌ Diretor não encontrado no Strapi para:', memberName);
+      console.error('💡 Nomes disponíveis:', directors.map(d => d.Name));
+    }
   };
 
   const closeDirectorModal = () => {
     setSelectedDirector(null);
+  };
+
+  const navigateDirector = (direction: 'prev' | 'next') => {
+    if (!selectedDirector || directors.length === 0) return;
+
+    const currentDirectorIndex = directors.findIndex(d => d.id === selectedDirector.id);
+    if (currentDirectorIndex === -1) return;
+
+    let newIndex: number;
+    if (direction === 'prev') {
+      newIndex = currentDirectorIndex === 0 ? directors.length - 1 : currentDirectorIndex - 1;
+    } else {
+      newIndex = currentDirectorIndex === directors.length - 1 ? 0 : currentDirectorIndex + 1;
+    }
+
+    setSelectedDirector(directors[newIndex]);
   };
 
   return (
@@ -202,7 +298,7 @@ export default function About() {
                 <div className="text-paragraph-lg text-text-sub-600 w-full">
                   <p className="leading-[24px]">
                     AIBE is governed by a Board of Directors elected every three years by the
-                    Members' Assembly, ensuring transparency and shared leadership in its
+                    Members&apos; Assembly, ensuring transparency and shared leadership in its
                     activities.
                   </p>
                 </div>
@@ -375,27 +471,16 @@ export default function About() {
             <div className="flex-1">
               <div className="flex gap-4 px-[8px]">
                 {slidesToShow.map((member, index) => (
-                  <div
+                  <DirectorCard
                     key={`${member.id}-${currentIndex}-${index}`}
-                    className={`flex-1 flex flex-col items-center text-center ${member.id === 1 ? 'cursor-pointer hover:opacity-80 transition-opacity' : ''}`}
-                    onClick={() => member.id === 1 && openDirectorModal(member)}
-                  >
-                    <div className="w-full h-[295px] bg-[#f3f3f3]  overflow-hidden mb-4">
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        width={246}
-                        height={295}
-                        className="w-full h-full object-cover object-center"
-                      />
-                    </div>
-                    <h3 className="text-title-h5 text-black mb-2">
-                      {member.name}
-                    </h3>
-                    <p className="font-normal text-[#525866] text-[18px] tracking-[-0.36px]">
-                      {member.position}
-                    </p>
-                  </div>
+                    id={member.id}
+                    name={member.name}
+                    role={member.position}
+                    image={member.image}
+                    imageAlt={member.name}
+                    clickable={true}
+                    onClick={() => openDirectorModal(member.name)}
+                  />
                 ))}
               </div>
             </div>
@@ -429,24 +514,17 @@ export default function About() {
                   {boardMembers.map((member) => (
                     <div
                       key={member.id}
-                      className={`w-full flex-shrink-0 flex flex-col items-center text-center px-4 ${member.id === 1 ? 'cursor-pointer hover:opacity-80 transition-opacity' : ''}`}
-                      onClick={() => member.id === 1 && openDirectorModal(member)}
+                      className="w-full flex-shrink-0 flex justify-center px-4"
                     >
-                      <div className="w-[200px] h-[240px] bg-[#f3f3f3] overflow-hidden mb-4">
-                        <Image
-                          src={member.image}
-                          alt={member.name}
-                          width={200}
-                          height={240}
-                          className="w-full h-full object-cover object-center"
-                        />
-                      </div>
-                      <h3 className="text-title-h6 text-black mb-2">
-                        {member.name}
-                      </h3>
-                      <p className="font-normal text-[#525866] text-[16px] tracking-[-0.32px]">
-                        {member.position}
-                      </p>
+                      <DirectorCard
+                        id={member.id}
+                        name={member.name}
+                        role={member.position}
+                        image={member.image}
+                        imageAlt={member.name}
+                        clickable={true}
+                        onClick={() => openDirectorModal(member.name)}
+                      />
                     </div>
                   ))}
                 </div>
@@ -528,68 +606,12 @@ export default function About() {
       </div>
 
       {/* Director Modal */}
-      {selectedDirector && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white max-w-xl w-full max-h-[90vh] overflow-y-auto relative">
-            {/* Close Button */}
-            <button
-              onClick={closeDirectorModal}
-              className="absolute top-4 left-4 bg-[#122368] text-white w-8 h-8 flex items-center justify-center hover:opacity-80 transition-opacity"
-            >
-              <span className="text-lg font-bold">×</span>
-            </button>
-
-            {/* Modal Content */}
-            <div className="p-8 pt-16 pb-20">
-              <div className="flex flex-col items-start text-left">
-                {/* Profile Image */}
-                <div className="w-48 h-48 bg-[#f3f3f3] overflow-hidden mb-6">
-                  <Image
-                    src={selectedDirector.image}
-                    alt={selectedDirector.name}
-                    width={192}
-                    height={192}
-                    className="w-full h-full object-cover object-center"
-                  />
-                </div>
-
-                {/* Name and Title */}
-                <h2 className="text-[32px] leading-[40px] tracking-[-1.28px] text-black mb-2">
-                  {selectedDirector.name}
-                </h2>
-                <h3 className="text-title-h5 text-black mb-4">
-                  {selectedDirector.position}
-                </h3>
-
-                {/* Affiliation */}
-                <p className="font-normal text-[#525866] text-[18px] tracking-[-0.36px] mb-6 text-left">
-                  {selectedDirector.affiliation}
-                </p>
-
-                {/* Biography */}
-                <p className="font-normal text-[#525866] text-[18px] tracking-[-0.36px] text-left leading-relaxed mb-8 w-full">
-                  {selectedDirector.bio}
-                </p>
-
-                {/* Explore Profile Button */}
-                <button className="bg-[#122368] text-white px-6 py-3 hover:opacity-80 transition-opacity">
-                  Explore Profile
-                </button>
-              </div>
-            </div>
-
-            {/* Navigation Arrows */}
-            <div className="absolute bottom-4 left-4 right-4 flex justify-between">
-              <button className="bg-[#122368] text-white w-10 h-10 rounded flex items-center justify-center hover:opacity-80 transition-opacity">
-                <RiArrowLeftLine className="w-5 h-5" />
-              </button>
-              <button className="bg-[#122368] text-white w-10 h-10 rounded flex items-center justify-center hover:opacity-80 transition-opacity">
-                <RiArrowRightLine className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <DirectorModal
+        director={selectedDirector}
+        onClose={closeDirectorModal}
+        onNavigate={navigateDirector}
+        showNavigation={true}
+      />
 
     </div>
   );

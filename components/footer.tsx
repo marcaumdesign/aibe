@@ -1,4 +1,6 @@
 import { RiLinkedinFill, RiTwitterXFill, RiBlueskyFill } from "@remixicon/react";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -7,8 +9,8 @@ export default function Footer() {
         {/* Logo and Social Media */}
         <div className="flex flex-col -gap-2 items-start mobile:items-center justify-center relative shrink-0 w-[300px] mobile:w-full">
           <div className="flex items-center justify-start mobile:justify-center leading-[0] relative shrink-0">
-            <div className="relative h-[62px] mobile:h-[50px]">
-              <img alt="" className="block max-w-none size-full" src="/images/logo branca.svg" />
+            <div className="relative h-[62px] mobile:h-[50px] w-[150px]">
+              <Image alt="AIBE Logo" fill className="object-contain" src="/images/logo branca.svg" />
             </div>
           </div>
           <div className="flex gap-[8px] items-start mobile:items-center justify-start mobile:justify-center relative shrink-0">
@@ -36,21 +38,21 @@ export default function Footer() {
           <div className="flex flex-col gap-[16px] items-start w-fit">
             <p className="text-text-soft-400 text-subheading-xs uppercase">Home</p>
             <div className="flex flex-col gap-[4px] items-start">
-              <a href="/#features" className="hover:text-gray-400 transition-colors">
+              <Link href="/#features" className="hover:text-gray-400 transition-colors">
                 <p className="text-text-white-0 text-paragraph-md">Features</p>
-              </a>
-              <a href="/about" className="hover:text-gray-400 transition-colors">
+              </Link>
+              <Link href="/about" className="hover:text-gray-400 transition-colors">
                 <p className="text-text-white-0 text-paragraph-md">About Us</p>
-              </a>
-              <a href="/events" className="hover:text-gray-400 transition-colors">
+              </Link>
+              <Link href="/events" className="hover:text-gray-400 transition-colors">
                 <p className="text-text-white-0 text-paragraph-md">AIBE Workshop</p>
-              </a>
-              <a href="/events#giorgio-mortara" className="hover:text-gray-400 transition-colors">
+              </Link>
+              <Link href="/events#giorgio-mortara" className="hover:text-gray-400 transition-colors">
                 <p className="text-text-white-0 text-paragraph-md">Giorgio Mortara</p>
-              </a>
-              <a href="/blog" className="hover:text-gray-400 transition-colors">
+              </Link>
+              <Link href="/blog/" className="hover:text-gray-400 transition-colors">
                 <p className="text-text-white-0 text-paragraph-md">Blog</p>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -58,15 +60,15 @@ export default function Footer() {
           <div className="flex flex-col gap-[16px] items-start w-fit">
             <p className="text-text-soft-400 text-subheading-xs uppercase">about us</p>
             <div className="flex flex-col gap-[4px] items-start">
-              <a href="/about" className="hover:text-gray-400 transition-colors">
+              <Link href="/about" className="hover:text-gray-400 transition-colors">
                 <p className="text-text-white-0 text-paragraph-md">About AIBE</p>
-              </a>
-              <a href="/about#context" className="hover:text-gray-400 transition-colors">
+              </Link>
+              <Link href="/about#context" className="hover:text-gray-400 transition-colors">
                 <p className="text-text-white-0 text-paragraph-md">AIBE in Context</p>
-              </a>
-              <a href="/about/team" className="hover:text-gray-400 transition-colors">
+              </Link>
+              <Link href="/about/team" className="hover:text-gray-400 transition-colors">
                 <p className="text-text-white-0 text-paragraph-md">Team</p>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -74,12 +76,12 @@ export default function Footer() {
           <div className="flex flex-col gap-[16px] items-start w-fit">
             <p className="text-text-soft-400 text-subheading-xs uppercase">Events & prizes</p>
             <div className="flex flex-col gap-[4px] items-start">
-              <a href="/events" className="hover:text-gray-400 transition-colors">
+              <Link href="/events" className="hover:text-gray-400 transition-colors">
                 <p className="text-text-white-0 text-paragraph-md">AIBE Workshop</p>
-              </a>
-              <a href="/events#giorgio-mortara" className="hover:text-gray-400 transition-colors">
+              </Link>
+              <Link href="/events#giorgio-mortara" className="hover:text-gray-400 transition-colors">
                 <p className="text-text-white-0 text-paragraph-md">Giorgio Mortara</p>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -87,9 +89,9 @@ export default function Footer() {
           <div className="flex flex-col gap-[16px] items-start w-fit">
             <p className="text-text-soft-400 text-subheading-xs uppercase">resources</p>
             <div className="flex flex-col gap-[4px] items-start">
-              <a href="/blog" className="hover:text-gray-400 transition-colors">
+              <Link href="/blog/" className="hover:text-gray-400 transition-colors">
                 <p className="text-text-white-0 text-paragraph-md">Blog</p>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -97,12 +99,12 @@ export default function Footer() {
           <div className="flex flex-col gap-[16px] items-start w-fit">
             <p className="text-text-soft-400 text-subheading-xs uppercase">Contact</p>
             <div className="flex flex-col gap-[4px] items-start">
-              <a href="/membership" className="hover:text-gray-400 transition-colors">
+              <Link href="/membership" className="hover:text-gray-400 transition-colors">
                 <p className="text-text-white-0 text-paragraph-md">Membership</p>
-              </a>
-              <a href="/contact" className="hover:text-gray-400 transition-colors">
+              </Link>
+              <Link href="/contact" className="hover:text-gray-400 transition-colors">
                 <p className="text-text-white-0 text-paragraph-md">Offices</p>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

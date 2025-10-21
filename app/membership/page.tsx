@@ -76,7 +76,7 @@ export default function Membership() {
               Become a Member
             </h1>
             <p className="text-paragraph-lg text-slate-600 max-w-2xl mx-auto">
-              Gain access to exclusive events, networking opportunities, and the right to participate in the Members' Assembly.
+              Gain access to exclusive events, networking opportunities, and the right to participate in the Members&apos; Assembly.
             </p>
 
             {/* Flags com animação circular - posicionadas sobre a imagem (visíveis no mobile) */}
