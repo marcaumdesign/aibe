@@ -202,165 +202,27 @@ export default function Home() {
           </div>
 
           <div className='grid gap-8 md:grid-cols-3 animate-translate-y-up'>
-            {/* Academic Mobility */}
-            <div className='border gap-4 border-stroke-sub-200 bg-neutral-100 p-6 flex flex-col justify-start'>
-              <div>
-                <RiMapPinLine className='text-primary-base w-8 h-8' />
-              </div>
-              <h3 className='text-title-h4 text-black'>
-                Academic Mobility
-              </h3>
-              <p className='text-sub-600 text-paragraph-lg'>
-                Encouraging the exchange of researchers, faculty, and students
-                between Brazil and Italy.
-              </p>
-            </div>
-
-
-            {/* Events and Awards */}
-            <div className='border gap-4 border-stroke-sub-200 bg-neutral-100 p-6 flex flex-col flex-1 justify-start'>
-              <div>
-                <RiTrophyLine className='text-primary-base w-8 h-8' />
-              </div>
-              <h3 className='text-title-h4 text-black'>
-                Events and Awards
-              </h3>
-              <p className='text-sub-600 text-paragraph-lg'>
-                Annual workshops and the Giorgio Mortara Prize strengthen
-                scientific cooperation.
-              </p>
-            </div>
-
-            {/* Research Sharing */}
-            <div className='border gap-4 border-stroke-sub-200 bg-neutral-100 p-6 flex flex-col flex-1 justify-start'>
-              <div>
-                <RiSendPlaneLine className='text-primary-base w-8 h-8' />
-              </div>
-              <h3 className='text-title-h4 text-black'>
-                Research Sharing
-              </h3>
-              <p className='text-sub-600 text-paragraph-lg'>
-                Newsletters, publications, and research opportunities for the
-                academic community.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About AIBE Section */}
-      <section className='bg-primary-base py-12 md:py-16'>
-        <div className='mx-auto max-w-[1200px] gap-6 md:gap-8 flex flex-col w-full px-4'>
-          <div className='flex flex-col items-start md:items-end gap-6 md:gap-8 lg:flex-row'>
-            <div className='flex-1 gap-3 md:gap-4 flex flex-col'>
-              <Badge variant='with-dot' size='medium'>
-                About AIBE
-              </Badge>
-              <h2 className='text-[48px] md:text-[40px] lg:text-title-h2 text-white leading-tight font-semibold'>
-                AIBE at a glance
-              </h2>
-            </div>
-            <Button variant='neutral' mode='lighter' size='medium' className='h-hug sm:w-auto' asChild>
-              <Link href='/about'>
-                About AIBE
-              </Link>
-            </Button>
-          </div>
-
-          <div className='flex flex-col items-start gap-6 md:gap-8 lg:flex-row px-4'>
-            <div className='flex-1 h-[250px] md:h-[350px] lg:h-[400px] w-full'>
-              <Image
-                src='/images/estudante.png'
-                alt='AIBE representative with Italian and Brazilian flags'
-                width={400}
-                height={400}
-                className='h-full w-full object-cover'
-              />
-            </div>
-            <div className='flex-1 gap-3 md:gap-4 flex flex-col text-justify grow'>
-              <p className='text-sm md:text-base lg:text-paragraph-lg text-white'>
-                The AIBE – Italian-Brazilian Association of Economics is a bilateral non-profit organization dedicated to fostering scientific cooperation between Brazil and Italy. The association seeks to strengthen the intellectual and cultural ties that unite both countries, providing a space for dialogue and collaboration with a special focus on the field of economics. We facilitate research collaboration between Brazilian and Italian economists. We also promote links between academia, policy-makers and industry.
-              </p>
-              <p className='text-sm md:text-base lg:text-paragraph-lg text-white'>
-                AIBE is governed by a Board of Directors, who
-                are elected for three years by the Members&apos; Assembly.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Statistics Section */}
-      <section className='py-32'>
-        <div className='mx-auto max-w-[1200px] gap-8 flex flex-col w-full px-4'>
-          <div className='grid gap-4 md:grid-cols-3'>
-            <div className='text-center gap-4 flex flex-col'>
-              <div className='text-title-h0 text-primary-base'>
-                279
-              </div>
-              <h3 className='text-title-h4 text-black'>
-                Participating Researchers
-              </h3>
-              <p className='text-sub-600 text-paragraph-lg'>
-                567 researchers have already taken part in AIBE meetings.
-              </p>
-            </div>
-
-            <div className='text-center gap-4 flex flex-col'>
-              <div className='text-title-h0 text-primary-base'>
-                63
-              </div>
-              <h3 className='text-title-h4 text-black'>
-                Institutions Involved
-              </h3>
-              <p className='text-sub-600 text-paragraph-lg'>
-                Partnership with more than XX universities and research centers
-                in Brazil and Italy.
-              </p>
-            </div>
-
-            <div className='text-center gap-4 flex flex-col'>
-              <div className='text-title-h0 text-primary-base'>
-                34
-              </div>
-              <h3 className='text-title-h4 text-black'>
-                Students Supported
-              </h3>
-              <p className='text-sub-600 text-paragraph-lg'>
-                XX students and researchers supported in exchange programs.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Events Section */}
-      <section className='py-8'>
-        <div className='mx-auto max-w-[1200px] w-full px-4'>
-          <div className='flex flex-col gap-16'>
-            {/* AIBE Annual Workshop */}
-            <div className='flex flex-col-reverse mobile:flex-col-reverse items-center gap-16 lg:flex-row'>
-              <div className='flex-1 flex flex-col gap-4'>
+            {/* The AIBE Annual Workshop */}
+            <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col justify-start overflow-hidden'>
+              <div className='relative w-full h-[250px]'>
                 <Image
                   src='/images/workshops.jpg'
-                  alt='AIBE Annual Workshop'
-                  width={600}
-                  height={600}
-                  className='h-[600px] w-full object-cover'
+                  alt='The AIBE Annual Workshop'
+                  fill
+                  className='object-cover'
                 />
               </div>
-              <div className='flex-1 flex flex-col gap-4 items-start'>
+              <div className='p-6 flex flex-col gap-4'>
                 <Badge variant='with-dot' size='medium'>
                   Events & Prizes
                 </Badge>
-                <h2 className='text-title-h2 text-black'>
+                <h3 className='text-title-h4 text-black'>
                   The AIBE Annual Workshop
-                </h2>
-                <p className='text-paragraph-lg text-sub-600'>
-                  An academic event held alternately in both countries,
-                  dedicated to knowledge exchange and scientific dialogue.
+                </h3>
+                <p className='text-sub-600 text-paragraph-lg'>
+                  An academic event held alternately in both countries, dedicated to knowledge exchange and scientific dialogue.
                 </p>
-                <Button variant='primary' size='medium' className='h-hug' asChild>
+                <Button variant='primary' size='medium' className='h-hug w-fit' asChild>
                   <Link href='/events/workshop2024'>
                     See More
                   </Link>
@@ -369,30 +231,56 @@ export default function Home() {
             </div>
 
             {/* Giorgio Mortara Prize */}
-            <div className='flex flex-col-reverse mobile:flex-col-reverse items-center gap-16 lg:flex-row-reverse'>
-              <div className='flex-1 flex flex-col gap-4'>
+            <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col flex-1 justify-start overflow-hidden'>
+              <div className='relative w-full h-[250px]'>
                 <Image
                   src='/images/premio.jpg'
                   alt='Giorgio Mortara Prize'
-                  width={600}
-                  height={600}
-                  className='h-[600px] w-full object-cover'
+                  fill
+                  className='object-cover'
                 />
               </div>
-              <div className='flex-1 flex flex-col gap-4 items-start'>
+              <div className='p-6 flex flex-col gap-4'>
                 <Badge variant='with-dot' size='medium'>
                   Events & Prizes
                 </Badge>
-                <h2 className='text-title-h2 text-black'>
+                <h3 className='text-title-h4 text-black'>
                   Giorgio Mortara Prize
-                </h2>
-                <p className='text-paragraph-lg text-sub-600'>
-                  Annual recognition for the best paper authored by young
-                  Brazilian and Italian researchers in academic collaboration.
+                </h3>
+                <p className='text-sub-600 text-paragraph-lg'>
+                  Annual recognition for the best paper authored by young Brazilian and Italian researchers in academic collaboration.
                 </p>
-                <Button variant='primary' size='medium' className='h-hug' asChild>
+                <Button variant='primary' size='medium' className='h-hug w-fit' asChild>
                   <Link href='/events'>
                     See More
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* AIBE at a glance */}
+            <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col flex-1 justify-start overflow-hidden'>
+              <div className='relative w-full h-[250px]'>
+                <Image
+                  src='/images/estudante.png'
+                  alt='AIBE at a glance'
+                  fill
+                  className='object-cover'
+                />
+              </div>
+              <div className='p-6 flex flex-col gap-4'>
+                <Badge variant='with-dot' size='medium'>
+                  About AIBE
+                </Badge>
+                <h3 className='text-title-h4 text-black'>
+                  AIBE at a glance
+                </h3>
+                <p className='text-sub-600 text-paragraph-lg'>
+                  The AIBE – Italian-Brazilian Association of Economics is a bilateral non-profit organization dedicated to fostering scientific cooperation between Brazil and Italy.
+                </p>
+                <Button variant='primary' size='medium' className='h-hug w-fit' asChild>
+                  <Link href='/about'>
+                    About AIBE
                   </Link>
                 </Button>
               </div>
