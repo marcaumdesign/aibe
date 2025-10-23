@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
-    "postinstall": "pnpm prisma generate"
+    "postinstall": "pnpm prisma generate",
+    "vercel-build": "pnpm prisma generate && pnpm run build"
   },
   "dependencies": {
     "@libsql/client": "^0.15.15",
