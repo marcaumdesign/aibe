@@ -16,7 +16,7 @@ const nextConfig = {
       },
     ],
   },
-  serverExternalPackages: ['@libsql/client', '@prisma/adapter-libsql'],
+  serverExternalPackages: ['@libsql/client', '@prisma/adapter-libsql', '@prisma/client', 'prisma'],
 };
 
 export default nextConfig;
