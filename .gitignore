@@ -21,7 +21,6 @@ dist/
 coverage/
 better-auth_migrations/
 lib/generated/
-prisma/sqlite.db-*
 
 ############################
 # Logs & Debug             #
