@@ -25,8 +25,8 @@ const nextConfig = {
   serverExternalPackages: [
     '@libsql/client',
     '@prisma/adapter-libsql',
-    '@prisma/client',
-    'prisma',
+    // '@prisma/client',
+    // 'prisma',
   ],
   /* config options here */
   webpack: (config, { isServer }) => {
