@@ -203,7 +203,7 @@ export default function Home() {
 
           <div className='grid gap-8 md:grid-cols-3 animate-translate-y-up'>
             {/* The AIBE Annual Workshop */}
-            <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col justify-start overflow-hidden'>
+            <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col justify-start overflow-hidden h-full'>
               <div className='relative w-full h-[250px]'>
                 <Image
                   src='/images/workshops.jpg'
@@ -212,17 +212,17 @@ export default function Home() {
                   className='object-cover'
                 />
               </div>
-              <div className='p-6 flex flex-col gap-4'>
+              <div className='p-6 flex flex-col gap-4 flex-1'>
                 <Badge variant='with-dot' size='medium'>
                   Events & Prizes
                 </Badge>
                 <h3 className='text-title-h4 text-black'>
                   The AIBE Annual Workshop
                 </h3>
-                <p className='text-sub-600 text-paragraph-lg'>
+                <p className='text-sub-600 text-paragraph-lg flex-1'>
                   An academic event held alternately in both countries, dedicated to knowledge exchange and scientific dialogue.
                 </p>
-                <Button variant='primary' size='medium' className='h-hug w-fit' asChild>
+                <Button variant='primary' size='medium' className='h-hug w-fit mt-auto' asChild>
                   <Link href='/events/workshop2024'>
                     See More
                   </Link>
@@ -231,7 +231,7 @@ export default function Home() {
             </div>
 
             {/* Giorgio Mortara Prize */}
-            <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col flex-1 justify-start overflow-hidden'>
+            <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col flex-1 justify-start overflow-hidden h-full'>
               <div className='relative w-full h-[250px]'>
                 <Image
                   src='/images/premio.jpg'
@@ -240,17 +240,17 @@ export default function Home() {
                   className='object-cover'
                 />
               </div>
-              <div className='p-6 flex flex-col gap-4'>
+              <div className='p-6 flex flex-col gap-4 flex-1'>
                 <Badge variant='with-dot' size='medium'>
                   Events & Prizes
                 </Badge>
                 <h3 className='text-title-h4 text-black'>
                   Giorgio Mortara Prize
                 </h3>
-                <p className='text-sub-600 text-paragraph-lg'>
+                <p className='text-sub-600 text-paragraph-lg flex-1'>
                   Annual recognition for the best paper authored by young Brazilian and Italian researchers in academic collaboration.
                 </p>
-                <Button variant='primary' size='medium' className='h-hug w-fit' asChild>
+                <Button variant='primary' size='medium' className='h-hug w-fit mt-auto' asChild>
                   <Link href='/events'>
                     See More
                   </Link>
@@ -259,7 +259,7 @@ export default function Home() {
             </div>
 
             {/* AIBE at a glance */}
-            <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col flex-1 justify-start overflow-hidden'>
+            <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col flex-1 justify-start overflow-hidden h-full'>
               <div className='relative w-full h-[250px]'>
                 <Image
                   src='/images/estudante.png'
@@ -268,17 +268,17 @@ export default function Home() {
                   className='object-cover'
                 />
               </div>
-              <div className='p-6 flex flex-col gap-4'>
+              <div className='p-6 flex flex-col gap-4 flex-1'>
                 <Badge variant='with-dot' size='medium'>
                   About AIBE
                 </Badge>
                 <h3 className='text-title-h4 text-black'>
                   AIBE at a glance
                 </h3>
-                <p className='text-sub-600 text-paragraph-lg'>
+                <p className='text-sub-600 text-paragraph-lg flex-1'>
                   The AIBE – Italian-Brazilian Association of Economics is a bilateral non-profit organization dedicated to fostering scientific cooperation between Brazil and Italy.
                 </p>
-                <Button variant='primary' size='medium' className='h-hug w-fit' asChild>
+                <Button variant='primary' size='medium' className='h-hug w-fit mt-auto' asChild>
                   <Link href='/about'>
                     About AIBE
                   </Link>

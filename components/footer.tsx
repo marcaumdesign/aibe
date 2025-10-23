@@ -115,7 +115,7 @@ export default function Footer() {
 
       {/* Copyright */}
       <div className="flex items-center justify-between mobile:flex-col mobile:gap-4 max-w-[1200px] relative shrink-0 w-full">
-        <p className="text-center text-white">Copyright @2024 AIBE. All Rights Reserved | Codice Fiscale: 97970970154</p>
+        <p className="text-center text-white">Copyright @{new Date().getFullYear()} AIBE. All Rights Reserved | Codice Fiscale: 97970970154</p>
         <div className="flex gap-4 items-center">
           <a href="https://www.iubenda.com/privacy-policy/33428132/cookie-policy" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-400 transition-colors">
             Cookie Policy

@@ -39,11 +39,6 @@ export default function MobileMenu() {
               <Item href='/events/pastcongresses'>Past Congresses</Item>
             </Section>
 
-            {/* Membership (alinhado com itens internos) */}
-            <div className='pl-3'>
-              <Item href='/membership'>Membership</Item>
-            </div>
-
             {/* Blog */}
             <Section title='Blog'>
               <Item href='/blog'>Blog</Item>

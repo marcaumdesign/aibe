@@ -1,10 +1,9 @@
 "use client";
 
-import { RiFundsLine, RiGlobalLine, RiTeamLine, RiArrowLeftLine, RiArrowRightLine } from "@remixicon/react";
+import { RiArrowLeftLine, RiArrowRightLine, RiCheckLine } from "@remixicon/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useMemo } from "react";
-import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { Root as Button } from "@/components/ui/button";
 import CTA from "@/components/cta";
 import type { Director } from "@/lib/strapi";
@@ -76,17 +75,6 @@ export default function About() {
   const [selectedDirector, setSelectedDirector] = useState<Director | null>(null);
   const [directors, setDirectors] = useState<Director[]>([]);
 
-  // Estados para os contadores
-  const [researchers, setResearchers] = useState(0);
-  const [institutions, setInstitutions] = useState(0);
-  const [students, setStudents] = useState(0);
-
-  // Hook para detectar quando a seção entra na viewport
-  const { ref: statsRef, isIntersecting } = useIntersectionObserver({
-    threshold: 0.3,
-    rootMargin: '0px 0px 0px 0px',
-  });
-
   // Carregar diretores via API proxy
   useEffect(() => {
     async function loadDirectors() {
@@ -152,38 +140,6 @@ export default function About() {
   for (let i = 0; i < Math.min(4, boardMembers.length); i++) {
     slidesToShow.push(boardMembers[(currentIndex + i) % boardMembers.length]);
   }
-
-  // Função de easing ease-in-out
-  const easeInOutCubic = (t: number): number => {
-    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-  };
-
-  // Animar contadores quando a seção entra na viewport
-  useEffect(() => {
-    if (!isIntersecting) return;
-
-    const duration = 4000; // 4 segundos
-    const targetResearchers = 279;
-    const targetInstitutions = 63;
-    const targetStudents = 34;
-    const startTime = Date.now();
-
-    const animate = () => {
-      const elapsed = Date.now() - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const easedProgress = easeInOutCubic(progress);
-
-      setResearchers(Math.floor(easedProgress * targetResearchers));
-      setInstitutions(Math.floor(easedProgress * targetInstitutions));
-      setStudents(Math.floor(easedProgress * targetStudents));
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-
-    animate();
-  }, [isIntersecting]);
 
   const openDirectorModal = (memberName: string) => {
     console.log('🎯 Tentando abrir modal para:', memberName);
@@ -266,41 +222,132 @@ export default function About() {
         </div>
       </div>
 
-      {/* About AIBE Section */}
+      {/* AIBE at a glance Section */}
+      <div className="flex flex-col items-center justify-center w-full bg-[#f3f8ff]">
+        <div className="flex flex-col gap-16 items-center justify-start max-w-[1200px] p-8 mobile:p-4 w-full">
+          <h2 className="text-title-h3 mobile:text-title-h4 text-black text-center w-full">
+            AIBE at a glance
+          </h2>
+          <div className="flex flex-row mobile:flex-col gap-8 items-center justify-between w-full">
+            {/* Imagem à esquerda */}
+            <div className="relative w-full max-w-[500px] mobile:max-w-full h-[450px] mobile:h-[350px] flex-shrink-0">
+              <Image
+                src='/images/suits-flag.png'
+                alt='AIBE Representative with Brazil and Italy flags'
+                fill
+                className='object-cover'
+              />
+            </div>
+
+            {/* Conteúdo à direita */}
+            <div className="flex flex-col gap-6 mobile:gap-4 items-start justify-start w-full">
+              <div className="text-paragraph-lg mobile:text-paragraph-md text-text-sub-600">
+                <p>We are a bilateral, non-profit association registered in Italy. We facilitate research collaboration between Brazilian and Italian economists. We also promote links between academia, policy-makers and industry. In particular, we:</p>
+              </div>
+
+              {/* Lista com checkmarks */}
+              <div className="flex flex-col gap-4 mobile:gap-3 w-full">
+                {/* Item 1 */}
+                <div className="flex gap-3 mobile:gap-2 items-start">
+                  <div className="flex-shrink-0 mt-1">
+                    <RiCheckLine className="w-5 h-5 mobile:w-4 mobile:h-4 text-black" />
+                  </div>
+                  <div className="text-paragraph-lg mobile:text-paragraph-md text-text-sub-600">
+                    <p>Organize an annual economics workshop.</p>
+                  </div>
+                </div>
+
+                {/* Item 2 */}
+                <div className="flex gap-3 mobile:gap-2 items-start">
+                  <div className="flex-shrink-0 mt-1">
+                    <RiCheckLine className="w-5 h-5 mobile:w-4 mobile:h-4 text-black" />
+                  </div>
+                  <div className="text-paragraph-lg mobile:text-paragraph-md text-text-sub-600">
+                    <p>Award an annual prize.</p>
+                  </div>
+                </div>
+
+                {/* Item 3 */}
+                <div className="flex gap-3 mobile:gap-2 items-start">
+                  <div className="flex-shrink-0 mt-1">
+                    <RiCheckLine className="w-5 h-5 mobile:w-4 mobile:h-4 text-black" />
+                  </div>
+                  <div className="text-paragraph-lg mobile:text-paragraph-md text-text-sub-600">
+                    <p>Disseminate information on joint research and funding opportunities.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Parágrafo de governança */}
+              <div className="text-paragraph-lg mobile:text-paragraph-md text-text-sub-600">
+                <p>AIBE is governed by a <Link href="/about/team" className="text-primary-base underline hover:opacity-80">Board of Directors</Link>, who are elected for three years by the Members' Assembly.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* AIBE in context Section */}
       <div className="flex flex-col items-center justify-center w-full">
         <div className="flex flex-col gap-16 items-center justify-start max-w-[1200px] p-8 mobile:p-4 w-full">
           <div className="flex flex-row mobile:flex-col gap-8 items-start justify-start overflow-clip relative  w-full">
             <div className="flex flex-col gap-8 max-w-[600px] items-start justify-start">
-              <div className="flex flex-col gap-4 items-start justify-start not-italic w-full">
-                <h2 className="text-title-h4 text-black w-full">
-                  About AIBE
+              <div className="flex flex-col gap-6 mobile:gap-4 items-start justify-start not-italic w-full">
+                <h2 className="text-title-h4 mobile:text-title-h5 text-black w-full">
+                  AIBE in context
                 </h2>
-                <div className="font-normal leading-[24px] text-[#525866] text-[18px] text-justify tracking-[-0.36px] w-full">
-                  <p className="mb-0">
-                    The Italian-Brazilian Association of Economics (AIBE) is a bilateral, non-profit
-                    institution registered in Italy, dedicated to fostering scientific collaboration
-                    between Brazilian and Italian economists. Beyond encouraging academic exchange,
-                    AIBE also strengthens connections between academia, policy-makers, and industry,
-                    building a shared space for dialogue and cooperation.
-                  </p>
-                  <p className="mb-0">&nbsp;</p>
-                  <p>
-                    Among its key initiatives, the association organizes an annual economics
-                    workshop, alternately hosted in Brazil or Italy; awards the Giorgio Mortara
-                    Prize, which recognizes outstanding research by young scholars; and promotes the
-                    dissemination of knowledge and funding opportunities, supporting the growth of
-                    international research networks.
-                  </p>
-                </div>
-                <h2 className="text-title-h4 text-black w-full">
-                  Governance
-                </h2>
-                <div className="text-paragraph-lg text-text-sub-600 w-full">
-                  <p className="leading-[24px]">
-                    AIBE is governed by a Board of Directors elected every three years by the
-                    Members&apos; Assembly, ensuring transparency and shared leadership in its
-                    activities.
-                  </p>
+
+                {/* Lista com checkmarks */}
+                <div className="flex flex-col gap-6 mobile:gap-4 w-full">
+                  {/* Item 1 */}
+                  <div className="flex gap-4 mobile:gap-3 items-start">
+                    <div className="flex-shrink-0 mt-1">
+                      <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-black" />
+                    </div>
+                    <div className="text-paragraph-lg mobile:text-paragraph-md text-text-sub-600">
+                      <p>Strong commercial, historical and cultural links between Italy and Brazil.</p>
+                    </div>
+                  </div>
+
+                  {/* Item 2 */}
+                  <div className="flex gap-4 mobile:gap-3 items-start">
+                    <div className="flex-shrink-0 mt-1">
+                      <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-black" />
+                    </div>
+                    <div className="text-paragraph-lg mobile:text-paragraph-md text-text-sub-600">
+                      <p>A bilateral Agreement on Scientific and Technological Cooperation in force since December 1998.</p>
+                    </div>
+                  </div>
+
+                  {/* Item 3 */}
+                  <div className="flex gap-4 mobile:gap-3 items-start">
+                    <div className="flex-shrink-0 mt-1">
+                      <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-black" />
+                    </div>
+                    <div className="text-paragraph-lg mobile:text-paragraph-md text-text-sub-600">
+                      <p>Joint calls for project funding.</p>
+                    </div>
+                  </div>
+
+                  {/* Item 4 */}
+                  <div className="flex gap-4 mobile:gap-3 items-start">
+                    <div className="flex-shrink-0 mt-1">
+                      <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-black" />
+                    </div>
+                    <div className="text-paragraph-lg mobile:text-paragraph-md text-text-sub-600">
+                      <p>Fast-growing community of Brazilians in the Italian academic system.</p>
+                    </div>
+                  </div>
+
+                  {/* Item 5 */}
+                  <div className="flex gap-4 mobile:gap-3 items-start">
+                    <div className="flex-shrink-0 mt-1">
+                      <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-black" />
+                    </div>
+                    <div className="text-paragraph-lg mobile:text-paragraph-md text-text-sub-600">
+                      <p>Growing number of co-authorships between Brazilian and Italian economists.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -319,107 +366,6 @@ export default function About() {
             <div className="flex items-center justify-center px-[4px] py-0 relative shrink-0">
               <div className="font-medium not-italic text-[18px] text-center text-nowrap text-white tracking-[-0.54px]">
                 <p className="leading-[24px] whitespace-pre">Download the AIBE Constitution</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Statistics Section */}
-      <div
-        ref={statsRef as React.RefObject<HTMLDivElement>}
-        className="flex flex-col  items-center justify-center w-full"
-      >
-        <div className="flex flex-row mobile:flex-col gap-8 items-center justify-start max-w-[1200px] w-full p-4">
-
-          <div className="flex flex-row mobile:flex-col gap-4 items-center justify-center flex-1">
-            <div className="flex flex-col gap-3 items-center justify-start not-italic p-4 relative w-full">
-
-              <p className="text-title-h0 text-center text-primary-base">{researchers}</p>
-
-              <h3 className="text-title-h4 text-black text-center min-w-full">
-                Participating Researchers
-              </h3>
-              <div className="font-normal min-w-full text-[#525866] text-[18px] text-center tracking-[-0.36px]">
-                <p className="leading-[24px]">567 researchers have already taken part in AIBE meetings.</p>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-row mobile:flex-col gap-4 items-center justify-center flex-1">
-            <div className="flex flex-col gap-3 items-center justify-start relative w-full">
-
-              <p className="text-title-h0 text-center text-primary-base">{institutions}</p>
-
-              <h3 className="text-title-h4 text-black text-center min-w-full">
-                Institutions Involved
-              </h3>
-              <div className="font-normal min-w-full text-[#525866] text-[18px] text-center tracking-[-0.36px]">
-                <p className="leading-[24px]">Partnership with more than XX universities and research centers in Brazil and Italy.</p>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-row mobile:flex-col gap-4 items-center justify-center flex-1">
-            <div className="flex flex-col gap-3 items-center justify-start not-italic relative w-full">
-
-              <p className="text-title-h0 text-center text-primary-base">{students}</p>
-
-              <h3 className="text-title-h4 text-black text-center min-w-full">
-                Students Supported
-              </h3>
-              <div className="font-normal min-w-full text-[#525866] text-[18px] text-center tracking-[-0.36px]">
-                <p className="leading-[24px]">XX students and researchers supported in exchange programs.</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      {/* AIBE in Context Section */}
-      <div className="flex flex-col gap-[77px] items-center justify-center w-full">
-        <div className="bg-[#f3f8ff] flex flex-col gap-[64px] items-center justify-start max-w-[1200px] px-[64px] mobile:px-4 py-[64px] mobile:py-4 w-full">
-          <div className="flex gap-8 items-start justify-start w-full">
-            <div className="flex flex-col gap-8 items-start justify-start w-full max-w-full">
-              <div className="flex flex-col gap-4 items-start justify-start not-italic w-full">
-                <h2 className="text-title-h4 text-black w-full">
-                  AIBE in context
-                </h2>
-                <div className="text-paragraph-lg text-text-sub-600 w-full overflow-visible">
-                  <p className="leading-[24px] break-words">AIBE operates in a context of strong cooperation between Brazil and Italy, rooted in historical, cultural, and academic ties. This environment has been reinforced by the Bilateral Agreement on Scientific and Technological Cooperation, in force since 1998, which has enabled joint research projects, funding calls, and greater institutional integration. In recent years, there has also been a significant growth in the presence of Brazilian scholars within the Italian academic system, as well as a steady increase in co-authored publications, consolidating the importance of this international partnership.</p>
-                </div>
-              </div>
-              <div className="flex gap-4 items-start justify-start w-full">
-                <div className="flex-shrink-0">
-                  <RiGlobalLine className="w-[56px] h-[56px] text-[#122368]" />
-                </div>
-                <div className="flex flex-col gap-[8px] items-start justify-start flex-1">
-                  <p className="text-title-h5">Historical and Institutional Ties</p>
-                  <div className="text-paragraph-lg text-text-sub-600 w-full">
-                    <p className="leading-[24px]">Enduring relations between Brazil and Italy, supported by a bilateral science and technology agreement since 1998.</p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex gap-4 items-start justify-start w-full">
-                <div className="flex-shrink-0">
-                  <RiFundsLine className="w-[56px] h-[56px] text-[#122368]" />
-                </div>
-                <div className="flex flex-col gap-[8px] items-start justify-start flex-1">
-                  <p className="text-title-h5">Research Opportunities</p>
-                  <div className="text-paragraph-lg text-text-sub-600 w-full">
-                    <p className="leading-[24px]">Joint funding calls and collaborative projects connecting universities and research centers.</p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex gap-4 items-start justify-start w-full">
-                <div className="flex-shrink-0">
-                  <RiTeamLine className="w-[56px] h-[56px] text-[#122368]" />
-                </div>
-                <div className="flex flex-col gap-[8px] items-start justify-start flex-1">
-                  <p className="text-title-h5">Expanding Academic Community</p>
-                  <div className="text-paragraph-lg text-text-sub-600 w-full">
-                    <p className="leading-[24px]">A growing number of Brazilian scholars in Italian institutions and co-authored publications between researchers of both countries.</p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
