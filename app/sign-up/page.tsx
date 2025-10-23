@@ -60,13 +60,13 @@ export default function SignUp() {
             password,
             name: `${firstName} ${lastName}`.trim(),
             image: imagePayload,
-            callbackURL: "/dashboard",
+            callbackURL: "/",
           },
           {
             onRequest: () => setLoading(true),
             onResponse: () => setLoading(false),
             onError: (ctx) => { toast.error(ctx.error.message) },
-            onSuccess: () => router.push("/dashboard"),
+            onSuccess: () => router.push("/"),
           },
         );
       } catch (error) {
