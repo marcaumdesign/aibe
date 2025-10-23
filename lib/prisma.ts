@@ -1,46 +1,61 @@
 import { PrismaClient } from '@/lib/generated/prisma/client';
 import { PrismaLibSQL } from '@prisma/adapter-libsql';
-import { createClient } from '@libsql/client';
+import { createClient, type Client } from '@libsql/client';
 
-const adapter = new PrismaLibSQL({
-  url: `file:./prisma/sqlite.db`,
-  syncUrl: process.env.TURSO_DATABASE_URL,
-  authToken: process.env.TURSO_AUTH_TOKEN,
-  syncInterval: 60000,
-});
+const isReplicaEnv = process.env.NODE_ENV !== 'production' && !process.env.VERCEL;
+const localReplicaUrl = process.env.DATABASE_URL ?? 'file:./prisma/sqlite.db';
 
-const libsql = createClient({
-  url: `file:./prisma/sqlite.db`,
-  syncUrl: `${process.env.TURSO_DATABASE_URL}`,
-  authToken: `${process.env.TURSO_AUTH_TOKEN}`,
-  syncInterval: 60000,
-});
+const adapter = new PrismaLibSQL(
+  isReplicaEnv
+    ? {
+        url: localReplicaUrl,
+        syncUrl: process.env.TURSO_DATABASE_URL,
+        authToken: process.env.TURSO_AUTH_TOKEN,
+        syncInterval: 60000,
+      }
+    : {
+        url: process.env.TURSO_DATABASE_URL ?? '',
+        authToken: process.env.TURSO_AUTH_TOKEN,
+      },
+);
+
+const libsql: Client | null = isReplicaEnv
+  ? createClient({
+      url: localReplicaUrl,
+      syncUrl: process.env.TURSO_DATABASE_URL,
+      authToken: process.env.TURSO_AUTH_TOKEN,
+      syncInterval: 60000,
+    })
+  : null;
 
 const globalForPrisma = global as unknown as {
-  prisma: PrismaClient;
+  prisma?: PrismaClient;
 };
 
-const prisma =
+const prismaBase =
   globalForPrisma.prisma ||
   new PrismaClient({
     adapter,
-  }).$extends({
-    query: {
-      $allModels: {
-        async $allOperations({ operation, model, args, query }) {
-          const result = await query(args);
-
-          // Synchronize the embedded replica after any write operation
-          if (['create', 'update', 'delete'].includes(operation)) {
-            await libsql.sync();
-          }
-
-          return result;
-        },
-      },
-    },
   });
 
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
+const prisma = isReplicaEnv && libsql
+  ? prismaBase.$extends({
+      query: {
+        $allModels: {
+          async $allOperations({ operation, args, query }) {
+            const result = await query(args);
 
-export default prisma;
+            if (['create', 'createMany', 'update', 'updateMany', 'upsert', 'delete', 'deleteMany'].includes(operation)) {
+              await libsql.sync();
+            }
+
+            return result;
+          },
+        },
+      },
+    })
+  : prismaBase;
+
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma as PrismaClient;
+
+export default prisma as PrismaClient;

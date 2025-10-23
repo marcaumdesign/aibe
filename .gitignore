@@ -21,6 +21,7 @@ dist/
 coverage/
 better-auth_migrations/
 lib/generated/
+lib/sqlite.*
 
 ############################
 # Logs & Debug             #
