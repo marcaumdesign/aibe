@@ -20,6 +20,8 @@ build/
 dist/
 coverage/
 better-auth_migrations/
+lib/generated/
+prisma/sqlite.*
 
 ############################
 # Logs & Debug             #
@@ -59,5 +61,3 @@ Thumbs.db
 # Security                 #
 ############################
 *.pem
-
-/lib/generated/prisma
