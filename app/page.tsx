@@ -214,7 +214,7 @@ export default function Home() {
               </div>
               <div className='p-6 flex flex-col gap-4 flex-1'>
                 <Badge variant='with-dot' size='medium'>
-                  Events & Prizes
+                  AIBE Workshop
                 </Badge>
                 <h3 className='text-title-h4 text-black'>
                   The AIBE Annual Workshop
@@ -242,7 +242,7 @@ export default function Home() {
               </div>
               <div className='p-6 flex flex-col gap-4 flex-1'>
                 <Badge variant='with-dot' size='medium'>
-                  Events & Prizes
+                  Events
                 </Badge>
                 <h3 className='text-title-h4 text-black'>
                   Giorgio Mortara Prize
@@ -251,7 +251,7 @@ export default function Home() {
                   Annual recognition for the best paper authored by young Brazilian and Italian researchers in academic collaboration.
                 </p>
                 <Button variant='primary' size='medium' className='h-hug w-fit mt-auto' asChild>
-                  <Link href='/events'>
+                  <Link href='/prizes'>
                     See More
                   </Link>
                 </Button>

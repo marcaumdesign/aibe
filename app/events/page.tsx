@@ -3,7 +3,7 @@
 import Image from "next/image";
 import CTA from "@/components/cta";
 
-export default function PastCongressesPage() {
+export default function EventsPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header Spacer */}

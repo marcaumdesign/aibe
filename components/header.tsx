@@ -25,72 +25,36 @@ export default function Header() {
 
         {/* Navigation (desktop) */}
         <nav className='text-lg hidden items-center gap-8 font-medium text-black md:flex'>
-          <div className='relative group'>
-            <a
-              href='/about'
-              className='transition-colors hover:text-primary-base'
-            >
-              About AIBE
-            </a>
-            {/* Dropdown Menu */}
-            <div className='absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'>
-              <div className='py-2'>
-                <Link
-                  href='/about#context'
-                  className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
-                >
-                  AIBE in Context
-                </Link>
-                <Link
-                  href='/about/team'
-                  className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
-                >
-                  Team
-                </Link>
-              </div>
-            </div>
-          </div>
+          <a
+            href='/about'
+            className='transition-colors hover:text-primary-base'
+          >
+            About
+          </a>
+          <a
+            href='/workshop'
+            className='transition-colors hover:text-primary-base'
+          >
+            AIBE Workshop
+          </a>
           <div className='relative group'>
             <a
               href='/events'
               className='transition-colors hover:text-primary-base'
             >
-              Events & Prizes
+              Events
             </a>
             {/* Dropdown Menu */}
             <div className='absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'>
               <div className='py-2'>
-                {/* AIBE Workshop with submenu */}
-                <div className='relative group/workshop'>
-                  <div className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors cursor-pointer'>
-                    AIBE Workshop
-                  </div>
-                  {/* Submenu */}
-                  <div className='absolute left-full top-0 ml-1 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover/workshop:opacity-100 group-hover/workshop:visible transition-all duration-200 z-50'>
-                    <div className='py-2'>
-                      <Link
-                        href='/events/workshop'
-                        className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
-                      >
-                        AIBE Workshop 2025
-                      </Link>
-                      <Link
-                        href='/events/workshop2024'
-                        className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
-                      >
-                        AIBE Workshop 2024
-                      </Link>
-                    </div>
-                  </div>
-                </div>
                 <Link
-                  href='/events'
+                  href='/prizes'
                   className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
                 >
                   Giorgio Mortara
                 </Link>
                 <Link
-                  href='/events/pastcongresses'
+                  href='/events'
                   className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
                 >
                   Past Congresses
@@ -123,6 +87,12 @@ export default function Header() {
               </div>
             </div>
           </div>
+          <a
+            href='/people'
+            className='transition-colors hover:text-primary-base'
+          >
+            People
+          </a>
           <a
             href='/contact'
             className='transition-colors hover:text-primary-base'
