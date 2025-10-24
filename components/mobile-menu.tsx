@@ -27,16 +27,26 @@ export default function MobileMenu() {
           <nav className='flex flex-col gap-1 text-label-md'>
             {/* Main Navigation */}
             <Item href='/about'>About</Item>
-            <Item href='/workshop'>AIBE Workshop</Item>
 
-            {/* Events Section with subitems */}
+            {/* Workshop Section with subitems */}
             <div className='flex flex-col'>
               <div className='px-4 py-3 text-gray-700 font-medium'>
-                Events
+                Workshop
+              </div>
+              <div className='flex flex-col gap-1 pl-4'>
+                <SubItem href='/workshop'>AIBE Workshop 2025</SubItem>
+                <SubItem href='/events/workshop2024'>AIBE Workshop 2024</SubItem>
+                <SubItem href='/events'>All Events</SubItem>
+              </div>
+            </div>
+
+            {/* Prizes Section with subitems */}
+            <div className='flex flex-col'>
+              <div className='px-4 py-3 text-gray-700 font-medium'>
+                Prizes
               </div>
               <div className='flex flex-col gap-1 pl-4'>
                 <SubItem href='/prizes'>Giorgio Mortara</SubItem>
-                <SubItem href='/events'>Past Congresses</SubItem>
               </div>
             </div>
 
