@@ -9,36 +9,28 @@ import CTA from "@/components/cta";
 export default function About() {
 
   return (
-    <div className="flex flex-col gap-[64px] items-center justify-start relative size-full">
-      {/* Hero Section */}
-      <div className="flex flex-col items-center justify-start w-full">
-        {/* Hero Text Content */}
-        <div className="flex flex-col gap-8 items-center p-8 mobile:p-4 justify-start max-w-[1200px] w-full pt-[32px] mobile:pt-4">
-          <div className="flex flex-col gap-4 items-center justify-start w-full">
-            <div className="flex gap-[2px] items-center justify-center overflow-clip px-[8px] py-[2px] relative shrink-0">
-              <div className="font-medium not-italic text-[#99a0ae] text-[12px] text-nowrap tracking-[0.48px] uppercase">
-                <p className="leading-4 whitespace-pre">About</p>
-              </div>
-            </div>
-            <h1 className="text-title-h1 text-black text-center max-w-[648px]">
-              Science across borders, excellence in cooperation
-            </h1>
+    <div className="flex flex-col items-center justify-start relative size-full">
+      {/* Title Section */}
+      <div className="flex flex-col items-center justify-center w-full pt-[32px] mobile:pt-4 pb-8 gap-4">
+        <div className="flex gap-[2px] items-center justify-center overflow-clip px-[8px] py-[2px] relative shrink-0">
+          <div className="font-medium not-italic text-[#99a0ae] text-[12px] text-nowrap tracking-[0.48px] uppercase">
+            <p className="leading-4 whitespace-pre">About AIBE</p>
           </div>
         </div>
-
-        {/* Hero Image - Full Width */}
-        <div
-          className="bg-center bg-cover bg-no-repeat h-[350px] mobile:h-[250px] shrink-0 w-full"
-          style={{ backgroundImage: `url('/images/brazil-italy.png')` }}
-        />
+        <h1 className="text-title-h1 mobile:text-title-h3 text-black text-center">
+          At a glance
+        </h1>
       </div>
+
+      {/* Hero Image - Full Width */}
+      <div
+        className="bg-center bg-cover bg-no-repeat h-[350px] mobile:h-[250px] shrink-0 w-full"
+        style={{ backgroundImage: `url('/images/brazil-italy.png')` }}
+      />
 
       {/* At a glance Section */}
       <div className="flex flex-col items-center justify-center w-full bg-[#f3f8ff]">
-        <div className="flex flex-col gap-16 items-center justify-start max-w-[1200px] p-8 mobile:p-4 w-full">
-          <h2 className="text-title-h2 mobile:text-title-h4 text-black text-center w-full">
-            At a glance
-          </h2>
+        <div className="flex flex-col gap-16 items-center justify-start max-w-[1200px] p-8 mobile:p-4 pt-[64px] mobile:pt-8 w-full">
           <div className="flex flex-row mobile:flex-col gap-8 items-center justify-between w-full">
             {/* Imagem à esquerda */}
             <div className="relative w-full max-w-[500px] mobile:max-w-full h-[450px] mobile:h-[350px] flex-shrink-0">
@@ -99,7 +91,7 @@ export default function About() {
       </div>
 
       {/* In context Section */}
-      <div className="flex flex-col items-center justify-center w-full">
+      <div className="flex flex-col items-center justify-center w-full mt-[64px]">
         <div className="flex flex-col gap-16 items-center justify-start max-w-[1200px] p-8 mobile:p-4 w-full">
           <div className="flex flex-row mobile:flex-col gap-8 items-start justify-start overflow-clip relative  w-full">
             <div className="flex flex-col gap-8 max-w-[600px] items-start justify-start">

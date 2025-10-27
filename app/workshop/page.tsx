@@ -113,9 +113,12 @@ export default function AIBEWorkshopPage() {
 
               {/* Keynote Speaker */}
               <div className="mb-8">
-                <p className="text-text-strong-950 mb-2 text-paragraph-lg">
-                  <strong>Keynote by Nicola Borri</strong>
+                <p className="text-text-sub-600 text-paragraph-md">
+                  Keynote by
                 </p>
+                <h3 className="text-6xl md:text-10xl font-semibold text-gray-900 dark:text-gray-100 tracking-tight mt-3 mb-6 leading-tight">
+                  Nicola Borri
+                </h3>
                 <p className="text-text-sub-600 text-paragraph-md">
                   Lian Group Chair in Fintech and Blockchain Technology & Associate Professor of Finance
                 </p>

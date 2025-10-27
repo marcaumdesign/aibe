@@ -85,16 +85,6 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className='flex flex-row mobile:flex-col gap-4 items-start w-auto mobile:w-full'>
-                <Link href="/membership" className='w-auto mobile:w-full'>
-                  <Button variant='primary' size='medium' className='h-hug w-auto mobile:w-full'>
-                    Become a Member
-                  </Button>
-                </Link>
-                <Button variant='neutral' mode='stroke' size='medium' className='h-hug w-auto mobile:w-full'>
-                  Sign In
-                </Button>
-              </div>
             </div>
 
             {/* Hero Image */}

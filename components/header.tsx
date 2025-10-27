@@ -26,18 +26,29 @@ export default function Header() {
         {/* Navigation (desktop) */}
         <nav className='text-lg hidden items-center gap-8 font-medium text-black md:flex'>
           <a
+            href='/'
+            className='transition-colors hover:text-primary-base'
+          >
+            Home
+          </a>
+          <a
             href='/about'
             className='transition-colors hover:text-primary-base'
           >
-            About
+            About US
+          </a>
+          <a
+            href='/people'
+            className='transition-colors hover:text-primary-base'
+          >
+            People
           </a>
           <div className='relative group'>
-            <a
-              href='/workshop'
-              className='transition-colors hover:text-primary-base'
+            <button
+              className='transition-colors hover:text-primary-base cursor-pointer'
             >
               Workshop
-            </a>
+            </button>
             {/* Dropdown Menu */}
             <div className='absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'>
               <div className='py-2'>
@@ -57,26 +68,31 @@ export default function Header() {
                   href='/events'
                   className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
                 >
-                  All Events
+                  Last Events
                 </Link>
               </div>
             </div>
           </div>
           <div className='relative group'>
-            <a
-              href='/events'
-              className='transition-colors hover:text-primary-base'
+            <button
+              className='transition-colors hover:text-primary-base cursor-pointer'
             >
               Prizes
-            </a>
+            </button>
             {/* Dropdown Menu */}
-            <div className='absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'>
+            <div className='absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'>
               <div className='py-2'>
                 <Link
                   href='/prizes'
                   className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
                 >
                   Giorgio Mortara
+                </Link>
+                <Link
+                  href='/prizes/giorgio-mortara-2'
+                  className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
+                >
+                  Giorgio Mortara 2 (Test)
                 </Link>
               </div>
             </div>
@@ -92,12 +108,6 @@ export default function Header() {
             <div className='absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'>
               <div className='py-2'>
                 <Link
-                  href='/blog'
-                  className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
-                >
-                  Blog
-                </Link>
-                <Link
                   href='/blog/academic-cooperation'
                   className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
                 >
@@ -107,12 +117,6 @@ export default function Header() {
             </div>
           </div>
           <a
-            href='/people'
-            className='transition-colors hover:text-primary-base'
-          >
-            People
-          </a>
-          <a
             href='/contact'
             className='transition-colors hover:text-primary-base'
           >
@@ -121,13 +125,13 @@ export default function Header() {
         </nav>
 
         {/* CTA/Button area */}
-        <div className='flex items-center'>
+        <div className='flex items-center gap-4'>
           {/* Mobile: Menu button replaces CTA */}
           <div className='md:hidden'>
             <MobileMenu />
           </div>
           {/* Desktop: Keep CTA */}
-          <div className='hidden md:block'>
+          <div className='hidden md:flex items-center gap-4'>
             <Button.Root
               variant='primary'
               size='medium'
@@ -135,6 +139,15 @@ export default function Header() {
               onClick={() => router.push('/membership')}
             >
               Become a Member
+            </Button.Root>
+            <Button.Root
+              variant='neutral'
+              mode='stroke'
+              size='medium'
+              className='rounded-none'
+              onClick={() => router.push('/sign-in')}
+            >
+              Sign In
             </Button.Root>
           </div>
         </div>

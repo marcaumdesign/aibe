@@ -26,7 +26,9 @@ export default function MobileMenu() {
         <Drawer.Body className='p-5'>
           <nav className='flex flex-col gap-1 text-label-md'>
             {/* Main Navigation */}
-            <Item href='/about'>About</Item>
+            <Item href='/'>Home</Item>
+            <Item href='/about'>About US</Item>
+            <Item href='/people'>People</Item>
 
             {/* Workshop Section with subitems */}
             <div className='flex flex-col'>
@@ -36,7 +38,7 @@ export default function MobileMenu() {
               <div className='flex flex-col gap-1 pl-4'>
                 <SubItem href='/workshop'>AIBE Workshop 2025</SubItem>
                 <SubItem href='/events/workshop2024'>AIBE Workshop 2024</SubItem>
-                <SubItem href='/events'>All Events</SubItem>
+                <SubItem href='/events'>Last Events</SubItem>
               </div>
             </div>
 
@@ -47,25 +49,34 @@ export default function MobileMenu() {
               </div>
               <div className='flex flex-col gap-1 pl-4'>
                 <SubItem href='/prizes'>Giorgio Mortara</SubItem>
+                <SubItem href='/prizes/giorgio-mortara-2'>Giorgio Mortara 2 (Test)</SubItem>
               </div>
             </div>
 
             {/* Blog Section with subitems */}
             <div className='flex flex-col'>
-              <div className='px-4 py-3 text-gray-700 font-medium'>
-                Blog
-              </div>
+              <Item href='/blog'>Blog</Item>
               <div className='flex flex-col gap-1 pl-4'>
-                <SubItem href='/blog'>Our latest news</SubItem>
                 <SubItem href='/blog/academic-cooperation'>Academic Cooperation</SubItem>
               </div>
             </div>
 
-            <Item href='/people'>People</Item>
             <Item href='/contact'>Contact</Item>
 
             {/* Divider */}
             <div className='my-2 border-t border-gray-200'></div>
+
+            {/* Sign In Button */}
+            <div className='mt-2'>
+              <Drawer.Close asChild>
+                <Link
+                  href='/sign-in'
+                  className='block rounded-md border border-gray-300 px-4 py-3 text-center text-gray-700 font-medium hover:bg-gray-50 transition-colors'
+                >
+                  Sign In
+                </Link>
+              </Drawer.Close>
+            </div>
 
             {/* Become a Member CTA */}
             <div className='mt-2'>
