@@ -169,7 +169,7 @@ export default function About() {
             href="https://drive.google.com/file/d/1fAfZF52xDH3jCs1h3CNd3xD5t9mafUTo/view"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#122368] flex gap-[4px] items-center justify-center overflow-clip p-[10px] relative shrink-0 hover:opacity-80 transition-opacity cursor-pointer mobile:mt-[-40px] mobile:mb-[40px]"
+            className="bg-[#122368] flex gap-[4px] items-center justify-center overflow-clip p-[10px] relative shrink-0 hover:opacity-80 transition-opacity cursor-pointer mobile:mt-[-40px] mobile:mb-[150px]"
           >
             <div className="flex items-center justify-center px-[4px] py-0 relative shrink-0">
               <div className="font-medium not-italic text-[18px] text-center text-nowrap text-white tracking-[-0.54px]">
@@ -182,7 +182,7 @@ export default function About() {
 
       {/* CTA + Footer Section */}
       {/* Desktop/Tablet CTA original */}
-      <div className="flex flex-col items-start justify-start w-full mt-[192px] mobile:hidden">
+      <div className="flex flex-col items-start justify-start w-full mt-[290px] mobile:hidden">
         <div className="bg-[#122368] flex flex-col items-center justify-start w-full relative overflow-visible">
           {/* CTA Content */}
           <div className="flex flex-col gap-8 items-start justify-start max-w-[1200px] pb-[64px] pt-[98px] px-[32px] w-full relative">

@@ -100,7 +100,7 @@ export default function Home() {
 
               {/* Animação Circular */}
               <div
-                className='absolute z-50 block mobile:hidden'
+                className='absolute z-10 block mobile:hidden'
                 style={{
                   left: '-20px',
                   top: '550px'
@@ -127,7 +127,7 @@ export default function Home() {
 
               {/* Segunda Animação Circular */}
               <div
-                className='absolute z-50 block mobile:hidden'
+                className='absolute z-10 block mobile:hidden'
                 style={{
                   left: '450px',
                   top: '-10px'

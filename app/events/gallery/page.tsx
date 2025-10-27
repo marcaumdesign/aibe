@@ -1,11 +1,15 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { RiArrowLeftLine } from "@remixicon/react";
+import { RiArrowLeftLine, RiArrowRightLine, RiCloseLine } from "@remixicon/react";
 import { Root as Button } from "@/components/ui/button";
 
 export default function GalleryPage() {
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
   // Array com as 15 fotos (repetindo as 3 imagens disponíveis)
   const galleryImages = [
     { src: "/images/image 141.png", alt: "Palestra no AIBE Workshop 1" },
@@ -24,6 +28,71 @@ export default function GalleryPage() {
     { src: "/images/image 142.png", alt: "Grupo de participantes 5" },
     { src: "/images/image 143.png", alt: "Mesa de discussão 5" },
   ];
+
+  // Abrir lightbox
+  const openLightbox = (index: number) => {
+    setSelectedImageIndex(index);
+    setIsLightboxOpen(true);
+  };
+
+  // Fechar lightbox
+  const closeLightbox = () => {
+    setIsLightboxOpen(false);
+    setSelectedImageIndex(null);
+  };
+
+  // Navegar para a próxima imagem
+  const goToNext = () => {
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex + 1) % galleryImages.length);
+    }
+  };
+
+  // Navegar para a imagem anterior
+  const goToPrevious = () => {
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex(
+        selectedImageIndex === 0 ? galleryImages.length - 1 : selectedImageIndex - 1
+      );
+    }
+  };
+
+  // Bloquear scroll quando lightbox está aberto
+  useEffect(() => {
+    if (isLightboxOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isLightboxOpen]);
+
+  // Navegar com teclado
+  useEffect(() => {
+    if (!isLightboxOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        closeLightbox();
+      } else if (e.key === "ArrowRight") {
+        if (selectedImageIndex !== null) {
+          setSelectedImageIndex((selectedImageIndex + 1) % galleryImages.length);
+        }
+      } else if (e.key === "ArrowLeft") {
+        if (selectedImageIndex !== null) {
+          setSelectedImageIndex(
+            selectedImageIndex === 0 ? galleryImages.length - 1 : selectedImageIndex - 1
+          );
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isLightboxOpen, selectedImageIndex, galleryImages.length]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -60,7 +129,8 @@ export default function GalleryPage() {
           {galleryImages.map((image, index) => (
             <div
               key={index}
-              className="relative group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+              onClick={() => openLightbox(index)}
+              className="relative group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer"
             >
               <div className="relative w-full h-80">
                 <Image
@@ -79,6 +149,69 @@ export default function GalleryPage() {
             </div>
           ))}
         </div>
+
+        {/* Lightbox / Carrossel */}
+        {isLightboxOpen && selectedImageIndex !== null && (
+          <div
+            className="fixed inset-0 z-[100] bg-black bg-opacity-95 flex items-center justify-center"
+            onClick={closeLightbox}
+          >
+            {/* Botão Fechar */}
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 z-[110] text-white hover:text-gray-300 transition-colors"
+            >
+              <RiCloseLine className="w-10 h-10" />
+            </button>
+
+            {/* Contador de imagens */}
+            <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-[110] text-white text-lg">
+              {selectedImageIndex + 1} / {galleryImages.length}
+            </div>
+
+            {/* Botão Anterior */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                goToPrevious();
+              }}
+              className="absolute left-4 z-[110] text-white hover:text-gray-300 transition-colors bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-70"
+            >
+              <RiArrowLeftLine className="w-8 h-8" />
+            </button>
+
+            {/* Imagem */}
+            <div
+              className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center px-20"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative w-full h-full">
+                <Image
+                  src={galleryImages[selectedImageIndex].src}
+                  alt={galleryImages[selectedImageIndex].alt}
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              {/* Legenda */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-70 text-white px-6 py-3 rounded-lg">
+                <p className="text-center">{galleryImages[selectedImageIndex].alt}</p>
+              </div>
+            </div>
+
+            {/* Botão Próximo */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                goToNext();
+              }}
+              className="absolute right-4 z-[110] text-white hover:text-gray-300 transition-colors bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-70"
+            >
+              <RiArrowRightLine className="w-8 h-8" />
+            </button>
+          </div>
+        )}
 
         {/* Stats Section */}
         <div className="mt-16 bg-blue-50 rounded-lg p-8">

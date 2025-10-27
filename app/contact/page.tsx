@@ -206,18 +206,18 @@ export default function ContactPage() {
               </h3>
               <div className="flex justify-start space-x-4">
                 <a href="https://linkedin.com/company/aibe" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
-                  <RiLinkedinFill className="w-5 h-5 text-gray-600" />
+                  <RiLinkedinFill className="w-8 h-8 text-gray-600" />
                 </a>
                 <a href="https://twitter.com/aibe" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
-                  <RiTwitterXFill className="w-5 h-5 text-gray-600" />
+                  <RiTwitterXFill className="w-8 h-8 text-gray-600" />
                 </a>
                 <a href="https://aibe.website" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
                   <Image
                     src="/images/bluesky-fill.png"
                     alt="Website icon"
-                    width={20}
-                    height={20}
-                    className="w-5 h-5"
+                    width={32}
+                    height={32}
+                    className="w-8 h-8"
                   />
                 </a>
               </div>
