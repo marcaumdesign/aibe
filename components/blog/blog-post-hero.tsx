@@ -84,10 +84,11 @@ export default function BlogPostHero({ post }: BlogPostHeroProps) {
               src={post.image.formats?.large?.url || post.image.url}
               alt={post.image.alternativeText || post.title}
               fill
-              className='object-cover object-top'
+              className='object-cover'
               priority
               quality={100}
               sizes="(max-width: 1280px) 100vw, 1280px"
+              style={{ objectPosition: 'center 15%' }}
             />
           </div>
         )}

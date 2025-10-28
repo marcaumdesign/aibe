@@ -135,6 +135,14 @@ export async function GET() {
 
     console.log('✅ Notícias mapeadas:', news.length);
 
+    // DEBUG: Ver categorias
+    news.forEach((item) => {
+      console.log(
+        `  📰 "${item.title}" - Categoria:`,
+        item.category?.name || '❌ SEM CATEGORIA',
+      );
+    });
+
     // Filtrar notícias sem slug válido
     const validNews = news.filter((item) => item.slug && item.slug !== 'null');
     if (validNews.length !== news.length) {

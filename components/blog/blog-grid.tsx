@@ -59,7 +59,8 @@ export default function BlogGrid({ posts, maxPosts }: BlogGridProps) {
                     src={post.image.url.startsWith('http') ? post.image.url : `https://majestic-serenity-7a76c06678.strapiapp.com${post.image.url}`}
                     alt={post.image.alternativeText || post.title}
                     fill
-                    className='object-cover object-top group-hover:scale-105 transition-transform duration-300'
+                    className='object-cover group-hover:scale-105 transition-transform duration-300'
+                    style={{ objectPosition: 'center 15%' }}
                   />
                 </div>
               )}
