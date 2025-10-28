@@ -4,6 +4,7 @@ import { RiMapPinLine, RiSendPlaneLine, RiTrophyLine } from '@remixicon/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Root as Button } from '@/components/ui/button';
+import { useState, useEffect } from 'react';
 
 // export const metadata: Metadata = {
 //   title: 'AIBE - Italian-Brazilian Association of Economics',
@@ -57,6 +58,132 @@ function Badge({
       {(variant === 'with-dot' || withDot) && <div className={dotClasses}></div>}
       {children}
     </span>
+  );
+}
+
+// Componente BlogSection
+function BlogSection() {
+  interface NewsItem {
+    id: string | number;
+    title: string;
+    slug: string;
+    description: string | null;
+    image: {
+      url: string;
+      alternativeText?: string;
+    } | null;
+    date: string;
+    category?: {
+      name: string;
+    };
+  }
+
+  const [posts, setPosts] = useState<NewsItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadPosts() {
+      try {
+        const res = await fetch('/api/news');
+        if (res.ok) {
+          const data = await res.json();
+          setPosts(data.news || []);
+        } else {
+          console.error('Erro ao carregar notícias:', res.status);
+        }
+      } catch (error) {
+        console.error('Erro ao carregar posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadPosts();
+  }, []);
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  };
+
+  const displayPosts = posts.slice(0, 3);
+
+  if (loading) {
+    return (
+      <section className='pt-16 pb-52'>
+        <div className='mx-auto max-w-[1200px] gap-8 flex flex-col w-full px-4'>
+          <div className='text-center'>
+            <p className='text-paragraph-lg text-text-sub-600'>Carregando notícias...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className='py-20'>
+      <div className='container mx-auto max-w-[1200px] px-4'>
+        <header className='flex items-center justify-between mb-12'>
+          <div>
+            <span className='text-sm text-gray-400 uppercase tracking-wide'>• BLOG</span>
+            <h2 className='text-title-h2 text-black mt-1'>
+              Our latest news
+            </h2>
+          </div>
+          <Link
+            href='/blog'
+            className='bg-[#0A1A4F] text-white text-sm font-medium px-5 py-2 hover:bg-[#0357B9] transition duration-200 ease-out'
+          >
+            See More
+          </Link>
+        </header>
+
+        {displayPosts.length > 0 ? (
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
+            {displayPosts.map((post) => (
+              <article key={post.id} className='group'>
+                <Link href={`/blog/${post.slug}`}>
+                  <div className='overflow-hidden rounded-md'>
+                    {post.image && (
+                      <Image
+                        src={post.image.url.startsWith('http') ? post.image.url : `https://majestic-serenity-7a76c06678.strapiapp.com${post.image.url}`}
+                        alt={post.image.alternativeText || post.title}
+                        width={400}
+                        height={256}
+                        className='w-full h-64 object-cover object-top transition-transform duration-300 group-hover:scale-105'
+                      />
+                    )}
+                  </div>
+                  <div className='mt-4 flex items-center text-sm text-gray-500 gap-2'>
+                    {post.category && (
+                      <span className='bg-[#0A1A4F] text-white text-xs font-semibold px-2 py-0.5 uppercase'>
+                        {post.category.name}
+                      </span>
+                    )}
+                    <span>•</span>
+                    <time>{formatDate(post.date)}</time>
+                  </div>
+                  <h3 className='text-title-h5 text-black mt-2'>
+                    {post.title}
+                  </h3>
+                  {post.description && (
+                    <p className='text-sub-600 text-paragraph-lg mt-1 line-clamp-3'>
+                      {post.description}
+                    </p>
+                  )}
+                </Link>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className='text-center py-12'>
+            <p className='text-paragraph-lg text-text-sub-600'>Nenhuma notícia disponível no momento.</p>
+          </div>
+        )}
+      </div>
+    </section>
   );
 }
 
@@ -280,107 +407,10 @@ export default function Home() {
       </section>
 
       {/* Blog Section */}
-      <section className='pt-16 pb-52'>
-        <div className='mx-auto max-w-[1200px] gap-8 flex flex-col w-full px-4'>
-          <div className='flex flex-col items-start justify-between gap-8 md:items-end md:flex-row'>
-            <div className='flex-1 gap-4 flex flex-col'>
-              <Badge variant='with-dot' size='medium'>
-                Blog
-              </Badge>
-              <h2 className='text-title-h2 text-black'>
-                Our latest news
-              </h2>
-            </div>
-            <Button variant='primary' size='medium' className='h-hug' asChild>
-              <Link href='/blog'>
-                See More
-              </Link>
-            </Button>
-          </div>
-
-          <div className='grid gap-8 md:grid-cols-3'>
-            {/* Blog Post 1 */}
-            <article className='gap-4 flex flex-col'>
-              <Image
-                src='/images/image blog 1.png'
-                alt='Meeting with the Italian Consul-General in São Paulo, Domenico Fornara'
-                width={300}
-                height={300}
-                className='h-[300px] w-full object-cover'
-              />
-              <div className='flex items-center gap-2'>
-                <Badge variant='blue' size='small'>
-                  NEWS
-                </Badge>
-                <span className='text-black'>•</span>
-                <span className='text-paragraph-md text-black'>July 3, 2024</span>
-              </div>
-              <h3 className='text-title-h5 text-black'>
-                Meeting with the Italian Consul-General in São Paulo, Domenico
-                Fornara
-              </h3>
-              <p className='text-sub-600 text-paragraph-lg'>
-                AIBE representatives met with the Consul-General to strengthen
-                institutional ties and promote academic cooperation.
-              </p>
-            </article>
-
-            {/* Blog Post 2 */}
-            <article className='gap-4 flex flex-col'>
-              <Image
-                src='/images/image blog 2.png'
-                alt='Academic cooperation as a driver of innovation in economics'
-                width={300}
-                height={300}
-                className='h-[300px] w-full object-cover'
-              />
-              <div className='flex items-center gap-2'>
-                <Badge variant='blue' size='small'>
-                  BLOG
-                </Badge>
-                <span className='text-black'>•</span>
-                <span className='text-paragraph-md text-black'>June 26, 2024</span>
-              </div>
-              <h3 className='text-title-h5 text-black'>
-                Academic cooperation as a driver of innovation in economics
-              </h3>
-              <p className='text-sub-600 text-paragraph-lg'>
-                Brazilian and Italian researchers explore how international
-                partnerships enhance the relevance and impact of economic
-                research.
-              </p>
-            </article>
-
-            {/* Blog Post 3 */}
-            <article className='gap-4 flex flex-col'>
-              <Image
-                src='/images/image blog 3.png'
-                alt='AIBE presented at FAPESP Day of Italy event'
-                width={300}
-                height={300}
-                className='h-[300px] w-full object-cover'
-              />
-              <div className='flex items-center gap-2'>
-                <Badge variant='blue' size='small'>
-                  NEWS
-                </Badge>
-                <span className='text-black'>•</span>
-                <span className='text-paragraph-md text-black'>June 14, 2024</span>
-              </div>
-              <h3 className='text-title-h5 text-black'>
-                AIBE presented at FAPESP&apos;s &quot;Day of Italy&quot; event
-              </h3>
-              <p className='text-sub-600 text-paragraph-lg'>
-                The presentation emphasized Italian-Brazilian academic
-                cooperation and the association&apos;s scientific initiatives.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
+      <BlogSection />
 
       {/* CTA Section */}
-      <section className='relative overflow-visible bg-primary-base flex justify-center pb-8 items-end h-[534px] mobile:h-auto mobile:py-16'>
+      <section className='relative overflow-visible bg-primary-base flex justify-center pb-8 items-end h-[534px] mobile:h-auto mobile:py-16 mt-20'>
         <div className='relative z-10 mx-auto max-w-[1200px] p-16 mobile:p-8 w-full'>
           <div className='gap-8 mobile:gap-6 flex flex-col text-center relative'>
             <Image
@@ -388,7 +418,7 @@ export default function Home() {
               alt='Brazilian and Italian flags'
               width={402}
               height={294}
-              className='absolute left-1/2 transform -translate-x-1/2 top-[-330px] mobile:top-[-200px] w-auto h-[300px] mobile:h-[200px] z-20'
+              className='absolute left-1/2 transform -translate-x-1/2 top-[-320px] mobile:top-[-210px] w-auto h-[290px] mobile:h-[200px] z-20'
             />
 
             <div className='text-center gap-4 mobile:gap-3 flex max-w-[700px] flex-col mx-auto'>

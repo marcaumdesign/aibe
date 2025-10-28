@@ -119,10 +119,20 @@ export async function fetchArticleSlugs(): Promise<string[]> {
     },
   );
   if (!res.ok) throw new Error(`Erro ao buscar slugs: ${res.status}`);
-  const json = (await res.json()) as StrapiListResponse<
-    { slug: string } & { id: number; documentId: string }
-  >;
-  return json.data.map((a) => a.slug);
+
+  interface StrapiSlugItem {
+    id: number;
+    documentId: string;
+    slug?: string;
+    attributes?: {
+      slug: string;
+    };
+  }
+
+  const json = (await res.json()) as StrapiListResponse<StrapiSlugItem>;
+  return json.data
+    .map((a) => a.slug || a.attributes?.slug || '')
+    .filter(Boolean);
 }
 
 export async function fetchDirectors(): Promise<Director[]> {
