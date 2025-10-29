@@ -8,45 +8,34 @@ const STRAPI_URL =
 const STRAPI_TOKEN =
   process.env.STRAPI_TOKEN || process.env.NEXT_PUBLIC_STRAPI_TOKEN || '';
 
+// Strapi V5 retorna dados diretamente, sem wrapper attributes
 interface StrapiNews {
   id: string | number;
   documentId?: string;
-  attributes: {
-    title: string;
+  title: string;
+  slug: string;
+  description: string | null;
+  publishedAt: string;
+  cover?: {
+    id?: number;
+    url?: string;
+    alternativeText?: string;
+    formats?: {
+      thumbnail?: { url: string };
+      small?: { url: string };
+      medium?: { url: string };
+      large?: { url: string };
+    };
+  };
+  category?: {
+    id?: number;
+    documentId?: string;
+    name: string;
     slug: string;
-    description: string | null;
-    publishedAt: string;
-    cover?: {
-      data?: {
-        attributes?: {
-          url: string;
-          alternativeText?: string;
-          formats?: {
-            thumbnail?: { url: string };
-            small?: { url: string };
-            medium?: { url: string };
-            large?: { url: string };
-          };
-        };
-      };
-      url?: string;
-      alternativeText?: string;
-    };
-    category?: {
-      data?: {
-        attributes?: {
-          name: string;
-          slug: string;
-        };
-      };
-    };
-    author?: {
-      data?: {
-        attributes?: {
-          name: string;
-        };
-      };
-    };
+  };
+  author?: {
+    id?: number;
+    name?: string;
   };
 }
 
@@ -98,50 +87,37 @@ export async function GET() {
       'notícias',
     );
 
-    // Mapear dados do Strapi para o formato esperado
+    // Mapear dados do Strapi V5 para o formato esperado
     const news: NewsItem[] = (json?.data || []).map((n: StrapiNews) => {
-      const attrs = n.attributes || n;
       return {
         id: n.id,
         documentId: n.documentId,
-        title: attrs.title,
-        slug: attrs.slug,
-        description: attrs.description,
-        image:
-          attrs.cover?.data?.attributes?.url || attrs.cover?.url
-            ? {
-                url:
-                  attrs.cover?.data?.attributes?.url || attrs.cover?.url || '',
-                alternativeText:
-                  attrs.cover?.data?.attributes?.alternativeText ||
-                  attrs.cover?.alternativeText ||
-                  attrs.title,
-              }
-            : null,
-        date: attrs.publishedAt,
-        category: attrs.category?.data?.attributes
+        title: n.title,
+        slug: n.slug,
+        description: n.description,
+        image: n.cover?.url
           ? {
-              name: attrs.category.data.attributes.name,
-              slug: attrs.category.data.attributes.slug,
+              url: n.cover.url,
+              alternativeText: n.cover.alternativeText || n.title,
+            }
+          : null,
+        date: n.publishedAt,
+        // Strapi V5 retorna category diretamente
+        category: n.category
+          ? {
+              name: n.category.name,
+              slug: n.category.slug,
             }
           : undefined,
-        author: attrs.author?.data?.attributes
+        author: n.author?.name
           ? {
-              name: attrs.author.data.attributes.name,
+              name: n.author.name,
             }
           : undefined,
       };
     });
 
     console.log('✅ Notícias mapeadas:', news.length);
-
-    // DEBUG: Ver categorias
-    news.forEach((item) => {
-      console.log(
-        `  📰 "${item.title}" - Categoria:`,
-        item.category?.name || '❌ SEM CATEGORIA',
-      );
-    });
 
     // Filtrar notícias sem slug válido
     const validNews = news.filter((item) => item.slug && item.slug !== 'null');

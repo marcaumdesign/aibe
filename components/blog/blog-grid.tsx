@@ -70,7 +70,7 @@ export default function BlogGrid({ posts, maxPosts }: BlogGridProps) {
                 {/* Category and Date */}
                 <div className='flex items-center gap-2 mb-4 text-sm text-gray-500'>
                   {post.category && (
-                    <span className='bg-[#0A1A4F] text-white text-xs font-semibold px-2 py-0.5 uppercase'>
+                    <span className='bg-[#0A1A4F] text-white text-[10px] font-medium px-1.5 py-0.5 uppercase tracking-wide'>
                       {post.category.name}
                     </span>
                   )}
