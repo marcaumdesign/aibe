@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { Root as Badge } from '@/components/ui/badge';
 
 interface NewsItem {
   id: string | number;
@@ -25,7 +26,9 @@ interface BlogGridProps {
 }
 
 export default function BlogGrid({ posts, maxPosts }: BlogGridProps) {
-  const displayPosts = maxPosts ? posts.slice(0, maxPosts) : posts;
+  // Filtrar apenas posts com slug válido
+  const validPosts = posts.filter((post) => post.slug && post.slug !== 'null');
+  const displayPosts = maxPosts ? validPosts.slice(0, maxPosts) : validPosts;
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -35,7 +38,7 @@ export default function BlogGrid({ posts, maxPosts }: BlogGridProps) {
     });
   };
 
-  if (posts.length === 0) {
+  if (displayPosts.length === 0) {
     return (
       <div className='py-12 text-center'>
         <h3 className='text-xl mb-2 font-semibold'>Nenhuma notícia disponível</h3>
@@ -60,7 +63,6 @@ export default function BlogGrid({ posts, maxPosts }: BlogGridProps) {
                     alt={post.image.alternativeText || post.title}
                     fill
                     className='object-cover group-hover:scale-105 transition-transform duration-300'
-                    style={{ objectPosition: 'center 15%' }}
                   />
                 </div>
               )}
@@ -68,14 +70,17 @@ export default function BlogGrid({ posts, maxPosts }: BlogGridProps) {
               {/* Content */}
               <div className='p-6'>
                 {/* Category and Date */}
-                <div className='flex items-center gap-2 mb-4 text-sm text-gray-500'>
+                <div className='flex items-center gap-2 mb-4'>
                   {post.category && (
-                    <span className='bg-[#0A1A4F] text-white text-[10px] font-medium px-1.5 py-0.5 uppercase tracking-wide'>
-                      {post.category.name}
-                    </span>
+                    <Badge
+                      variant='light'
+                      className='bg-blue-500 text-white text-xs font-medium px-3 py-1 rounded-none'
+                    >
+                      {post.category.name.toUpperCase()}
+                    </Badge>
                   )}
-                  <span>•</span>
-                  <time>{formatDate(post.date)}</time>
+                  <span className='text-text-soft-400 text-sm'>•</span>
+                  <span className='text-text-soft-400 text-sm'>{formatDate(post.date)}</span>
                 </div>
 
                 {/* Title */}

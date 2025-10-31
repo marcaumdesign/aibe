@@ -152,13 +152,14 @@ function BlogSection() {
                         alt={post.image.alternativeText || post.title}
                         width={400}
                         height={256}
-                        className='w-full h-64 object-cover object-top transition-transform duration-300 group-hover:scale-105'
+                        className='w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105'
+                        style={{ objectPosition: 'center 15%' }}
                       />
                     )}
                   </div>
                   <div className='mt-4 flex items-center text-sm text-gray-500 gap-2'>
                     {post.category && (
-                      <span className='bg-[#0A1A4F] text-white text-xs font-semibold px-2 py-0.5 uppercase'>
+                      <span className='bg-[#0A1A4F] text-white text-[10px] font-medium px-1.5 py-0.5 uppercase tracking-wide'>
                         {post.category.name}
                       </span>
                     )}

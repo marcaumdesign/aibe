@@ -48,8 +48,9 @@ export default function BlogPostSidebar({ latest, tags }: BlogPostSidebarProps) 
                       src={post.image.url}
                       alt={post.image.alternativeText || post.title}
                       fill
-                      className='object-cover object-top'
+                      className='object-cover'
                       quality={95}
+                      style={{ objectPosition: 'center 15%' }}
                     />
                   </div>
                 )}
