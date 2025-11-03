@@ -10,23 +10,24 @@ export default function GalleryPage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
-  // Array com as 15 fotos (repetindo as 3 imagens disponíveis)
+  // Fotos reais (sem repetições diretas) + novas do print
   const galleryImages = [
-    { src: "/images/image 141.png", alt: "Palestra no AIBE Workshop 1" },
-    { src: "/images/image 142.png", alt: "Grupo de participantes 1" },
-    { src: "/images/image 143.png", alt: "Mesa de discussão 1" },
-    { src: "/images/image 141.png", alt: "Palestra no AIBE Workshop 2" },
-    { src: "/images/image 142.png", alt: "Grupo de participantes 2" },
-    { src: "/images/image 143.png", alt: "Mesa de discussão 2" },
-    { src: "/images/image 141.png", alt: "Palestra no AIBE Workshop 3" },
-    { src: "/images/image 142.png", alt: "Grupo de participantes 3" },
-    { src: "/images/image 143.png", alt: "Mesa de discussão 3" },
-    { src: "/images/image 141.png", alt: "Palestra no AIBE Workshop 4" },
-    { src: "/images/image 142.png", alt: "Grupo de participantes 4" },
-    { src: "/images/image 143.png", alt: "Mesa de discussão 4" },
-    { src: "/images/image 141.png", alt: "Palestra no AIBE Workshop 5" },
-    { src: "/images/image 142.png", alt: "Grupo de participantes 5" },
-    { src: "/images/image 143.png", alt: "Mesa de discussão 5" },
+    { src: "/images/1%20AIBE%20WORKSHOP.jpeg", alt: "Opening talk" },
+    { src: "/images/1ST%20CARTAZ%20AIBE%20WORKSHOP%20.jpeg", alt: "Welcome banner" },
+    { src: "/images/WORKSHOP%20FOTO%2011.jpeg", alt: "Workshop photo 11" },
+    { src: "/images/WORKSHOP%20FOTO%2010.jpeg", alt: "Workshop photo 10" },
+    { src: "/images/WORKSHOP%20FOTO%209.jpeg", alt: "Workshop photo 9" },
+    { src: "/images/WORKSHOP%20FOTO%208.jpeg", alt: "Workshop photo 8" },
+    { src: "/images/WORKSHOP%20FOTO%207.jpeg", alt: "Workshop photo 7" },
+    { src: "/images/WORKSHOP%20FOTO%206.jpeg", alt: "Workshop photo 6" },
+    { src: "/images/WORKHOP%20FOTO%205.jpeg", alt: "Workshop photo 5" },
+    { src: "/images/WORKSHOP%20FOTO%204.jpeg", alt: "Workshop photo 4" },
+    // repete alguns para completar a grade até 15
+    { src: "/images/1%20AIBE%20WORKSHOP.jpeg", alt: "Opening talk (b)" },
+    { src: "/images/WORKSHOP%20FOTO%206.jpeg", alt: "Workshop photo 6 (b)" },
+    { src: "/images/WORKSHOP%20FOTO%209.jpeg", alt: "Workshop photo 9 (b)" },
+    { src: "/images/WORKSHOP%20FOTO%207.jpeg", alt: "Workshop photo 7 (b)" },
+    { src: "/images/1ST%20CARTAZ%20AIBE%20WORKSHOP%20.jpeg", alt: "Welcome banner (b)" },
   ];
 
   // Abrir lightbox
@@ -135,15 +136,15 @@ export default function GalleryPage() {
               <div className="relative w-full h-80">
                 <Image
                   src={image.src}
-                  alt={image.alt}
+                  alt="AIBE Workshop"
                   fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
               {/* Overlay on Hover */}
               <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-end p-4">
                 <p className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {image.alt}
+                  AIBE Workshop
                 </p>
               </div>
             </div>
@@ -188,7 +189,7 @@ export default function GalleryPage() {
               <div className="relative w-full h-full">
                 <Image
                   src={galleryImages[selectedImageIndex].src}
-                  alt={galleryImages[selectedImageIndex].alt}
+                  alt="AIBE Workshop"
                   fill
                   className="object-contain"
                   priority
@@ -196,7 +197,7 @@ export default function GalleryPage() {
               </div>
               {/* Legenda */}
               <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-70 text-white px-6 py-3 rounded-lg">
-                <p className="text-center">{galleryImages[selectedImageIndex].alt}</p>
+                <p className="text-center">AIBE Workshop</p>
               </div>
             </div>
 

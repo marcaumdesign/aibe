@@ -110,9 +110,9 @@ export default function GiorgioMortara2Page() {
               <Image
                 src="/images/Giorgiomortara.png"
                 alt="Giorgio Mortara portrait"
-                width={384}
-                height={384}
-                className="w-96 h-96 object-cover"
+                width={640}
+                height={640}
+                className="w-[640px] h-[640px] object-contain object-top mobile:w-full mobile:h-auto"
               />
             </div>
 

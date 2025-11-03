@@ -12,7 +12,7 @@ export default function AIBEWorkshop2024Page() {
       <div className="h-20"></div>
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Workshop Overview Section */}
         <section className="mb-16">
           {/* Small label */}
@@ -26,9 +26,9 @@ export default function AIBEWorkshop2024Page() {
           </h1>
 
           {/* Two Column Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
             {/* Left Column */}
-            <div>
+            <div className="lg:col-span-2">
               {/* Event Title */}
               <h2 className="text-text-strong-950 mb-6 text-title-h2">
                 Digital Payments & Financial Inclusion
@@ -46,15 +46,44 @@ export default function AIBEWorkshop2024Page() {
 
               {/* Keynote Speaker */}
               <div className="mb-8">
-                <p className="text-text-sub-600 text-paragraph-md">
-                  Keynote by
-                </p>
-                <h3 className="text-6xl md:text-10xl font-semibold text-gray-900 dark:text-gray-100 tracking-tight mt-3 mb-6 leading-tight">
-                  Nicola Borri
-                </h3>
-                <p className="text-text-sub-600 text-paragraph-md">
-                  Lian Group Chair in Fintech and Blockchain Technology & Associate Professor of Finance
-                </p>
+                <p className="text-text-sub-600 text-paragraph-md">Keynote by</p>
+                <div className="mt-3 md:mt-6 md:grid md:grid-cols-[auto,1fr] md:items-start md:gap-8">
+                  {/* Foto à esquerda */}
+                  <div className="flex justify-center md:justify-start">
+                    <Image
+                      src="/images/Bicola%20Borri.jpg?v=1"
+                      alt="Participantes em reunião"
+                      width={135}
+                      height={180}
+                      className="w-[135px] h-[180px] aspect-[3/4] object-cover object-right rounded-md shadow-sm mx-auto"
+                    />
+                  </div>
+                  {/* Texto à direita */}
+                  <div className="mt-4 md:mt-0">
+                    <h3 className="text-6xl md:text-10xl font-semibold text-gray-900 dark:text-gray-100 tracking-tight leading-tight">
+                      <a
+                        href="https://sites.google.com/site/nicolaborri/Nicola-Borri?authuser=0"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline"
+                        aria-label="Nicola Borri (abrir site)"
+                      >
+                        Nicola Borri
+                      </a>
+                    </h3>
+                    <p className="mt-4 text-text-sub-600 text-paragraph-md">
+                      Lian Group Chair in Fintech and Blockchain Technology & Associate Professor of Finance
+                    </p>
+                    <a
+                      href="https://www.luiss.it/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block mt-2 text-teal-700 underline"
+                    >
+                      LUISS Guido Carli
+                    </a>
+                  </div>
+                </div>
               </div>
 
               {/* Download Button */}
@@ -64,14 +93,14 @@ export default function AIBEWorkshop2024Page() {
             </div>
 
             {/* Right Column - Image */}
-            <div className="flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-md">
+            <div className="flex justify-center lg:justify-end lg:col-span-3 pl-8">
+              <div className="relative w-full h-[420px] md:h-[520px] lg:h-[620px]">
                 <Image
                   src="/images/workshops.jpg"
                   alt="AIBE Workshop 2024 Audience"
-                  width={400}
-                  height={300}
-                  className="w-full h-auto"
+                  width={1600}
+                  height={1000}
+                  className="w-full h-full object-cover rounded-none shadow-sm"
                 />
               </div>
             </div>
@@ -191,8 +220,8 @@ export default function AIBEWorkshop2024Page() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="relative">
               <Image
-                src="/images/image 141.png"
-                alt="Palestra no AIBE Workshop"
+                src="/images/WORKSHOP%20FOTO%2010.jpeg"
+                alt="AIBE Workshop photo 10"
                 width={400}
                 height={300}
                 className="w-full h-64 object-cover"
@@ -200,8 +229,8 @@ export default function AIBEWorkshop2024Page() {
             </div>
             <div className="relative">
               <Image
-                src="/images/image 142.png"
-                alt="Grupo de participantes"
+                src="/images/WORKSHOP%20FOTO%2011.jpeg"
+                alt="AIBE Workshop photo 11"
                 width={400}
                 height={300}
                 className="w-full h-64 object-cover"
@@ -209,12 +238,109 @@ export default function AIBEWorkshop2024Page() {
             </div>
             <div className="relative">
               <Image
-                src="/images/image 143.png"
-                alt="Mesa de discussão"
+                src="/images/WORKSHOP%20FOTO%204.jpeg"
+                alt="AIBE Workshop photo 4"
                 width={400}
                 height={300}
                 className="w-full h-64 object-cover"
               />
+            </div>
+          </div>
+        </section>
+
+        {/* Studying Section */}
+        <section className="mt-20 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            {/* Texto à esquerda */}
+            <div>
+              <p className="text-text-soft-400 font-medium tracking-wider uppercase mb-2 text-subheading-xs">
+                Studying
+              </p>
+              <h2 className="text-text-strong-950 text-title-h2 mb-4">
+                Studying Economics in Italy
+              </h2>
+              <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
+                The Workshop also hosted a special panel on Studying Economics in Italy, co-organized with the Italian Cultural Institute in Sao Paulo (IIC-SP). Five participants presented the Master's progammes in economics, management and finance offered by their universities. This year, featured universities included: LUISS Guido Carli (Rome), SAIS Bologna, University of Milano-Bicocca, and Politecnico di Milano. The event was promoted by the IIC and welcomed an audience of around 30 undergraduate students from several Sao Paulo universities. The objective of this session, which AIBE plans to alternate with a similar event on "Studying Economics in Brazil", is to showcase Italy's and Brazil's academic excellence in teaching, promote student exchange, and facilitate brain circulation between the two countries.
+              </p>
+            </div>
+
+            {/* Imagem à direita (pequena) */}
+            <div className="flex md:justify-end">
+              <div className="relative w-full max-w-[720px] h-[420px] md:max-w-[820px] md:h-[500px] lg:max-w-[960px] lg:h-[560px]">
+                <Image
+                  src="/images/studying.jpeg"
+                  alt="Panel - Studying Economics in Italy"
+                  width={960}
+                  height={560}
+                  className="w-full h-full object-cover rounded-md shadow-sm"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Sponsors Section */}
+        <section className="mt-64 mb-16">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-text-strong-950 mb-8 text-title-h3 text-center">
+              Sponsors
+            </h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-center justify-items-center">
+              {/* Bicocca */}
+              <div className="flex items-center justify-center h-32 w-full">
+                <Image
+                  src="/images/Patricionador Bicocca.png"
+                  alt="Università degli Studi di Milano-Bicocca"
+                  width={200}
+                  height={120}
+                  className="max-h-32 w-auto object-contain"
+                />
+              </div>
+
+              {/* Banca D'Italia */}
+              <div className="flex items-center justify-center h-32 w-full">
+                <Image
+                  src="/images/Patrocionador Banca D'Italia.png"
+                  alt="Banca D'Italia"
+                  width={200}
+                  height={120}
+                  className="max-h-32 w-auto object-contain"
+                />
+              </div>
+
+              {/* FGC */}
+              <div className="flex items-center justify-center h-32 w-full">
+                <Image
+                  src="/images/Patrocionador FGC.jpeg"
+                  alt="FGC"
+                  width={200}
+                  height={120}
+                  className="max-h-32 w-auto object-contain"
+                />
+              </div>
+
+              {/* FGV */}
+              <div className="flex items-center justify-center h-32 w-full">
+                <Image
+                  src="/images/Patrocionador FGV.png"
+                  alt="FGV"
+                  width={200}
+                  height={120}
+                  className="max-h-32 w-auto object-contain"
+                />
+              </div>
+
+              {/* San Paolo */}
+              <div className="flex items-center justify-center h-32 w-full">
+                <Image
+                  src="/images/Patrocionador San Paolo.png"
+                  alt="San Paolo"
+                  width={200}
+                  height={120}
+                  className="max-h-32 w-auto object-contain"
+                />
+              </div>
             </div>
           </div>
         </section>
