@@ -83,7 +83,7 @@ export default buildConfig({
   },
   jobs: {
     access: {
-      run: ({ req }: { req: PayloadRequest }): boolean => {
+      run: ({ req }) => {
         // Allow logged in users to execute this endpoint (default)
         if (req.user) return true;
 
