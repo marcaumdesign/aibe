@@ -24,43 +24,66 @@ export default function MobileMenu() {
           <Drawer.Title>Menu</Drawer.Title>
         </Drawer.Header>
         <Drawer.Body className='p-5'>
-          <nav className='flex flex-col gap-3 text-label-md'>
-            {/* About */}
-            <Section title='About AIBE'>
-              <Item href='/about#context'>AIBE in Context</Item>
-              <Item href='/about/team'>Team</Item>
-            </Section>
+          <nav className='flex flex-col gap-1 text-label-md'>
+            {/* Main Navigation */}
+            <Item href='/'>Home</Item>
+            <Item href='/about'>About US</Item>
+            <Item href='/people'>People</Item>
 
-            {/* Events & Prizes */}
-            <Section title='Events & Prizes'>
-              <Item href='/events/workshop'>AIBE Workshop 2025</Item>
-              <Item href='/events/workshop2024'>AIBE Workshop 2024</Item>
-              <Item href='/events'>Giorgio Mortara</Item>
-              <Item href='/events/pastcongresses'>Past Congresses</Item>
-            </Section>
-
-            {/* Membership (alinhado com itens internos) */}
-            <div className='pl-3'>
-              <Item href='/membership'>Membership</Item>
+            {/* Workshop Section with subitems */}
+            <div className='flex flex-col'>
+              <div className='px-4 py-3 text-gray-700 font-medium'>
+                Workshop
+              </div>
+              <div className='flex flex-col gap-1 pl-4'>
+                <SubItem href='/workshop'>AIBE Workshop 2025</SubItem>
+                <SubItem href='/events/workshop2024'>AIBE Workshop 2024</SubItem>
+                <SubItem href='/events'>Last Events</SubItem>
+              </div>
             </div>
 
-            {/* Blog */}
-            <Section title='Blog'>
-              <Item href='/blog'>Blog</Item>
-              <Item href='/blog/academic-cooperation'>Academic Cooperation</Item>
-            </Section>
+            {/* Prizes Section with subitems */}
+            <div className='flex flex-col'>
+              <div className='px-4 py-3 text-gray-700 font-medium'>
+                Prizes
+              </div>
+              <div className='flex flex-col gap-1 pl-4'>
+                <SubItem href='/prizes'>Giorgio Mortara</SubItem>
+                <SubItem href='/prizes/giorgio-mortara-2'>Giorgio Mortara 2 (Test)</SubItem>
+              </div>
+            </div>
 
-            {/* Contact (alinhado com itens internos) */}
-            <div className='pl-3'>
-              <Item href='/contact'>Contact</Item>
+            {/* Blog Section with subitems */}
+            <div className='flex flex-col'>
+              <Item href='/blog'>Blog</Item>
+              <div className='flex flex-col gap-1 pl-4'>
+                <SubItem href='/blog/academic-cooperation'>Academic Cooperation</SubItem>
+              </div>
+            </div>
+
+            <Item href='/contact'>Contact</Item>
+
+            {/* Divider */}
+            <div className='my-2 border-t border-gray-200'></div>
+
+            {/* Sign In Button */}
+            <div className='mt-2'>
+              <Drawer.Close asChild>
+                <Link
+                  href='/sign-in'
+                  className='block rounded-md border border-gray-300 px-4 py-3 text-center text-gray-700 font-medium hover:bg-gray-50 transition-colors'
+                >
+                  Sign In
+                </Link>
+              </Drawer.Close>
             </div>
 
             {/* Become a Member CTA */}
-            <div className='mt-4'>
+            <div className='mt-2'>
               <Drawer.Close asChild>
                 <Link
                   href='/membership'
-                  className='block rounded-none bg-primary-base px-4 py-3 text-center text-static-white'
+                  className='block rounded-md bg-primary-base px-4 py-3 text-center text-static-white font-medium hover:opacity-90 transition-opacity'
                 >
                   Become a Member
                 </Link>
@@ -73,25 +96,25 @@ export default function MobileMenu() {
   );
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className='flex flex-col gap-2'>
-      <div className='text-text-sub-600'>{title}</div>
-      <div className='flex flex-col gap-2 pl-3'>{children}</div>
-    </div>
-  );
-}
-
-function Item({ href, children, emphasized }: { href: string; children: React.ReactNode; emphasized?: boolean }) {
+function Item({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <Drawer.Close asChild>
       <Link
         href={href}
-        className={
-          emphasized
-            ? 'rounded-md bg-primary-alpha-10 px-3 py-2 text-primary-base'
-            : 'rounded-md px-3 py-2 hover:bg-bg-weak-50'
-        }
+        className='block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors rounded-md font-medium'
+      >
+        {children}
+      </Link>
+    </Drawer.Close>
+  );
+}
+
+function SubItem({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Drawer.Close asChild>
+      <Link
+        href={href}
+        className='block px-4 py-2 text-gray-600 hover:bg-gray-50 hover:text-primary-base transition-colors rounded-md text-sm'
       >
         {children}
       </Link>

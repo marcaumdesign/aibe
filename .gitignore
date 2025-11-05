@@ -19,6 +19,7 @@ out/
 build/
 dist/
 coverage/
+better-auth_migrations/
 
 ############################
 # Logs & Debug             #
@@ -58,3 +59,5 @@ Thumbs.db
 # Security                 #
 ############################
 *.pem
+
+/lib/generated/prisma

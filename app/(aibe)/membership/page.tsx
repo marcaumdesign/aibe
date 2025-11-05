@@ -75,65 +75,54 @@ export default function Membership() {
             <h1 className="text-title-h1 text-black">
               Become a Member
             </h1>
-            <p className="text-paragraph-lg text-slate-600 max-w-2xl mx-auto">
-              Gain access to exclusive events, networking opportunities, and the right to participate in the Members&apos; Assembly.
-            </p>
+            <div className="relative max-w-2xl mx-auto">
+              <p className="text-paragraph-lg text-slate-600">
+                Gain access to exclusive events, networking opportunities, and the right to participate in the Members&apos; Assembly.
+              </p>
 
-            {/* Flags com animação circular - posicionadas sobre a imagem (visíveis no mobile) */}
-            <div className="relative mt-8 mobile:mt-4">
-              {/* Animação Circular - Bandeira da Itália (esquerda) */}
-              <div className="absolute z-50 left-[15%] mobile:left-[8%] -top-2.5 mobile:top-2">
-                <div className="relative w-16 h-16 mobile:w-14 mobile:h-14">
-                  {/* Camada 1 - Bandeira (interna) - sem animação */}
-                  <div className="absolute inset-0 rounded-full overflow-hidden z-[100]">
-                    <Image
-                      src="/images/italy-flag.png"
-                      alt="Italian flag"
-                      fill
-                      className="object-cover"
-                    />
+              {/* Flags com animação circular - alinhadas com o texto */}
+              <div className="flex justify-between items-center mt-8">
+                {/* Animação Circular - Bandeira da Itália */}
+                <div className="relative z-10">
+                  <div className="relative w-16 h-16 mobile:w-14 mobile:h-14">
+                    {/* Camada 1 - Bandeira (interna) - sem animação */}
+                    <div className="absolute inset-0 rounded-full overflow-hidden z-[100]">
+                      <Image
+                        src="/images/italy-flag.png"
+                        alt="Italian flag"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+
+                    {/* Camada 2 - Anel médio - animação customizada */}
+                    <div className="absolute inset-0 rounded-full bg-blue-100 scale-125 animate-pulse-custom z-40"></div>
+
+                    {/* Camada 3 - Anel externo - animação mais lenta */}
+                    <div className="absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30"></div>
                   </div>
-
-                  {/* Camada 2 - Anel médio - animação customizada */}
-                  <div className="absolute inset-0 rounded-full bg-blue-100 scale-125 animate-pulse-custom z-40"></div>
-
-                  {/* Camada 3 - Anel externo - animação mais lenta */}
-                  <div className="absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30"></div>
                 </div>
-              </div>
 
-              {/* Animação Circular - Bandeira do Brasil (direita) */}
-              <div className="absolute z-50 right-[15%] mobile:right-[8%] -top-2.5 mobile:top-2">
-                <div className="relative w-16 h-16 mobile:w-14 mobile:h-14">
-                  {/* Camada 1 - Bandeira (interna) - sem animação */}
-                  <div className="absolute inset-0 rounded-full overflow-hidden z-[100]">
-                    <Image
-                      src="/images/brazil-flag.png"
-                      alt="Brazilian flag"
-                      fill
-                      className="object-cover"
-                    />
+                {/* Animação Circular - Bandeira do Brasil */}
+                <div className="relative z-10">
+                  <div className="relative w-16 h-16 mobile:w-14 mobile:h-14">
+                    {/* Camada 1 - Bandeira (interna) - sem animação */}
+                    <div className="absolute inset-0 rounded-full overflow-hidden z-[100]">
+                      <Image
+                        src="/images/brazil-flag.png"
+                        alt="Brazilian flag"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+
+                    {/* Camada 2 - Anel médio - animação customizada */}
+                    <div className="absolute inset-0 rounded-full bg-blue-100 scale-125 animate-pulse-custom z-40"></div>
+
+                    {/* Camada 3 - Anel externo - animação mais lenta */}
+                    <div className="absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30"></div>
                   </div>
-
-                  {/* Camada 2 - Anel médio - animação customizada */}
-                  <div className="absolute inset-0 rounded-full bg-blue-100 scale-125 animate-pulse-custom z-40"></div>
-
-                  {/* Camada 3 - Anel externo - animação mais lenta */}
-                  <div className="absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30"></div>
                 </div>
-              </div>
-            </div>
-
-            {/* Hero Image */}
-            <div className="mt-6 w-full -mx-4">
-              <div className="relative w-full h-[651.43px] mobile:h-[400px] bg-gray-100 overflow-hidden">
-                <Image
-                  src="/images/reunion.png"
-                  alt="Team collaboration"
-                  fill
-                  className="object-cover object-center"
-                  priority
-                />
               </div>
             </div>
           </div>
@@ -201,6 +190,14 @@ export default function Membership() {
                 >
                   Register Now
                 </Button>
+              </div>
+
+              {/* Powered by Stripe Logo */}
+              <div className="mt-6 flex justify-center">
+                <div className="inline-flex items-center gap-2 px-4 py-2 border-2 border-purple-500 rounded-lg bg-transparent">
+                  <span className="text-purple-500 text-sm font-normal">Powered by</span>
+                  <span className="text-purple-500 text-sm font-bold italic">stripe</span>
+                </div>
               </div>
             </div>
           </div>

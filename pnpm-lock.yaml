@@ -16,10 +16,10 @@ importers:
         version: 3.62.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@payloadcms/db-sqlite':
         specifier: ^3.62.1
-        version: 3.62.1(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(bufferutil@4.0.9)(kysely@0.28.8)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(pg@8.16.3)(utf-8-validate@6.0.5)
+        version: 3.62.1(@prisma/client@5.22.0(prisma@5.22.0))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(bufferutil@4.0.9)(kysely@0.28.8)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(pg@8.16.3)(prisma@5.22.0)(utf-8-validate@6.0.5)
       '@payloadcms/db-vercel-postgres':
         specifier: ^3.62.1
-        version: 3.62.1(@libsql/client@0.15.15(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@types/pg@8.11.6)(better-sqlite3@12.4.1)(kysely@0.28.8)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))
+        version: 3.62.1(@libsql/client@0.15.15(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@prisma/client@5.22.0(prisma@5.22.0))(@types/pg@8.11.6)(better-sqlite3@12.4.1)(kysely@0.28.8)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(prisma@5.22.0)
       '@payloadcms/live-preview-react':
         specifier: ^3.62.1
         version: 3.62.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -53,6 +53,9 @@ importers:
       '@payloadcms/ui':
         specifier: ^3.62.1
         version: 3.62.1(@types/react@18.3.12)(monaco-editor@0.54.0)(next@15.5.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4))(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.6.3)
+      '@prisma/client':
+        specifier: 5.22.0
+        version: 5.22.0(prisma@5.22.0)
       '@radix-ui/react-accordion':
         specifier: ^1.2.1
         version: 1.2.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -116,6 +119,9 @@ importers:
       date-fns:
         specifier: ^3
         version: 3.6.0
+      dotenv:
+        specifier: ^17.2.3
+        version: 17.2.3
       framer-motion:
         specifier: ^12.23.12
         version: 12.23.12(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -204,12 +210,18 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.6.8
         version: 0.6.8(prettier@3.3.3)
+      prisma:
+        specifier: ^5.22.0
+        version: 5.22.0
       tailwindcss:
         specifier: ^3.4.14
         version: 3.4.14
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.14)
+      tsx:
+        specifier: ^4.20.6
+        version: 4.20.6
       typescript:
         specifier: ^5
         version: 5.6.3
@@ -1556,6 +1568,30 @@ packages:
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
+
+  '@prisma/client@5.22.0':
+    resolution: {integrity: sha512-M0SVXfyHnQREBKxCgyo7sffrKttwE6R8PMq330MIUF0pTwjUhLbW84pFDlf06B27XyCR++VtjugEnIHdr07SVA==}
+    engines: {node: '>=16.13'}
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+
+  '@prisma/debug@5.22.0':
+    resolution: {integrity: sha512-AUt44v3YJeggO2ZU5BkXI7M4hu9BF2zzH2iF2V5pyXT/lRTyWiElZ7It+bRH1EshoMRxHgpYg4VB6rCM+mG5jQ==}
+
+  '@prisma/engines-version@5.22.0-44.605197351a3c8bdd595af2d2a9bc3025bca48ea2':
+    resolution: {integrity: sha512-2PTmxFR2yHW/eB3uqWtcgRcgAbG1rwG9ZriSvQw+nnb7c4uCr3RAcGMb6/zfE88SKlC1Nj2ziUvc96Z379mHgQ==}
+
+  '@prisma/engines@5.22.0':
+    resolution: {integrity: sha512-UNjfslWhAt06kVL3CjkuYpHAWSO6L4kDCVPegV6itt7nD1kSJavd3vhgAEhjglLJJKEdJ7oIqDJ+yHk6qO8gPA==}
+
+  '@prisma/fetch-engine@5.22.0':
+    resolution: {integrity: sha512-bkrD/Mc2fSvkQBV5EpoFcZ87AvOgDxbG99488a5cexp5Ccny+UM6MAe/UFkUC0wLYD9+9befNOqGiIJhhq+HbA==}
+
+  '@prisma/get-platform@5.22.0':
+    resolution: {integrity: sha512-pHhpQdr1UPFpt+zFfnPazhulaZYCUqeIcPpJViYoq9R+D/yw4fjE+CtnsnKzPYm0ddUbeXUzjGVGIRVgPDCk4Q==}
 
   '@radix-ui/number@1.1.0':
     resolution: {integrity: sha512-V3gRzhVNU1ldS5XhAPTom1fOIo4ccrjjJgmE+LI2h/WaFpHmx0MQApT+KZHnx8abG6Avtfcz4WoEciMnpFT3HQ==}
@@ -3414,6 +3450,10 @@ packages:
   dompurify@3.1.7:
     resolution: {integrity: sha512-VaTstWtsneJY8xzy7DekmYWEOZcmzIe3Qb3zPd4STve1OBTa+e+WmS1ITQec1fZYXI3HCsOZZiSMpG6oxoWMWQ==}
 
+  dotenv@17.2.3:
+    resolution: {integrity: sha512-JVUnt+DUIzu87TABbhPmNfVdBDt18BLOWjMUFJMSi/Qqg7NTYtabbvSNJGOJ7afbRuv9D/lngizHtP7QyLQ+9w==}
+    engines: {node: '>=12'}
+
   drizzle-kit@0.31.5:
     resolution: {integrity: sha512-+CHgPFzuoTQTt7cOYCV6MOw2w8vqEn/ap1yv4bpZOWL03u7rlVRQhUY0WYT3rHsgVTXwYQDZaSUJSQrMBUKuWg==}
     hasBin: true
@@ -4973,6 +5013,11 @@ packages:
     resolution: {integrity: sha512-ey8Ls/+Di31eqzUxC46h8MksNuGx/n0AAC8uKpwFau4RPDYLuE3EXTp8N8G2vX2N7UC/+IXeNUnlWBGGcAG+Ig==}
     peerDependencies:
       react: '>=16.0.0'
+
+  prisma@5.22.0:
+    resolution: {integrity: sha512-vtpjW3XuYCSnMsNVBjLMNkTj6OZbudcPPTPYHqX0CJfpcdWciI1dM8uHETwmDxxiqEwCIE6WvXucWUetJgfu/A==}
+    engines: {node: '>=16.13'}
+    hasBin: true
 
   prismjs@1.30.0:
     resolution: {integrity: sha512-DEvV2ZF2r2/63V+tK8hQvrR2ZGn10srHbXviTlcv7Kpzw8jWiNTqbVgjO3IY8RxrrOUF8VPMQQFysYYYv0YZxw==}
@@ -7323,13 +7368,13 @@ snapshots:
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
 
-  '@payloadcms/db-sqlite@3.62.1(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(bufferutil@4.0.9)(kysely@0.28.8)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(pg@8.16.3)(utf-8-validate@6.0.5)':
+  '@payloadcms/db-sqlite@3.62.1(@prisma/client@5.22.0(prisma@5.22.0))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(bufferutil@4.0.9)(kysely@0.28.8)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(pg@8.16.3)(prisma@5.22.0)(utf-8-validate@6.0.5)':
     dependencies:
       '@libsql/client': 0.14.0(bufferutil@4.0.9)(utf-8-validate@6.0.5)
-      '@payloadcms/drizzle': 3.62.1(@libsql/client@0.14.0(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(pg@8.16.3)
+      '@payloadcms/drizzle': 3.62.1(@libsql/client@0.14.0(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@prisma/client@5.22.0(prisma@5.22.0))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(pg@8.16.3)(prisma@5.22.0)
       console-table-printer: 2.12.1
       drizzle-kit: 0.31.5
-      drizzle-orm: 0.44.6(@libsql/client@0.14.0(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(pg@8.16.3)
+      drizzle-orm: 0.44.6(@libsql/client@0.14.0(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@prisma/client@5.22.0(prisma@5.22.0))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(pg@8.16.3)(prisma@5.22.0)
       payload: 3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5)
       prompts: 2.4.2
       to-snake-case: 1.0.0
@@ -7367,13 +7412,13 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@payloadcms/db-vercel-postgres@3.62.1(@libsql/client@0.15.15(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@types/pg@8.11.6)(better-sqlite3@12.4.1)(kysely@0.28.8)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))':
+  '@payloadcms/db-vercel-postgres@3.62.1(@libsql/client@0.15.15(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@prisma/client@5.22.0(prisma@5.22.0))(@types/pg@8.11.6)(better-sqlite3@12.4.1)(kysely@0.28.8)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(prisma@5.22.0)':
     dependencies:
-      '@payloadcms/drizzle': 3.62.1(@libsql/client@0.15.15(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(pg@8.16.3)
+      '@payloadcms/drizzle': 3.62.1(@libsql/client@0.15.15(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@prisma/client@5.22.0(prisma@5.22.0))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(pg@8.16.3)(prisma@5.22.0)
       '@vercel/postgres': 0.9.0
       console-table-printer: 2.12.1
       drizzle-kit: 0.31.5
-      drizzle-orm: 0.44.6(@libsql/client@0.15.15(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(pg@8.16.3)
+      drizzle-orm: 0.44.6(@libsql/client@0.15.15(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@prisma/client@5.22.0(prisma@5.22.0))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(pg@8.16.3)(prisma@5.22.0)
       payload: 3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5)
       pg: 8.16.3
       prompts: 2.4.2
@@ -7410,11 +7455,11 @@ snapshots:
       - sqlite3
       - supports-color
 
-  '@payloadcms/drizzle@3.62.1(@libsql/client@0.14.0(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(pg@8.16.3)':
+  '@payloadcms/drizzle@3.62.1(@libsql/client@0.14.0(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@prisma/client@5.22.0(prisma@5.22.0))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(pg@8.16.3)(prisma@5.22.0)':
     dependencies:
       console-table-printer: 2.12.1
       dequal: 2.0.3
-      drizzle-orm: 0.44.6(@libsql/client@0.14.0(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(pg@8.16.3)
+      drizzle-orm: 0.44.6(@libsql/client@0.14.0(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@prisma/client@5.22.0(prisma@5.22.0))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(pg@8.16.3)(prisma@5.22.0)
       payload: 3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5)
       prompts: 2.4.2
       to-snake-case: 1.0.0
@@ -7450,11 +7495,11 @@ snapshots:
       - sql.js
       - sqlite3
 
-  '@payloadcms/drizzle@3.62.1(@libsql/client@0.15.15(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(pg@8.16.3)':
+  '@payloadcms/drizzle@3.62.1(@libsql/client@0.15.15(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@prisma/client@5.22.0(prisma@5.22.0))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(pg@8.16.3)(prisma@5.22.0)':
     dependencies:
       console-table-printer: 2.12.1
       dequal: 2.0.3
-      drizzle-orm: 0.44.6(@libsql/client@0.15.15(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(pg@8.16.3)
+      drizzle-orm: 0.44.6(@libsql/client@0.15.15(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@prisma/client@5.22.0(prisma@5.22.0))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(pg@8.16.3)(prisma@5.22.0)
       payload: 3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5)
       prompts: 2.4.2
       to-snake-case: 1.0.0
@@ -7818,6 +7863,31 @@ snapshots:
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
+
+  '@prisma/client@5.22.0(prisma@5.22.0)':
+    optionalDependencies:
+      prisma: 5.22.0
+
+  '@prisma/debug@5.22.0': {}
+
+  '@prisma/engines-version@5.22.0-44.605197351a3c8bdd595af2d2a9bc3025bca48ea2': {}
+
+  '@prisma/engines@5.22.0':
+    dependencies:
+      '@prisma/debug': 5.22.0
+      '@prisma/engines-version': 5.22.0-44.605197351a3c8bdd595af2d2a9bc3025bca48ea2
+      '@prisma/fetch-engine': 5.22.0
+      '@prisma/get-platform': 5.22.0
+
+  '@prisma/fetch-engine@5.22.0':
+    dependencies:
+      '@prisma/debug': 5.22.0
+      '@prisma/engines-version': 5.22.0-44.605197351a3c8bdd595af2d2a9bc3025bca48ea2
+      '@prisma/get-platform': 5.22.0
+
+  '@prisma/get-platform@5.22.0':
+    dependencies:
+      '@prisma/debug': 5.22.0
 
   '@radix-ui/number@1.1.0': {}
 
@@ -10318,6 +10388,8 @@ snapshots:
 
   dompurify@3.1.7: {}
 
+  dotenv@17.2.3: {}
+
   drizzle-kit@0.31.5:
     dependencies:
       '@drizzle-team/brocli': 0.10.2
@@ -10327,23 +10399,27 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.44.6(@libsql/client@0.14.0(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(pg@8.16.3):
+  drizzle-orm@0.44.6(@libsql/client@0.14.0(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@prisma/client@5.22.0(prisma@5.22.0))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(pg@8.16.3)(prisma@5.22.0):
     optionalDependencies:
       '@libsql/client': 0.14.0(bufferutil@4.0.9)(utf-8-validate@6.0.5)
+      '@prisma/client': 5.22.0(prisma@5.22.0)
       '@types/pg': 8.11.6
       '@vercel/postgres': 0.9.0
       better-sqlite3: 12.4.1
       kysely: 0.28.8
       pg: 8.16.3
+      prisma: 5.22.0
 
-  drizzle-orm@0.44.6(@libsql/client@0.15.15(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(pg@8.16.3):
+  drizzle-orm@0.44.6(@libsql/client@0.15.15(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@prisma/client@5.22.0(prisma@5.22.0))(@types/pg@8.11.6)(@vercel/postgres@0.9.0)(better-sqlite3@12.4.1)(kysely@0.28.8)(pg@8.16.3)(prisma@5.22.0):
     optionalDependencies:
       '@libsql/client': 0.15.15(bufferutil@4.0.9)(utf-8-validate@6.0.5)
+      '@prisma/client': 5.22.0(prisma@5.22.0)
       '@types/pg': 8.11.6
       '@vercel/postgres': 0.9.0
       better-sqlite3: 12.4.1
       kysely: 0.28.8
       pg: 8.16.3
+      prisma: 5.22.0
 
   eastasianwidth@0.2.0: {}
 
@@ -12216,6 +12292,12 @@ snapshots:
       '@types/prismjs': 1.26.5
       clsx: 2.1.1
       react: 19.1.1
+
+  prisma@5.22.0:
+    dependencies:
+      '@prisma/engines': 5.22.0
+    optionalDependencies:
+      fsevents: 2.3.3
 
   prismjs@1.30.0: {}
 

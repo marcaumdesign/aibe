@@ -4,128 +4,144 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <div className="bg-primary-base box-border flex flex-col gap-[50px] mobile:gap-8 items-center justify-start px-[32px] mobile:px-4 py-[32px] mobile:py-8 relative shrink-0 w-full">
-      <div className="flex gap-[64px] mobile:gap-8 mobile:flex-col items-start justify-start max-w-[1200px] relative shrink-0 w-full">
-        {/* Logo and Social Media */}
-        <div className="flex flex-col -gap-2 items-start mobile:items-center justify-center relative shrink-0 w-[300px] mobile:w-full">
-          <div className="flex items-center justify-start mobile:justify-center leading-[0] relative shrink-0">
-            <div className="relative h-[62px] mobile:h-[50px] w-[150px]">
-              <Image alt="AIBE Logo" fill className="object-contain" src="/images/logo branca.svg" />
-            </div>
-          </div>
-          <div className="flex gap-[8px] items-start mobile:items-center justify-start mobile:justify-center relative shrink-0">
-            <a href="https://linkedin.com/company/aibe" target="_blank" rel="noopener noreferrer" className="box-border flex gap-[2px] items-center justify-center overflow-clip p-[2px] relative rounded-[6px] shrink-0 hover:bg-white/10 transition-colors">
-              <div className="overflow-clip relative shrink-0 size-[20px]">
-                <RiLinkedinFill className="w-full h-full text-white" />
-              </div>
-            </a>
-            <a href="https://x.com/aibe" target="_blank" rel="noopener noreferrer" className="box-border flex gap-[2px] items-center justify-center overflow-clip p-[2px] relative rounded-[6px] shrink-0 hover:bg-white/10 transition-colors">
-              <div className="overflow-clip relative shrink-0 size-[20px]">
-                <RiTwitterXFill className="w-full h-full text-white" />
-              </div>
-            </a>
-            <a href="https://bsky.app/profile/aibe" target="_blank" rel="noopener noreferrer" className="box-border flex gap-[2px] items-center justify-center overflow-clip p-[2px] relative rounded-[6px] shrink-0 hover:bg-white/10 transition-colors">
-              <div className="overflow-clip relative shrink-0 size-[20px]">
-                <RiBlueskyFill className="w-full h-full text-white" />
-              </div>
-            </a>
-          </div>
-          <a href="mailto:aibe@aibe.website" className="text-text-white-0 text-paragraph-md hover:text-gray-400 transition-colors mobile:text-center mt-3">
-            aibe@aibe.website
-          </a>
-        </div>
+    <footer className="bg-primary-base w-full">
+      <div className="max-w-[1200px] mx-auto px-8 mobile:px-4 py-16 mobile:py-8">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mobile:gap-8 mb-12">
+          {/* Logo and Social Media - Takes 2 columns on desktop */}
+          <div className="md:col-span-2 flex flex-col gap-6">
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/images/logo branca.svg"
+                alt="AIBE Logo"
+                width={150}
+                height={56}
+                className="h-14 w-auto"
+              />
+            </Link>
 
-        {/* Navigation Links */}
-        <div className="flex gap-[32px] flex-wrap items-start justify-start">
-          {/* Home Column */}
-          <div className="flex flex-col gap-[16px] items-start w-fit">
-            <p className="text-text-soft-400 text-subheading-xs uppercase">Home</p>
-            <div className="flex flex-col gap-[4px] items-start">
-              <Link href="/#features" className="hover:text-gray-400 transition-colors">
-                <p className="text-text-white-0 text-paragraph-md">Features</p>
-              </Link>
-              <Link href="/about" className="hover:text-gray-400 transition-colors">
-                <p className="text-text-white-0 text-paragraph-md">About Us</p>
-              </Link>
-              <Link href="/events" className="hover:text-gray-400 transition-colors">
-                <p className="text-text-white-0 text-paragraph-md">AIBE Workshop</p>
-              </Link>
-              <Link href="/events#giorgio-mortara" className="hover:text-gray-400 transition-colors">
-                <p className="text-text-white-0 text-paragraph-md">Giorgio Mortara</p>
-              </Link>
-              <Link href="/blog/" className="hover:text-gray-400 transition-colors">
-                <p className="text-text-white-0 text-paragraph-md">Blog</p>
-              </Link>
+            <p className="text-white text-base max-w-sm">
+              Associazione Italo-Brasiliana di Economia
+            </p>
+
+            {/* Social Media */}
+            <div className="flex gap-3 items-center">
+              <a
+                href="https://linkedin.com/company/aibe"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
+              >
+                <RiLinkedinFill className="size-5 text-white transition-colors" />
+              </a>
+              <a
+                href="https://x.com/aibe"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
+              >
+                <RiTwitterXFill className="size-5 text-white transition-colors" />
+              </a>
+              <a
+                href="https://bsky.app/profile/aibe"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
+              >
+                <RiBlueskyFill className="size-5 text-white transition-colors" />
+              </a>
             </div>
+
+            <a
+              href="mailto:aibe@aibe.website"
+              className="text-white hover:text-gray-300 transition-colors text-base font-medium"
+            >
+              aibe@aibe.website
+            </a>
           </div>
 
-          {/* About Us Column */}
-          <div className="flex flex-col gap-[16px] items-start w-fit">
-            <p className="text-text-soft-400 text-subheading-xs uppercase">about us</p>
-            <div className="flex flex-col gap-[4px] items-start">
-              <Link href="/about" className="hover:text-gray-400 transition-colors">
-                <p className="text-text-white-0 text-paragraph-md">About AIBE</p>
+          {/* Navigation Links - 3 columns on desktop */}
+          {/* About Column */}
+          <div className="flex flex-col gap-4">
+            <h3 className="font-semibold text-white text-lg">About</h3>
+            <nav className="flex flex-col gap-3">
+              <Link href="/about" className="text-white/90 hover:text-white transition-colors text-base">
+                About AIBE
               </Link>
-              <Link href="/about#context" className="hover:text-gray-400 transition-colors">
-                <p className="text-text-white-0 text-paragraph-md">AIBE in Context</p>
+              <Link href="/about#context" className="text-white/90 hover:text-white transition-colors text-base">
+                AIBE in Context
               </Link>
-              <Link href="/about/team" className="hover:text-gray-400 transition-colors">
-                <p className="text-text-white-0 text-paragraph-md">Team</p>
+              <Link href="/about/team" className="text-white/90 hover:text-white transition-colors text-base">
+                Team
               </Link>
-            </div>
+              <Link href="/people" className="text-white/90 hover:text-white transition-colors text-base">
+                People
+              </Link>
+            </nav>
           </div>
 
           {/* Events & Prizes Column */}
-          <div className="flex flex-col gap-[16px] items-start w-fit">
-            <p className="text-text-soft-400 text-subheading-xs uppercase">Events & prizes</p>
-            <div className="flex flex-col gap-[4px] items-start">
-              <Link href="/events" className="hover:text-gray-400 transition-colors">
-                <p className="text-text-white-0 text-paragraph-md">AIBE Workshop</p>
+          <div className="flex flex-col gap-4">
+            <h3 className="font-semibold text-white text-lg">Events & Prizes</h3>
+            <nav className="flex flex-col gap-3">
+              <Link href="/workshop" className="text-white/90 hover:text-white transition-colors text-base">
+                AIBE Workshop 2025
               </Link>
-              <Link href="/events#giorgio-mortara" className="hover:text-gray-400 transition-colors">
-                <p className="text-text-white-0 text-paragraph-md">Giorgio Mortara</p>
+              <Link href="/events/workshop2024" className="text-white/90 hover:text-white transition-colors text-base">
+                AIBE Workshop 2024
               </Link>
-            </div>
+              <Link href="/events" className="text-white/90 hover:text-white transition-colors text-base">
+                Last Events
+              </Link>
+              <Link href="/prizes" className="text-white/90 hover:text-white transition-colors text-base">
+                Giorgio Mortara Prize
+              </Link>
+            </nav>
           </div>
 
-          {/* Resources Column */}
-          <div className="flex flex-col gap-[16px] items-start w-fit">
-            <p className="text-text-soft-400 text-subheading-xs uppercase">resources</p>
-            <div className="flex flex-col gap-[4px] items-start">
-              <Link href="/blog/" className="hover:text-gray-400 transition-colors">
-                <p className="text-text-white-0 text-paragraph-md">Blog</p>
+          {/* Resources & Contact Column */}
+          <div className="flex flex-col gap-4">
+            <h3 className="font-semibold text-white text-lg">Resources</h3>
+            <nav className="flex flex-col gap-3">
+              <Link href="/blog" className="text-white/90 hover:text-white transition-colors text-base">
+                Blog
               </Link>
-            </div>
+              <Link href="/membership" className="text-white/90 hover:text-white transition-colors text-base">
+                Membership
+              </Link>
+              <Link href="/contact" className="text-white/90 hover:text-white transition-colors text-base">
+                Contact & Offices
+              </Link>
+            </nav>
           </div>
+        </div>
 
-          {/* Contact Column */}
-          <div className="flex flex-col gap-[16px] items-start w-fit">
-            <p className="text-text-soft-400 text-subheading-xs uppercase">Contact</p>
-            <div className="flex flex-col gap-[4px] items-start">
-              <Link href="/membership" className="hover:text-gray-400 transition-colors">
-                <p className="text-text-white-0 text-paragraph-md">Membership</p>
-              </Link>
-              <Link href="/contact" className="hover:text-gray-400 transition-colors">
-                <p className="text-text-white-0 text-paragraph-md">Offices</p>
-              </Link>
-            </div>
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-white/20 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-white text-sm text-center md:text-left">
+            © {new Date().getFullYear()} AIBE. All Rights Reserved | Codice Fiscale: 97970970154
+          </p>
+          <div className="flex gap-6 items-center text-sm">
+            <a
+              href="https://www.iubenda.com/privacy-policy/33428132/cookie-policy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-gray-300 transition-colors"
+            >
+              Cookie Policy
+            </a>
+            <span className="text-white/50">|</span>
+            <a
+              href="https://www.iubenda.com/privacy-policy/33428132"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-gray-300 transition-colors"
+            >
+              Privacy Policy
+            </a>
           </div>
         </div>
       </div>
-
-      {/* Copyright */}
-      <div className="flex items-center justify-between mobile:flex-col mobile:gap-4 max-w-[1200px] relative shrink-0 w-full">
-        <p className="text-center text-white">Copyright @2024 AIBE. All Rights Reserved | Codice Fiscale: 97970970154</p>
-        <div className="flex gap-4 items-center">
-          <a href="https://www.iubenda.com/privacy-policy/33428132/cookie-policy" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-400 transition-colors">
-            Cookie Policy
-          </a>
-          <span className="text-white">|</span>
-          <a href="https://www.iubenda.com/privacy-policy/33428132" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-400 transition-colors">
-            Privacy
-          </a>
-        </div>
-      </div>
-    </div>
+    </footer>
   )
 }
