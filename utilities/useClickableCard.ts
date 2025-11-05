@@ -6,10 +6,10 @@ import { useCallback, useEffect, useRef } from 'react'
 
 type UseClickableCardType<T extends HTMLElement> = {
   card: {
-    ref: RefObject<T | null>
+    ref: RefObject<T>
   }
   link: {
-    ref: RefObject<HTMLAnchorElement | null>
+    ref: RefObject<HTMLAnchorElement>
   }
 }
 
@@ -25,8 +25,8 @@ function useClickableCard<T extends HTMLElement>({
   scroll = true,
 }: Props): UseClickableCardType<T> {
   const router = useRouter()
-  const card = useRef<T>(null)
-  const link = useRef<HTMLAnchorElement>(null)
+  const card = useRef<T | null>(null)
+  const link = useRef<HTMLAnchorElement | null>(null)
   const timeDown = useRef<number>(0)
   const hasActiveParent = useRef<boolean>(false)
   const pressedButton = useRef<number>(0)
@@ -97,10 +97,10 @@ function useClickableCard<T extends HTMLElement>({
 
   return {
     card: {
-      ref: card,
+      ref: card as RefObject<T>,
     },
     link: {
-      ref: link,
+      ref: link as RefObject<HTMLAnchorElement>,
     },
   }
 }
