@@ -1,10 +1,9 @@
 'use client';
 
-import { RiBlueskyFill, RiLinkedinFill, RiMapPinLine, RiSendPlaneLine, RiTrophyLine, RiTwitterXFill } from '@remixicon/react';
+import { RiBlueskyFill, RiLinkedinFill, RiTwitterXFill } from '@remixicon/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Root as Button } from '@/components/ui/button';
-import CTA from '@/components/cta';
 import BlogSection from '@/components/blog-section';
 
 // export const metadata: Metadata = {

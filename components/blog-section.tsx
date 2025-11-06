@@ -1,5 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 interface NewsItem {
   id: string | number;
@@ -17,26 +20,6 @@ interface NewsItem {
   };
 }
 
-async function getNews() {
-  try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-    const res = await fetch(`${baseUrl}/api/news`, {
-      next: { revalidate: 60 }, // Cache por 60 segundos
-    });
-
-    if (!res.ok) {
-      console.error('Erro ao buscar notícias:', res.status);
-      return [];
-    }
-
-    const data = await res.json();
-    return data.news || [];
-  } catch (error) {
-    console.error('Erro ao buscar notícias:', error);
-    return [];
-  }
-}
-
 function formatDate(dateString: string) {
   return new Date(dateString).toLocaleDateString('en-US', {
     year: 'numeric',
@@ -45,9 +28,90 @@ function formatDate(dateString: string) {
   });
 }
 
-export default async function BlogSection() {
-  const posts = await getNews();
+export default function BlogSection() {
+  const [posts, setPosts] = useState<NewsItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Garantir que só executa no cliente
+    if (typeof window === 'undefined') {
+      setLoading(false);
+      return;
+    }
+
+    let isMounted = true;
+
+    async function loadPosts() {
+      try {
+        const res = await fetch('/api/news', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        
+        if (!isMounted) return;
+
+        if (res.ok) {
+          const data = await res.json();
+          if (isMounted) {
+            setPosts(data.news || []);
+            setError(null);
+          }
+        } else {
+          const errorText = await res.text().catch(() => res.statusText);
+          console.error('Erro ao carregar notícias:', res.status, errorText);
+          if (isMounted) {
+            setPosts([]);
+            setError('Erro ao carregar notícias');
+          }
+        }
+      } catch (error) {
+        console.error('Erro ao carregar posts:', error);
+        if (isMounted) {
+          setPosts([]);
+          setError('Erro ao conectar com o servidor');
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    }
+    
+    loadPosts();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   const displayPosts = posts.slice(0, 3);
+
+  if (loading) {
+    return (
+      <section className='py-20'>
+        <div className='container mx-auto max-w-[1200px] px-4'>
+          <div className='text-center'>
+            <p className='text-paragraph-lg text-text-sub-600'>Carregando notícias...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className='py-20'>
+        <div className='container mx-auto max-w-[1200px] px-4'>
+          <div className='text-center'>
+            <p className='text-paragraph-lg text-text-sub-600 text-red-500'>{error}</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className='py-20'>
