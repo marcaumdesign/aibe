@@ -23,7 +23,7 @@ export default function Footer() {
             </Link>
 
             <p className="text-white text-base max-w-sm">
-              Associazione Italo-Brasiliana degli Economisti - Strengthening academic cooperation between Brazil and Italy
+              Associazione Italo-Brasiliana di Economia
             </p>
 
             {/* Social Media */}

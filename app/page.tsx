@@ -1,6 +1,6 @@
 'use client';
 
-import { RiMapPinLine, RiSendPlaneLine, RiTrophyLine } from '@remixicon/react';
+import { RiBlueskyFill, RiLinkedinFill, RiMapPinLine, RiSendPlaneLine, RiTrophyLine, RiTwitterXFill } from '@remixicon/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Root as Button } from '@/components/ui/button';
@@ -208,10 +208,10 @@ export default function Home() {
                   AIBE Workshop
                 </Badge>
                 <h3 className='text-title-h4 text-black'>
-                  The AIBE Annual Workshop
+                  AIBE Workshop
                 </h3>
                 <p className='text-sub-600 text-paragraph-lg flex-1'>
-                  An academic event held alternately in both countries, dedicated to knowledge exchange and scientific dialogue.
+                  We organize an academic event held alternately in both countries.
                 </p>
                 <Button variant='primary' size='medium' className='h-hug w-fit mt-auto' asChild>
                   <Link href='/events/workshop2024'>
@@ -239,7 +239,7 @@ export default function Home() {
                   Giorgio Mortara Prize
                 </h3>
                 <p className='text-sub-600 text-paragraph-lg flex-1'>
-                  Annual recognition for the best paper authored by young Brazilian and Italian researchers in academic collaboration.
+                  We award a prize for the best paper by a junior Italian-Brazilian research team.
                 </p>
                 <Button variant='primary' size='medium' className='h-hug w-fit mt-auto' asChild>
                   <Link href='/prizes'>
@@ -264,14 +264,14 @@ export default function Home() {
                   About AIBE
                 </Badge>
                 <h3 className='text-title-h4 text-black'>
-                  AIBE at a glance
+                  Scientific Friendships
                 </h3>
                 <p className='text-sub-600 text-paragraph-lg flex-1'>
-                  The AIBE – Italian-Brazilian Association of Economics is a bilateral non-profit organization dedicated to fostering scientific cooperation between Brazil and Italy.
+                  We facilitate the spread of information and promote academic mobility.
                 </p>
                 <Button variant='primary' size='medium' className='h-hug w-fit mt-auto' asChild>
                   <Link href='/about'>
-                    About AIBE
+                    See More
                   </Link>
                 </Button>
               </div>
@@ -284,12 +284,57 @@ export default function Home() {
       <BlogSection />
 
       {/* CTA Section */}
-      <div className='mt-80 mobile:mt-48'>
-        <CTA />
-      </div>
+      <section className='relative overflow-visible bg-primary-base flex justify-center pb-8 items-end h-[500px] mobile:h-auto mobile:py-16 mt-20'>
+        <div className='relative z-10 mx-auto max-w-[1200px] p-16 mobile:p-8 w-full'>
+          <div className='gap-8 mobile:gap-6 flex flex-col text-center relative items-center justify-center'>
+            <Image
+              src='/images/bandeira cta.svg'
+              alt='Brazilian and Italian flags'
+              width={402}
+              height={294}
+              className='absolute left-1/2 transform -translate-x-1/2 top-[-320px] mobile:top-[-210px] w-auto h-[290px] mobile:h-[200px] z-20'
+            />
+
+            <div className='text-center gap-4 mobile:gap-3 flex max-w-[700px] flex-col mx-auto'>
+              <h2 className='text-title-h2 mobile:text-title-h3 text-white'>
+                Follow Us
+              </h2>
+              <p className='text-paragraph-lg mobile:text-paragraph-md text-white'>
+                Follow us on our social media platforms.
+              </p>
+            </div>
+
+            <div className="flex gap-3 w-full items-center">
+              <a
+                href="https://linkedin.com/company/aibe"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
+              >
+                <RiLinkedinFill className="size-5 text-white transition-colors" />
+              </a>
+              <a
+                href="https://x.com/aibe"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
+              >
+                <RiTwitterXFill className="size-5 text-white transition-colors" />
+              </a>
+              <a
+                href="https://bsky.app/profile/aibe"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
+              >
+                <RiBlueskyFill className="size-5 text-white transition-colors" />
+              </a>
+            </div>
 
 
-
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
