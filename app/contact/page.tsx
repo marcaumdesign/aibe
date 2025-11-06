@@ -7,6 +7,12 @@ import {
 import { useState } from "react";
 import Image from "next/image";
 import CTA from "@/components/cta";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import * as Label from "@/components/ui/label";
+import { Root as Checkbox } from "@/components/ui/checkbox";
+import { Root as Button } from "@/components/ui/button";
+import { Root as Textarea } from "@/components/ui/textarea";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -61,88 +67,110 @@ export default function ContactPage() {
             </div>
 
             {/* Right side - Contact Form */}
-            <div className="bg-white">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-2 mobile:grid-cols-1 gap-4">
-                  <div>
-                    <input
-                      type="text"
-                      name="firstName"
-                      placeholder="Jane"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      className="w-full border-0 border-b-2 border-gray-200 rounded-none px-0 py-3 text-lg focus:border-blue-900 focus:ring-0 focus:outline-none"
-                    />
-                    <label className="text-sm text-gray-500 mt-1 block">First Name</label>
-                  </div>
-                  <div>
-                    <input
-                      type="text"
-                      name="lastName"
-                      placeholder="Doe"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      className="w-full border-0 border-b-2 border-gray-200 rounded-none px-0 py-3 text-lg focus:border-blue-900 focus:ring-0 focus:outline-none"
-                    />
-                    <label className="text-sm text-gray-500 mt-1 block">Last Name</label>
-                  </div>
-                </div>
+            <div className="w-full max-w-md">
+              <Card className="w-full shadow-lg border-0">
+                <form onSubmit={handleSubmit}>
+                  <CardContent className="grid gap-6 mobile:gap-4 pt-6">
+                    <div className="grid grid-cols-2 mobile:grid-cols-1 gap-4">
+                      <div className="grid gap-2">
+                        <Label.Root htmlFor="firstName" className="text-label-sm text-text-strong-950">
+                          First Name
+                        </Label.Root>
+                        <Input
+                          id="firstName"
+                          type="text"
+                          name="firstName"
+                          placeholder="Jane"
+                          value={formData.firstName}
+                          onChange={handleInputChange}
+                          className="h-12 mobile:h-10 border border-gray-200 rounded-lg focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 transition-all px-4 py-3"
+                        />
+                      </div>
+                      <div className="grid gap-2">
+                        <Label.Root htmlFor="lastName" className="text-label-sm text-text-strong-950">
+                          Last Name
+                        </Label.Root>
+                        <Input
+                          id="lastName"
+                          type="text"
+                          name="lastName"
+                          placeholder="Doe"
+                          value={formData.lastName}
+                          onChange={handleInputChange}
+                          className="h-12 mobile:h-10 border border-gray-200 rounded-lg focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 transition-all px-4 py-3"
+                        />
+                      </div>
+                    </div>
 
-                <div>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="you@aibe.com"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full border-0 border-b-2 border-gray-200 rounded-none px-0 py-3 text-lg focus:border-blue-900 focus:ring-0 focus:outline-none"
-                  />
-                  <label className="text-sm text-gray-500 mt-1 block">Email</label>
-                </div>
+                    <div className="grid gap-2">
+                      <Label.Root htmlFor="email" className="text-label-sm text-text-strong-950">
+                        Email
+                      </Label.Root>
+                      <Input
+                        id="email"
+                        type="email"
+                        name="email"
+                        placeholder="you@aibe.com"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className="h-12 mobile:h-10 border border-gray-200 rounded-lg focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 transition-all px-4 py-3"
+                      />
+                    </div>
 
-                <div>
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="+1 (555) 000-0000"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full border-0 border-b-2 border-gray-200 rounded-none px-0 py-3 text-lg focus:border-blue-900 focus:ring-0 focus:outline-none"
-                  />
-                  <label className="text-sm text-gray-500 mt-1 block">Phone Number</label>
-                </div>
+                    <div className="grid gap-2">
+                      <Label.Root htmlFor="phone" className="text-label-sm text-text-strong-950">
+                        Phone Number
+                      </Label.Root>
+                      <Input
+                        id="phone"
+                        type="tel"
+                        name="phone"
+                        placeholder="+1 (555) 000-0000"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        className="h-12 mobile:h-10 border border-gray-200 rounded-lg focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 transition-all px-4 py-3"
+                      />
+                    </div>
 
-                <div>
-                  <textarea
-                    name="message"
-                    placeholder="Leave us a message..."
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    rows={4}
-                    className="w-full border-0 border-b-2 border-gray-200 rounded-none px-0 py-3 text-lg focus:border-blue-900 focus:ring-0 resize-none focus:outline-none"
-                  />
-                  <label className="text-sm text-gray-500 mt-1 block">Message</label>
-                </div>
+                    <div className="grid gap-2">
+                      <Label.Root htmlFor="message" className="text-label-sm text-text-strong-950">
+                        Message
+                      </Label.Root>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        placeholder="Leave us a message..."
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        rows={4}
+                        simple
+                        className="min-h-28 border border-gray-200 rounded-lg focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 transition-all px-4 py-3"
+                      />
+                    </div>
 
-                <div className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    checked={formData.privacyPolicy}
-                    onChange={(e) => handleCheckboxChange(e.target.checked)}
-                    className="border-gray-300"
-                  />
-                  <label className="text-sm text-gray-600">
-                    You agree to our friendly privacy policy.
-                  </label>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-primary-base hover:bg-blue-800 text-white text-lg font-medium rounded-none" style={{ width: '149px', height: '44px' }}
-                >
-                  Send Message
-                </button>
-              </form>
+                    <div className="flex items-center gap-2">
+                      <Checkbox
+                        id="privacyPolicy"
+                        checked={formData.privacyPolicy}
+                        onCheckedChange={(value) => handleCheckboxChange(Boolean(value))}
+                      />
+                      <Label.Root htmlFor="privacyPolicy" className="text-paragraph-sm text-text-sub-600 cursor-pointer">
+                        You agree to our friendly privacy policy.
+                      </Label.Root>
+                    </div>
+                  </CardContent>
+                  <CardFooter className="flex flex-col gap-4 pt-0">
+                    <Button
+                      type="submit"
+                      variant="primary"
+                      size="medium"
+                      className="w-full h-12 mobile:h-10 rounded-none"
+                    >
+                      Send Message
+                    </Button>
+                  </CardFooter>
+                </form>
+              </Card>
             </div>
           </div>
         </div>

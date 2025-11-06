@@ -147,14 +147,15 @@ function BlogSection() {
                 <Link href={`/blog/${post.slug}`}>
                   <div className='overflow-hidden rounded-md'>
                     {post.image && (
-                      <Image
-                        src={post.image.url.startsWith('http') ? post.image.url : `https://majestic-serenity-7a76c06678.strapiapp.com${post.image.url}`}
-                        alt={post.image.alternativeText || post.title}
-                        width={400}
-                        height={256}
-                        className='w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105'
-                        style={{ objectPosition: 'center 15%' }}
-                      />
+                      <div className='relative w-full aspect-square overflow-hidden'>
+                        <Image
+                          src={post.image.url.startsWith('http') ? post.image.url : `https://majestic-serenity-7a76c06678.strapiapp.com${post.image.url}`}
+                          alt={post.image.alternativeText || post.title}
+                          fill
+                          className='object-cover transition-transform duration-300 group-hover:scale-105'
+                          style={{ objectPosition: 'center 15%' }}
+                        />
+                      </div>
                     )}
                   </div>
                   <div className='mt-4 flex items-center text-sm text-gray-500 gap-2'>

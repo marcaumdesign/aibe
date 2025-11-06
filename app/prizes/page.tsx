@@ -4,7 +4,68 @@ import Image from "next/image";
 import CTA from "@/components/cta";
 import { Root as Button } from "@/components/ui/button";
 
+interface Winner {
+  year: number;
+  title: string;
+  authors: {
+    name: string;
+    institution: string;
+    country: string;
+  }[];
+  link: string;
+}
+
+const winnersData: Winner[] = [
+  {
+    year: 2024,
+    title: "Digital Financial Inclusion and Economic Development in Emerging Markets",
+    authors: [
+      { name: "Marco Rossi", institution: "Università Bocconi", country: "Italy" },
+      { name: "Ana Silva", institution: "FGV-EAESP", country: "Brazil" }
+    ],
+    link: "https://example.com/paper2024"
+  },
+  {
+    year: 2023,
+    title: "Cross-Border Trade Flows Between Italy and Brazil: A Comparative Analysis",
+    authors: [
+      { name: "Giovanni Bianchi", institution: "University of Milano-Bicocca", country: "Italy" },
+      { name: "Carlos Oliveira", institution: "USP", country: "Brazil" }
+    ],
+    link: "https://example.com/paper2023"
+  },
+  {
+    year: 2022,
+    title: "Monetary Policy Transmission in Dual Banking Systems",
+    authors: [
+      { name: "Francesco Romano", institution: "LUISS Guido Carli", country: "Italy" },
+      { name: "Paula Santos", institution: "PUC-Rio", country: "Brazil" }
+    ],
+    link: "https://example.com/paper2022"
+  },
+  {
+    year: 2021,
+    title: "Labor Market Dynamics and Migration Patterns: Italy-Brazil Perspectives",
+    authors: [
+      { name: "Alessandro Ferrari", institution: "SAIS Bologna", country: "Italy" },
+      { name: "Roberto Costa", institution: "FGV-Rio", country: "Brazil" }
+    ],
+    link: "https://example.com/paper2021"
+  },
+  {
+    year: 2020,
+    title: "Innovation Ecosystems and Economic Growth: A Comparative Study",
+    authors: [
+      { name: "Luca Verdi", institution: "Politecnico di Milano", country: "Italy" },
+      { name: "Fernanda Alves", institution: "Unicamp", country: "Brazil" }
+    ],
+    link: "https://example.com/paper2020"
+  }
+];
+
 export default function EventsPage() {
+  // Ordenar ganhadores do mais recente para o mais antigo
+  const sortedWinners = [...winnersData].sort((a, b) => b.year - a.year);
 
   return (
     <div className="min-h-screen bg-white">
@@ -148,49 +209,99 @@ export default function EventsPage() {
         </div>
       </section>
 
+      {/* Official Launch of the Prize Section */}
+      <section className="mt-20 mb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            {/* Texto à esquerda */}
+            <div>
+              <p className="text-text-soft-400 font-medium tracking-wider uppercase mb-2 text-subheading-xs">
+                Studying
+              </p>
+              <h2 className="text-text-strong-950 text-title-h2 mb-4">
+                Official Launch of the Prize
+              </h2>
+              <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
+                The Workshop also hosted a special panel on Studying Economics in Italy, co-organized with the Italian Cultural Institute in Sao Paulo (IIC-SP). Five participants presented the Master's progammes in economics, management and finance offered by their universities. This year, featured universities included: LUISS Guido Carli (Rome), SAIS Bologna, University of Milano-Bicocca, and Politecnico di Milano. The event was promoted by the IIC and welcomed an audience of around 30 undergraduate students from several Sao Paulo universities. The objective of this session, which AIBE plans to alternate with a similar event on "Studying Economics in Brazil", is to showcase Italy's and Brazil's academic excellence in teaching, promote student exchange, and facilitate brain circulation between the two countries.
+              </p>
+            </div>
+
+            {/* Imagem à direita (pequena) */}
+            <div className="flex md:justify-end">
+              <div className="relative w-full max-w-[720px] h-[420px] md:max-w-[820px] md:h-[500px] lg:max-w-[960px] lg:h-[560px]">
+                <Image
+                  src="/images/WORKSHOP%20FOTO%209.jpeg"
+                  alt="Official Launch of the Prize"
+                  width={960}
+                  height={560}
+                  className="w-full h-full object-cover rounded-md shadow-sm"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Past Winners Section */}
       <section className="mb-32 bg-gradient-to-b from-blue-50/30 to-white py-20 w-full">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Winner Card */}
-          <div className="bg-white border border-gray-200 p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <div className="text-center mb-8">
-              <h2 className="text-text-strong-950 mb-3 text-title-h3">
-                Past Winners
-              </h2>
-              <div className="w-20 h-1 bg-primary-base mx-auto rounded-full"></div>
-            </div>
+          <div className="text-center mb-8">
+            <h2 className="text-text-strong-950 mb-3 text-title-h3">
+              Past Winners
+            </h2>
+            <div className="w-20 h-1 bg-primary-base mx-auto rounded-full"></div>
+          </div>
 
-            <div className="flex flex-col md:flex-row gap-8 items-start md:items-center">
-              <div className="flex-1">
-                {/* Year Badge */}
-                <div className="inline-block mb-4">
-                  <span className="bg-primary-base text-white px-4 py-1.5 rounded-full text-label-sm font-semibold">
-                    2024
-                  </span>
-                </div>
+          {/* Winners List */}
+          <div className="space-y-6">
+            {sortedWinners.map((winner) => (
+              <div
+                key={winner.year}
+                className="bg-white border border-gray-200 p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
+                <div className="flex flex-col md:flex-row gap-8 items-start md:items-center">
+                  <div className="flex-1">
+                    {/* Year Badge */}
+                    <div className="inline-block mb-4">
+                      <span className="bg-primary-base text-white px-4 py-1.5 rounded-full text-label-sm font-semibold">
+                        {winner.year}
+                      </span>
+                    </div>
 
-                <h3 className="text-text-strong-950 mb-3 text-title-h4 font-bold">
-                  Paper Title Example
-                </h3>
+                    <h3 className="text-text-strong-950 mb-3 text-title-h4 font-bold">
+                      {winner.title}
+                    </h3>
 
-                <div className="mb-4 pb-4 border-b border-gray-200">
-                  <p className="text-text-sub-600 text-paragraph-lg leading-relaxed">
-                    <span className="font-medium text-text-strong-950">Author Name 1</span>
-                    <span className="text-text-sub-600"> (Institution, Country)</span>
-                    <span className="text-text-sub-600"> & </span>
-                    <span className="font-medium text-text-strong-950">Author Name 2</span>
-                    <span className="text-text-sub-600"> (Institution, Country)</span>
-                  </p>
+                    <div className="mb-4 pb-4 border-b border-gray-200">
+                      <p className="text-text-sub-600 text-paragraph-lg leading-relaxed">
+                        {winner.authors.map((author, authorIndex) => (
+                          <span key={authorIndex}>
+                            {authorIndex > 0 && <span className="text-text-sub-600"> & </span>}
+                            <span className="font-medium text-text-strong-950">{author.name}</span>
+                            <span className="text-text-sub-600"> ({author.institution}, {author.country})</span>
+                          </span>
+                        ))}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Link Button */}
+                  <div className="md:flex-shrink-0 w-full md:w-auto">
+                    <Button
+                      variant="primary"
+                      mode="stroke"
+                      size="medium"
+                      className="h-hug w-full md:w-fit"
+                      asChild
+                    >
+                      <a href={winner.link} target="_blank" rel="noopener noreferrer">
+                        Open Paper
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               </div>
-
-              {/* Link Button */}
-              <div className="md:flex-shrink-0 w-full md:w-auto">
-                <Button variant="primary" mode="stroke" size="medium" className="h-hug w-full md:w-fit">
-                  Link
-                </Button>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

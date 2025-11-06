@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 async function getNews() {
   try {
+    // Em Server Components, usar URL completa com baseUrl para garantir funcionamento em produção
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
     const res = await fetch(`${baseUrl}/api/news`, {
       cache: 'no-store',
