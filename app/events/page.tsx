@@ -6,14 +6,15 @@ import CTA from "@/components/cta";
 
 export default function EventsPage() {
   return (
+    <>
     <div className="min-h-screen bg-white">
       {/* Header Spacer */}
       <div className="h-16"></div>
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-10">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-0">
         {/* Past Congresses Section */}
-        <section className="mb-16">
+        <section className="mb-0">
           {/* Small label */}
           <p className="text-text-soft-400 font-medium tracking-wider uppercase text-center mb-4 text-subheading-xs">
             WORKSHOPS and CONGRESSES
@@ -58,11 +59,11 @@ export default function EventsPage() {
           </div>
         </section>
       </main>
-
-      {/* CTA Section */}
-      <div className="mt-[260px] mobile:mt-[180px]">
-        <CTA />
-      </div>
     </div>
+    {/* CTA Section - fora do container branco para evitar faixa branca */}
+    <div className='mt-80 mobile:mt-48'>
+      <CTA />
+    </div>
+    </>
   );
 }

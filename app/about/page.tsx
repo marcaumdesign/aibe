@@ -213,7 +213,7 @@ export default function About() {
           </div>
 
           {/* AIBE Activities Section */}
-          <div className="bg-[#f3f8ff] rounded-lg p-8 mobile:p-6 w-full mt-16 mobile:mt-12 mb-4 mobile:mb-4">
+          <div className="bg-[#f3f8ff] p-8 mobile:p-6 w-full mt-16 mobile:mt-12 mb-80 mobile:mb-48">
             <div className="flex flex-row mobile:flex-col gap-8 items-start w-full">
               {/* Left Content - Activities */}
               <div className="flex flex-col gap-6 mobile:gap-4 flex-1">

@@ -67,8 +67,7 @@ export async function GET() {
 
     const res = await fetch(url, {
       headers: STRAPI_TOKEN ? { Authorization: `Bearer ${STRAPI_TOKEN}` } : {},
-      cache: 'no-store',
-      next: { revalidate: 0 },
+      next: { revalidate: 60 }, // Cache por 60 segundos (ISR)
     });
 
     if (!res.ok) {

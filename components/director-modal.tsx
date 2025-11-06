@@ -42,7 +42,7 @@ export default function DirectorModal({
         <div className="flex-1 overflow-y-auto p-8 mobile:p-4 pt-16 mobile:pt-12 pb-20 mobile:pb-16">
           <div className="flex flex-col items-start text-left">
             {/* Profile Image */}
-            <div className="relative w-[300px] h-[420px] aspect-[3/4] mobile:w-full mobile:max-w-[300px] mobile:h-[420px] overflow-hidden rounded-md shadow-sm mb-6 mobile:mb-4 flex-shrink-0 mx-auto">
+            <div className="relative w-[300px] h-[420px] aspect-[3/4] mobile:w-full mobile:max-w-[300px] mobile:h-[420px] overflow-hidden shadow-sm mb-6 mobile:mb-4 flex-shrink-0 mx-auto">
               {director.Avatar?.url ? (
                 <Image
                   src={director.Avatar.url}

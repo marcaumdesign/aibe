@@ -1,36 +1,21 @@
 import Image from "next/image"
-import Link from "next/link"
-import { Root as Button } from "@/components/ui/button"
 
 export default function CTA({ hideFlagOnMobile = false }: { hideFlagOnMobile?: boolean }) {
   return (
-    <section className='relative overflow-visible bg-primary-base flex justify-center pb-8 items-end h-[534px] mobile:h-auto mobile:py-16'>
-      <div className='relative z-20 mx-auto max-w-[1200px] p-16 mobile:p-8 w-full'>
-        <div className='gap-8 mobile:gap-6 flex flex-col text-center relative'>
+    <section className='relative overflow-visible z-50 bg-primary-base flex justify-center items-center pt-0 pb-0 mobile:pb-0'>
+      {/* Top solid blue overlay to avoid hard cut */}
+      <div className='pointer-events-none absolute inset-x-0 -top-16 h-16 bg-primary-base'></div>
+      {/* Bottom solid blue overlay to ensure no white gap */}
+      <div className='pointer-events-none absolute inset-x-0 -bottom-0 h-0 bg-primary-base'></div>
+      <div className='relative z-20 mx-auto max-w-[1200px] px-16 mobile:px-8 w-full'>
+        <div className='flex flex-col items-center justify-end pb-6 mobile:pb-4 min-h-[40px] mobile:min-h-[40px]'>
           <Image
             src='/images/bandeira cta.svg'
             alt='Brazilian and Italian flags'
             width={402}
             height={294}
-            className={`absolute left-1/2 transform -translate-x-1/2 top-[-330px] mobile:top-[-200px] w-auto h-[300px] mobile:h-[200px] z-20 ${hideFlagOnMobile ? 'mobile:hidden' : ''}`}
+            className={`w-auto h-[200px] mobile:h-[140px] z-40 mt-[-280px] mobile:mt-[-160px] ${hideFlagOnMobile ? 'mobile:hidden' : ''}`}
           />
-
-          <div className='text-center gap-4 mobile:gap-3 flex max-w-[700px] flex-col mx-auto'>
-            <h2 className='text-title-h2 mobile:text-title-h3 text-white'>
-              Join AIBE and Strengthen Academic Cooperation
-            </h2>
-            <p className='text-paragraph-lg mobile:text-paragraph-md text-white'>
-              By joining AIBE, you will engage with researchers, access unique
-              opportunities, and support initiatives that unite Brazil and Italy
-              in economic research.
-            </p>
-          </div>
-
-          <Link href="/membership">
-            <Button variant='neutral' mode='lighter' size='medium' className='h-hug w-fit mobile:w-full self-center'>
-              Become a Member
-            </Button>
-          </Link>
         </div>
       </div>
     </section>

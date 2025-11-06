@@ -307,7 +307,9 @@ export default function EventsPage() {
       </section>
 
       {/* CTA Section */}
-      <CTA />
+      <div className='mt-80 mobile:mt-48'>
+        <CTA />
+      </div>
     </div >
   );
 }

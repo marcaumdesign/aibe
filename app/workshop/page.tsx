@@ -334,7 +334,7 @@ export default function AIBEWorkshopPage() {
         </section>
 
         {/* Sponsors Section */}
-        <section className="mt-48 mb-16">
+        <section className="mt-48 mb-80 mobile:mb-48">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-text-strong-950 mb-8 text-title-h3 text-center">
               Sponsors

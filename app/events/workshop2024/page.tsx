@@ -272,7 +272,7 @@ export default function AIBEWorkshop2024Page() {
                   alt="Panel - Studying Economics in Italy"
                   width={960}
                   height={560}
-                  className="w-full h-full object-cover rounded-md shadow-sm"
+                  className="w-full h-full object-cover shadow-sm"
                 />
               </div>
             </div>
@@ -280,7 +280,7 @@ export default function AIBEWorkshop2024Page() {
         </section>
 
         {/* Sponsors Section */}
-        <section className="mt-64 mb-16">
+        <section className="mt-64 mb-80 mobile:mb-48">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-text-strong-950 mb-8 text-title-h3 text-center">
               Sponsors

@@ -4,8 +4,10 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-base w-full">
-      <div className="max-w-[1200px] mx-auto px-8 mobile:px-4 py-16 mobile:py-8">
+    <footer className="relative overflow-visible bg-primary-base w-full mt-0 mobile:mt-0">
+      {/* Top solid blue overlay to cover the previous section edge */}
+      <div className="pointer-events-none absolute inset-x-0 -top-4 h-4 bg-primary-base"></div>
+      <div className="max-w-[1200px] mx-auto px-8 mobile:px-4 pt-0 mobile:pt-0 pb-16 mobile:pb-8">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mobile:gap-8 mb-12">
           {/* Logo and Social Media - Takes 2 columns on desktop */}
