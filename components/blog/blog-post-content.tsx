@@ -61,7 +61,7 @@ export default function BlogPostContent({ content }: BlogPostContentProps) {
                     em: ({ children }) => (
                       <em className='italic'>{children}</em>
                     ),
-                    a: ({ href, children }) => (
+                    a: ({ href, children }) => (href ?
                       <Link
                         href={href}
                         className='text-primary-base hover:underline'
@@ -69,7 +69,7 @@ export default function BlogPostContent({ content }: BlogPostContentProps) {
                         rel='noopener noreferrer'
                       >
                         {children}
-                      </Link>
+                      </Link> : null
                     ),
                     ul: ({ children }) => (
                       <ul className='mb-4 list-disc list-inside space-y-2 text-text-sub-600'>
