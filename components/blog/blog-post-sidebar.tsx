@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import CTA from '@/components/cta';
+// import CTA from '@/components/cta';
 import { Root as Badge } from '@/components/ui/badge';
 
 interface LatestPost {

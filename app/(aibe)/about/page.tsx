@@ -89,7 +89,7 @@ export default function About() {
                   <p>We are a bilateral, non-profit association registered in Italy. We facilitate research collaboration between Brazilian and Italian economists. We also promote links between academia, policy-makers and industry.</p>
                 </div>
                 <div className="text-paragraph-lg mobile:text-paragraph-md text-text-sub-600">
-                  <p>We are governed by a <Link href="/people" className="text-primary-base underline hover:opacity-80">Board of Directors</Link>, who are elected for three years by the Members' Assembly.</p>
+                  <p>We are governed by a <Link href="/people" className="text-primary-base underline hover:opacity-80">Board of Directors</Link>, who are elected for three years by the Members&apos; Assembly.</p>
                 </div>
               </div>
 
