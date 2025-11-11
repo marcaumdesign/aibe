@@ -158,7 +158,7 @@ export default function SignIn() {
                 <Button
                   type="submit"
                   variant="primary"
-                  size="large"
+                  // size="large"
                   className="w-full h-12 mobile:h-10 rounded-none"
                   disabled={loading}
                 >
