@@ -1,35 +1,87 @@
 import { Metadata } from 'next';
 import CTA from '@/components/cta';
 import BlogGrid from '@/components/blog/blog-grid';
+import { getPayload } from 'payload';
+import configPromise from '@payload-config';
+import type { Post } from '@/payload-types';
 
 export const metadata: Metadata = {
   title: 'Blog - AIBE',
   description: 'Leia nossos artigos e notícias mais recentes',
 };
 
-async function getNews() {
-  try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-    const res = await fetch(`${baseUrl}/api/news`, {
-      cache: 'no-store',
-      next: { revalidate: 0 },
-    });
+type BlogPostCard = {
+  id: string | number;
+  title: string;
+  slug: string;
+  description: string | null;
+  image: {
+    url: string;
+    alternativeText?: string;
+  } | null;
+  date: string;
+  category?: {
+    name: string;
+    slug: string;
+  };
+};
 
-    if (!res.ok) {
-      console.error('Erro ao buscar notícias:', res.status);
-      return [];
-    }
+async function getPosts(): Promise<BlogPostCard[]> {
+  const payload = await getPayload({ config: configPromise });
 
-    const data = await res.json();
-    return data.news || [];
-  } catch (error) {
-    console.error('Erro ao buscar notícias:', error);
-    return [];
-  }
+  const posts = await payload.find({
+    collection: 'posts',
+    depth: 2,
+    limit: 12,
+    overrideAccess: false,
+    sort: '-publishedAt',
+    select: {
+      id: true,
+      title: true,
+      slug: true,
+      categories: true,
+      meta: true,
+      publishedAt: true,
+      createdAt: true,
+    },
+  });
+
+  return posts.docs.map((post) => formatPostForGrid(post));
+}
+
+function formatPostForGrid(post: Post): BlogPostCard {
+  const primaryCategory =
+    Array.isArray(post.categories) && post.categories.length > 0
+      ? post.categories.find((category) => typeof category === 'object' && category !== null)
+      : undefined;
+
+  const metaImage = post.meta?.image;
+  const resolvedImage =
+    metaImage && typeof metaImage === 'object'
+      ? {
+          url: metaImage?.sizes?.medium?.url || metaImage?.url || '',
+          alternativeText: metaImage?.alt || post.title || undefined,
+        }
+      : null;
+
+  return {
+    id: post.id,
+    title: post.title || 'Sem título',
+    slug: post.slug || '',
+    description: post.meta?.description || null,
+    image: resolvedImage?.url ? resolvedImage : null,
+    date: post.publishedAt || post.createdAt || new Date().toISOString(),
+    category: primaryCategory
+      ? {
+          name: primaryCategory.title || 'Categoria',
+          slug: primaryCategory.slug || '',
+        }
+      : undefined,
+  };
 }
 
 export default async function BlogPage() {
-  const news = await getNews();
+  const posts = await getPosts();
 
   return (
     <div className='min-h-screen bg-white'>
@@ -47,7 +99,7 @@ export default async function BlogPage() {
 
           {/* Articles Grid */}
           <div className='max-w-7xl mx-auto'>
-            <BlogGrid posts={news} />
+            <BlogGrid posts={posts} />
           </div>
         </div>
       </section>
