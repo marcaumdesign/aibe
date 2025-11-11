@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Root as Button } from '@/components/ui/button';
 import BlogSection from '@/components/blog-section';
-
 // export const metadata: Metadata = {
 //   title: 'AIBE - Italian-Brazilian Association of Economics',
 //   description:
@@ -304,30 +303,30 @@ export default function Home() {
             </div>
 
             <div className="flex gap-3 w-full items-center">
-              <a
+              <Link
                 href="https://linkedin.com/company/aibe"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
               >
                 <RiLinkedinFill className="size-5 text-white transition-colors" />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://x.com/aibe"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
               >
                 <RiTwitterXFill className="size-5 text-white transition-colors" />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://bsky.app/profile/aibe"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
               >
                 <RiBlueskyFill className="size-5 text-white transition-colors" />
-              </a>
+              </Link>
             </div>
 
 

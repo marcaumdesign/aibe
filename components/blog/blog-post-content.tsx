@@ -1,6 +1,7 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Card, CardContent } from '@/components/ui/card';
+import Link from 'next/link';
 
 interface ContentBlock {
   __component: string;
@@ -61,14 +62,14 @@ export default function BlogPostContent({ content }: BlogPostContentProps) {
                       <em className='italic'>{children}</em>
                     ),
                     a: ({ href, children }) => (
-                      <a
+                      <Link
                         href={href}
                         className='text-primary-base hover:underline'
                         target='_blank'
                         rel='noopener noreferrer'
                       >
                         {children}
-                      </a>
+                      </Link>
                     ),
                     ul: ({ children }) => (
                       <ul className='mb-4 list-disc list-inside space-y-2 text-text-sub-600'>

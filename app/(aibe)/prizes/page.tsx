@@ -3,6 +3,7 @@
 import Image from "next/image";
 import CTA from "@/components/cta";
 import { Root as Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface Winner {
   year: number;
@@ -121,7 +122,7 @@ export default function EventsPage() {
               To apply
             </h2>
             <p className="text-text-sub-600 leading-relaxed mb-4 text-paragraph-md">
-              Submit a copy of your manuscript, together with contact details, names and affiliations of all co-authors, and proofs of AIBE membership. Annual membership can be obtained <a href="/membership" className="text-blue-600 hover:underline">here</a>. It is valid for 1 year and starts at 2 euros.
+              Submit a copy of your manuscript, together with contact details, names and affiliations of all co-authors, and proofs of AIBE membership. Annual membership can be obtained <Link href="/membership" className="text-blue-600 hover:underline">here</Link>. It is valid for 1 year and starts at 2 euros.
             </p>
             <p className="text-text-sub-600 leading-relaxed mb-6 text-paragraph-md">
               <strong>The deadline for submission is 15 January 2026 (midnight, Italy)</strong>
@@ -294,9 +295,9 @@ export default function EventsPage() {
                       className="h-hug w-full md:w-fit"
                       asChild
                     >
-                      <a href={winner.link} target="_blank" rel="noopener noreferrer">
+                      <Link href={winner.link} target="_blank" rel="noopener noreferrer">
                         Open Paper
-                      </a>
+                      </Link>
                     </Button>
                   </div>
                 </div>

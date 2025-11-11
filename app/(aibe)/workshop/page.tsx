@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { RiAddLine } from '@remixicon/react';
 import { Root as Button } from "@/components/ui/button";
+import Link from "next/link";
 
 // Componente Accordion para FAQ
 function AccordionItem({
@@ -128,7 +129,7 @@ export default function AIBEWorkshopPage() {
                   {/* Texto à direita */}
                   <div className="mt-4 md:mt-0">
                     <h3 className="text-6xl md:text-10xl font-semibold text-gray-900 dark:text-gray-100 tracking-tight leading-tight">
-                      <a
+                      <Link
                         href="https://sites.google.com/site/nicolaborri/Nicola-Borri?authuser=0"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -136,25 +137,25 @@ export default function AIBEWorkshopPage() {
                         aria-label="Nicola Borri (abrir site)"
                       >
                         Nicola Borri
-                      </a>
+                      </Link>
                     </h3>
                     <p className="mt-4 text-text-sub-600 text-paragraph-md">
                       Lian Group Chair in Fintech and Blockchain Technology & Associate Professor of Finance
                     </p>
-                    <a
+                    <Link
                       href="https://www.luiss.it/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block mt-2 text-teal-700 underline"
                     >
                       LUISS Guido Carli
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
 
               {/* Download Button */}
-              <a
+              <Link
                 href="https://drive.google.com/file/d/16HrZXnAa6L-U7fByrj_PyajwQlmk1-GM/view"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -162,7 +163,7 @@ export default function AIBEWorkshopPage() {
                 <Button variant="primary" mode="filled" size="medium">
                   Download the Final Programme
                 </Button>
-              </a>
+              </Link>
             </div>
 
             {/* Right Column - Image */}
@@ -208,13 +209,13 @@ export default function AIBEWorkshopPage() {
             </p>
             <p className="text-text-sub-600 leading-relaxed mb-6 text-paragraph-md">
               To submit a paper, applicants should provide proof of AIBE membership. Annual membership can be obtained here. It is valid for 1 year and starts at 2 euros.
-              <a href="/membership" className="text-primary-base hover:underline">
-              </a>
+              <Link href="/membership" className="text-primary-base hover:underline">
+              </Link>
 
             </p>
 
             <div className="text-center">
-              <a
+              <Link
                 href="https://docs.google.com/forms/d/e/1FAIpQLSca4tZjGR29lnkhMC0Zrby471wRinhy68KGe1R8IzPpf6Hi4g/viewform"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -222,7 +223,7 @@ export default function AIBEWorkshopPage() {
                 <Button variant="primary" mode="filled" size="medium">
                   Submit a Paper
                 </Button>
-              </a>
+              </Link>
             </div>
           </div>
         </section>

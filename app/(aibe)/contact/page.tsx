@@ -13,7 +13,7 @@ import * as Label from "@/components/ui/label";
 import { Root as Checkbox } from "@/components/ui/checkbox";
 import { Root as Button } from "@/components/ui/button";
 import { Root as Textarea } from "@/components/ui/textarea";
-
+import Link from "next/link";
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -233,13 +233,13 @@ export default function ContactPage() {
                 Follow Us
               </h3>
               <div className="flex justify-start space-x-4">
-                <a href="https://linkedin.com/company/aibe" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
+                <Link href="https://linkedin.com/company/aibe" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
                   <RiLinkedinFill className="w-8 h-8 text-gray-600" />
-                </a>
-                <a href="https://twitter.com/aibe" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
+                </Link>
+                <Link href="https://twitter.com/aibe" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
                   <RiTwitterXFill className="w-8 h-8 text-gray-600" />
-                </a>
-                <a href="https://aibe.website" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
+                </Link>
+                <Link href="https://aibe.website" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
                   <Image
                     src="/images/bluesky-fill.png"
                     alt="Website icon"
@@ -247,7 +247,7 @@ export default function ContactPage() {
                     height={32}
                     className="w-8 h-8"
                   />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

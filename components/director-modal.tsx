@@ -3,6 +3,7 @@
 import { RiArrowLeftLine, RiArrowRightLine } from '@remixicon/react';
 import Image from 'next/image';
 import type { Director } from '@/lib/strapi';
+import Link from 'next/link';
 
 interface DirectorModalProps {
   director: Director | null;
@@ -85,14 +86,14 @@ export default function DirectorModal({
 
             {/* Explore Profile Button */}
             {director.Link && (
-              <a
+              <Link
                 href={director.Link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#122368] text-white px-6 mobile:px-4 py-3 mobile:py-2.5 hover:opacity-80 transition-opacity flex-shrink-0 text-sm mobile:text-xs"
               >
                 Explore Profile
-              </a>
+              </Link>
             )}
           </div>
         </div>

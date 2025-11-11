@@ -28,38 +28,38 @@ export default function Footer() {
 
             {/* Social Media */}
             <div className="flex gap-3 items-center">
-              <a
+              <Link
                 href="https://linkedin.com/company/aibe"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
               >
                 <RiLinkedinFill className="size-5 text-white transition-colors" />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://x.com/aibe"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
               >
                 <RiTwitterXFill className="size-5 text-white transition-colors" />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://bsky.app/profile/aibe"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
               >
                 <RiBlueskyFill className="size-5 text-white transition-colors" />
-              </a>
+              </Link>
             </div>
 
-            <a
+            <Link
               href="mailto:aibe@aibe.website"
               className="text-white hover:text-gray-300 transition-colors text-base font-medium"
             >
               aibe@aibe.website
-            </a>
+            </Link>
           </div>
 
           {/* Navigation Links - 3 columns on desktop */}
@@ -124,23 +124,23 @@ export default function Footer() {
             © {new Date().getFullYear()} AIBE. All Rights Reserved | Codice Fiscale: 97970970154
           </p>
           <div className="flex gap-6 items-center text-sm">
-            <a
+            <Link
               href="https://www.iubenda.com/privacy-policy/33428132/cookie-policy"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-gray-300 transition-colors"
             >
               Cookie Policy
-            </a>
+            </Link>
             <span className="text-white/50">|</span>
-            <a
+            <Link
               href="https://www.iubenda.com/privacy-policy/33428132"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-gray-300 transition-colors"
             >
               Privacy Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>

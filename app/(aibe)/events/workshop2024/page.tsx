@@ -61,7 +61,7 @@ export default function AIBEWorkshop2024Page() {
                   {/* Texto à direita */}
                   <div className="mt-4 md:mt-0">
                     <h3 className="text-6xl md:text-10xl font-semibold text-gray-900 dark:text-gray-100 tracking-tight leading-tight">
-                      <a
+                      <Link
                         href="https://sites.google.com/site/nicolaborri/Nicola-Borri?authuser=0"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -69,19 +69,19 @@ export default function AIBEWorkshop2024Page() {
                         aria-label="Nicola Borri (abrir site)"
                       >
                         Nicola Borri
-                      </a>
+                      </Link>
                     </h3>
                     <p className="mt-4 text-text-sub-600 text-paragraph-md">
                       Lian Group Chair in Fintech and Blockchain Technology & Associate Professor of Finance
                     </p>
-                    <a
+                    <Link
                       href="https://www.luiss.it/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block mt-2 text-teal-700 underline"
                     >
                       LUISS Guido Carli
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

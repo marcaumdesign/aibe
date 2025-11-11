@@ -3,6 +3,7 @@ import React from 'react'
 
 import { SeedButton } from './SeedButton'
 import './index.scss'
+import Link from 'next/link'
 
 const baseClass = 'before-dashboard'
 
@@ -17,9 +18,9 @@ const BeforeDashboard: React.FC = () => {
         <li>
           <SeedButton />
           {' with a few pages, posts, and projects to jump-start your new site, then '}
-          <a href="/" target="_blank">
+          <Link href="/" target="_blank">
             visit your website
-          </a>
+          </Link>
           {' to see the results.'}
         </li>
         <li>
@@ -29,29 +30,29 @@ const BeforeDashboard: React.FC = () => {
         </li>
         <li>
           {'Modify your '}
-          <a
+          <Link
             href="https://payloadcms.com/docs/configuration/collections"
             rel="noopener noreferrer"
             target="_blank"
           >
             collections
-          </a>
+          </Link>
           {' and add more '}
-          <a
+          <Link
             href="https://payloadcms.com/docs/fields/overview"
             rel="noopener noreferrer"
             target="_blank"
           >
             fields
-          </a>
+          </Link>
           {' as needed. If you are new to Payload, we also recommend you check out the '}
-          <a
+          <Link
             href="https://payloadcms.com/docs/getting-started/what-is-payload"
             rel="noopener noreferrer"
             target="_blank"
           >
             Getting Started
-          </a>
+          </Link>
           {' docs.'}
         </li>
         <li>
@@ -59,13 +60,13 @@ const BeforeDashboard: React.FC = () => {
         </li>
       </ul>
       {'Pro Tip: This block is a '}
-      <a
+      <Link
         href="https://payloadcms.com/docs/custom-components/overview"
         rel="noopener noreferrer"
         target="_blank"
       >
         custom component
-      </a>
+      </Link>
       , you can remove it at any time by updating your <strong>payload.config</strong>.
     </div>
   )

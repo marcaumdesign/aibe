@@ -166,7 +166,7 @@ export default function About() {
           </div>
 
           {/* Download Button */}
-          <a
+          <Link
             href="https://drive.google.com/file/d/1fAfZF52xDH3jCs1h3CNd3xD5t9mafUTo/view"
             target="_blank"
             rel="noopener noreferrer"
@@ -177,7 +177,7 @@ export default function About() {
                 <p className="leading-[24px] whitespace-pre">Download the AIBE Constitution</p>
               </div>
             </div>
-          </a>
+          </Link>
 
           {/* Statistics Section */}
           <div className="flex flex-row mobile:flex-col gap-[300px] mobile:gap-8 items-center justify-center w-full mt-24 mobile:mt-16">

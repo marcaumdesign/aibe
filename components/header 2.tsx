@@ -25,24 +25,24 @@ export default function Header() {
 
         {/* Navigation (desktop) */}
         <nav className='text-lg hidden items-center gap-8 font-medium text-black md:flex'>
-          <a
+          <Link
             href='/'
             className='transition-colors hover:text-primary-base'
           >
             Home
-          </a>
-          <a
+          </Link>
+          <Link
             href='/about'
             className='transition-colors hover:text-primary-base'
           >
             About US
-          </a>
-          <a
+          </Link>
+          <Link
             href='/people'
             className='transition-colors hover:text-primary-base'
           >
             People
-          </a>
+          </Link>
           <div className='relative group'>
             <button
               className='transition-colors hover:text-primary-base cursor-pointer'
@@ -116,12 +116,12 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <a
+          <Link
             href='/contact'
             className='transition-colors hover:text-primary-base'
           >
             Contact
-          </a>
+          </Link>
         </nav>
 
         {/* CTA/Button area */}
