@@ -20,9 +20,14 @@ export default function Footer() {
               />
             </Link>
 
-            <p className="text-white text-base max-w-sm">
-              Associazione Italo-Brasiliana di Economia
-            </p>
+            <div className="flex flex-col gap-2">
+              <p className="text-white text-base max-w-sm">
+                Associazione Italo-Brasiliana di Economia
+              </p>
+              <p className="text-white text-base max-w-sm">
+                Associação Italo-Brasileira de Economia
+              </p>
+            </div>
 
             {/* Social Media */}
             <div className="flex gap-3 items-center">
@@ -52,12 +57,6 @@ export default function Footer() {
               </a>
             </div>
 
-            <a
-              href="mailto:aibe@aibe.website"
-              className="text-white hover:text-gray-300 transition-colors text-base font-medium"
-            >
-              aibe@aibe.website
-            </a>
           </div>
 
           {/* Navigation Links - 3 columns on desktop */}
@@ -121,7 +120,17 @@ export default function Footer() {
           <p className="text-white text-sm text-center md:text-left">
             © {new Date().getFullYear()} AIBE. All Rights Reserved | Codice Fiscale: 97970970154
           </p>
+
+
           <div className="flex gap-6 items-center text-sm">
+            <a
+              href="mailto:aibe@aibe.website"
+              className="text-white hover:text-gray-300 transition-colors text-base font-medium"
+            >
+              aibe@aibe.website
+
+            </a>
+            <span className="text-white/50">|</span>
             <a
               href="https://www.iubenda.com/privacy-policy/33428132/cookie-policy"
               target="_blank"

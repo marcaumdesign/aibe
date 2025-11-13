@@ -23,13 +23,13 @@ export default function About() {
       </div>
 
       {/* Hero Image - Full Width */}
-      <div
+      {/* <div
         className="bg-center bg-cover bg-no-repeat h-[350px] mobile:h-[250px] shrink-0 w-full"
         style={{ backgroundImage: `url('/images/brazil-italy.png')` }}
-      />
+      /> */}
 
       {/* At a glance Section */}
-      <div className="flex flex-col items-center justify-center w-full bg-[#f3f8ff]">
+      <div className="flex flex-col items-center justify-center w-full">
         <div className="flex flex-col gap-16 items-center justify-start max-w-[1200px] p-8 mobile:p-4 pt-[64px] mobile:pt-8 w-full">
           <div className="flex flex-row mobile:flex-col gap-8 items-center justify-between w-full">
             {/* Imagem à esquerda */}

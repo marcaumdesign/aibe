@@ -3,8 +3,9 @@
 import { RiBlueskyFill, RiLinkedinFill, RiMapPinLine, RiSendPlaneLine, RiTrophyLine, RiTwitterXFill } from '@remixicon/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Root as Button } from '@/components/ui/button';
+import * as Button from '@/components/ui/button';
 import { useState, useEffect } from 'react';
+
 
 // export const metadata: Metadata = {
 //   title: 'AIBE - Italian-Brazilian Association of Economics',
@@ -202,8 +203,8 @@ export default function Home() {
                 Italian-Brazilian Association of Economics
               </Badge>
 
-              <div className='flex flex-col gap-4 items-start w-full'>
-                <h1 className='text-title-h1 text-black'>
+              <div className='flex flex-col gap-4 items-center w-full'>
+                <h1 className='text-title-h1 text-text-strong-950'>
                   Connecting science, cultures, and economies.
                 </h1>
 
@@ -212,6 +213,16 @@ export default function Home() {
                   academic cooperation, and the exchange of knowledge.
                 </p>
               </div>
+
+              <div className="flex gap-4">
+                <Button.Root variant='primary' mode='filled'>
+                  Become a Member
+                </Button.Root>
+                <Button.Root variant='neutral' mode='stroke'>
+                  Sign In
+                </Button.Root>
+              </div>
+
 
             </div>
 
@@ -296,11 +307,11 @@ export default function Home() {
                   AIBE Annual Workshop 2025 Dates Announced!
                 </h2>
               </div>
-              <Button variant='primary' size='medium' className='h-hug' asChild>
+              <Button.Root variant='primary' mode='filled' size='medium' className='h-hug' asChild>
                 <Link href='/events/workshop'>
                   See Details
                 </Link>
-              </Button>
+              </Button.Root>
             </div>
           </div>
         </div>
@@ -338,11 +349,11 @@ export default function Home() {
                 <p className='text-sub-600 text-paragraph-lg flex-1'>
                   We organize an academic event held alternately in both countries.
                 </p>
-                <Button variant='primary' size='medium' className='h-hug w-fit mt-auto' asChild>
+                <Button.Root variant='primary' size='medium' className='h-hug w-fit mt-auto' asChild>
                   <Link href='/events/workshop2024'>
                     See More
                   </Link>
-                </Button>
+                </Button.Root>
               </div>
             </div>
 
@@ -366,11 +377,11 @@ export default function Home() {
                 <p className='text-sub-600 text-paragraph-lg flex-1'>
                   We award a prize for the best paper by a junior Italian-Brazilian research team.
                 </p>
-                <Button variant='primary' size='medium' className='h-hug w-fit mt-auto' asChild>
+                <Button.Root variant='primary' size='medium' className='h-hug w-fit mt-auto' asChild>
                   <Link href='/prizes'>
                     See More
                   </Link>
-                </Button>
+                </Button.Root>
               </div>
             </div>
 
@@ -394,11 +405,11 @@ export default function Home() {
                 <p className='text-sub-600 text-paragraph-lg flex-1'>
                   We facilitate the spread of information and promote academic mobility.
                 </p>
-                <Button variant='primary' size='medium' className='h-hug w-fit mt-auto' asChild>
+                <Button.Root variant='primary' size='medium' className='h-hug w-fit mt-auto' asChild>
                   <Link href='/about'>
                     See More
                   </Link>
-                </Button>
+                </Button.Root>
               </div>
             </div>
           </div>
