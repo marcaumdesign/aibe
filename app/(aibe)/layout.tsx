@@ -9,7 +9,7 @@ import { NotificationProvider } from '@/components/ui/notification-provider';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import ServiceWorkerRegister from '@/components/service-worker-register';
-
+import CTA from '@/components/cta';
 const inter = FontSans({
   subsets: ['latin'],
   variable: '--font-sans',
@@ -43,6 +43,9 @@ export default function RootLayout({
             <div className='flex min-h-screen flex-col'>
               <Header />
               <main className='flex flex-1 flex-col pt-[80px]'>{children}</main>
+              <div className="relative mt-80 mobile:mt-48">
+                <CTA />
+              </div>
               <Footer />
             </div>
           </TooltipProvider>

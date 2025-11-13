@@ -254,9 +254,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <div className="relative mt-80 mobile:mt-48">
-        <CTA />
-      </div>
+
 
     </div>
   );

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { RiAddLine } from '@remixicon/react';
 import { Root as Button } from "@/components/ui/button";
 import Link from "next/link";
+
 // Componente Accordion para FAQ
 function AccordionItem({
   question,
@@ -88,7 +89,7 @@ export default function AIBEWorkshopPage() {
 
           {/* Main Title */}
           <h1 className="text-text-strong-950 mb-14 text-title-h1 text-center">
-            AIBE Workshop 2025
+            AIBE Workshop 2026
           </h1>
 
           {/* Two Column Layout */}
@@ -97,17 +98,17 @@ export default function AIBEWorkshopPage() {
             <div className="lg:col-span-2">
               {/* Event Title */}
               <h2 className="text-text-strong-950 mb-6 text-title-h2">
-                Digital Payments & Financial Inclusion
+                Central Bank Digital Currencies
 
               </h2>
 
               {/* Date & Location */}
               <div className="mb-3">
                 <p className="text-text-strong-950 mb-2 text-paragraph-lg">
-                  <strong>3-4 July 2025</strong>
+                  <strong>14-15 November 2026</strong>
                 </p>
                 <p className="text-text-sub-600 text-paragraph-md">
-                  São Paulo School of Business Administration (EAESP-FGV)
+                  University of Milano-Bicocca (Milan)
                 </p>
               </div>
 
@@ -118,8 +119,8 @@ export default function AIBEWorkshopPage() {
                   {/* Foto à esquerda */}
                   <div className="flex justify-center md:justify-start">
                     <Image
-                      src="/images/Bicola%20Borri.jpg?v=1"
-                      alt="Participantes em reunião"
+                      src="/images/alandegennaro.png"
+                      alt="Federico de Giorgi"
                       width={135}
                       height={180}
                       className="w-[135px] h-[180px] aspect-[3/4] object-cover object-right rounded-md shadow-sm mx-auto"
@@ -129,34 +130,40 @@ export default function AIBEWorkshopPage() {
                   <div className="mt-4 md:mt-0">
                     <h3 className="text-6xl md:text-10xl font-semibold text-gray-900 dark:text-gray-100 tracking-tight leading-tight">
                       <Link
-                        href="https://sites.google.com/site/nicolaborri/Nicola-Borri?authuser=0"
+                        href="https://federicodegiorgi.unimib.it/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:underline"
-                        aria-label="Nicola Borri (abrir site)"
+                        aria-label="Federico de Giorgi (abrir site)"
                       >
-                        Nicola Borri
+                        Federico de Giorgi
                       </Link>
                     </h3>
                     <p className="mt-4 text-text-sub-600 text-paragraph-md">
-                      Lian Group Chair in Fintech and Blockchain Technology & Associate Professor of Finance
+                      Professor of Economics at University of Milano-Bicocca
                     </p>
                     <Link
-                      href="https://www.luiss.it/"
+                      href="https://www.unimib.it/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block mt-2 text-teal-700 underline"
                     >
-                      LUISS Guido Carli
+                      University of Milano-Bicocca
                     </Link>
                   </div>
                 </div>
               </div>
 
               {/* Download Button */}
-              <Button variant="primary" mode="filled" size="medium">
-                Download the Final Programme
-              </Button>
+              <Link
+                href="https://drive.google.com/file/d/16HrZXnAa6L-U7fByrj_PyajwQlmk1-GM/view"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="primary" mode="filled" size="medium">
+                  Download the Final Programme
+                </Button>
+              </Link>
             </div>
 
             {/* Right Column - Image */}
@@ -198,7 +205,7 @@ export default function AIBEWorkshopPage() {
               To Apply
             </h3>
             <p className="text-text-sub-600 leading-relaxed mb-4 text-paragraph-md">
-              We welcome paper submissions from researchers at any career stage, including specifically, but not exclusively: Italians and foreigners based at Italian research institutions; Brazilians and foreigners based at Brazilian research institutions; Italians and Brazilians based at foreign institutions. Other researchers with an interest in interacting with the Brazilian and Italian research communities are also welcome to apply.
+              We welcome paper submissions from researchers at any career stage, including specifically, but not exclusively: Italians and foreigners based at Italian research institutions; Brazilians and foreigners based at Brazilian research institutions; Italians and Brazilians based at foreign institutions. Other researchers with an interest in interacting with the Brazilian and Italian research communities are also welcome to apply.
             </p>
             <p className="text-text-sub-600 leading-relaxed mb-6 text-paragraph-md">
               To submit a paper, applicants should provide proof of AIBE membership. Annual membership can be obtained here. It is valid for 1 year and starts at 2 euros.
@@ -208,9 +215,15 @@ export default function AIBEWorkshopPage() {
             </p>
 
             <div className="text-center">
-              <Button variant="primary" mode="filled" size="medium">
-                Submit a Paper
-              </Button>
+              <Link
+                href="https://docs.google.com/forms/d/e/1FAIpQLSca4tZjGR29lnkhMC0Zrby471wRinhy68KGe1R8IzPpf6Hi4g/viewform"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="primary" mode="filled" size="medium">
+                  Submit a Paper
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
@@ -322,7 +335,7 @@ export default function AIBEWorkshopPage() {
         </section>
 
         {/* Sponsors Section */}
-        <section className="mt-48 mb-16">
+        <section className=" ">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-text-strong-950 mb-8 text-title-h3 text-center">
               Sponsors
@@ -390,3 +403,4 @@ export default function AIBEWorkshopPage() {
     </div>
   );
 }
+

@@ -22,7 +22,7 @@ export default function AIBEWorkshop2024Page() {
 
           {/* Main Title */}
           <h1 className="text-text-strong-950 mb-14 text-title-h1 text-center">
-            AIBE Workshop 2024
+            AIBE Workshop 2025
           </h1>
 
           {/* Two Column Layout */}
@@ -37,7 +37,7 @@ export default function AIBEWorkshop2024Page() {
               {/* Date & Location */}
               <div className="mb-3">
                 <p className="text-text-strong-950 mb-2 text-paragraph-lg">
-                  <strong>3-4 July 2024</strong>
+                  <strong>3-4 July 2025</strong>
                 </p>
                 <p className="text-text-sub-600 text-paragraph-md">
                   São Paulo School of Business Administration (EAESP-FGV)
@@ -96,8 +96,8 @@ export default function AIBEWorkshop2024Page() {
             <div className="flex justify-center lg:justify-end lg:col-span-3 pl-8">
               <div className="relative w-full h-[420px] md:h-[520px] lg:h-[620px]">
                 <Image
-                  src="/images/workshops.jpg"
-                  alt="AIBE Workshop 2024 Audience"
+                  src="/images/imagefgv.png"
+                  alt="FGV Building"
                   width={1600}
                   height={1000}
                   className="w-full h-full object-cover rounded-none shadow-sm"
