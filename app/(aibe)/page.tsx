@@ -67,15 +67,73 @@ export default function Home() {
       <section className='relative bg-white flex flex-col'>
         <div className='w-full max-w-[1200px] mx-auto px-8 mobile:px-4 flex-1 flex items-center py-8'>
           {/* Hero Content */}
-          <div className='flex flex-row mobile:flex-col items-center justify-between gap-16 mobile:gap-8 w-full'>
-            <div className='flex-1 flex flex-col gap-8 items-start w-full'>
+          <div className='flex flex-col mobile:flex-col items-center justify-center gap-16 mobile:gap-8 w-full'>
+            <div className='relative  mobile:w-full flex justify-center'>
+              <div className='relative w-[2000px] h-[300px]'>
+                <Image
+                  src='/images/brasilitalia.jpg'
+                  alt='Hero'
+                  fill
+                  className='object-cover'
+                />
+              </div>
+
+
+              {/* <div
+                className='absolute z-10 block mobile:hidden'
+                style={{
+                  left: '-20px',
+                  top: '550px'
+                }}
+              >
+                <div className='relative w-16 h-16'>
+                  <div className='absolute inset-0 rounded-full overflow-hidden z-[100]'>
+                    <Image
+                      src='/images/italy-flag.png'
+                      alt='Italy Flag'
+                      fill
+                      className='object-cover'
+                    />
+                  </div>
+
+                  <div className='absolute inset-0 rounded-full bg-blue-100 scale-125 animate-pulse-custom z-40'></div>
+
+                  <div className='absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30'></div>
+                </div>
+              </div>
+
+              
+              <div
+                className='absolute z-10 block mobile:hidden'
+                style={{
+                  left: '450px',
+                  top: '-10px'
+                }}
+              >
+                <div className='relative w-16 h-16'>
+                  <div className='absolute inset-0 rounded-full overflow-hidden z-[100]'>
+                    <Image
+                      src='/images/brazil-flag.png'
+                      alt='Brazil Flag'
+                      fill
+                      className='object-cover'
+                    />
+                  </div>
+
+                  <div className='absolute inset-0 rounded-full bg-blue-100 scale-125 animate-pulse-custom z-40'></div>
+
+                  <div className='absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30'></div>
+                </div>
+              </div> */}
+            </div>
+            <div className='flex-1 flex flex-col gap-8 items-center w-full'>
               <Badge variant='blue' size='medium' className='w-fit'>
-                Italian-Brazilian Association of Economics
+                Associazione Italo-Brasiliana di Economia
               </Badge>
 
               <div className='flex flex-col gap-4 items-center w-full'>
                 <h1 className='text-title-h1 text-text-strong-950'>
-                  Connecting science, cultures, and economies.
+                  Italian-Brazilian Association of Economics
                 </h1>
 
                 <p className='text-label-lg text-text-sub-600'>
@@ -97,70 +155,6 @@ export default function Home() {
             </div>
 
             {/* Hero Image */}
-            <div className='relative w-auto mobile:w-full flex justify-center'>
-              <div className='relative w-[500px] mobile:w-full max-w-[500px] h-[600px] mobile:h-[400px] z-0'>
-                <Image
-                  src='/images/hero.png'
-                  alt='Hero'
-                  fill
-                  className='object-cover'
-                />
-              </div>
-
-              {/* Animação Circular */}
-              <div
-                className='absolute z-10 block mobile:hidden'
-                style={{
-                  left: '-20px',
-                  top: '550px'
-                }}
-              >
-                <div className='relative w-16 h-16'>
-                  {/* Camada 1 - Bandeira (interna) - sem animação */}
-                  <div className='absolute inset-0 rounded-full overflow-hidden z-[100]'>
-                    <Image
-                      src='/images/italy-flag.png'
-                      alt='Italy Flag'
-                      fill
-                      className='object-cover'
-                    />
-                  </div>
-
-                  {/* Camada 2 - Anel médio - animação customizada */}
-                  <div className='absolute inset-0 rounded-full bg-blue-100 scale-125 animate-pulse-custom z-40'></div>
-
-                  {/* Camada 3 - Anel externo - animação mais lenta */}
-                  <div className='absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30'></div>
-                </div>
-              </div>
-
-              {/* Segunda Animação Circular */}
-              <div
-                className='absolute z-10 block mobile:hidden'
-                style={{
-                  left: '450px',
-                  top: '-10px'
-                }}
-              >
-                <div className='relative w-16 h-16'>
-                  {/* Camada 1 - Bandeira (interna) - sem animação */}
-                  <div className='absolute inset-0 rounded-full overflow-hidden z-[100]'>
-                    <Image
-                      src='/images/brazil-flag.png'
-                      alt='Brazil Flag'
-                      fill
-                      className='object-cover'
-                    />
-                  </div>
-
-                  {/* Camada 2 - Anel médio - animação customizada */}
-                  <div className='absolute inset-0 rounded-full bg-blue-100 scale-125 animate-pulse-custom z-40'></div>
-
-                  {/* Camada 3 - Anel externo - animação mais lenta */}
-                  <div className='absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30'></div>
-                </div>
-              </div>
-            </div>
 
           </div>
         </div>
