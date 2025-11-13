@@ -28,6 +28,16 @@ export default function BlogPostHero({ post }: BlogPostHeroProps) {
       day: 'numeric',
     });
 
+  // Construir URL da imagem corretamente
+  const imageUrl = post.image
+    ? (() => {
+        const url = post.image.formats?.large?.url || post.image.url;
+        return url.startsWith('http')
+          ? url
+          : `https://majestic-serenity-7a76c06678.strapiapp.com${url}`;
+      })()
+    : '';
+
   return (
     <section className='pt-20 pb-16'>
       <div className='container mx-auto px-4 max-w-7xl'>
@@ -78,16 +88,16 @@ export default function BlogPostHero({ post }: BlogPostHeroProps) {
         </div>
 
         {/* Featured Image */}
-        {post.image && (
-          <div className='relative w-full h-[400px] mb-12 overflow-hidden rounded-lg'>
+        {post.image && imageUrl && (
+          <div className='relative w-full aspect-square mb-12 overflow-hidden rounded-lg max-w-md mobile:max-w-full mx-auto'>
             <Image
-              src={post.image.formats?.large?.url || post.image.url}
+              src={imageUrl}
               alt={post.image.alternativeText || post.title}
               fill
               className='object-cover'
               priority
               quality={100}
-              sizes="(max-width: 1280px) 100vw, 1280px"
+              sizes="(max-width: 768px) 100vw, 448px"
               style={{ objectPosition: 'center 15%' }}
             />
           </div>

@@ -10,7 +10,7 @@ export default function Header() {
   const router = useRouter();
   return (
     <div className='fixed top-0 left-0 right-0 z-50 bg-white border-b border-stroke-soft-200 justify-center items-center flex w-full'>
-      <header className='w-full max-w-[1200px] px-8 py-4 md:px-4 lg:px-8 mobile:p-4 flex items-center justify-between'>
+      <header className='w-full max-w-[1200px] px-8 py-4 mobile:p-4 flex items-center justify-between'>
         {/* Logo */}
         <Link href='/' className='flex items-center gap-2'>
           <Image
@@ -18,31 +18,31 @@ export default function Header() {
             alt='AIBE Logo'
             width={113}
             height={42}
-            className='h-10 w-auto md:h-8 lg:h-10'
+            className='h-10 w-auto'
           />
 
         </Link>
 
-        {/* Navigation (tablet and desktop) */}
-        <nav className='text-base md:text-sm lg:text-lg hidden items-center gap-4 md:gap-3 lg:gap-8 font-medium text-black md:flex'>
-          <a
+        {/* Navigation (desktop) */}
+        <nav className='text-lg hidden items-center gap-8 font-medium text-black md:flex'>
+          <Link
             href='/'
             className='transition-colors hover:text-primary-base'
           >
             Home
-          </a>
-          <a
+          </Link>
+          <Link
             href='/about'
             className='transition-colors hover:text-primary-base'
           >
-            About Us
-          </a>
-          <a
+            About US
+          </Link>
+          <Link
             href='/people'
             className='transition-colors hover:text-primary-base'
           >
             People
-          </a>
+          </Link>
           <div className='relative group'>
             <button
               className='transition-colors hover:text-primary-base cursor-pointer'
@@ -116,36 +116,35 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <a
+          <Link
             href='/contact'
             className='transition-colors hover:text-primary-base'
           >
             Contact
-          </a>
+          </Link>
         </nav>
 
         {/* CTA/Button area */}
-        <div className='flex items-center gap-2 md:gap-3 lg:gap-4'>
+        <div className='flex items-center gap-4'>
           {/* Mobile: Menu button replaces CTA */}
           <div className='md:hidden'>
             <MobileMenu />
           </div>
-          {/* Tablet & Desktop: Keep CTA */}
-          <div className='hidden md:flex items-center gap-2 lg:gap-4'>
+          {/* Desktop: Keep CTA */}
+          <div className='hidden md:flex items-center gap-4'>
             <Button.Root
               variant='primary'
               size='medium'
-              className='rounded-none md:text-sm lg:text-base md:px-3 lg:px-4'
+              className='rounded-none'
               onClick={() => router.push('/membership')}
             >
-              <span className='hidden lg:inline'>Become a Member</span>
-              <span className='inline lg:hidden'>Join</span>
+              Become a Member
             </Button.Root>
             <Button.Root
               variant='neutral'
               mode='stroke'
               size='medium'
-              className='rounded-none md:text-sm lg:text-base md:px-3 lg:px-4'
+              className='rounded-none'
               onClick={() => router.push('/sign-in')}
             >
               Sign In
@@ -156,3 +155,5 @@ export default function Header() {
     </div>
   );
 }
+
+

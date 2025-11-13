@@ -1,3 +1,4 @@
+import { withPayload } from "@payloadcms/next/withPayload";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -14,9 +15,15 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3000',
+        pathname: '/api/media/**',
+      },
     ],
     qualities: [75, 90, 95, 100],
   },
 };
 
-export default nextConfig;
+export default withPayload(nextConfig);

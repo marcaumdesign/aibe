@@ -54,7 +54,7 @@ export default function BlogGrid({ posts, maxPosts }: BlogGridProps) {
             <div className='bg-white overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300'>
               {/* Image */}
               {post.image && (
-                <div className='relative h-64 overflow-hidden'>
+                <div className='relative w-full aspect-square overflow-hidden'>
                   <Image
                     src={post.image.url.startsWith('http') ? post.image.url : `https://majestic-serenity-7a76c06678.strapiapp.com${post.image.url}`}
                     alt={post.image.alternativeText || post.title}

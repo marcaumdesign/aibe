@@ -49,7 +49,7 @@ export default async function BlogList() {
           className='hover:shadow-lg h-full transition-shadow duration-200'
         >
           {post.cover?.url && (
-            <div className='relative h-48 overflow-hidden rounded-t-lg'>
+            <div className='relative w-full aspect-square overflow-hidden rounded-t-lg'>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={post.cover.formats?.medium?.url || post.cover.url}

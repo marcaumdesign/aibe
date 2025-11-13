@@ -4,8 +4,10 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-base w-full">
-      <div className="max-w-[1200px] mx-auto px-8 mobile:px-4 py-16 mobile:py-8">
+    <footer className="relative overflow-visible bg-primary-base w-full mt-0 mobile:mt-0">
+      {/* Top solid blue overlay to cover the previous section edge */}
+      <div className="pointer-events-none absolute inset-x-0 -top-4 h-4 bg-primary-base"></div>
+      <div className="max-w-[1200px] mx-auto px-8 mobile:px-4 pt-0 mobile:pt-0 pb-16 mobile:pb-8">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mobile:gap-8 mb-12">
           {/* Logo and Social Media - Takes 2 columns on desktop */}
@@ -31,32 +33,38 @@ export default function Footer() {
 
             {/* Social Media */}
             <div className="flex gap-3 items-center">
-              <a
+              <Link
                 href="https://linkedin.com/company/aibe"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
               >
                 <RiLinkedinFill className="size-5 text-white transition-colors" />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://x.com/aibe"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
               >
                 <RiTwitterXFill className="size-5 text-white transition-colors" />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://bsky.app/profile/aibe"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
               >
                 <RiBlueskyFill className="size-5 text-white transition-colors" />
-              </a>
+              </Link>
             </div>
 
+            <a
+              href="mailto:aibe@aibe.website"
+              className="text-white hover:text-gray-300 transition-colors text-base font-medium"
+            >
+              aibe@aibe.website
+            </a>
           </div>
 
           {/* Navigation Links - 3 columns on desktop */}
@@ -124,30 +132,22 @@ export default function Footer() {
 
           <div className="flex gap-6 items-center text-sm">
             <a
-              href="mailto:aibe@aibe.website"
-              className="text-white hover:text-gray-300 transition-colors text-base font-medium"
-            >
-              aibe@aibe.website
-
-            </a>
-            <span className="text-white/50">|</span>
-            <a
               href="https://www.iubenda.com/privacy-policy/33428132/cookie-policy"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-gray-300 transition-colors"
             >
               Cookie Policy
-            </a>
+            </Link>
             <span className="text-white/50">|</span>
-            <a
+            <Link
               href="https://www.iubenda.com/privacy-policy/33428132"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-gray-300 transition-colors"
             >
               Privacy Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>
