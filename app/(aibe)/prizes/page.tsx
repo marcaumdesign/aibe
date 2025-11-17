@@ -223,7 +223,7 @@ export default function EventsPage() {
                 Official Launch of the Prize
               </h2>
               <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
-                The Workshop also hosted a special panel on Studying Economics in Italy, co-organized with the Italian Cultural Institute in Sao Paulo (IIC-SP). Five participants presented the Master&apos;s progammes in economics, management and finance offered by their universities. This year, featured universities included: LUISS Guido Carli (Rome), SAIS Bologna, University of Milano-Bicocca, and Politecnico di Milano. The event was promoted by the IIC and welcomed an audience of around 30 undergraduate students from several Sao Paulo universities. The objective of this session, which AIBE plans to alternate with a similar event on &quot;Studying Economics in Brazil&quot;, is to showcase Italy&apos;s and Brazil&apos;s academic excellence in teaching, promote student exchange, and facilitate brain circulation between the two countries.
+                The Giorgio Mortara prize was officially launched during the 1st AIBE Workshop, held on 4 July 2025 at the EAESP-FGV in Sao Paulo. The launch ceremony was opened by Luca J. Uberti, who highlighted Mortara's significance for our Association, and closed by Fábio Mortara, Giorgio's grandson, who presented a personal and professionional biography of the Italian-Brazilian economist.
               </p>
             </div>
 
@@ -273,7 +273,7 @@ export default function EventsPage() {
                       {winner.title}
                     </h3>
 
-                    <div className="mb-4 pb-4 border-b border-gray-200">
+                    <div className="mb-4 pb-4 ">
                       <p className="text-text-sub-600 text-paragraph-lg leading-relaxed">
                         {winner.authors.map((author, authorIndex) => (
                           <span key={authorIndex}>

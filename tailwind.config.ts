@@ -23,8 +23,8 @@ export const texts = {
     '2.5rem',
     {
       lineHeight: '3rem',
-      letterSpacing: '-0.01em',
-      fontWeight: '500',
+      letterSpacing: '-2.36px',
+      fontWeight: '600',
     },
   ],
   'title-h4': [

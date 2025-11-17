@@ -67,9 +67,9 @@ export default function Home() {
       <section className='relative bg-white flex flex-col'>
         <div className='w-full max-w-[1200px] mx-auto px-8 mobile:px-4 flex-1 flex items-center py-8'>
           {/* Hero Content */}
-          <div className='flex flex-col mobile:flex-col items-center justify-center gap-16 mobile:gap-8 w-full'>
+          <div className='flex flex-col mobile:flex-col items-center justify-center gap-8 mobile:gap-8 w-full'>
             <div className='relative  mobile:w-full flex justify-center'>
-              <div className='relative w-[2000px] h-[300px]'>
+              <div className='relative w-[1500px] h-[200px]'>
                 <Image
                   src='/images/brasilitalia.jpg'
                   alt='Hero'
@@ -127,29 +127,24 @@ export default function Home() {
               </div> */}
             </div>
             <div className='flex-1 flex flex-col gap-8 items-center w-full'>
-              <Badge variant='blue' size='medium' className='w-fit'>
-                Associazione Italo-Brasiliana di Economia
-              </Badge>
+
 
               <div className='flex flex-col gap-4 items-center w-full'>
                 <h1 className='text-title-h1 text-text-strong-950'>
-                  Italian-Brazilian Association of Economics
+                  Associação Italo-Brasileira de Economia
+                </h1>
+                <h1 className='text-title-h3 text-text-strong-950'>
+                  Associazione Italo-Brasiliana di Economia
                 </h1>
 
                 <p className='text-label-lg text-text-sub-600'>
-                  A bilateral non-profit association dedicated to research,
-                  academic cooperation, and the exchange of knowledge.
+                  We are a bilateral, non-profit association that promotes scientific collaboration between Italian and Brazilian economists.
+
+
                 </p>
               </div>
 
-              <div className="flex gap-4">
-                <Button.Root variant='primary' mode='filled'>
-                  Become a Member
-                </Button.Root>
-                <Button.Root variant='neutral' mode='stroke'>
-                  Sign In
-                </Button.Root>
-              </div>
+
 
 
             </div>
@@ -186,12 +181,10 @@ export default function Home() {
       <section className='py-8'>
         <div className='mx-auto max-w-[1200px] w-full flex flex-col gap-8 px-4 md:px-8'>
           <div className='flex flex-col gap-4 text-start'>
-            <Badge variant='with-dot' size='medium'>
-              Features
-            </Badge>
-            <h2 className='text-title-h2 text-black animate-translate-y-16'>
+
+            {/* <h2 className='text-title-h2 text-black animate-translate-y-16'>
               Our Main Initiatives
-            </h2>
+            </h2> */}
           </div>
 
           <div className='grid gap-8 md:grid-cols-3 animate-translate-y-up'>
@@ -206,14 +199,12 @@ export default function Home() {
                 />
               </div>
               <div className='p-6 flex flex-col gap-4 flex-1'>
-                <Badge variant='with-dot' size='medium'>
-                  AIBE Workshop
-                </Badge>
+
                 <h3 className='text-title-h4 text-black'>
                   AIBE Workshop
                 </h3>
                 <p className='text-sub-600 text-paragraph-lg flex-1'>
-                  We organize an academic event held alternately in both countries.
+                  We organize an anual academic event held alternately in both countries.
                 </p>
                 <Button.Root variant='primary' size='medium' className='h-hug w-fit mt-auto' asChild>
                   <Link href='/events/workshop2024'>
@@ -234,9 +225,7 @@ export default function Home() {
                 />
               </div>
               <div className='p-6 flex flex-col gap-4 flex-1'>
-                <Badge variant='with-dot' size='medium'>
-                  Events
-                </Badge>
+
                 <h3 className='text-title-h4 text-black'>
                   Giorgio Mortara Prize
                 </h3>
@@ -262,11 +251,9 @@ export default function Home() {
                 />
               </div>
               <div className='p-6 flex flex-col gap-4 flex-1'>
-                <Badge variant='with-dot' size='medium'>
-                  About AIBE
-                </Badge>
+
                 <h3 className='text-title-h4 text-black'>
-                  Scientific Friendships
+                  Scientific Friendship
                 </h3>
                 <p className='text-sub-600 text-paragraph-lg flex-1'>
                   We facilitate the spread of information and promote academic mobility.

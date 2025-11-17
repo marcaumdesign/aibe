@@ -50,7 +50,7 @@ export default function BlogSection() {
             'Content-Type': 'application/json',
           },
         });
-        
+
         if (!isMounted) return;
 
         if (res.ok) {
@@ -79,7 +79,7 @@ export default function BlogSection() {
         }
       }
     }
-    
+
     loadPosts();
 
     return () => {
@@ -120,7 +120,7 @@ export default function BlogSection() {
           <div>
             <span className='text-sm text-gray-400 uppercase tracking-wide'>• BLOG</span>
             <h2 className='text-title-h2 text-black mt-1'>
-              Our latest news
+              News
             </h2>
           </div>
           <Link

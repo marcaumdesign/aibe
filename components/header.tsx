@@ -14,11 +14,11 @@ export default function Header() {
         {/* Logo */}
         <Link href='/' className='flex items-center gap-2'>
           <Image
-            src='/images/logo.svg'
+            src='/images/AIBE_corrected_bg 1.png'
             alt='AIBE Logo'
             width={113}
             height={42}
-            className='h-10 w-auto'
+            className='h-16 w-auto'
           />
 
         </Link>
@@ -104,17 +104,6 @@ export default function Header() {
             >
               Blog
             </Link>
-            {/* Dropdown Menu */}
-            <div className='absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'>
-              <div className='py-2'>
-                <Link
-                  href='/blog/academic-cooperation'
-                  className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
-                >
-                  Academic Cooperation
-                </Link>
-              </div>
-            </div>
           </div>
           <Link
             href='/contact'

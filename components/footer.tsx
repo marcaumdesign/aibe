@@ -59,12 +59,7 @@ export default function Footer() {
               </Link>
             </div>
 
-            <a
-              href="mailto:aibe@aibe.website"
-              className="text-white hover:text-gray-300 transition-colors text-base font-medium"
-            >
-              aibe@aibe.website
-            </a>
+
           </div>
 
           {/* Navigation Links - 3 columns on desktop */}
@@ -75,12 +70,7 @@ export default function Footer() {
               <Link href="/about" className="text-white/90 hover:text-white transition-colors text-base">
                 About AIBE
               </Link>
-              <Link href="/about#context" className="text-white/90 hover:text-white transition-colors text-base">
-                AIBE in Context
-              </Link>
-              <Link href="/about/team" className="text-white/90 hover:text-white transition-colors text-base">
-                Team
-              </Link>
+
               <Link href="/people" className="text-white/90 hover:text-white transition-colors text-base">
                 People
               </Link>
@@ -92,17 +82,12 @@ export default function Footer() {
             <h3 className="font-semibold text-white text-lg">Events & Prizes</h3>
             <nav className="flex flex-col gap-3">
               <Link href="/workshop" className="text-white/90 hover:text-white transition-colors text-base">
-                AIBE Workshop 2025
-              </Link>
-              <Link href="/events/workshop2024" className="text-white/90 hover:text-white transition-colors text-base">
-                AIBE Workshop 2024
-              </Link>
-              <Link href="/events" className="text-white/90 hover:text-white transition-colors text-base">
-                Last Events
+                Workshops
               </Link>
               <Link href="/prizes" className="text-white/90 hover:text-white transition-colors text-base">
-                Giorgio Mortara Prize
+                Prizes
               </Link>
+
             </nav>
           </div>
 
@@ -125,26 +110,30 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/20 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white text-sm text-center md:text-left">
-            © {new Date().getFullYear()} AIBE. All Rights Reserved | Codice Fiscale: 97970970154
+          <p className="text-white text-paragraph-xs text-center md:text-left">
+            © {new Date().getFullYear()} AIBE. All Rights Reserved | Codice Fiscale: 97970970154 | <a
+              href="mailto:aibe@aibe.website"
+              className="text-white hover:text-gray-300 transition-colors text-paragraph-xs font-medium"
+            >
+              aibe@aibe.website
+            </a>
           </p>
 
-
-          <div className="flex gap-6 items-center text-sm">
+          <div className="flex gap-6 items-center text-paragraph-xs">
             <Link
               href="https://www.iubenda.com/privacy-policy/33428132/cookie-policy"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:text-gray-300 transition-colors"
+              className="text-white hover:text-gray-300 transition-colors text-paragraph-xs"
             >
               Cookie Policy
             </Link>
-            <span className="text-white/50">|</span>
+            <span className="text-white/50 text-paragraph-xs">|</span>
             <Link
               href="https://www.iubenda.com/privacy-policy/33428132"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:text-gray-300 transition-colors"
+              className="text-white hover:text-gray-300 transition-colors text-paragraph-xs"
             >
               Privacy Policy
             </Link>

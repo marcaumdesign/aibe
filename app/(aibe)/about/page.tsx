@@ -155,7 +155,7 @@ export default function About() {
             </div>
 
             {/* Right Column - Image */}
-            <div className="relative w-full flex-1 min-w-[300px] h-[500px] mobile:h-[350px]">
+            <div className="sticky top-[100px] w-full flex-1 min-w-[300px] h-[500px] mobile:h-[350px]">
               <Image
                 src='/images/brasil-italia.png'
                 alt='Brasil e Italia'
@@ -179,9 +179,9 @@ export default function About() {
             </div>
           </Link>
 
-          {/* Statistics Section */}
-          <div className="flex flex-row mobile:flex-col gap-[300px] mobile:gap-8 items-center justify-center w-full mt-24 mobile:mt-16">
-            {/* Statistic 1 */}
+
+          {/* <div className="flex flex-row mobile:flex-col gap-[300px] mobile:gap-8 items-center justify-center w-full mt-24 mobile:mt-16">
+   
             <div className="flex flex-col gap-2 items-center justify-center">
               <div className="text-title-h0 mobile:text-title-h1 text-primary-base font-bold">
                 {count9}
@@ -191,7 +191,7 @@ export default function About() {
               </div>
             </div>
 
-            {/* Statistic 2 */}
+       
             <div className="flex flex-col gap-2 items-center justify-center">
               <div className="text-title-h0 mobile:text-title-h1 text-primary-base font-bold">
                 1
@@ -201,19 +201,18 @@ export default function About() {
               </div>
             </div>
 
-            {/* Statistic 3 */}
             <div className="flex flex-col gap-2 items-center justify-center">
               <div className="text-title-h0 mobile:text-title-h1 text-primary-base font-bold">
                 {count40}+
               </div>
               <div className="text-label-xl text-black text-center font-bold tracking-tight whitespace-nowrap">
-                Members Active
+                Active Members
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* AIBE Activities Section */}
-          <div className="bg-[#f3f8ff] p-8 mobile:p-6 w-full mt-16 mobile:mt-12 mb-80 mobile:mb-48">
+          <div className="bg-[#f3f8ff] p-8 mobile:p-6 w-full mt-16 mobile:mt-12  mobile:mb-48">
             <div className="flex flex-row mobile:flex-col gap-8 items-start w-full">
               {/* Left Content - Activities */}
               <div className="flex flex-col gap-6 mobile:gap-4 flex-1">

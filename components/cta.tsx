@@ -14,7 +14,7 @@ export default function CTA({ hideFlagOnMobile = false }: { hideFlagOnMobile?: b
             alt='Brazilian and Italian flags'
             width={402}
             height={294}
-            className={`w-auto h-[200px] mobile:h-[140px] z-40 mt-[-280px] mobile:mt-[-160px] ${hideFlagOnMobile ? 'mobile:hidden' : ''}`}
+            className={`w-auto h-[150px] mobile:h-[140px] z-30 mt-[-280px] mobile:mt-[-160px] ${hideFlagOnMobile ? 'mobile:hidden' : ''}`}
           />
         </div>
       </div>

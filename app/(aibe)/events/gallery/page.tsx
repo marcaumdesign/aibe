@@ -120,9 +120,7 @@ export default function GalleryPage() {
           <h1 className="text-text-strong-950 text-title-h1 mobile:text-title-h2 mb-4">
             Gallery
           </h1>
-          <p className="text-text-sub-600 text-paragraph-lg max-w-3xl">
-            Explore moments from our past AIBE workshops and events. These images capture the spirit of collaboration, learning, and networking that define our community.
-          </p>
+
         </div>
 
         {/* Gallery Grid */}

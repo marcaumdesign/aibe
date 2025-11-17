@@ -43,7 +43,7 @@ export default function RootLayout({
             <div className='flex min-h-screen flex-col'>
               <Header />
               <main className='flex flex-1 flex-col pt-[80px]'>{children}</main>
-              <div className="relative mt-80 mobile:mt-48">
+              <div className="relative mt-48 mobile:mt-48">
                 <CTA />
               </div>
               <Footer />

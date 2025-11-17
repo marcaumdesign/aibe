@@ -65,75 +65,13 @@ export default function Membership() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="pt-32 pb-16">
-        <div className="mx-auto max-w-[1200px] w-full px-4">
-          <div className="flex flex-col gap-8 mobile:gap-6 text-center">
-            <div className="inline-flex items-center justify-center px-2 py-0.5 bg-transparent text-slate-400 text-subheading-xs uppercase tracking-[0.48px]">
-              <div className="h-1 w-1 rounded-full bg-slate-400 mr-2"></div>
-              MEMBERSHIP
-            </div>
-            <h1 className="text-title-h1 text-black">
-              Become a Member
-            </h1>
-            <div className="relative max-w-2xl mx-auto">
-              <p className="text-paragraph-lg text-slate-600">
-                Gain access to exclusive events, networking opportunities, and the right to participate in the Members&apos; Assembly.
-              </p>
 
-              {/* Flags com animação circular - alinhadas com o texto */}
-              <div className="flex justify-between items-center mt-8">
-                {/* Animação Circular - Bandeira da Itália */}
-                <div className="relative z-10">
-                  <div className="relative w-16 h-16 mobile:w-14 mobile:h-14">
-                    {/* Camada 1 - Bandeira (interna) - sem animação */}
-                    <div className="absolute inset-0 rounded-full overflow-hidden z-[100]">
-                      <Image
-                        src="/images/italy-flag.png"
-                        alt="Italian flag"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-
-                    {/* Camada 2 - Anel médio - animação customizada */}
-                    <div className="absolute inset-0 rounded-full bg-blue-100 scale-125 animate-pulse-custom z-40"></div>
-
-                    {/* Camada 3 - Anel externo - animação mais lenta */}
-                    <div className="absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30"></div>
-                  </div>
-                </div>
-
-                {/* Animação Circular - Bandeira do Brasil */}
-                <div className="relative z-10">
-                  <div className="relative w-16 h-16 mobile:w-14 mobile:h-14">
-                    {/* Camada 1 - Bandeira (interna) - sem animação */}
-                    <div className="absolute inset-0 rounded-full overflow-hidden z-[100]">
-                      <Image
-                        src="/images/brazil-flag.png"
-                        alt="Brazilian flag"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-
-                    {/* Camada 2 - Anel médio - animação customizada */}
-                    <div className="absolute inset-0 rounded-full bg-blue-100 scale-125 animate-pulse-custom z-40"></div>
-
-                    {/* Camada 3 - Anel externo - animação mais lenta */}
-                    <div className="absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Membership Benefits */}
       <section className="py-16 mobile:py-12 bg-white px-4">
         <div className="mx-auto max-w-[1200px] w-full ">
           <div className="flex flex-col gap-12 mobile:gap-8">
-            <div className="text-left">
+            <div className="text-center">
               <h2 className="text-title-h2 text-black mb-4">
                 Membership Benefits
               </h2>
@@ -194,9 +132,9 @@ export default function Membership() {
 
               {/* Powered by Stripe Logo */}
               <div className="mt-6 flex justify-center">
-                <div className="inline-flex items-center gap-2 px-4 py-2 border-2 border-purple-500 rounded-lg bg-transparent">
-                  <span className="text-purple-500 text-sm font-normal">Powered by</span>
-                  <span className="text-purple-500 text-sm font-bold italic">stripe</span>
+                <div className="inline-flex items-center gap-2 px-4 py-2 border-2 border-text-white-0 rounded-lg bg-transparent">
+                  <span className="text-text-white-0 text-sm font-normal">Powered by</span>
+                  <span className="text-text-white-0 text-sm font-bold italic">stripe</span>
                 </div>
               </div>
             </div>
@@ -251,10 +189,7 @@ export default function Membership() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <div className='mt-80 mobile:mt-48'>
-        <CTA />
-      </div>
+
     </div>
   );
 }

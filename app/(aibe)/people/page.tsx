@@ -54,9 +54,9 @@ export default function People() {
       </section>
 
       {/* Directors from Strapi - Client Component */}
-      <div className='mb-24 mobile:mb-12'>
+      <div className=''>
         {isLoading ? (
-          <section className='pb-32 mobile:pb-16'>
+          <section className=''>
             <div className='mx-auto max-w-[1200px] w-full px-4 mobile:px-4'>
               <div className='grid grid-cols-4 mobile:grid-cols-1 gap-8 mobile:gap-6'>
                 {[...Array(8)].map((_, i) => (
