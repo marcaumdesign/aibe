@@ -118,7 +118,7 @@ export default function Footer() {
             </a>
           </p>
 
-          <div className="flex gap-6 items-center text-paragraph-xs">
+          <div className="flex gap-2 items-center text-paragraph-xs">
             <Link
               href="https://www.iubenda.com/privacy-policy/33428132/cookie-policy"
               target="_blank"
@@ -129,12 +129,21 @@ export default function Footer() {
             </Link>
             <span className="text-white/50 text-paragraph-xs">|</span>
             <Link
-              href="https://www.iubenda.com/privacy-policy/33428132"
+              href="https://www.iubenda.com/privacy-policy/33428132/cookie-policy"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-gray-300 transition-colors text-paragraph-xs"
             >
-              Privacy Policy
+              Cookie Policy
+            </Link>
+            <span className="text-white/50 text-paragraph-xs">|</span>
+            <Link
+              href="https://mainnet.design"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-gray-300 transition-colors text-paragraph-xs"
+            >
+              Powered by Mainnet™
             </Link>
           </div>
         </div>

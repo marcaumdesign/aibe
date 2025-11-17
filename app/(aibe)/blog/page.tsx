@@ -59,9 +59,9 @@ function formatPostForGrid(post: Post): BlogPostCard {
   const resolvedImage =
     metaImage && typeof metaImage === 'object'
       ? {
-          url: metaImage?.sizes?.medium?.url || metaImage?.url || '',
-          alternativeText: metaImage?.alt || post.title || undefined,
-        }
+        url: metaImage?.sizes?.medium?.url || metaImage?.url || '',
+        alternativeText: metaImage?.alt || post.title || undefined,
+      }
       : null;
 
   return {
@@ -73,9 +73,9 @@ function formatPostForGrid(post: Post): BlogPostCard {
     date: post.publishedAt || post.createdAt || new Date().toISOString(),
     category: primaryCategory
       ? {
-          name: primaryCategory.title || 'Categoria',
-          slug: primaryCategory.slug || '',
-        }
+        name: primaryCategory.title || 'Categoria',
+        slug: primaryCategory.slug || '',
+      }
       : undefined,
   };
 }
@@ -104,10 +104,7 @@ export default async function BlogPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <div className="mt-48">
-        <CTA />
-      </div>
+
     </div>
   );
 }
