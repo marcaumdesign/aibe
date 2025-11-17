@@ -1,7 +1,6 @@
 import { RiLinkedinFill, RiTwitterXFill, RiBlueskyFill } from "@remixicon/react";
 import Link from "next/link";
 import Image from "next/image";
-import CTA from "./cta";
 export default function Footer() {
   return (
     <footer className="relative overflow-visible bg-primary-base w-full mt-0 mobile:mt-0">
