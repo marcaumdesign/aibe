@@ -99,7 +99,7 @@ export default function Header() {
           </div>
           <div className='relative group'>
             <Link
-              href='/blog'
+              href='/posts'
               className='transition-colors hover:text-primary-base'
             >
               Blog

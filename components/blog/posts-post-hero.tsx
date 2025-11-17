@@ -32,9 +32,9 @@ export default function PostsPostHero({ post }: PostsPostHeroProps) {
   // Construir URL da imagem corretamente
   const imageUrl = post.image
     ? (() => {
-        const url = post.image.sizes?.large?.url || post.image.url;
-        return getMediaUrl(url);
-      })()
+      const url = post.image.sizes?.large?.url || post.image.url;
+      return getMediaUrl(url);
+    })()
     : '';
 
   return (
@@ -52,7 +52,7 @@ export default function PostsPostHero({ post }: PostsPostHeroProps) {
             <li className='text-text-soft-400'>/</li>
             <li>
               <Link href='/posts' className='hover:text-text-sub-600 transition-colors'>
-                Posts
+                Blog
               </Link>
             </li>
           </ol>
@@ -61,7 +61,7 @@ export default function PostsPostHero({ post }: PostsPostHeroProps) {
         {/* Header Content */}
         <div className='text-center mb-16 max-w-4xl mx-auto'>
           <p className='text-subheading-sm text-text-soft-400 uppercase tracking-wider mb-4'>
-            POSTS
+            BLOG
           </p>
           <h1 className='text-title-h1 text-text-strong-950 font-semibold mb-6'>
             {post.title}

@@ -44,7 +44,7 @@ export default function BlogSection() {
 
     async function loadPosts() {
       try {
-        const res = await fetch('/api/news', {
+        const res = await fetch('/api/posts', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -56,15 +56,15 @@ export default function BlogSection() {
         if (res.ok) {
           const data = await res.json();
           if (isMounted) {
-            setPosts(data.news || []);
+            setPosts(data.posts || []);
             setError(null);
           }
         } else {
           const errorText = await res.text().catch(() => res.statusText);
-          console.error('Erro ao carregar notícias:', res.status, errorText);
+          console.error('Erro ao carregar posts:', res.status, errorText);
           if (isMounted) {
             setPosts([]);
-            setError('Erro ao carregar notícias');
+            setError('Erro ao carregar posts');
           }
         }
       } catch (error) {
@@ -94,7 +94,7 @@ export default function BlogSection() {
       <section className='py-20'>
         <div className='container mx-auto max-w-[1200px] px-4'>
           <div className='text-center'>
-            <p className='text-paragraph-lg text-text-sub-600'>Carregando notícias...</p>
+            <p className='text-paragraph-lg text-text-sub-600'>Carregando posts...</p>
           </div>
         </div>
       </section>
@@ -106,7 +106,7 @@ export default function BlogSection() {
       <section className='py-20'>
         <div className='container mx-auto max-w-[1200px] px-4'>
           <div className='text-center'>
-            <p className='text-paragraph-lg text-text-sub-600 text-red-500'>{error}</p>
+            <p className='text-paragraph-lg text-red-500'>{error}</p>
           </div>
         </div>
       </section>
@@ -124,7 +124,7 @@ export default function BlogSection() {
             </h2>
           </div>
           <Link
-            href='/blog'
+            href='/posts'
             className='bg-[#0A1A4F] text-white text-sm font-medium px-5 py-2 hover:bg-[#0357B9] transition duration-200 ease-out'
           >
             See More
@@ -135,12 +135,12 @@ export default function BlogSection() {
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
             {displayPosts.map((post: NewsItem) => (
               <article key={post.id} className='group'>
-                <Link href={`/blog/${post.slug}`}>
+                <Link href={`/posts/${post.slug}`}>
                   <div className='overflow-hidden'>
                     {post.image && (
                       <div className='relative w-full aspect-square overflow-hidden'>
                         <Image
-                          src={post.image.url.startsWith('http') ? post.image.url : `https://majestic-serenity-7a76c06678.strapiapp.com${post.image.url}`}
+                          src={post.image.url}
                           alt={post.image.alternativeText || post.title}
                           fill
                           className='object-cover transition-transform duration-300 group-hover:scale-105'
@@ -172,7 +172,7 @@ export default function BlogSection() {
           </div>
         ) : (
           <div className='text-center py-12'>
-            <p className='text-paragraph-lg text-text-sub-600'>Nenhuma notícia disponível no momento.</p>
+            <p className='text-paragraph-lg text-text-sub-600'>Nenhum post disponível no momento.</p>
           </div>
         )}
       </div>

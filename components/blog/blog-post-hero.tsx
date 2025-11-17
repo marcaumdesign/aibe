@@ -52,7 +52,7 @@ export default function BlogPostHero({ post }: BlogPostHeroProps) {
             </li>
             <li className='text-text-soft-400'>/</li>
             <li>
-              <Link href='/blog' className='hover:text-text-sub-600 transition-colors'>
+              <Link href='/posts' className='hover:text-text-sub-600 transition-colors'>
                 Blog
               </Link>
             </li>

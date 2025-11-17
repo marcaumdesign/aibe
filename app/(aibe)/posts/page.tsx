@@ -68,9 +68,9 @@ function formatPostForGrid(post: Post): BlogPostCard {
   // Try meta.image first, then heroImage
   const metaImage = post.meta?.image
   const heroImage = post.heroImage
-  
+
   let resolvedImage = null
-  
+
   if (metaImage && typeof metaImage === 'object') {
     const url = metaImage.sizes?.medium?.url || metaImage.url
     if (url) {
@@ -98,9 +98,9 @@ function formatPostForGrid(post: Post): BlogPostCard {
     date: post.publishedAt || post.createdAt || new Date().toISOString(),
     category: primaryCategory
       ? {
-          name: primaryCategory.title || 'Categoria',
-          slug: primaryCategory.slug || '',
-        }
+        name: primaryCategory.title || 'Categoria',
+        slug: primaryCategory.slug || '',
+      }
       : undefined,
   }
 }
@@ -116,7 +116,7 @@ export default async function Page() {
         <div className='container mx-auto px-4'>
           <div className='text-center mb-16'>
             <p className='text-subheading-sm text-text-soft-400 uppercase tracking-wider mb-4'>
-              POSTS
+              BLOG
             </p>
             <h1 className='text-title-h2 text-text-strong-950'>
               Our latest news

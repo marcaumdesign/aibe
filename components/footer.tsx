@@ -94,7 +94,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <h3 className="font-semibold text-white text-lg">Resources</h3>
             <nav className="flex flex-col gap-3">
-              <Link href="/blog" className="text-white/90 hover:text-white transition-colors text-base">
+              <Link href="/posts" className="text-white/90 hover:text-white transition-colors text-base">
                 Blog
               </Link>
               <Link href="/membership" className="text-white/90 hover:text-white transition-colors text-base">

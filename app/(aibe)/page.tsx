@@ -67,8 +67,8 @@ export default function Home() {
         <div className='w-full max-w-[1200px] mx-auto px-8 mobile:px-4 flex-1 flex items-center py-8'>
           {/* Hero Content */}
           <div className='flex flex-col mobile:flex-col items-center justify-center gap-8 mobile:gap-8 w-full'>
-            <div className='relative  mobile:w-full flex justify-center'>
-              <div className='relative w-[1500px] h-[200px]'>
+            <div className='relative w-full mobile:w-full flex justify-center'>
+              <div className='relative w-full h-[200px]'>
                 <Image
                   src='/images/brasilitalia.jpg'
                   alt='Hero'
@@ -132,7 +132,7 @@ export default function Home() {
                 <h1 className='text-title-h1 text-text-strong-950'>
                   Associação Italo-Brasileira de Economia
                 </h1>
-                <h1 className='text-title-h3 text-text-strong-950'>
+                <h1 className='text-title-h3 text-center text-text-strong-950'>
                   Associazione Italo-Brasiliana di Economia
                 </h1>
 

@@ -24,7 +24,7 @@ export default function Header() {
         </Link>
 
         {/* Navigation (desktop) */}
-        <nav className='text-lg hidden items-center gap-8 font-medium text-black md:flex'>
+        <nav className='text-lg hidden items-center gap-4 font-medium text-black md:flex'>
           <Link
             href='/'
             className='transition-colors hover:text-primary-base'
@@ -99,7 +99,7 @@ export default function Header() {
           </div>
           <div className='relative group'>
             <Link
-              href='/blog'
+              href='/posts'
               className='transition-colors hover:text-primary-base'
             >
               Blog

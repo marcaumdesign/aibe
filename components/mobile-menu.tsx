@@ -55,7 +55,7 @@ export default function MobileMenu() {
 
             {/* Blog Section with subitems */}
             <div className='flex flex-col'>
-              <Item href='/blog'>Blog</Item>
+              <Item href='/posts'>Blog</Item>
               <div className='flex flex-col gap-1 pl-4'>
                 <SubItem href='/blog/academic-cooperation'>Academic Cooperation</SubItem>
               </div>
