@@ -1,6 +1,5 @@
 'use client';
 
-import { RiBlueskyFill, RiLinkedinFill, RiTwitterXFill } from '@remixicon/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as Button from '@/components/ui/button';

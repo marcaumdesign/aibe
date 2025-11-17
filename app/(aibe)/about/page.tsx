@@ -3,63 +3,8 @@
 import { RiCheckLine, RiTrophyLine, RiTeamLine } from "@remixicon/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-
-// Hook para animação de contagem
-function useCounter(end: number, duration: number = 2000) {
-  const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
-
-  useEffect(() => {
-    if (hasAnimated) return;
-
-    const startTime = Date.now();
-    const startValue = 0;
-
-    const animate = () => {
-      const now = Date.now();
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-
-      // Usar easing mais linear (easeOutQuad) que é mais rápido no final
-      const easeOutQuad = 1 - (1 - progress) * (1 - progress);
-      let currentCount = Math.floor(startValue + (end - startValue) * easeOutQuad);
-
-      // Garantir que não ultrapasse o valor final
-      currentCount = Math.min(currentCount, end);
-
-      // Se chegou perto do final (último 5%), ir direto para o final
-      if (progress >= 0.95) {
-        setCount(end);
-        setHasAnimated(true);
-        return;
-      }
-
-      setCount(currentCount);
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      } else {
-        setCount(end);
-        setHasAnimated(true);
-      }
-    };
-
-    // Pequeno delay para garantir que o componente está montado
-    const timeout = setTimeout(() => {
-      requestAnimationFrame(animate);
-    }, 100);
-
-    return () => clearTimeout(timeout);
-  }, [end, duration, hasAnimated]);
-
-  return count;
-}
 
 export default function About() {
-  const count9 = useCounter(9, 1500);
-  const count40 = useCounter(40, 2000);
-
   return (
     <div className="flex flex-col items-center justify-start relative size-full">
       {/* Title Section */}

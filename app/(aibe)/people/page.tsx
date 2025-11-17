@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import CTA from '@/components/cta';
 import DirectorsGrid from '@/components/directors-grid';
 import type { Director } from '@/lib/strapi';
 

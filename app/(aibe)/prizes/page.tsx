@@ -223,7 +223,7 @@ export default function EventsPage() {
                 Official Launch of the Prize
               </h2>
               <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
-                The Giorgio Mortara prize was officially launched during the 1st AIBE Workshop, held on 4 July 2025 at the EAESP-FGV in Sao Paulo. The launch ceremony was opened by Luca J. Uberti, who highlighted Mortara's significance for our Association, and closed by Fábio Mortara, Giorgio's grandson, who presented a personal and professionional biography of the Italian-Brazilian economist.
+                The Giorgio Mortara prize was officially launched during the 1st AIBE Workshop, held on 4 July 2025 at the EAESP-FGV in Sao Paulo. The launch ceremony was opened by Luca J. Uberti, who highlighted Mortara&apos;s significance for our Association, and closed by Fábio Mortara, Giorgio&apos;s grandson, who presented a personal and professionional biography of the Italian-Brazilian economist.
               </p>
             </div>
 

@@ -6,7 +6,6 @@ import {
 } from "@remixicon/react";
 import { useState } from "react";
 import Image from "next/image";
-import CTA from "@/components/cta";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import * as Label from "@/components/ui/label";
