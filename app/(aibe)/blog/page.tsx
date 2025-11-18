@@ -89,7 +89,7 @@ export default async function BlogPage() {
       <section className='pt-20 pb-16'>
         <div className='container mx-auto px-4'>
           <div className='text-center mb-16'>
-            <p className='text-subheading-sm text-text-soft-400 uppercase tracking-wider mb-4'>
+            <p className='text-subheading-sm text-text-soft-400 uppercase  mb-4'>
               BLOG
             </p>
             <h1 className='text-title-h2 text-text-strong-950'>
