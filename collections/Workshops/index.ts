@@ -14,7 +14,7 @@ import { slugField } from 'payload';
 import { authenticated } from '../../access/authenticated';
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished';
 
-export const Workshops: CollectionConfig<'workshops'> = {
+export const Workshops: CollectionConfig = {
   slug: 'workshops',
   access: {
     create: authenticated,
@@ -111,7 +111,8 @@ export const Workshops: CollectionConfig<'workshops'> = {
         };
       },
       admin: {
-        description: 'Select a speaker from Staff collection (only shows items with type "Speaker")',
+        description:
+          'Select a speaker from Staff collection (only shows items with type "Speaker")',
       },
     },
     {
@@ -171,7 +172,8 @@ export const Workshops: CollectionConfig<'workshops'> = {
       type: 'textarea',
       label: 'Scientific Committee',
       admin: {
-        description: 'Use Markdown format. For bullet points, use "- " or "* " at the start of each line.',
+        description:
+          'Use Markdown format. For bullet points, use "- " or "* " at the start of each line.',
       },
     },
     {
@@ -179,7 +181,8 @@ export const Workshops: CollectionConfig<'workshops'> = {
       type: 'textarea',
       label: 'Topics',
       admin: {
-        description: 'Use Markdown format. For bullet points, use "- " or "* " at the start of each line.',
+        description:
+          'Use Markdown format. For bullet points, use "- " or "* " at the start of each line.',
       },
     },
     {
@@ -263,4 +266,3 @@ export const Workshops: CollectionConfig<'workshops'> = {
     maxPerDoc: 50,
   },
 };
-
