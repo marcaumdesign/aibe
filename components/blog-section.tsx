@@ -138,7 +138,7 @@ export default function BlogSection() {
                 <Link href={`/posts/${post.slug}`}>
                   <div className='overflow-hidden'>
                     {post.image && (
-                      <div className='relative w-full aspect-square overflow-hidden'>
+                      <div className='relative w-full h-[250px] overflow-hidden'>
                         <Image
                           src={post.image.url}
                           alt={post.image.alternativeText || post.title}

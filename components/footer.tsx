@@ -33,7 +33,7 @@ export default function Footer() {
             {/* Social Media */}
             <div className="flex gap-3 items-center">
               <Link
-                href="https://linkedin.com/company/aibe"
+                href="https://www.linkedin.com/in/associazione-italo-brasiliana-di-economia-aibe-6700b3356/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
@@ -41,7 +41,7 @@ export default function Footer() {
                 <RiLinkedinFill className="size-5 text-white transition-colors" />
               </Link>
               <Link
-                href="https://x.com/aibe"
+                href="https://x.com/econ_aibe"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
@@ -49,7 +49,7 @@ export default function Footer() {
                 <RiTwitterXFill className="size-5 text-white transition-colors" />
               </Link>
               <Link
-                href="https://bsky.app/profile/aibe"
+                href="https://bsky.app/profile/econaibe.bsky.social"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
