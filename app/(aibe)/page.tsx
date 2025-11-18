@@ -1,9 +1,10 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import * as Button from '@/components/ui/button';
 import BlogSection from '@/components/blog-section';
+import { HighlightBanner } from '@/globals/HighlightBanner/Component';
+import { getCachedGlobal } from '@/utilities/getGlobals';
+import type { HighlightBanner as HighlightBannerType } from '@/payload-types';
 // export const metadata: Metadata = {
 //   title: 'AIBE - Italian-Brazilian Association of Economics',
 //   description:
@@ -59,7 +60,10 @@ function Badge({
   );
 }
 
-export default function Home() {
+export default async function Home() {
+  // Buscar dados do Highlight Banner
+  const highlightBanner = (await getCachedGlobal('highlight-banner', 0)()) as HighlightBannerType;
+
   return (
     <div className='min-h-screen bg-white'>
       {/* Hero Section */}
@@ -153,26 +157,14 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Highlights Section */}
-        <div className='bg-[#f3f8ff] py-6 md:py-8'>
-          <div className='w-full max-w-[1200px] mx-auto px-4 md:px-8'>
-            <div className='flex flex-col items-start md:items-end justify-between gp-6 md:gap-8 md:flex-row'>
-              <div className='flex-1 space-y-3 md:space-y-4'>
-                <Badge variant='with-dot' size='medium'>
-                  Highlights
-                </Badge>
-                <h2 className='text-title-h4 text-black animate-translate-y-up'>
-                  AIBE Workshop 2026 to be announced soon
-                </h2>
-              </div>
-              <Button.Root variant='primary' mode='filled' size='medium' className='h-hug' asChild>
-                <Link href='/events/workshop'>
-                  See Details
-                </Link>
-              </Button.Root>
-            </div>
-          </div>
-        </div>
+        {/* Highlights Section - Controlado pelo Payload */}
+        {highlightBanner?.enabled && (
+          <HighlightBanner
+            title={highlightBanner.title}
+            buttonText={highlightBanner.button.text}
+            buttonLink={highlightBanner.button.link}
+          />
+        )}
       </section>
 
 

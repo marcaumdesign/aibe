@@ -109,10 +109,12 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    'highlight-banner': HighlightBanner;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    'highlight-banner': HighlightBannerSelect<false> | HighlightBannerSelect<true>;
   };
   locale: null;
   user: User & {
@@ -1833,6 +1835,30 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "highlight-banner".
+ */
+export interface HighlightBanner {
+  id: number;
+  /**
+   * Ative ou desative o banner na página inicial
+   */
+  enabled?: boolean | null;
+  /**
+   * Texto principal do banner
+   */
+  title: string;
+  button: {
+    text: string;
+    /**
+     * URL para onde o botão irá redirecionar (ex: /events/workshop)
+     */
+    link: string;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -1872,6 +1898,23 @@ export interface FooterSelect<T extends boolean = true> {
               label?: T;
             };
         id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "highlight-banner_select".
+ */
+export interface HighlightBannerSelect<T extends boolean = true> {
+  enabled?: T;
+  title?: T;
+  button?:
+    | T
+    | {
+        text?: T;
+        link?: T;
       };
   updatedAt?: T;
   createdAt?: T;
