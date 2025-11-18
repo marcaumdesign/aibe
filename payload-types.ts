@@ -790,10 +790,21 @@ export interface Workshop {
   speaker?: (number | null) | Staff;
   firstButtonText?: string | null;
   firstButtonLink?: string | null;
-  /**
-   * Use Markdown format. For bullet points, use "- " or "* " at the start of each line.
-   */
-  content?: string | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   gallery?:
     | {
         image: number | Media;
@@ -829,8 +840,22 @@ export interface Workshop {
         id?: string | null;
       }[]
     | null;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  /**
+   * This section only appears for Past workshops
+   */
+  studyingSection?: {
+    studyingTitle?: string | null;
+    studyingDescription?: string | null;
+    studyingImage?: (number | null) | Media;
+  };
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1472,8 +1497,18 @@ export interface WorkshopsSelect<T extends boolean = true> {
         logo?: T;
         id?: T;
       };
+  generateSlug?: T;
+  slug?: T;
+  studyingSection?:
+    | T
+    | {
+        studyingTitle?: T;
+        studyingDescription?: T;
+        studyingImage?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1858,6 +1893,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'posts';
           value: number | Post;
+        } | null)
+      | ({
+          relationTo: 'workshops';
+          value: number | Workshop;
         } | null);
     global?: string | null;
     user?: (number | null) | User;
