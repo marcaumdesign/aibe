@@ -49,7 +49,7 @@ export default function Team() {
         </div>
       </section>
 
-      {/* Directors from Strapi - Client Component */}
+      {/* Directors from Payload - Client Component */}
       <div className='mb-24'>
         <DirectorsGrid directors={directors} />
       </div>

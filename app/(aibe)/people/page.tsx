@@ -52,7 +52,7 @@ export default function People() {
         </div>
       </section>
 
-      {/* Directors from Strapi - Client Component */}
+      {/* Directors from Payload - Client Component */}
       <div className=''>
         {isLoading ? (
           <section className=''>
