@@ -73,6 +73,7 @@ export interface Config {
     categories: Category;
     users: User;
     staff: Staff;
+    workshops: Workshop;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -91,6 +92,7 @@ export interface Config {
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     staff: StaffSelect<false> | StaffSelect<true>;
+    workshops: WorkshopsSelect<false> | WorkshopsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -769,6 +771,69 @@ export interface Staff {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "workshops".
+ */
+export interface Workshop {
+  id: number;
+  title: string;
+  subject: string;
+  period: {
+    startDate: string;
+    endDate: string;
+  };
+  place: string;
+  cover: number | Media;
+  type: 'current' | 'past';
+  /**
+   * Select a speaker from Staff collection (only shows items with type "Speaker")
+   */
+  speaker?: (number | null) | Staff;
+  firstButtonText?: string | null;
+  firstButtonLink?: string | null;
+  /**
+   * Use Markdown format. For bullet points, use "- " or "* " at the start of each line.
+   */
+  content?: string | null;
+  gallery?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  secondButtonText?: string | null;
+  secondButtonLink?: string | null;
+  /**
+   * Use Markdown format. For bullet points, use "- " or "* " at the start of each line.
+   */
+  scientificCommittee?: string | null;
+  /**
+   * Use Markdown format. For bullet points, use "- " or "* " at the start of each line.
+   */
+  topics?: string | null;
+  /**
+   * Add frequently asked questions and answers
+   */
+  faq?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Upload sponsor logos
+   */
+  sponsors?:
+    | {
+        logo: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -980,6 +1045,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'staff';
         value: number | Staff;
+      } | null)
+    | ({
+        relationTo: 'workshops';
+        value: number | Workshop;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1358,6 +1427,52 @@ export interface StaffSelect<T extends boolean = true> {
   description?: T;
   biography?: T;
   link?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "workshops_select".
+ */
+export interface WorkshopsSelect<T extends boolean = true> {
+  title?: T;
+  subject?: T;
+  period?:
+    | T
+    | {
+        startDate?: T;
+        endDate?: T;
+      };
+  place?: T;
+  cover?: T;
+  type?: T;
+  speaker?: T;
+  firstButtonText?: T;
+  firstButtonLink?: T;
+  content?: T;
+  gallery?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  secondButtonText?: T;
+  secondButtonLink?: T;
+  scientificCommittee?: T;
+  topics?: T;
+  faq?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  sponsors?:
+    | T
+    | {
+        logo?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

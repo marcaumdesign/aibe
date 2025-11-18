@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { RiArrowLeftLine, RiArrowRightLine } from '@remixicon/react';
 import Image from 'next/image';
 import type { Director } from '@/lib/strapi';
@@ -18,6 +19,27 @@ export default function DirectorModal({
   onNavigate,
   showNavigation = true,
 }: DirectorModalProps) {
+  // Bloqueia o scroll do body quando o modal está aberto
+  useEffect(() => {
+    if (director) {
+      // Salva o scroll atual e bloqueia
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+
+      return () => {
+        // Restaura o scroll quando o modal fecha
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [director]);
+
   if (!director) return null;
 
   return (
