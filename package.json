@@ -2,6 +2,7 @@
   "name": "alignui-nextjs-typescript-starter",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,7 +10,8 @@
     "lint": "next lint",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "postinstall": "pnpm prisma generate",
-    "vercel-build": "pnpm prisma generate && pnpm run build"
+    "vercel-build": "pnpm prisma generate && pnpm run build",
+    "generate:types": "PAYLOAD_CONFIG_PATH=./payload.config.ts payload generate:types"
   },
   "dependencies": {
     "@libsql/client": "^0.15.15",
