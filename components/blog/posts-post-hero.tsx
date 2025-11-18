@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getMediaUrl } from '@/utilities/getMediaUrl';
+import type { Media } from '@/payload-types';
 
 interface PostsPostHeroProps {
   post: {
@@ -9,10 +10,7 @@ interface PostsPostHeroProps {
     image: {
       url: string;
       alternativeText?: string;
-      sizes?: {
-        large?: { url: string };
-        medium?: { url: string };
-      };
+      sizes?: Media['sizes'];
     } | null;
     publishedAt: string;
     author?: {
@@ -105,4 +103,3 @@ export default function PostsPostHero({ post }: PostsPostHeroProps) {
     </section>
   );
 }
-

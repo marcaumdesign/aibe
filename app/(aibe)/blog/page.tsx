@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import CTA from '@/components/cta';
+// import CTA from '@/components/cta';
 import BlogGrid from '@/components/blog/blog-grid';
 import { getPayload } from 'payload';
 import configPromise from '@payload-config';

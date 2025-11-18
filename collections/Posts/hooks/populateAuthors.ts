@@ -26,10 +26,14 @@ export const populateAuthors: CollectionAfterReadHook = async ({
         }
 
         if (authorDocs.length > 0) {
-          doc.populatedAuthors = authorDocs.map((authorDoc) => ({
-            id: authorDoc.id,
-            name: authorDoc.name,
-          }));
+          doc.populatedAuthors = authorDocs.map((authorDoc) => {
+            const fullName = `${authorDoc.firstName ?? ''} ${authorDoc.lastName ?? ''}`.trim();
+
+            return {
+              id: authorDoc.id,
+              name: fullName || authorDoc.email,
+            };
+          });
         }
       } catch {
         // swallow error
