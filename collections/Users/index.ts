@@ -70,14 +70,6 @@ export const Users: CollectionConfig = {
       },
     },
     {
-      name: 'password',
-      type: 'text',
-      required: true,
-      admin: {
-        description: 'Leave blank to keep the current password.',
-      },
-    },
-    {
       name: 'resetPasswordToken',
       type: 'text',
       hidden: true,
