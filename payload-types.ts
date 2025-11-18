@@ -386,7 +386,6 @@ export interface Category {
  */
 export interface User {
   id: number;
-  password: string | null;
   firstName?: string | null;
   lastName?: string | null;
   roles?: ('admin' | 'user')[] | null;
@@ -408,6 +407,7 @@ export interface User {
         expiresAt: string;
       }[]
     | null;
+  password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1323,7 +1323,6 @@ export interface CategoriesSelect<T extends boolean = true> {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
-  password?: T;
   firstName?: T;
   lastName?: T;
   roles?: T;
