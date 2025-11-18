@@ -1,34 +1,7 @@
 import { NextResponse } from 'next/server';
-
-const STRAPI_URL =
-  process.env.STRAPI_URL ||
-  process.env.NEXT_PUBLIC_STRAPI_URL ||
-  'https://majestic-serenity-7a76c06678.strapiapp.com';
-
-const STRAPI_TOKEN =
-  process.env.STRAPI_TOKEN || process.env.NEXT_PUBLIC_STRAPI_TOKEN || '';
-
-interface StrapiDirector {
-  id: string | number;
-  documentId?: string;
-  attributes: {
-    Name: string;
-    Role: string;
-    Description: string;
-    Biography: string;
-    Link: string;
-    Avatar?: {
-      data?: {
-        attributes?: {
-          url: string;
-          alternativeText: string;
-        };
-      };
-      url?: string;
-      alternativeText?: string;
-    };
-  };
-}
+import configPromise from '@payload-config';
+import { getPayload } from 'payload';
+import { getMediaUrl } from '@/utilities/getMediaUrl';
 
 interface Director {
   id: string | number;
@@ -44,68 +17,102 @@ interface Director {
   };
 }
 
+// Interface para o Staff do Payload
+interface PayloadStaff {
+  id: number;
+  name: string;
+  type: 'director' | 'speaker';
+  role?: string | null;
+  description?: string | null;
+  biography?: string | null;
+  link?: string | null;
+  avatar?: {
+    id: number;
+    url?: string | null;
+    alt?: string | null;
+    sizes?: {
+      thumbnail?: { url?: string | null };
+      small?: { url?: string | null };
+      medium?: { url?: string | null };
+      large?: { url?: string | null };
+    };
+    updatedAt?: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export async function GET() {
   try {
-    console.log('🔄 Proxy API: Buscando diretores do Strapi...');
-    console.log('📍 URL:', `${STRAPI_URL}/api/directors?populate=*`);
+    console.log('🔄 API: Buscando diretores do Payload...');
 
-    const res = await fetch(
-      `${STRAPI_URL}/api/directors?populate=*&sort=createdAt:asc`,
-      {
-        headers: STRAPI_TOKEN
-          ? { Authorization: `Bearer ${STRAPI_TOKEN}` }
-          : {},
-        cache: 'no-store',
-        next: { revalidate: 0 },
+    const payload = await getPayload({ config: configPromise });
+
+    const result = await payload.find({
+      collection: 'staff',
+      depth: 2,
+      limit: 100,
+      overrideAccess: false,
+      sort: 'createdAt',
+      where: {
+        type: {
+          equals: 'director',
+        },
       },
-    );
+    });
 
-    if (!res.ok) {
-      const text = await res.text();
-      console.error('❌ Erro ao buscar do Strapi:', res.status, text);
-      return NextResponse.json(
-        { error: text || res.statusText, directors: [] },
-        { status: res.status },
-      );
-    }
-
-    const json = await res.json();
     console.log(
-      '✅ Resposta do Strapi recebida:',
-      json.data?.length || 0,
+      '✅ Resposta do Payload recebida:',
+      result.docs?.length || 0,
       'diretores',
     );
 
-    // Mapear dados do Strapi para o formato esperado
-    const directors: Director[] = (json?.data || []).map(
-      (d: StrapiDirector) => {
-        const attrs = d.attributes || d;
+    // Mapear dados do Payload para o formato esperado
+    const directors: Director[] = (result.docs || []).map(
+      (staff: PayloadStaff) => {
+        // Resolver URL do avatar
+        let avatarUrl = '';
+        let avatarAlt = '';
+
+        if (staff.avatar && typeof staff.avatar === 'object') {
+          const url =
+            staff.avatar.sizes?.medium?.url ||
+            staff.avatar.sizes?.small?.url ||
+            staff.avatar.url ||
+            '';
+          avatarUrl = getMediaUrl(url, staff.avatar.updatedAt);
+          avatarAlt = staff.avatar.alt || staff.name || '';
+        }
+
         return {
-          id: d.id,
-          documentId: d.documentId,
-          Name: attrs.Name,
-          Role: attrs.Role,
-          Description: attrs.Description,
-          Biography: attrs.Biography,
-          Link: attrs.Link,
+          id: staff.id,
+          Name: staff.name || '',
+          Role: staff.role || '',
+          Description: staff.description || '',
+          Biography: staff.biography || '',
+          Link: staff.link || '',
           Avatar: {
-            url: attrs.Avatar?.data?.attributes?.url || attrs.Avatar?.url || '',
-            alternativeText:
-              attrs.Avatar?.data?.attributes?.alternativeText ||
-              attrs.Avatar?.alternativeText ||
-              '',
+            url: avatarUrl,
+            alternativeText: avatarAlt,
           },
         };
       },
     );
 
     console.log('✅ Diretores mapeados:', directors.length);
-    return NextResponse.json({ directors, success: true });
+    return NextResponse.json(
+      { directors, success: true },
+      {
+        headers: {
+          'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300',
+        },
+      },
+    );
   } catch (e: unknown) {
     const error = e instanceof Error ? e : new Error('Unknown error');
-    console.error('❌ Erro no proxy:', error);
+    console.error('❌ Erro ao buscar diretores do Payload:', error);
     return NextResponse.json(
-      { error: error.message || 'Proxy error', directors: [] },
+      { error: error.message || 'Erro ao buscar diretores', directors: [] },
       { status: 500 },
     );
   }
