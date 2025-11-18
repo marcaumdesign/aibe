@@ -1,5 +1,16 @@
 import type { CollectionConfig } from 'payload';
 
+import {
+  FixedToolbarFeature,
+  HeadingFeature,
+  HorizontalRuleFeature,
+  InlineToolbarFeature,
+  lexicalEditor,
+  OrderedListFeature,
+  UnorderedListFeature,
+} from '@payloadcms/richtext-lexical';
+import { slugField } from 'payload';
+
 import { authenticated } from '../../access/authenticated';
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished';
 
@@ -115,11 +126,21 @@ export const Workshops: CollectionConfig<'workshops'> = {
     },
     {
       name: 'content',
-      type: 'textarea',
+      type: 'richText',
       label: 'Content',
-      admin: {
-        description: 'Use Markdown format. For bullet points, use "- " or "* " at the start of each line.',
-      },
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => {
+          return [
+            ...rootFeatures,
+            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+            HorizontalRuleFeature(),
+            UnorderedListFeature(),
+            OrderedListFeature(),
+          ];
+        },
+      }),
     },
     {
       name: 'gallery',
@@ -202,7 +223,44 @@ export const Workshops: CollectionConfig<'workshops'> = {
         description: 'Upload sponsor logos',
       },
     },
+    slugField(),
+    {
+      name: 'studyingSection',
+      type: 'group',
+      label: 'Studying Section',
+      admin: {
+        description: 'This section only appears for Past workshops',
+        condition: (data) => data.type === 'past',
+      },
+      fields: [
+        {
+          name: 'studyingTitle',
+          type: 'text',
+          label: 'Studying Title',
+        },
+        {
+          name: 'studyingDescription',
+          type: 'textarea',
+          label: 'Studying Description',
+        },
+        {
+          name: 'studyingImage',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Studying Image',
+        },
+      ],
+    },
   ],
   timestamps: true,
+  versions: {
+    drafts: {
+      autosave: {
+        interval: 100,
+      },
+      schedulePublish: true,
+    },
+    maxPerDoc: 50,
+  },
 };
 
