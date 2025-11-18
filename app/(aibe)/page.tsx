@@ -181,7 +181,7 @@ export default async function Home() {
           <div className='grid gap-8 md:grid-cols-3 animate-translate-y-up'>
             {/* The AIBE Annual Workshop */}
             <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col justify-start overflow-hidden h-full'>
-              <div className='relative w-full h-[250px]'>
+              <div className='relative w-full h-[300px]'>
                 <Image
                   src='/images/workshops.jpg'
                   alt='The AIBE Annual Workshop'
@@ -207,7 +207,7 @@ export default async function Home() {
 
             {/* Giorgio Mortara Prize */}
             <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col flex-1 justify-start overflow-hidden h-full'>
-              <div className='relative w-full h-[250px]'>
+              <div className='relative w-full h-[300px]'>
                 <Image
                   src='/images/premio.jpg'
                   alt='Giorgio Mortara Prize'
@@ -233,7 +233,7 @@ export default async function Home() {
 
             {/* AIBE at a glance */}
             <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col flex-1 justify-start overflow-hidden h-full'>
-              <div className='relative w-full h-[250px]'>
+              <div className='relative w-full h-[300px]'>
                 <Image
                   src='/images/estudante.png'
                   alt='AIBE at a glance'
