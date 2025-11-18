@@ -64,7 +64,7 @@ export default function Home() {
     <div className='min-h-screen bg-white'>
       {/* Hero Section */}
       <section className='relative bg-white flex flex-col'>
-        <div className='w-full max-w-[1200px] mx-auto px-8 mobile:px-4 flex-1 flex items-center py-8'>
+        <div className='w-full  mobile:px-4 flex-1 flex items-center py-8'>
           {/* Hero Content */}
           <div className='flex flex-col mobile:flex-col items-center justify-center gap-8 mobile:gap-8 w-full'>
             <div className='relative w-full mobile:w-full flex justify-center'>
@@ -125,7 +125,7 @@ export default function Home() {
                 </div>
               </div> */}
             </div>
-            <div className='flex-1 flex flex-col gap-8 items-center w-full'>
+            <div className='flex-1 px-8 flex flex-col gap-8 items-center w-full'>
 
 
               <div className='flex flex-col gap-4 items-center w-full'>
