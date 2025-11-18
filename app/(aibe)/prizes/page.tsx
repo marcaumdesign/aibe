@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import CTA from "@/components/cta";
+// import CTA from "@/components/cta";
 import { Root as Button } from "@/components/ui/button";
 import Link from "next/link";
 

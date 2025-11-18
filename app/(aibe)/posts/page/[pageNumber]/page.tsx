@@ -81,30 +81,49 @@ function formatPostForGrid(post: Post): BlogPostCard {
 
 export default async function Page({ params: paramsPromise }: Args) {
   const { pageNumber } = await paramsPromise
-  const payload = await getPayload({ config: configPromise })
+  let payload = null
+
+  try {
+    payload = await getPayload({ config: configPromise })
+  } catch (error) {
+    console.error('Erro ao inicializar Payload:', error)
+  }
 
   const sanitizedPageNumber = Number(pageNumber)
 
   if (!Number.isInteger(sanitizedPageNumber)) notFound()
 
-  const result = await payload.find({
-    collection: 'posts',
-    depth: 2,
-    limit: 12,
-    page: sanitizedPageNumber,
-    overrideAccess: false,
-    sort: '-publishedAt',
-    select: {
-      id: true,
-      title: true,
-      slug: true,
-      categories: true,
-      meta: true,
-      heroImage: true,
-      publishedAt: true,
-      createdAt: true,
-    },
-  })
+  const result =
+    (payload
+      ? await payload
+        .find({
+          collection: 'posts',
+          depth: 2,
+          limit: 12,
+          page: sanitizedPageNumber,
+          overrideAccess: false,
+          sort: '-publishedAt',
+          select: {
+            id: true,
+            title: true,
+            slug: true,
+            categories: true,
+            meta: true,
+            heroImage: true,
+            publishedAt: true,
+            createdAt: true,
+          },
+        })
+        .catch((error) => {
+          console.error('Erro ao buscar posts para listagem:', error)
+          // Gracefully fall back to an empty result so the page can render
+          return {
+            docs: [] as Post[],
+            page: sanitizedPageNumber,
+            totalPages: 1,
+          }
+        })
+      : null) || { docs: [], page: sanitizedPageNumber, totalPages: 1 }
 
   const posts = result.docs.map((post) => formatPostForGrid(post))
 
@@ -149,11 +168,25 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
 }
 
 export async function generateStaticParams() {
-  const payload = await getPayload({ config: configPromise })
-  const { totalDocs } = await payload.count({
-    collection: 'posts',
-    overrideAccess: false,
-  })
+  let payload = null
+
+  try {
+    payload = await getPayload({ config: configPromise })
+  } catch (error) {
+    console.error('Erro ao inicializar Payload para geração estática:', error)
+  }
+  const { totalDocs } =
+    (payload
+      ? await payload
+        .count({
+          collection: 'posts',
+          overrideAccess: false,
+        })
+        .catch((error) => {
+          console.error('Erro ao contar posts para geração estática:', error)
+          return { totalDocs: 0 }
+        })
+      : null) || { totalDocs: 0 }
 
   const totalPages = Math.ceil(totalDocs / 12)
 
