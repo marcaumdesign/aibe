@@ -64,13 +64,13 @@ export default function Home() {
     <div className='min-h-screen bg-white'>
       {/* Hero Section */}
       <section className='relative bg-white flex flex-col'>
-        <div className='w-full  mobile:px-4 flex-1 flex items-center py-8'>
+        <div className='w-full  mobile:px-4 flex-1 flex items-center pt-4 pb-8'>
           {/* Hero Content */}
           <div className='flex flex-col mobile:flex-col items-center justify-center gap-8 mobile:gap-8 w-full'>
             <div className='relative w-full mobile:w-full flex justify-center'>
               <div className='relative w-full h-[200px]'>
                 <Image
-                  src='/images/brasilitalia.jpg'
+                  src='/images/heroimage.png'
                   alt='Hero'
                   fill
                   className='object-cover'
@@ -162,7 +162,7 @@ export default function Home() {
                   Highlights
                 </Badge>
                 <h2 className='text-title-h4 text-black animate-translate-y-up'>
-                  AIBE Annual Workshop 2025 Dates Announced!
+                  AIBE Workshop 2026 to be announced soon
                 </h2>
               </div>
               <Button.Root variant='primary' mode='filled' size='medium' className='h-hug' asChild>
