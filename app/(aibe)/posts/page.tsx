@@ -53,7 +53,7 @@ async function getPosts(): Promise<{ posts: BlogPostCard[]; pagination: { page: 
   return {
     posts: formattedPosts,
     pagination: {
-      page: result.page,
+      page: result.page ?? null,
       totalPages: result.totalPages,
     },
   }
