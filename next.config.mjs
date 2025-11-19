@@ -1,4 +1,4 @@
-import { withPayload } from "@payloadcms/next/withPayload";
+import { withPayload } from '@payloadcms/next/withPayload';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -20,6 +20,12 @@ const nextConfig = {
         hostname: 'localhost',
         port: '3000',
         pathname: '/api/media/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'aibe-seven.vercel.app',
+        port: '',
+        pathname: '/**',
       },
     ],
     qualities: [75, 90, 95, 100],
