@@ -290,55 +290,46 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
           </div>
         </section>
 
-        {/* Gallery Section */}
-        <section className="mb-10">
-          <div className="flex items-center justify-between mb-5">
-            <div>
-              <p className="text-text-soft-400 font-medium tracking-wider uppercase mb-2 text-subheading-xs">
-                Past Congresses
-              </p>
-              <h2 className="text-text-strong-950 text-title-h2">
-                Gallery
-              </h2>
+        {/* Gallery Section - Only for Past Workshops */}
+        {workshop.type === 'past' && workshop.gallery && workshop.gallery.length > 0 && (
+          <section className="mb-10">
+            <div className="flex items-center justify-between mb-5">
+              <div>
+                <p className="text-text-soft-400 font-medium tracking-wider uppercase mb-2 text-subheading-xs">
+                  Past Congress
+                </p>
+                <h2 className="text-text-strong-950 text-title-h2">
+                  Gallery
+                </h2>
+              </div>
+              <Link href={`/workshops/${slug}/gallery`}>
+                <Button variant="primary" mode="filled" size="medium">
+                  View All
+                </Button>
+              </Link>
             </div>
-            <Link href="/events/gallery">
-              <Button variant="primary" mode="filled" size="medium">
-                View All
-              </Button>
-            </Link>
-          </div>
 
-          {/* Gallery Images */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="relative">
-              <Image
-                src="/images/WORKSHOP%20FOTO%2010.jpeg"
-                alt="AIBE Workshop photo 10"
-                width={400}
-                height={300}
-                className="w-full h-64 object-cover"
-              />
+            {/* Gallery Images - Display up to 3 images */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {workshop.gallery.slice(0, 3).map((item, index) => {
+                if (item.image && typeof item.image === 'object') {
+                  return (
+                    <div key={index} className="relative">
+                      <Image
+                        src={getMediaUrl(item.image.url || '', item.image.updatedAt)}
+                        alt={item.image.alt || `Workshop gallery photo ${index + 1}`}
+                        width={400}
+                        height={300}
+                        className="w-full h-64 object-cover rounded-sm"
+                      />
+                    </div>
+                  )
+                }
+                return null
+              })}
             </div>
-            <div className="relative">
-              <Image
-                src="/images/WORKSHOP%20FOTO%2011.jpeg"
-                alt="AIBE Workshop photo 11"
-                width={400}
-                height={300}
-                className="w-full h-64 object-cover"
-              />
-            </div>
-            <div className="relative">
-              <Image
-                src="/images/WORKSHOP%20FOTO%204.jpeg"
-                alt="AIBE Workshop photo 4"
-                width={400}
-                height={300}
-                className="w-full h-64 object-cover"
-              />
-            </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* Studying Section - Only for Past Workshops */}
         {workshop.type === 'past' && workshop.studyingSection?.studyingTitle && workshop.studyingSection?.studyingDescription && (
@@ -346,9 +337,7 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
               {/* Texto à esquerda */}
               <div>
-                <p className="text-text-soft-400 font-medium tracking-wider uppercase mb-2 text-subheading-xs">
-                  Studying
-                </p>
+
                 <h2 className="text-text-strong-950 text-title-h2 mb-4">
                   {workshop.studyingSection.studyingTitle}
                 </h2>
