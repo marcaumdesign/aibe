@@ -1,4 +1,4 @@
-import type { Permissions } from 'payload';
+import type { SanitizedPermissions } from 'payload';
 
 import type { User } from '../../../../payload-types';
 
@@ -29,9 +29,9 @@ export interface AuthContext {
   forgotPassword: ForgotPassword;
   login: Login;
   logout: Logout;
-  permissions?: null | Permissions;
+  permissions?: null | SanitizedPermissions;
   resetPassword: ResetPassword;
-  setPermissions: (permissions: null | Permissions) => void;
+  setPermissions: (permissions: null | SanitizedPermissions) => void;
   setUser: (user: null | User) => void;
   user?: null | User;
 }
