@@ -311,5 +311,7 @@ export const post1: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
     },
     relatedPosts: [], // this is populated by the seed script
     title: 'Digital Horizons: A Glimpse into Tomorrow',
+    accessLevel: 'free',
+    isPremium: false,
   }
 }
