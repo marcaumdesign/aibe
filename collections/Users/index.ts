@@ -1,5 +1,3 @@
-import { authenticated } from '../../access/authenticated';
-
 import type { CollectionConfig } from 'payload';
 
 import { admins } from '@/access/admins';
@@ -110,6 +108,137 @@ export const Users: CollectionConfig = {
           value: 'user',
         },
       ],
+    },
+    // Stripe Subscription Fields
+    {
+      name: 'subscriptionPlan',
+      type: 'select',
+      defaultValue: 'free',
+      saveToJWT: true,
+      admin: {
+        position: 'sidebar',
+        description: 'Plano de assinatura atual do usuário',
+      },
+      access: {
+        read: ({ req: { user }, id }) => {
+          // Admins podem ler todos, usuários só podem ler o próprio
+          if (checkRole(['admin'], user)) return true;
+          return user?.id === id;
+        },
+        update: ({ req: { user } }) => checkRole(['admin'], user),
+        create: () => false,
+      },
+      options: [
+        {
+          label: 'Free',
+          value: 'free',
+        },
+        {
+          label: 'Premium',
+          value: 'premium',
+        },
+        {
+          label: 'Founders',
+          value: 'founders',
+        },
+      ],
+    },
+    {
+      name: 'stripeCustomerId',
+      type: 'text',
+      admin: {
+        position: 'sidebar',
+        description: 'ID do cliente no Stripe',
+        readOnly: true,
+      },
+      access: {
+        read: ({ req: { user } }) => checkRole(['admin'], user),
+        update: ({ req: { user } }) => checkRole(['admin'], user),
+        create: () => false,
+      },
+    },
+    {
+      name: 'stripeSubscriptionId',
+      type: 'text',
+      admin: {
+        position: 'sidebar',
+        description: 'ID da assinatura ativa no Stripe',
+        readOnly: true,
+      },
+      access: {
+        read: ({ req: { user } }) => checkRole(['admin'], user),
+        update: ({ req: { user } }) => checkRole(['admin'], user),
+        create: () => false,
+      },
+    },
+    {
+      name: 'subscriptionStatus',
+      type: 'select',
+      admin: {
+        position: 'sidebar',
+        description: 'Status da assinatura no Stripe',
+        readOnly: true,
+      },
+      access: {
+        read: ({ req: { user }, id }) => {
+          // Admins podem ler todos, usuários só podem ler o próprio
+          if (checkRole(['admin'], user)) return true;
+          return user?.id === id;
+        },
+        update: ({ req: { user } }) => checkRole(['admin'], user),
+        create: () => false,
+      },
+      options: [
+        {
+          label: 'Active',
+          value: 'active',
+        },
+        {
+          label: 'Canceled',
+          value: 'canceled',
+        },
+        {
+          label: 'Past Due',
+          value: 'past_due',
+        },
+        {
+          label: 'Trialing',
+          value: 'trialing',
+        },
+        {
+          label: 'Incomplete',
+          value: 'incomplete',
+        },
+        {
+          label: 'Incomplete Expired',
+          value: 'incomplete_expired',
+        },
+        {
+          label: 'Unpaid',
+          value: 'unpaid',
+        },
+      ],
+    },
+    {
+      name: 'subscriptionCurrentPeriodEnd',
+      type: 'date',
+      admin: {
+        position: 'sidebar',
+        description: 'Data de renovação ou expiração da assinatura',
+        readOnly: true,
+        date: {
+          pickerAppearance: 'dayAndTime',
+        },
+      },
+      access: {
+        read: ({ req: { user }, id }) => {
+          // Admins podem ler todos, usuários só podem ler o próprio
+          if (checkRole(['admin'], user)) return true;
+          return user?.id === id;
+        },
+        update: ({ req: { user } }) => checkRole(['admin'], user),
+        create: () => false,
+      },
     },
   ],
   timestamps: true,

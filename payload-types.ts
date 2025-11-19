@@ -251,6 +251,32 @@ export interface Post {
     image?: (number | null) | Media;
     description?: string | null;
   };
+  /**
+   * Define quem pode acessar este post. Premium e Founders exigem assinatura.
+   */
+  accessLevel: 'free' | 'premium' | 'founders';
+  /**
+   * Flag rápida para identificar posts pagos (sincronizado automaticamente)
+   */
+  isPremium?: boolean | null;
+  /**
+   * Conteúdo de preview/teaser mostrado para usuários sem acesso (opcional)
+   */
+  previewContent?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
   populatedAuthors?:
@@ -393,6 +419,28 @@ export interface User {
   firstName?: string | null;
   lastName?: string | null;
   roles?: ('admin' | 'user')[] | null;
+  /**
+   * Plano de assinatura atual do usuário
+   */
+  subscriptionPlan?: ('free' | 'premium' | 'founders') | null;
+  /**
+   * ID do cliente no Stripe
+   */
+  stripeCustomerId?: string | null;
+  /**
+   * ID da assinatura ativa no Stripe
+   */
+  stripeSubscriptionId?: string | null;
+  /**
+   * Status da assinatura no Stripe
+   */
+  subscriptionStatus?:
+    | ('active' | 'canceled' | 'past_due' | 'trialing' | 'incomplete' | 'incomplete_expired' | 'unpaid')
+    | null;
+  /**
+   * Data de renovação ou expiração da assinatura
+   */
+  subscriptionCurrentPeriodEnd?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -1291,6 +1339,9 @@ export interface PostsSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
+  accessLevel?: T;
+  isPremium?: T;
+  previewContent?: T;
   publishedAt?: T;
   authors?: T;
   populatedAuthors?:
@@ -1426,6 +1477,11 @@ export interface UsersSelect<T extends boolean = true> {
   firstName?: T;
   lastName?: T;
   roles?: T;
+  subscriptionPlan?: T;
+  stripeCustomerId?: T;
+  stripeSubscriptionId?: T;
+  subscriptionStatus?: T;
+  subscriptionCurrentPeriodEnd?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

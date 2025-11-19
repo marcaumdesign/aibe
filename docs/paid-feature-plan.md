@@ -1,54 +1,154 @@
-# Paid Feature Implementation Plan
+# Plano de Implementação - Sistema de Pagamentos com Stripe
 
-This document breaks the remaining work into focused workstreams so you can ship a gated, paid experience backed by Better Auth, Payload CMS, and Stripe. Each section lists concrete actions and references to the parts of the codebase they touch.
+Este documento detalha o plano de implementação para adicionar um sistema de paywall com Stripe ao projeto. A stack utilizada é **Payload CMS + Next.js**, aproveitando o sistema de autenticação e banco de dados nativos do Payload.
 
-## 1. Better Auth Hardening
-- Audit the auth instance in `auth.ts` and the API route handlers in `app/api/auth/[...all]/route.ts` to ensure session persistence, error propagation, and redirect handling are aligned with Better Auth docs.
-- Confirm all required environment variables are defined for every environment (`BETTER_AUTH_SECRET`, `DATABASE_URL`, email settings, etc.) and document them in `.env.example`.
-- Add server-side guards around protected routes in `app/(...)` layouts/middleware so unauthenticated users are redirected before page render.
-- Create Vitest/Playwright smoke tests that cover: successful sign-in, invalid credential messaging, logout flow, and accessing a protected article as an anonymous user (should redirect to sign-in).
-- Log and surface auth errors (e.g., toast or inline message) instead of silent failures; wire Sentry/logging hooks where available.
+## 1. Configuração da Autenticação (Payload Native)
 
-## 2. Entitlement & Paywall Model
-- Extend the Prisma `User` model (`prisma/schema.prisma`) with fields such as `plan`, `stripeCustomerId`, `stripeSubscriptionId`, `subscriptionStatus`, and `accessExpiresAt`; run migrations and regenerate the client.
-- Mirror these entitlement fields inside the Payload `users` collection (`collections/Users/index.ts`) so editorial tooling can see the user’s current tier. Lock down write access to system hooks only.
-- Update `collections/Posts/index.ts` to include a `paywallLevel` (enum: `free`, `premium`, `founders`, etc.) plus any teaser content fields needed for previews.
-- Introduce server utilities (e.g., `lib/entitlements.ts`) that resolve the active user’s access level from the session + Stripe sync data.
-- Add middleware to `app/(site)/posts/[slug]/page.tsx` (or shared loader) that checks entitlements and either renders the post, truncates at a teaser boundary, or returns a paywall component with an upgrade CTA.
+- Validar que o sistema de autenticação do Payload está funcionando corretamente através da collection `Users` (`collections/Users/index.ts`)
+- Confirmar que todas as variáveis de ambiente necessárias estão definidas (`PAYLOAD_SECRET`, configurações de email, etc.) e documentá-las em `.env.example`
+- Adicionar guards server-side nas rotas protegidas usando a API do Payload (`req.user`) para redirecionar usuários não autenticados
+- Criar testes (Vitest/Playwright) que cubram: login bem-sucedido, mensagens de credenciais inválidas, logout, e acesso a artigo pago como usuário anônimo
+- Implementar tratamento de erros de autenticação com feedback visual (toast ou mensagens inline)
 
-## 3. Stripe Integration
-- In Stripe Dashboard, create Products/Prices for the intended subscription tiers and capture their IDs in env vars (`STRIPE_PRICE_PREMIUM`, etc.).
-- Build backend endpoints in `app/api/stripe/create-checkout-session/route.ts` and `app/api/stripe/create-portal-session/route.ts` that validate the Better Auth session, attach/create a Stripe Customer using `stripeCustomerId`, and redirect to Checkout/Billing Portal.
-- Implement webhooks under `app/api/stripe/webhook/route.ts` with signature verification. Handle `checkout.session.completed`, `customer.subscription.updated`, `invoice.payment_failed`, and `customer.subscription.deleted` to keep Prisma + Payload in sync.
-- On webhook events, update the user’s subscription fields (plan, status, current period end) inside Prisma and optionally mirror critical bits in Payload via its REST API if needed for CMS-driven rendering.
-- Provide a recovery job/script to resync entitlements from Stripe (`stripe subscriptions list`) in case of missed events.
+## 2. Modelo de Assinatura & Paywall
 
-## 4. CMS & Content Operations
-- Update the Payload admin UI to surface the new `paywallLevel` field for editors and add validation so premium tiers can’t accidentally publish without the field set.
-- Create a lightweight guideline doc for content creators explaining how to choose a tier, what teaser text to fill out, and the review process before publishing premium posts.
-- If certain globals (e.g., `Header` or `Footer`) need paywalled CTAs, expose configurable links/labels in `Header/config.ts` so marketing can adjust without code changes.
+- Estender a collection `Users` (`collections/Users/index.ts`) com campos de assinatura:
+  - `subscriptionPlan`: enum (`'free'`, `'premium'`, `'founders'`, etc.)
+  - `stripeCustomerId`: string (ID do cliente no Stripe)
+  - `stripeSubscriptionId`: string (ID da assinatura ativa)
+  - `subscriptionStatus`: enum (`'active'`, `'canceled'`, `'past_due'`, `'trialing'`, etc.)
+  - `subscriptionCurrentPeriodEnd`: date (data de renovação/expiração)
+- Atualizar `collections/Posts/index.ts` para incluir:
+  - `accessLevel`: enum (`'free'`, `'premium'`, `'founders'`, etc.) - define quem pode acessar
+  - `previewContent`: richText (opcional) - teaser para posts pagos
+  - `isPremium`: boolean - flag rápida para identificar posts pagos
+- Criar utilitários server-side em `utilities/` ou `lib/`:
+  - `getUserAccessLevel(user)`: retorna o nível de acesso do usuário
+  - `canAccessPost(user, post)`: verifica se o usuário pode acessar o post
+  - `getUserSubscriptionStatus(user)`: retorna status detalhado da assinatura
+- Implementar lógica de paywall em `app/(aibe)/posts/[slug]/page.tsx`:
+  - Verificar nível de acesso do usuário vs. nível requerido do post
+  - Renderizar conteúdo completo ou componente de paywall com CTA
 
-## 5. Frontend Experience
-- Add a dedicated pricing/upgrade page under `app/(marketing)/pricing/page.tsx` that lists the tiers, features, and includes Checkout buttons wired to the new API routes.
-- Implement a reusable `PaywallDialog` or `UpgradeBanner` component in `components/` that appears when access is denied; ensure it gracefully handles both logged-out and logged-in-but-unsubscribed states.
-- After successful checkout, handle the redirect in `app/api/stripe/success/route.ts` (or a `/success` page) to revalidate the user session and show confirmation messaging; include error fallback for canceled payments.
-- Provide a user settings/subscription page (e.g., `app/(dashboard)/account/page.tsx`) where subscribers can see their plan status, renewal date, and access the Stripe Billing Portal.
-- Ensure skeleton states and optimistic UI account for the delay between webhook completion and UI revalidation (e.g., poll or re-fetch session data after checkout).
+## 3. Integração com Stripe
 
-## 6. Testing & Quality Assurance
-- Unit-test entitlement helper utilities and paywall components (e.g., ensure `premium` posts throw when accessed by `free` users).
-- Write end-to-end tests (Playwright/Cypress) covering: anonymous user hitting premium article → sees paywall; subscriber hitting same article → sees content; subscription cancellation → loses access after webhook simulation.
-- Add webhook replay tests or scripts to validate signature verification and payload parsing using Stripe CLI fixtures.
-- Include regression tests around Better Auth session expiration to ensure gated pages prompt for re-authentication rather than throwing runtime errors.
+- No Stripe Dashboard, criar Products/Prices para os planos de assinatura e capturar os IDs em variáveis de ambiente:
+  - `STRIPE_SECRET_KEY`: chave secreta da API
+  - `STRIPE_WEBHOOK_SECRET`: secret para validação de webhooks
+  - `STRIPE_PRICE_PREMIUM`: ID do preço do plano premium
+  - `STRIPE_PRICE_FOUNDERS`: ID do preço do plano founders (se houver)
+- Criar endpoints no backend:
+  - `app/api/stripe/create-checkout-session/route.ts`: cria sessão de checkout
+    - Validar sessão do usuário via Payload (`req.user`)
+    - Criar ou recuperar Stripe Customer usando `stripeCustomerId`
+    - Redirecionar para Stripe Checkout com o preço selecionado
+  - `app/api/stripe/create-portal-session/route.ts`: acesso ao Portal de Cobrança
+    - Validar que o usuário tem `stripeCustomerId`
+    - Redirecionar para Stripe Customer Portal
+  - `app/api/stripe/webhook/route.ts`: receber eventos do Stripe
+    - Implementar verificação de assinatura dos webhooks
+    - Processar eventos principais:
+      - `checkout.session.completed`: nova assinatura criada
+      - `customer.subscription.updated`: mudança na assinatura
+      - `customer.subscription.deleted`: cancelamento
+      - `invoice.payment_failed`: falha no pagamento
+    - Atualizar campos do usuário no Payload usando a Local API
+- Criar script de sincronização manual em `endpoints/sync-stripe/` para re-sincronizar assinaturas em caso de webhooks perdidos
 
-## 7. Deployment, Monitoring, and Ops
-- Document all required secrets (`BETTER_AUTH_SECRET`, `PAYLOAD_SECRET`, `POSTGRES_URL`, `STRIPE_SECRET_KEY`, webhook secret, price IDs) and ensure they are set in Vercel/hosting environments.
-- Configure Stripe CLI or dashboard alerts for failed webhooks, payment failures, and disputed charges; route them to the team’s incident channel.
-- Add logging around key flows (auth failures, paywall denials, webhook updates) and expose dashboards/metrics where possible.
-- Create a runbook describing how to manually grant access, refund a user, replay webhooks, or rotate Stripe keys.
-- Before launch, run a full Stripe test-mode simulation (sign-up → checkout → read premium post → cancel) and capture the steps/results in QA notes.
+## 4. CMS & Operações de Conteúdo
 
-## 8. Documentation & Handoff
-- Update `README.md` (or create `/docs/auth.md`, `/docs/payments.md`) with instructions for setting up Better Auth, running Stripe webhooks locally, and managing premium content.
-- Record any CMS migrations or manual steps (adding new fields, running scripts) so future teammates can reproduce the setup in new environments.
-- Outline future enhancements (gift links, metered paywall, analytics) but keep this document focused on the must-haves listed above.
+- Atualizar a interface admin do Payload para exibir o campo `accessLevel` de forma clara para editores
+- Adicionar validação para garantir que posts premium não sejam publicados sem o campo `accessLevel` definido
+- Criar um campo customizado no admin que mostre visualmente se o post é pago ou gratuito
+- Documentar guidelines para criadores de conteúdo:
+  - Como escolher o nível de acesso apropriado
+  - Como escrever um bom teaser/preview para posts pagos
+  - Processo de revisão antes de publicar conteúdo premium
+- Se necessário, adicionar CTAs de upgrade em globals (ex: `Header` ou `Footer`) através de campos configuráveis em `Header/config.ts`
+
+## 5. Experiência do Frontend
+
+- Criar página de preços dedicada em `app/(aibe)/membership/page.tsx` ou `app/(aibe)/pricing/page.tsx`:
+  - Listar todos os planos com features e benefícios
+  - Botões de checkout conectados às rotas da API
+  - Comparação visual entre planos
+- Implementar componentes reutilizáveis de paywall:
+  - `components/PaywallDialog.tsx` ou `components/UpgradeBanner.tsx`
+  - Deve lidar gracefully com:
+    - Usuário não logado → CTA para criar conta + assinar
+    - Usuário logado mas sem assinatura → CTA direto para checkout
+    - Usuário com assinatura expirada → CTA para reativar
+  - Incluir preview do conteúdo bloqueado quando disponível
+- Criar página de sucesso pós-checkout:
+  - `app/(aibe)/checkout/success/page.tsx` ou similar
+  - Revalidar sessão do usuário
+  - Mostrar mensagem de confirmação e próximos passos
+  - Incluir fallback para pagamentos cancelados
+- Atualizar página de conta do usuário (`app/(aibe)/account/page.tsx`):
+  - Mostrar plano atual e status da assinatura
+  - Data de renovação/expiração
+  - Botão para acessar Stripe Customer Portal
+  - Histórico de faturas (opcional)
+- Implementar estados de loading e UI otimista:
+  - Considerar delay entre conclusão do webhook e atualização da UI
+  - Polling ou re-fetch da sessão após checkout se necessário
+
+## 6. Testes & Garantia de Qualidade
+
+- Criar testes unitários para utilitários de entitlement e componentes de paywall
+  - Garantir que posts `premium` retornam erro quando acessados por usuários `free`
+  - Testar lógica de verificação de acesso em diferentes cenários
+- Criar testes end-to-end (Playwright/Cypress):
+  - Usuário anônimo acessando artigo premium → vê paywall
+  - Usuário assinante acessando artigo premium → vê conteúdo completo
+  - Cancelamento de assinatura → perde acesso após processamento do webhook
+  - Fluxo completo de checkout
+- Adicionar testes de replay de webhooks usando Stripe CLI fixtures
+- Testar expiração de sessão do Payload para garantir que páginas protegidas pedem re-autenticação
+
+## 7. Deploy, Monitoramento e Operações
+
+- Documentar todos os secrets necessários e garantir que estão configurados no ambiente de produção:
+  - `PAYLOAD_SECRET`: secret do Payload CMS
+  - `DATABASE_URL`: URL do banco de dados
+  - `STRIPE_SECRET_KEY`: chave secreta do Stripe
+  - `STRIPE_WEBHOOK_SECRET`: secret para validação de webhooks
+  - `STRIPE_PRICE_PREMIUM`, `STRIPE_PRICE_FOUNDERS`: IDs dos preços
+  - Configurações de email (SMTP)
+- Configurar alertas no Stripe Dashboard ou CLI:
+  - Webhooks falhados
+  - Falhas de pagamento
+  - Disputas de cobrança
+  - Rotear para canal de incidentes da equipe
+- Adicionar logging em fluxos críticos:
+  - Falhas de autenticação
+  - Negações de acesso (paywall)
+  - Atualizações via webhook
+  - Criar dashboards/métricas se possível
+- Criar runbook de operações:
+  - Como conceder acesso manualmente
+  - Como processar reembolso
+  - Como reprocessar webhooks perdidos
+  - Como rotacionar chaves do Stripe
+- Antes do launch, executar simulação completa em test mode:
+  - Sign-up → Checkout → Ler post premium → Cancelar
+  - Documentar os passos e resultados em notas de QA
+
+## 8. Documentação & Transferência de Conhecimento
+
+- Atualizar `README.md` ou criar documentos dedicados:
+  - `/docs/auth.md`: como funciona a autenticação do Payload
+  - `/docs/payments.md`: instruções para configurar Stripe localmente
+  - `/docs/content-management.md`: gerenciamento de conteúdo premium
+- Documentar setup local de webhooks do Stripe:
+  - Como usar Stripe CLI para testing
+  - Como testar diferentes eventos de webhook
+- Registrar qualquer migração ou passo manual necessário:
+  - Adicionar novos campos às collections
+  - Scripts de seed/sincronização
+  - Para que futuros membros da equipe possam reproduzir o setup
+- Listar melhorias futuras potenciais:
+  - Gift links (compartilhamento de artigos)
+  - Metered paywall (X artigos grátis por mês)
+  - Analytics de conversão
+  - Mas manter este documento focado nos requisitos essenciais
