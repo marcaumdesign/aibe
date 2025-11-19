@@ -37,9 +37,9 @@ export default function PostsPostHero({ post }: PostsPostHeroProps) {
 
   return (
     <section className='pt-20 pb-16'>
-      <div className='container mx-auto px-4 max-w-7xl'>
+      <div className='container items-start justify-start mx-auto px-4 max-w-7xl'>
         {/* Breadcrumb */}
-        <nav className='mb-8'>
+        <nav className='mb-8 '>
           <ol className='flex items-center space-x-2 text-sm text-text-soft-400'>
             <li>
               <Link href='/' className='flex items-center hover:text-text-sub-600 transition-colors'>
@@ -57,21 +57,19 @@ export default function PostsPostHero({ post }: PostsPostHeroProps) {
         </nav>
 
         {/* Header Content */}
-        <div className='text-center mb-16 max-w-4xl mx-auto'>
-          <p className='text-subheading-sm text-text-soft-400 uppercase tracking-wider mb-4'>
-            BLOG
-          </p>
-          <h1 className='text-title-h1 text-text-strong-950 font-semibold mb-6'>
+        <div className='text-left mb-16 items-start max-w-4xl mx-auto'>
+
+          <h1 className='text-title-h1 text-left text-text-strong-950 font-semibold mb-6'>
             {post.title}
           </h1>
           {post.description && (
-            <p className='text-paragraph-lg text-text-sub-600 max-w-3xl mx-auto mb-6'>
+            <p className='text-paragraph-lg text-left text-text-sub-600  mx-auto mb-6'>
               {post.description}
             </p>
           )}
 
           {/* Meta Info */}
-          <div className='flex items-center justify-center gap-3 text-sm text-text-weak-600'>
+          <div className='flex items-start text-left justify-start gap-3 text-sm text-text-weak-600'>
             {post.author?.name && (
               <>
                 <span>By {post.author.name}</span>

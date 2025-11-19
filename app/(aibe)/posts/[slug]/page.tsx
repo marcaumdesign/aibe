@@ -51,9 +51,9 @@ async function fetchLatestPosts(): Promise<LatestPost[]> {
     return result.docs.map((post) => {
       const metaImage = post.meta?.image
       const heroImage = post.heroImage
-      
+
       let resolvedImage = null
-      
+
       if (metaImage && typeof metaImage === 'object') {
         const url = metaImage.sizes?.medium?.url || metaImage.url
         if (url) {
@@ -126,9 +126,9 @@ export default async function Post({ params: paramsPromise }: Args) {
   // Mapear o post do Payload para o formato esperado pelo BlogPostHero
   const metaImage = post.meta?.image
   const heroImage = post.heroImage
-  
+
   let resolvedImage = null
-  
+
   if (metaImage && typeof metaImage === 'object') {
     const url = metaImage.sizes?.large?.url || metaImage.url
     if (url) {
@@ -169,19 +169,21 @@ export default async function Post({ params: paramsPromise }: Args) {
       {draft && <LivePreviewListener />}
 
       {/* Hero Section */}
-      <PostsPostHero post={heroPostData} />
+
 
       {/* Main Content - 2 Columns Layout */}
       <section className='pb-16'>
         <div className='container mx-auto px-4 max-w-7xl'>
-          <div className='grid grid-cols-12 gap-8'>
+          <div className='flex flex-row gap-8'>
+
             {/* Main Content - 8 columns */}
-            <div className='col-span-12 lg:col-span-8'>
+            <div className='flex flex-col gap-8'>
+              <PostsPostHero post={heroPostData} />
               <RichText className="max-w-none" data={post.content} enableGutter={false} enableProse={true} />
             </div>
 
             {/* Sidebar - 4 columns */}
-            <div className='col-span-12 lg:col-span-4'>
+            <div className='flex-1 min-w-[300px]  sticky top-32 self-start'>
               <PostsPostSidebar latest={latestPosts} tags={[]} />
             </div>
           </div>

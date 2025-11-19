@@ -27,7 +27,7 @@ export default function PostsPostSidebar({ latest, tags }: PostsPostSidebarProps
     });
 
   return (
-    <aside className='space-y-12'>
+    <aside className='pt-20 pb-16  space-y-12'>
       {/* Latest Posts */}
       {latest && latest.length > 0 && (
         <div className='bg-white rounded-lg border border-gray-200 p-6'>
