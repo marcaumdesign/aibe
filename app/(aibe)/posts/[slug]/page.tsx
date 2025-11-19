@@ -18,13 +18,6 @@ import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
-// Tipo temporário até regenerar os tipos do Payload (Passo 2)
-interface PostWithAccess extends Post {
-  accessLevel?: 'free' | 'premium' | 'founders'
-  isPremium?: boolean
-  previewContent?: Post['content'] // Mesmo tipo que content
-}
-
 interface LatestPost {
   id: string | number
   title: string
@@ -132,7 +125,7 @@ export default async function Post({ params: paramsPromise }: Args) {
   // Verificar acesso ao post (verificação de paywall)
   const accessCheck = await checkPostAccess({
     accessLevel: post.accessLevel,
-    isPremium: post.isPremium,
+    isPremium: post.isPremium || false,
   })
 
   // Buscar últimos posts para a sidebar
@@ -237,7 +230,7 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
   return generateMeta({ doc: post })
 }
 
-const queryPostBySlug = cache(async ({ slug }: { slug: string }): Promise<PostWithAccess | null> => {
+const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
   const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise })
@@ -256,5 +249,5 @@ const queryPostBySlug = cache(async ({ slug }: { slug: string }): Promise<PostWi
     },
   })
 
-  return result.docs?.[0] as PostWithAccess || null
+  return result.docs?.[0] || null
 })

@@ -251,6 +251,32 @@ export interface Post {
     image?: (number | null) | Media;
     description?: string | null;
   };
+  /**
+   * Define quem pode acessar este post. Premium e Founders exigem assinatura.
+   */
+  accessLevel: 'free' | 'premium' | 'founders';
+  /**
+   * Flag rápida para identificar posts pagos (sincronizado automaticamente)
+   */
+  isPremium?: boolean | null;
+  /**
+   * Conteúdo de preview/teaser mostrado para usuários sem acesso (opcional)
+   */
+  previewContent?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
   populatedAuthors?:
@@ -1313,6 +1339,9 @@ export interface PostsSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
+  accessLevel?: T;
+  isPremium?: T;
+  previewContent?: T;
   publishedAt?: T;
   authors?: T;
   populatedAuthors?:
