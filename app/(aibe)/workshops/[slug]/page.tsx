@@ -249,6 +249,16 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
           </div>
         </section>
 
+        {workshop.type === 'current' && workshop.secondButtonText && workshop.secondButtonLink && (
+          <div className="w-full mb-16 flex justify-center">
+            <Link href={workshop.secondButtonLink} target="_blank" rel="noopener noreferrer">
+              <Button variant="primary" mode="filled" size="medium">
+                {workshop.secondButtonText}
+              </Button>
+            </Link>
+          </div>
+        )}
+
         {/* Scientific Committee & Topics Section */}
         <section className="mb-16">
           <div className="bg-blue-50 p-6">
