@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import configPromise from '@payload-config';
 import { getPayload } from 'payload';
 import { getMediaUrl } from '@/utilities/getMediaUrl';
+import { unstable_cache } from 'next/cache';
 
 interface Director {
   id: string | number;
@@ -42,8 +43,8 @@ interface Director {
 //   updatedAt: string;
 // }
 
-export async function GET() {
-  try {
+const getDirectors = unstable_cache(
+  async () => {
     console.log('🔄 API: Buscando diretores do Payload...');
 
     const payload = await getPayload({ config: configPromise });
@@ -98,6 +99,19 @@ export async function GET() {
     });
 
     console.log('✅ Diretores mapeados:', directors.length);
+    return directors;
+  },
+  ['directors-api'],
+  {
+    tags: ['directors-api', 'staff-api'],
+    revalidate: 60,
+  }
+);
+
+export async function GET() {
+  try {
+    const directors = await getDirectors();
+
     return NextResponse.json(
       { directors, success: true },
       {
