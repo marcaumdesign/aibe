@@ -117,13 +117,6 @@ export default function EventsPage() {
             <p className="text-text-sub-600 leading-relaxed mb-6 text-paragraph-md">
               The winning article will be announced in early 2026. One member of the research team will be invited to attend the 2026 AIBE Workshop, which will take place in Italy, in order to present the paper.
             </p>
-            <div className="w-full mb-16 flex justify-center">
-              <Link href="https://docs.google.com/forms/d/e/1FAIpQLSca4tZjGR29lnkhMC0Zrby471wRinhy68KGe1R8IzPpf6Hi4g/viewform" target="_blank" rel="noopener noreferrer">
-                <Button variant="primary" mode="filled" size="medium">
-                  Submit Paper
-                </Button>
-              </Link>
-            </div>
           </div>
 
           {/* To Apply Section */}
@@ -139,6 +132,13 @@ export default function EventsPage() {
             </p>
           </div>
 
+          <div className="w-full mb-16 flex justify-center">
+            <Link href="https://docs.google.com/forms/d/e/1FAIpQLSca4tZjGR29lnkhMC0Zrby471wRinhy68KGe1R8IzPpf6Hi4g/viewform" target="_blank" rel="noopener noreferrer">
+              <Button variant="primary" mode="filled" size="medium">
+                Submit Paper
+              </Button>
+            </Link>
+          </div>
 
           {/* Eligibility and Rules */}
           <div className="mb-12">

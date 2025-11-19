@@ -62,27 +62,11 @@ export function HeaderClient({ workshops }: HeaderClientProps) {
               </div>
             </div>
           </div>
+
           <div className='relative group'>
-            <button className='transition-colors hover:text-primary-base cursor-pointer'>
+            <Link href='/prizes' className='transition-colors hover:text-primary-base'>
               Prizes
-            </button>
-            {/* Dropdown Menu */}
-            <div className='absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'>
-              <div className='py-2'>
-                <Link
-                  href='/prizes'
-                  className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
-                >
-                  Giorgio Mortara
-                </Link>
-                <Link
-                  href='/prizes/giorgio-mortara-2'
-                  className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
-                >
-                  Giorgio Mortara 2 (Test)
-                </Link>
-              </div>
-            </div>
+            </Link>
           </div>
           <div className='relative group'>
             <Link href='/posts' className='transition-colors hover:text-primary-base'>
