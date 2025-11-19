@@ -209,9 +209,9 @@ export default function AIBEWorkshop2024Page() {
                 Gallery
               </h2>
             </div>
-            <Link href="/events/gallery">
+            <Link href="/workshops">
               <Button variant="primary" mode="filled" size="medium">
-                View All
+                View All Workshops
               </Button>
             </Link>
           </div>

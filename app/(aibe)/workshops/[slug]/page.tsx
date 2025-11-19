@@ -296,13 +296,13 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
             <div className="flex items-center justify-between mb-5">
               <div>
                 <p className="text-text-soft-400 font-medium tracking-wider uppercase mb-2 text-subheading-xs">
-                  Past Congresses
+                  Past Congress
                 </p>
                 <h2 className="text-text-strong-950 text-title-h2">
                   Gallery
                 </h2>
               </div>
-              <Link href="/events/gallery">
+              <Link href={`/workshops/${slug}/gallery`}>
                 <Button variant="primary" mode="filled" size="medium">
                   View All
                 </Button>
@@ -337,9 +337,7 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
               {/* Texto à esquerda */}
               <div>
-                <p className="text-text-soft-400 font-medium tracking-wider uppercase mb-2 text-subheading-xs">
-                  Studying
-                </p>
+
                 <h2 className="text-text-strong-950 text-title-h2 mb-4">
                   {workshop.studyingSection.studyingTitle}
                 </h2>
