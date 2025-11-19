@@ -198,7 +198,7 @@ export default async function Home() {
                   We organize an anual academic event held alternately in both countries.
                 </p>
                 <Button.Root variant='primary' size='medium' className='h-hug w-fit mt-auto' asChild>
-                  <Link href='/events/workshop2024'>
+                  <Link href='/workshops/'>
                     See More
                   </Link>
                 </Button.Root>
@@ -235,7 +235,7 @@ export default async function Home() {
             <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col flex-1 justify-start overflow-hidden h-full'>
               <div className='relative w-full h-[300px]'>
                 <Image
-                  src='/images/estudante.png'
+                  src='/images/scientific-friendship.jpg'
                   alt='AIBE at a glance'
                   fill
                   className='object-cover'
