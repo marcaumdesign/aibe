@@ -253,7 +253,30 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* FGC Sponsor Section */}
+      <section className="py-8 px-8 mobile:px-4 bg-gray-50">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-2 mobile:grid-cols-1 gap-8 items-center py-6">
+            {/* Left side - Text */}
+            <div>
+              <p className="text-title-h5 text-text-strong-950">
+                This site was developed thanks to the generous support of the Fundo Garantidor de Créditos (FGC)
+              </p>
+            </div>
 
+            {/* Right side - Logo */}
+            <div className="flex justify-center mobile:justify-start">
+              <Image
+                src="/images/fgc-logo.png"
+                alt="Fundo Garantidor de Créditos (FGC)"
+                width={300}
+                height={150}
+                className="w-auto h-24 mobile:h-20 object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
     </div>
   );
