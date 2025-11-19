@@ -1,0 +1,314 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { headers } from 'next/headers';
+import Stripe from 'stripe';
+import { getPayload } from 'payload';
+import config from '@payload-config';
+import { stripe, PRICE_TO_PLAN_MAP, mapStripeStatus } from '@/lib/stripe';
+
+/**
+ * Webhook do Stripe para sincronizar assinaturas
+ * IMPORTANTE: Este endpoint deve ser configurado no Stripe Dashboard
+ */
+export async function POST(req: NextRequest) {
+  const body = await req.text();
+  const headersList = await headers();
+  const signature = headersList.get('stripe-signature');
+
+  if (!signature) {
+    return NextResponse.json(
+      { error: 'Assinatura do webhook ausente' },
+      { status: 400 },
+    );
+  }
+
+  if (!process.env.STRIPE_WEBHOOK_SECRET) {
+    console.error('STRIPE_WEBHOOK_SECRET não configurado');
+    return NextResponse.json(
+      { error: 'Webhook não configurado' },
+      { status: 500 },
+    );
+  }
+
+  let event: Stripe.Event;
+
+  try {
+    // Verificar assinatura do webhook
+    event = stripe.webhooks.constructEvent(
+      body,
+      signature,
+      process.env.STRIPE_WEBHOOK_SECRET,
+    );
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error';
+    console.error('Erro ao verificar assinatura do webhook:', errorMessage);
+    return NextResponse.json(
+      { error: `Webhook Error: ${errorMessage}` },
+      { status: 400 },
+    );
+  }
+
+  const payload = await getPayload({ config });
+
+  try {
+    switch (event.type) {
+      case 'checkout.session.completed': {
+        const session = event.data.object as Stripe.Checkout.Session;
+        await handleCheckoutCompleted(session, payload);
+        break;
+      }
+
+      case 'customer.subscription.created':
+      case 'customer.subscription.updated': {
+        const subscription = event.data.object as Stripe.Subscription;
+        await handleSubscriptionUpdate(subscription, payload);
+        break;
+      }
+
+      case 'customer.subscription.deleted': {
+        const subscription = event.data.object as Stripe.Subscription;
+        await handleSubscriptionDeleted(subscription, payload);
+        break;
+      }
+
+      case 'invoice.payment_failed': {
+        const invoice = event.data.object as Stripe.Invoice;
+        await handlePaymentFailed(invoice, payload);
+        break;
+      }
+
+      case 'invoice.payment_succeeded': {
+        const invoice = event.data.object as Stripe.Invoice;
+        await handlePaymentSucceeded(invoice, payload);
+        break;
+      }
+
+      default:
+        console.log(`Evento não tratado: ${event.type}`);
+    }
+
+    return NextResponse.json({ received: true });
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : 'Erro ao processar webhook';
+    console.error('Erro ao processar webhook:', error);
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
+  }
+}
+
+/**
+ * Processa conclusão do checkout
+ */
+async function handleCheckoutCompleted(
+  session: Stripe.Checkout.Session,
+  payload: Awaited<ReturnType<typeof getPayload>>,
+) {
+  const userId = session.metadata?.userId;
+
+  if (!userId) {
+    console.error('userId não encontrado nos metadados do checkout');
+    return;
+  }
+
+  // Buscar subscription se houver
+  if (session.subscription) {
+    const subscription = await stripe.subscriptions.retrieve(
+      session.subscription as string,
+    );
+    await updateUserSubscription(userId, subscription, payload);
+  }
+}
+
+/**
+ * Atualiza subscription do usuário
+ */
+async function handleSubscriptionUpdate(
+  subscription: Stripe.Subscription,
+  payload: Awaited<ReturnType<typeof getPayload>>,
+) {
+  const userId = subscription.metadata?.userId;
+
+  if (!userId) {
+    // Tentar buscar por stripeCustomerId
+    const user = await findUserByStripeCustomerId(
+      subscription.customer as string,
+      payload,
+    );
+    if (user) {
+      await updateUserSubscription(String(user.id), subscription, payload);
+    }
+    return;
+  }
+
+  await updateUserSubscription(userId, subscription, payload);
+}
+
+/**
+ * Processa cancelamento de subscription
+ */
+async function handleSubscriptionDeleted(
+  subscription: Stripe.Subscription,
+  payload: Awaited<ReturnType<typeof getPayload>>,
+) {
+  const userId = subscription.metadata?.userId;
+
+  if (!userId) {
+    const user = await findUserByStripeCustomerId(
+      subscription.customer as string,
+      payload,
+    );
+    if (user) {
+      await cancelUserSubscription(String(user.id), payload);
+    }
+    return;
+  }
+
+  await cancelUserSubscription(userId, payload);
+}
+
+/**
+ * Processa falha no pagamento
+ */
+async function handlePaymentFailed(
+  invoice: Stripe.Invoice,
+  payload: Awaited<ReturnType<typeof getPayload>>,
+) {
+  // Tentar extrair userId dos metadados da subscription
+  const userId = (
+    invoice as unknown as {
+      subscription_details?: { metadata?: { userId?: string } };
+    }
+  ).subscription_details?.metadata?.userId;
+
+  if (!userId) {
+    const user = await findUserByStripeCustomerId(
+      invoice.customer as string,
+      payload,
+    );
+    if (!user) return;
+
+    await payload.update({
+      collection: 'users',
+      id: user.id,
+      data: {
+        subscriptionStatus: 'past_due',
+      },
+    });
+    return;
+  }
+
+  await payload.update({
+    collection: 'users',
+    id: userId,
+    data: {
+      subscriptionStatus: 'past_due',
+    },
+  });
+
+  console.log(`Pagamento falhou para usuário ${userId}`);
+}
+
+/**
+ * Processa sucesso no pagamento
+ */
+async function handlePaymentSucceeded(
+  invoice: Stripe.Invoice,
+  payload: Awaited<ReturnType<typeof getPayload>>,
+) {
+  // Buscar subscription e atualizar
+  const invoiceData = invoice as unknown as {
+    subscription?: string | { id: string };
+  };
+  const subscriptionId =
+    typeof invoiceData.subscription === 'string'
+      ? invoiceData.subscription
+      : invoiceData.subscription?.id;
+
+  if (subscriptionId) {
+    const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+
+    const userId = subscription.metadata?.userId;
+    if (userId) {
+      await updateUserSubscription(userId, subscription, payload);
+    }
+  }
+}
+
+/**
+ * Atualiza dados de subscription do usuário no Payload
+ */
+async function updateUserSubscription(
+  userId: string,
+  subscription: Stripe.Subscription,
+  payload: Awaited<ReturnType<typeof getPayload>>,
+) {
+  const priceId = subscription.items.data[0]?.price.id;
+  const plan = PRICE_TO_PLAN_MAP[priceId] || 'free';
+  const status = mapStripeStatus(subscription.status);
+
+  // Acessar current_period_end de forma segura
+  const subscriptionData = subscription as Stripe.Subscription & {
+    current_period_end?: number;
+  };
+  const currentPeriodEnd = subscriptionData.current_period_end
+    ? new Date(subscriptionData.current_period_end * 1000).toISOString()
+    : null;
+
+  await payload.update({
+    collection: 'users',
+    id: userId,
+    data: {
+      stripeCustomerId: subscription.customer as string,
+      stripeSubscriptionId: subscription.id,
+      subscriptionPlan: plan,
+      subscriptionStatus: status,
+      ...(currentPeriodEnd && {
+        subscriptionCurrentPeriodEnd: currentPeriodEnd,
+      }),
+    },
+  });
+
+  console.log(
+    `Subscription atualizada para usuário ${userId}: ${plan} - ${status}`,
+  );
+}
+
+/**
+ * Cancela subscription do usuário
+ */
+async function cancelUserSubscription(
+  userId: string,
+  payload: Awaited<ReturnType<typeof getPayload>>,
+) {
+  await payload.update({
+    collection: 'users',
+    id: userId,
+    data: {
+      subscriptionPlan: 'free',
+      subscriptionStatus: 'canceled',
+      stripeSubscriptionId: null,
+    },
+  });
+
+  console.log(`Subscription cancelada para usuário ${userId}`);
+}
+
+/**
+ * Busca usuário por Stripe Customer ID
+ */
+async function findUserByStripeCustomerId(
+  customerId: string,
+  payload: Awaited<ReturnType<typeof getPayload>>,
+) {
+  const result = await payload.find({
+    collection: 'users',
+    where: {
+      stripeCustomerId: {
+        equals: customerId,
+      },
+    },
+    limit: 1,
+  });
+
+  return result.docs[0] || null;
+}
