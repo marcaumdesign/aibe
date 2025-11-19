@@ -7,7 +7,7 @@ import config from '../../../payload.config'
 import { Gutter } from '../_components/Gutter'
 import { RenderParams } from '../_components/RenderParams'
 import { CreateAccountForm } from './CreateAccountForm'
-import classes from './index.module.scss'
+// import classes from './index.module.scss'
 
 export default async function CreateAccount() {
   const headers = await getHeaders()
@@ -23,7 +23,7 @@ export default async function CreateAccount() {
   }
 
   return (
-    <Gutter className={classes.createAccount}>
+    <Gutter className={''}>
       <h1>Create Account</h1>
       <RenderParams />
       <CreateAccountForm />

@@ -5,11 +5,12 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import React, { useCallback, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { Button } from '../../_components/Button'
-import { Input } from '../../_components/Input'
+import { Root as Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Message } from '../../_components/Message'
 import { useAuth } from '../../_providers/Auth'
-import classes from './index.module.scss'
+import * as Label from '@/components/ui/label'
+// import classes from './index.module.scss'
 
 type FormData = {
   email: string
@@ -60,8 +61,8 @@ export const CreateAccountForm: React.FC = () => {
       try {
         await login(data)
         clearTimeout(timer)
-        if (redirect) {router.push(redirect)}
-        else {router.push(`/account?success=${encodeURIComponent('Account created successfully')}`)}
+        if (redirect) { router.push(redirect) }
+        else { router.push(`/account?success=${encodeURIComponent('Account created successfully')}`) }
       } catch (_) {
         clearTimeout(timer)
         setError('There was an error with the credentials provided. Please try again.')
@@ -71,7 +72,7 @@ export const CreateAccountForm: React.FC = () => {
   )
 
   return (
-    <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={''} onSubmit={handleSubmit(onSubmit)}>
       <p>
         {`This is where new customers can signup and create a new account. To manage all users, `}
         <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/users`}>
@@ -79,38 +80,40 @@ export const CreateAccountForm: React.FC = () => {
         </Link>
         .
       </p>
-      <Message className={classes.message} error={error} />
+      <Message className={''} error={error} />
+      <Label.Root htmlFor="email" className="text-label-sm text-text-strong-950">
+        Email Address
+      </Label.Root>
       <Input
-        error={errors.email}
-        label="Email Address"
-        name="email"
-        register={register}
-        required
+        hasError={errors.email ? true : false}
+        {...register("email", { required: true })}
         type="email"
       />
+      <Label.Root htmlFor="password" className="text-label-sm text-text-strong-950">
+        Password
+      </Label.Root>
       <Input
-        error={errors.password}
-        label="Password"
-        name="password"
-        register={register}
-        required
+        hasError={errors.password ? true : false}
+        {...register("password", { required: true })}
         type="password"
       />
+      <Label.Root htmlFor="passwordConfirm" className="text-label-sm text-text-strong-950">
+        Confirm Password
+      </Label.Root>
       <Input
-        error={errors.passwordConfirm}
-        label="Confirm Password"
-        name="passwordConfirm"
-        register={register}
-        required
+        hasError={errors.passwordConfirm ? true : false}
+        {...register("passwordConfirm", { required: true })}
         type="password"
-        validate={(value) => value === password.current || 'The passwords do not match'}
       />
       <Button
-        appearance="primary"
-        className={classes.submit}
-        label={loading ? 'Processing' : 'Create Account'}
+        size="medium"
+        variant="primary"
+        className="w-full h-12 mobile:h-10 rounded-none"
+        disabled={loading}
         type="submit"
-      />
+      >
+        {loading ? 'Processing' : 'Create Account'}
+      </Button>
       <div>
         {'Already have an account? '}
         <Link href={`/login${allParams}`}>Login</Link>
