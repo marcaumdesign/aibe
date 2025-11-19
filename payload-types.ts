@@ -393,6 +393,28 @@ export interface User {
   firstName?: string | null;
   lastName?: string | null;
   roles?: ('admin' | 'user')[] | null;
+  /**
+   * Plano de assinatura atual do usuário
+   */
+  subscriptionPlan?: ('free' | 'premium' | 'founders') | null;
+  /**
+   * ID do cliente no Stripe
+   */
+  stripeCustomerId?: string | null;
+  /**
+   * ID da assinatura ativa no Stripe
+   */
+  stripeSubscriptionId?: string | null;
+  /**
+   * Status da assinatura no Stripe
+   */
+  subscriptionStatus?:
+    | ('active' | 'canceled' | 'past_due' | 'trialing' | 'incomplete' | 'incomplete_expired' | 'unpaid')
+    | null;
+  /**
+   * Data de renovação ou expiração da assinatura
+   */
+  subscriptionCurrentPeriodEnd?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -1426,6 +1448,11 @@ export interface UsersSelect<T extends boolean = true> {
   firstName?: T;
   lastName?: T;
   roles?: T;
+  subscriptionPlan?: T;
+  stripeCustomerId?: T;
+  stripeSubscriptionId?: T;
+  subscriptionStatus?: T;
+  subscriptionCurrentPeriodEnd?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

@@ -9,12 +9,21 @@ import RichText from '@/components/RichText'
 import PostsPostHero from '@/components/blog/posts-post-hero'
 import PostsPostSidebar from '@/components/blog/posts-post-sidebar'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
+import { checkPostAccess } from '@/utilities/checkPostAccess'
+import { PaywallBanner } from '@/components/PaywallBanner'
 
 import type { Post } from '@/payload-types'
 
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+
+// Tipo temporário até regenerar os tipos do Payload (Passo 2)
+interface PostWithAccess extends Post {
+  accessLevel?: 'free' | 'premium' | 'founders'
+  isPremium?: boolean
+  previewContent?: Post['content'] // Mesmo tipo que content
+}
 
 interface LatestPost {
   id: string | number
@@ -120,6 +129,12 @@ export default async function Post({ params: paramsPromise }: Args) {
 
   if (!post) return <PayloadRedirects url={url} />
 
+  // Verificar acesso ao post (verificação de paywall)
+  const accessCheck = await checkPostAccess({
+    accessLevel: post.accessLevel,
+    isPremium: post.isPremium,
+  })
+
   // Buscar últimos posts para a sidebar
   const latestPosts = await fetchLatestPosts()
 
@@ -179,7 +194,29 @@ export default async function Post({ params: paramsPromise }: Args) {
             {/* Main Content - 8 columns */}
             <div className='flex flex-col gap-8'>
               <PostsPostHero post={heroPostData} />
-              <RichText className="max-w-none" data={post.content} enableGutter={false} enableProse={true} />
+
+              {/* Se o usuário tem acesso, mostra o conteúdo completo */}
+              {accessCheck.hasAccess ? (
+                <RichText className="max-w-none" data={post.content} enableGutter={false} enableProse={true} />
+              ) : (
+                <>
+                  {/* Mostra preview do conteúdo se disponível */}
+                  {post.previewContent && (
+                    <RichText
+                      className="max-w-none"
+                      data={post.previewContent}
+                      enableGutter={false}
+                      enableProse={true}
+                    />
+                  )}
+
+                  {/* Mostra o banner de paywall */}
+                  <PaywallBanner
+                    requiredLevel={accessCheck.requiredLevel}
+                    isLoggedIn={accessCheck.isLoggedIn}
+                  />
+                </>
+              )}
             </div>
 
             {/* Sidebar - 4 columns */}
@@ -200,7 +237,7 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
   return generateMeta({ doc: post })
 }
 
-const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
+const queryPostBySlug = cache(async ({ slug }: { slug: string }): Promise<PostWithAccess | null> => {
   const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise })
@@ -217,19 +254,7 @@ const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
         equals: slug,
       },
     },
-    select: {
-      id: true,
-      title: true,
-      slug: true,
-      content: true,
-      meta: true,
-      heroImage: true,
-      publishedAt: true,
-      createdAt: true,
-      populatedAuthors: true,
-      relatedPosts: true,
-    },
   })
 
-  return result.docs?.[0] || null
+  return result.docs?.[0] as PostWithAccess || null
 })
