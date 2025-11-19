@@ -1,6 +1,6 @@
 'use client'
 
-import type { Permissions } from 'payload'
+import type { SanitizedPermissions } from 'payload'
 
 import React, { createContext, useCallback, use, useEffect, useState } from 'react'
 
@@ -17,7 +17,7 @@ export const AuthProvider: React.FC<{ api?: 'gql' | 'rest'; children: React.Reac
   children,
 }) => {
   const [user, setUser] = useState<null | User>()
-  const [permissions, setPermissions] = useState<null | Permissions>(null)
+  const [permissions, setPermissions] = useState<null | SanitizedPermissions>(null)
 
   const create = useCallback<Create>(
     async (args) => {

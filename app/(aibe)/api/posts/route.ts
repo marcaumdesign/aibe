@@ -3,6 +3,7 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import type { Post } from '@/payload-types'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
+import { unstable_cache } from 'next/cache'
 
 interface PostItem {
   id: string | number
@@ -66,8 +67,8 @@ function formatPost(post: Post): PostItem {
   }
 }
 
-export async function GET() {
-  try {
+const getPosts = unstable_cache(
+  async () => {
     const payload = await getPayload({ config: configPromise })
 
     const result = await payload.find({
@@ -88,7 +89,18 @@ export async function GET() {
       },
     })
 
-    const posts = result.docs.map((post) => formatPost(post))
+    return result.docs.map((post) => formatPost(post))
+  },
+  ['posts-api'],
+  {
+    tags: ['posts-api'],
+    revalidate: 60,
+  }
+)
+
+export async function GET() {
+  try {
+    const posts = await getPosts()
 
     return NextResponse.json({ posts, success: true }, { 
       headers: {
