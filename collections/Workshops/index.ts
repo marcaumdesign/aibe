@@ -13,6 +13,7 @@ import { slugField } from 'payload';
 
 import { authenticated } from '../../access/authenticated';
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished';
+import { revalidateDelete, revalidateWorkshop } from './hooks/revalidateWorkshop';
 
 export const Workshops: CollectionConfig = {
   slug: 'workshops',
@@ -255,6 +256,10 @@ export const Workshops: CollectionConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [revalidateWorkshop],
+    afterDelete: [revalidateDelete],
+  },
   timestamps: true,
   versions: {
     drafts: {

@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export default function CTA({ hideFlagOnMobile = false }: { hideFlagOnMobile?: boolean }) {
   return (
-    <section className='relative overflow-visible z-50 bg-primary-base flex justify-center items-center pt-0 pb-0 mobile:pb-0'>
+    <section className='relative overflow-visible z-30 bg-primary-base flex justify-center items-center pt-0 pb-0 mobile:pb-0'>
       {/* Top solid blue overlay to avoid hard cut */}
       <div className='pointer-events-none absolute inset-x-0 -top-16 h-16 bg-primary-base'></div>
       {/* Bottom solid blue overlay to ensure no white gap */}
