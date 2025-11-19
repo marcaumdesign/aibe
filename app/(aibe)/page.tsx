@@ -72,7 +72,7 @@ export default async function Home() {
           {/* Hero Content */}
           <div className='flex flex-col mobile:flex-col items-center justify-center gap-8 mobile:gap-8 w-full'>
             <div className='relative w-full mobile:w-full flex justify-center'>
-              <div className='relative w-full h-[200px]'>
+              <div className='relative w-full h-[150px]'>
                 <Image
                   src='/images/heroimage.png'
                   alt='Hero'
@@ -158,13 +158,7 @@ export default async function Home() {
         </div>
 
         {/* Highlights Section - Controlado pelo Payload */}
-        {highlightBanner?.enabled && (
-          <HighlightBanner
-            title={highlightBanner.title}
-            buttonText={highlightBanner.button.text}
-            buttonLink={highlightBanner.button.link}
-          />
-        )}
+
       </section>
 
 
@@ -183,7 +177,7 @@ export default async function Home() {
             <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col justify-start overflow-hidden h-full'>
               <div className='relative w-full h-[300px]'>
                 <Image
-                  src='/images/workshops.jpg'
+                  src='/images/Workshop.jpeg'
                   alt='The AIBE Annual Workshop'
                   fill
                   className='object-cover'
@@ -209,7 +203,7 @@ export default async function Home() {
             <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col flex-1 justify-start overflow-hidden h-full'>
               <div className='relative w-full h-[300px]'>
                 <Image
-                  src='/images/premio.jpg'
+                  src='/images/giorgio.jpeg'
                   alt='Giorgio Mortara Prize'
                   fill
                   className='object-cover'
@@ -259,6 +253,14 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {highlightBanner?.enabled && (
+        <HighlightBanner
+          title={highlightBanner.title}
+          buttonText={highlightBanner.button.text}
+          buttonLink={highlightBanner.button.link}
+        />
+      )}
 
       {/* Blog Section */}
       <BlogSection />
