@@ -84,7 +84,7 @@ export default function EventsPage() {
 
           {/* Main Title */}
           <h1 className="text-text-strong-950 text-center mb-4 max-w-2xl mx-auto text-title-h2">
-            1st Giorgio Mortara Prize
+            Giorgio Mortara Prize
           </h1>
 
           {/* Subtitle */}
@@ -105,6 +105,9 @@ export default function EventsPage() {
 
           {/* Prize Description */}
           <div className="prose prose-lg max-w-none mb-2">
+            <h4 className="text-text-strong-950 mb-4 text-title-h4">
+              Call for Submissions
+            </h4>
             <p className="text-text-sub-600 leading-relaxed mb-4 text-paragraph-md">
               The Italian-Brazilian Economics Association is awarding a prize worth 1,000 euros for the best paper in economics co-authored by an Italian-Brazilian research team.
             </p>
@@ -114,6 +117,13 @@ export default function EventsPage() {
             <p className="text-text-sub-600 leading-relaxed mb-6 text-paragraph-md">
               The winning article will be announced in early 2026. One member of the research team will be invited to attend the 2026 AIBE Workshop, which will take place in Italy, in order to present the paper.
             </p>
+            <div className="w-full mb-16 flex justify-center">
+              <Link href="https://docs.google.com/forms/d/e/1FAIpQLSca4tZjGR29lnkhMC0Zrby471wRinhy68KGe1R8IzPpf6Hi4g/viewform" target="_blank" rel="noopener noreferrer">
+                <Button variant="primary" mode="filled" size="medium">
+                  Submit Paper
+                </Button>
+              </Link>
+            </div>
           </div>
 
           {/* To Apply Section */}
@@ -128,6 +138,7 @@ export default function EventsPage() {
               <strong>The deadline for submission is 15 January 2026 (midnight, Italy)</strong>
             </p>
           </div>
+
 
           {/* Eligibility and Rules */}
           <div className="mb-12">
@@ -157,13 +168,51 @@ export default function EventsPage() {
               </li>
             </ul>
           </div>
+          <div className="mb-12">
+            <h2 className="text-text-strong-950 mb-4 text-title-h5">
+              Scientific Committee            </h2>
+            <ul className="space-y-3 text-text-sub-600 leading-relaxed">
+              <li className="flex items-start text-paragraph-md">
+                <span className="text-black-600 mr-2">•</span>
+                <span>Fernando L. Aiube, UERJ (Rio de Janeiro)</span>
+              </li>
+              <li className="flex items-start text-paragraph-md">
+                <span className="text-black-600 mr-2">•</span>
+                <span>Raphael B. Corbi, USP (Sao Paulo)</span>
+              </li>
+              <li className="flex items-start text-paragraph-md">
+                <span className="text-black-600 mr-2">•</span>
+                <span>Tito Cordella, SAIS Europe (Bologna)</span>
+              </li>
+              <li className="flex items-start text-paragraph-md">
+                <span className="text-black-600 mr-2">•</span>
+                <span>Chiara Falco, University of Milan (Milan) & USP (Sao Paulo)</span>
+              </li>
+              <li className="flex items-start text-paragraph-md">
+                <span className="text-black-600 mr-2">•</span>
+                <span>Alan de Gennaro, EAESP-FGV (Sao Paulo)</span>
+              </li>
+              <li className="flex items-start text-paragraph-md">
+                <span className="text-black-600 mr-2">•</span>
+                <span>Rafael F. Schiozer, EAESP-FGV (Sao Paulo)</span>
+              </li>
+              <li className="flex items-start text-paragraph-md">
+                <span className="text-black-600 mr-2">•</span>
+                <span>Luca J. Uberti, University of Milano-Bicocca (Milan)</span>
+              </li>
+              <li className="flex items-start text-paragraph-md">
+                <span className="text-black-600 mr-2">•</span>
+                <span>Andrea Ugolini, University of Milano-Bicocca (Milan)</span>
+              </li>
+            </ul>
+          </div>
 
           {/* Submit Button */}
-          <div className="text-center">
+          <Link className="w-full flex justify-center" href="https://drive.google.com/file/d/1z41fsmEGp1WHKawgTBQbrcZi1Zw760F5/view?usp=sharing" target="_blank" rel="noopener noreferrer">
             <Button variant="primary" mode="filled" size="medium">
-              Submit Paper
+              Download Call for Submissions
             </Button>
-          </div>
+          </Link>
         </section>
       </main>
 
@@ -185,13 +234,17 @@ export default function EventsPage() {
                 alt="Giorgio Mortara portrait"
                 width={640}
                 height={640}
-                className="w-[640px] h-[640px] object-contain object-top mobile:w-full mobile:h-auto"
+                className="w-[400px] h-[400px] object-contain object-top mobile:w-full mobile:h-auto"
               />
             </div>
 
             {/* Biography */}
-            <div className="flex-1 lg:self-center">
+            <div className="flex justify-start flex-col gap-4 lg:self-center">
+
               <div className="space-y-3">
+                <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
+                  <strong>Annual prize in memory of Giorgio Mortara for the best paper co-authored by a junior Italian/Brazilian research team</strong>
+                </p>
                 <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
                   Giorgio Mortara (Matua, 1885 - Rio de Janeiro, 1967) was an Italian-Brazilian economist and demographer. During 1924-38, he taught at Bocconi University in Milan.
                 </p>
@@ -205,7 +258,13 @@ export default function EventsPage() {
                   The prize is awarded jointly by the AIBE Board and by the Scientific Committee of the annual AIBE Workshop.
                 </p>
               </div>
+              <Link className="" href="https://www.bancaditalia.it/pubblicazioni/collezioni-biblioteca-baffi/2019-3-scritti-baffi/bibliografia/400-499/459.pdf" target="_blank" rel="noopener noreferrer">
+                <Button variant="primary" mode="lighter" size="medium">
+                  Know more
+                </Button>
+              </Link>
             </div>
+
           </div>
         </div>
       </section>
@@ -216,11 +275,9 @@ export default function EventsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             {/* Texto à esquerda */}
             <div>
-              <p className="text-text-soft-400 font-medium tracking-wider uppercase mb-2 text-subheading-xs">
-                Studying
-              </p>
+
               <h2 className="text-text-strong-950 text-title-h2 mb-4">
-                Official Launch of the Prize
+                Special Session
               </h2>
               <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
                 The Giorgio Mortara prize was officially launched during the 1st AIBE Workshop, held on 4 July 2025 at the EAESP-FGV in Sao Paulo. The launch ceremony was opened by Luca J. Uberti, who highlighted Mortara&apos;s significance for our Association, and closed by Fábio Mortara, Giorgio&apos;s grandson, who presented a personal and professionional biography of the Italian-Brazilian economist.
@@ -229,7 +286,7 @@ export default function EventsPage() {
 
             {/* Imagem à direita (pequena) */}
             <div className="flex md:justify-end">
-              <div className="relative w-full max-w-[720px] h-[420px] md:max-w-[820px] md:h-[500px] lg:max-w-[960px] lg:h-[560px]">
+              <div className="relative w-full max-w-[720px] h-[20px] md:max-w-[820px] md:h-[500px] lg:max-w-[960px] lg:h-[560px]">
                 <Image
                   src="/images/WORKSHOP%20FOTO%209.jpeg"
                   alt="Official Launch of the Prize"

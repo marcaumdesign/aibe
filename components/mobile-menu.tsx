@@ -4,8 +4,13 @@ import Link from 'next/link';
 import * as Drawer from '@/components/ui/drawer';
 import * as Button from '@/components/ui/button';
 import { RiMenuLine } from '@remixicon/react';
+import type { Workshop } from '@/payload-types';
 
-export default function MobileMenu() {
+interface MobileMenuProps {
+  workshops: Workshop[];
+}
+
+export default function MobileMenu({ workshops }: MobileMenuProps) {
   return (
     <Drawer.Root>
       <Drawer.Trigger asChild>
@@ -36,9 +41,12 @@ export default function MobileMenu() {
                 Workshop
               </div>
               <div className='flex flex-col gap-1 pl-4'>
-                <SubItem href='/workshop'>AIBE Workshop 2025</SubItem>
-                <SubItem href='/events/workshop2024'>AIBE Workshop 2024</SubItem>
-                <SubItem href='/events'>Last Events</SubItem>
+                {workshops.map((workshop) => (
+                  <SubItem key={workshop.id} href={`/workshops/${workshop.slug}`}>
+                    {workshop.title}
+                  </SubItem>
+                ))}
+                <SubItem href='/workshops'>Last Events</SubItem>
               </div>
             </div>
 

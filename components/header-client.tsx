@@ -3,69 +3,58 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import * as  Button from '@/components/ui/button';
+import * as Button from '@/components/ui/button';
 import MobileMenu from '@/components/mobile-menu';
+import type { Workshop } from '@/payload-types';
 
-export default function Header() {
+interface HeaderClientProps {
+  workshops: Workshop[];
+}
+
+export function HeaderClient({ workshops }: HeaderClientProps) {
   const router = useRouter();
+
   return (
     <div className='fixed top-0 left-0 right-0 z-50 bg-white border-b border-stroke-soft-200 justify-center items-center flex w-full'>
       <header className='w-full max-w-[1200px] px-8 py-4 mobile:p-4 flex items-center justify-between'>
         {/* Logo */}
         <Link href='/' className='flex items-center gap-2'>
           <Image
-            src='/images/logo.svg'
+            src='/images/AIBE_corrected_bg 1.png'
             alt='AIBE Logo'
             width={113}
             height={42}
-            className='h-10 w-auto'
+            className='h-16 w-auto'
           />
-
         </Link>
 
         {/* Navigation (desktop) */}
-        <nav className='text-lg hidden items-center gap-8 font-medium text-black md:flex'>
-          <Link
-            href='/'
-            className='transition-colors hover:text-primary-base'
-          >
+        <nav className='text-lg hidden items-center gap-4 font-medium text-black md:flex'>
+          <Link href='/' className='transition-colors hover:text-primary-base'>
             Home
           </Link>
-          <Link
-            href='/about'
-            className='transition-colors hover:text-primary-base'
-          >
-            About US
+          <Link href='/about' className='transition-colors hover:text-primary-base'>
+            About Us
           </Link>
-          <Link
-            href='/people'
-            className='transition-colors hover:text-primary-base'
-          >
+          <Link href='/people' className='transition-colors hover:text-primary-base'>
             People
           </Link>
           <div className='relative group'>
-            <button
-              className='transition-colors hover:text-primary-base cursor-pointer'
-            >
-              Workshop
-            </button>
+            <button className='transition-colors '>Workshop</button>
             {/* Dropdown Menu */}
             <div className='absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'>
               <div className='py-2'>
+                {workshops.map((workshop) => (
+                  <Link
+                    key={workshop.id}
+                    href={`/workshops/${workshop.slug}`}
+                    className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
+                  >
+                    {workshop.title}
+                  </Link>
+                ))}
                 <Link
-                  href='/workshop'
-                  className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
-                >
-                  AIBE Workshop 2025
-                </Link>
-                <Link
-                  href='/events/workshop2024'
-                  className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
-                >
-                  AIBE Workshop 2024
-                </Link>
-                <Link
-                  href='/events'
+                  href='/workshops'
                   className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
                 >
                   Last Events
@@ -74,9 +63,7 @@ export default function Header() {
             </div>
           </div>
           <div className='relative group'>
-            <button
-              className='transition-colors hover:text-primary-base cursor-pointer'
-            >
+            <button className='transition-colors hover:text-primary-base cursor-pointer'>
               Prizes
             </button>
             {/* Dropdown Menu */}
@@ -98,28 +85,11 @@ export default function Header() {
             </div>
           </div>
           <div className='relative group'>
-            <Link
-              href='/posts'
-              className='transition-colors hover:text-primary-base'
-            >
+            <Link href='/posts' className='transition-colors hover:text-primary-base'>
               Blog
             </Link>
-            {/* Dropdown Menu */}
-            <div className='absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'>
-              <div className='py-2'>
-                <Link
-                  href='/blog/academic-cooperation'
-                  className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
-                >
-                  Academic Cooperation
-                </Link>
-              </div>
-            </div>
           </div>
-          <Link
-            href='/contact'
-            className='transition-colors hover:text-primary-base'
-          >
+          <Link href='/contact' className='transition-colors hover:text-primary-base'>
             Contact
           </Link>
         </nav>
@@ -128,7 +98,7 @@ export default function Header() {
         <div className='flex items-center gap-4'>
           {/* Mobile: Menu button replaces CTA */}
           <div className='md:hidden'>
-            <MobileMenu />
+            <MobileMenu workshops={workshops} />
           </div>
           {/* Desktop: Keep CTA */}
           <div className='hidden md:flex items-center gap-4'>
@@ -155,3 +125,4 @@ export default function Header() {
     </div>
   );
 }
+
