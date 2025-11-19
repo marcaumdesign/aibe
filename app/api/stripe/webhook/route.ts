@@ -250,26 +250,37 @@ async function updateUserSubscription(
   const subscriptionData = subscription as Stripe.Subscription & {
     current_period_end?: number;
   };
+
+  // Debug: verificar o valor
+  console.log(
+    'DEBUG - current_period_end:',
+    subscriptionData.current_period_end,
+  );
+
   const currentPeriodEnd = subscriptionData.current_period_end
     ? new Date(subscriptionData.current_period_end * 1000).toISOString()
     : null;
 
+  console.log('DEBUG - currentPeriodEnd ISO:', currentPeriodEnd);
+
+  const updateData = {
+    stripeCustomerId: subscription.customer as string,
+    stripeSubscriptionId: subscription.id,
+    subscriptionPlan: plan,
+    subscriptionStatus: status,
+    subscriptionCurrentPeriodEnd: currentPeriodEnd,
+  };
+
+  console.log('DEBUG - updateData:', JSON.stringify(updateData, null, 2));
+
   await payload.update({
     collection: 'users',
     id: userId,
-    data: {
-      stripeCustomerId: subscription.customer as string,
-      stripeSubscriptionId: subscription.id,
-      subscriptionPlan: plan,
-      subscriptionStatus: status,
-      ...(currentPeriodEnd && {
-        subscriptionCurrentPeriodEnd: currentPeriodEnd,
-      }),
-    },
+    data: updateData,
   });
 
   console.log(
-    `Subscription atualizada para usuário ${userId}: ${plan} - ${status}`,
+    `Subscription atualizada para usuário ${userId}: ${plan} - ${status} - Expira em: ${currentPeriodEnd}`,
   );
 }
 
