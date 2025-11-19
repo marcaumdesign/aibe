@@ -54,6 +54,22 @@ export const Staff: CollectionConfig = {
       type: 'textarea',
     },
     {
+      name: 'university',
+      type: 'group',
+      fields: [
+        {
+          name: 'name',
+          type: 'text',
+          label: 'University Name',
+        },
+        {
+          name: 'link',
+          type: 'text',
+          label: 'University Link',
+        },
+      ],
+    },
+    {
       name: 'link',
       type: 'text',
     },

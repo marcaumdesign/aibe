@@ -767,6 +767,10 @@ export interface Staff {
   role?: string | null;
   description?: string | null;
   biography?: string | null;
+  university?: {
+    name?: string | null;
+    link?: string | null;
+  };
   link?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -1452,6 +1456,12 @@ export interface StaffSelect<T extends boolean = true> {
   role?: T;
   description?: T;
   biography?: T;
+  university?:
+    | T
+    | {
+        name?: T;
+        link?: T;
+      };
   link?: T;
   updatedAt?: T;
   createdAt?: T;
