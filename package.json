@@ -11,9 +11,12 @@
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "postinstall": "pnpm prisma generate",
     "vercel-build": "pnpm prisma generate && pnpm run build",
+    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "generate:schema": "payload-graphql generate:schema",
     "generate:types": "PAYLOAD_CONFIG_PATH=./payload.config.ts payload generate:types"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
     "@libsql/client": "^0.15.15",
     "@payloadcms/admin-bar": "^3.62.1",
     "@payloadcms/db-sqlite": "^3.62.1",
@@ -76,6 +79,7 @@
     "tailwind-variants": "^0.2.1"
   },
   "devDependencies": {
+    "@payloadcms/graphql": "^3.64.0",
     "@types/node": "latest",
     "@types/react": "^18",
     "@types/react-dom": "^18",

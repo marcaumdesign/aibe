@@ -116,6 +116,9 @@ importers:
       cmdk:
         specifier: ^1.0.4
         version: 1.0.4(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      cross-env:
+        specifier: ^7.0.3
+        version: 7.0.3
       date-fns:
         specifier: ^3
         version: 3.6.0
@@ -189,6 +192,9 @@ importers:
         specifier: ^0.2.1
         version: 0.2.1(tailwindcss@3.4.14)
     devDependencies:
+      '@payloadcms/graphql':
+        specifier: ^3.64.0
+        version: 3.64.0(graphql@16.11.0)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(typescript@5.6.3)
       '@types/node':
         specifier: latest
         version: 20.17.6
@@ -1445,6 +1451,13 @@ packages:
     peerDependencies:
       graphql: ^16.8.1
       payload: 3.62.1
+
+  '@payloadcms/graphql@3.64.0':
+    resolution: {integrity: sha512-hh9KEuyEXY0SZMRG0ArLPIWZaT94CMLFLieOXm6+trGuVhS+7EQouOuRIHe4qWxzrNMYx+iidJk2TkT+6lgu/g==}
+    hasBin: true
+    peerDependencies:
+      graphql: ^16.8.1
+      payload: 3.64.0
 
   '@payloadcms/live-preview-react@3.62.1':
     resolution: {integrity: sha512-/fhQ6F4g0pAw/M5fxXXmxyDbWBAu9IFelJOAfeCaz/ZTkUZ2x2cjMSQ5ukcclwXJlhLZ/vmfg3/SuvOGAI5ERA==}
@@ -3321,6 +3334,11 @@ packages:
   croner@9.1.0:
     resolution: {integrity: sha512-p9nwwR4qyT5W996vBZhdvBCnMhicY5ytZkR4D1Xj0wuTDEiMnjwR57Q3RXYY/s0EpX6Ay3vgIcfaR+ewGHsi+g==}
     engines: {node: '>=18.0'}
+
+  cross-env@7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
 
   cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
@@ -7571,6 +7589,17 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
+  '@payloadcms/graphql@3.64.0(graphql@16.11.0)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(typescript@5.6.3)':
+    dependencies:
+      graphql: 16.11.0
+      graphql-scalars: 1.22.2(graphql@16.11.0)
+      payload: 3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5)
+      pluralize: 8.0.0
+      ts-essentials: 10.0.3(typescript@5.6.3)
+      tsx: 4.20.6
+    transitivePeerDependencies:
+      - typescript
+
   '@payloadcms/live-preview-react@3.62.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@payloadcms/live-preview': 3.62.1
@@ -10294,6 +10323,10 @@ snapshots:
       yaml: 1.10.2
 
   croner@9.1.0: {}
+
+  cross-env@7.0.3:
+    dependencies:
+      cross-spawn: 7.0.3
 
   cross-spawn@7.0.3:
     dependencies:
