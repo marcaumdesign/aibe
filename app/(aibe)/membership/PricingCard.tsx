@@ -64,9 +64,9 @@ export function PricingCard({
 
       // Redirecionar para o Stripe Checkout
       window.location.href = data.url;
-    } catch (error: any) {
-      console.error('Erro no checkout:', error);
-      toast.error(error.message || 'Erro ao processar pagamento');
+    } catch (error) {
+      console.error('Erro no checkout:', error as Error);
+      toast.error(error instanceof Error ? error.message : 'Erro ao processar pagamento');
       setLoading(false);
     }
   };
