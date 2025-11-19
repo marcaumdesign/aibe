@@ -8,7 +8,6 @@ import Link from "next/link";
 import { RiArrowLeftLine } from "@remixicon/react";
 import { Root as Button } from "@/components/ui/button";
 import { getMediaUrl } from '@/utilities/getMediaUrl';
-import { generateMeta } from '@/utilities/generateMeta';
 import GalleryClient from './page.client';
 
 type Args = {
@@ -136,11 +135,10 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
     };
   }
 
-  return generateMeta({
-    doc: workshop,
+  return {
     title: `${workshop.title} - Gallery | AIBE`,
     description: `View photos from ${workshop.title} workshop`,
-  });
+  };
 }
 
 const queryWorkshopBySlug = cache(async ({ slug }: { slug: string }) => {
