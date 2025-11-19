@@ -10,6 +10,7 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 import ServiceWorkerRegister from '@/components/service-worker-register';
 import CTA from '@/components/cta';
+import { AuthProvider } from './_providers/Auth';
 const inter = FontSans({
   subsets: ['latin'],
   variable: '--font-sans',
@@ -38,23 +39,30 @@ export default function RootLayout({
       className={cn(inter.variable, geistMono.variable, 'antialiased')}
     >
       <body className='bg-bg-white-0 text-text-strong-950'>
-        <ThemeProvider 
-          attribute='class' 
-          forcedTheme='light' 
-          defaultTheme='light'
-          enableSystem={false}
+        <AuthProvider
+          // To toggle between the REST and GraphQL APIs,
+          // change the `api` prop to either `rest` or `gql`
+          api="rest" // change this to `gql` to use the GraphQL API
         >
-          <TooltipProvider>
-            <div className='flex min-h-screen flex-col'>
-              <Header />
-              <main className='flex flex-1 flex-col pt-[80px]'>{children}</main>
-              <div className="relative mt-48 mobile:mt-48">
-                <CTA />
+          <ThemeProvider
+            attribute='class'
+            forcedTheme='light'
+            defaultTheme='light'
+            enableSystem={false}
+          >
+            <TooltipProvider>
+              <div className='flex min-h-screen flex-col'>
+                <Header />
+                <main className='flex flex-1 flex-col pt-[80px]'>{children}</main>
+                <div className="relative mt-48 mobile:mt-48">
+                  <CTA />
+                </div>
+                <Footer />
               </div>
-              <Footer />
-            </div>
-          </TooltipProvider>
-        </ThemeProvider>
+            </TooltipProvider>
+          </ThemeProvider>
+        </AuthProvider>
+
         <NotificationProvider />
         <ServiceWorkerRegister />
       </body>
