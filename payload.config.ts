@@ -1,9 +1,10 @@
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
 import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres';
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer';
 
 import sharp from 'sharp'; // sharp-import
 import path from 'path';
-import { buildConfig, PayloadRequest } from 'payload';
+import { buildConfig } from 'payload';
 import { fileURLToPath } from 'url';
 
 import { Categories } from './collections/Categories';
@@ -79,6 +80,19 @@ export default buildConfig({
       token: process.env.BLOB_READ_WRITE_TOKEN || '',
     }),
   ],
+  email: nodemailerAdapter({
+    defaultFromAddress: process.env.EMAIL_FROM_ADDRESS || 'noreply@aibe.com',
+    defaultFromName: process.env.EMAIL_FROM_NAME || 'AIBE',
+    transportOptions: {
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT) || 587,
+      secure: process.env.SMTP_SECURE === 'true',
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    },
+  }),
   secret: process.env.PAYLOAD_SECRET,
   sharp,
   typescript: {
