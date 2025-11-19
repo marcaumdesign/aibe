@@ -12,13 +12,13 @@ const membershipBenefits = [
   },
   {
     icon: "/images/trophy-line.png",
-    title: "Exclusive Access to Events",
+    title: "Access to Members’ Events",
     description: "Attend workshops, seminars, and activities reserved for members only."
   },
   {
     icon: "/images/send-plane-line.png",
     title: "Voting Rights",
-    description: "Take part in the Annual Members&apos; Assembly and contribute to AIBE&apos;s decisions."
+    description: "Take part in the Annual Members’ Assembly and contribute to AIBE’s decisions."
   }
 ];
 

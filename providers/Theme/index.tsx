@@ -21,32 +21,19 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   )
 
   const setTheme = useCallback((themeToSet: Theme | null) => {
-    if (themeToSet === null) {
-      window.localStorage.removeItem(themeLocalStorageKey)
-      const implicitPreference = getImplicitPreference()
-      document.documentElement.setAttribute('data-theme', implicitPreference || '')
-      if (implicitPreference) setThemeState(implicitPreference)
-    } else {
-      setThemeState(themeToSet)
-      window.localStorage.setItem(themeLocalStorageKey, themeToSet)
-      document.documentElement.setAttribute('data-theme', themeToSet)
-    }
+    // Forçar sempre o tema claro, ignorar qualquer tentativa de mudança
+    setThemeState('light')
+    window.localStorage.setItem(themeLocalStorageKey, 'light')
+    document.documentElement.setAttribute('data-theme', 'light')
   }, [])
 
   useEffect(() => {
-    let themeToSet: Theme = defaultTheme
-    const preference = window.localStorage.getItem(themeLocalStorageKey)
+    // Forçar sempre o tema claro
+    const themeToSet: Theme = 'light'
 
-    if (themeIsValid(preference)) {
-      themeToSet = preference
-    } else {
-      const implicitPreference = getImplicitPreference()
-
-      if (implicitPreference) {
-        themeToSet = implicitPreference
-      }
-    }
-
+    // Limpar qualquer preferência salva
+    window.localStorage.setItem(themeLocalStorageKey, 'light')
+    
     document.documentElement.setAttribute('data-theme', themeToSet)
     setThemeState(themeToSet)
   }, [])

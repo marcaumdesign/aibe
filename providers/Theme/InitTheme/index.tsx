@@ -10,35 +10,12 @@ export const InitTheme: React.FC = () => {
       dangerouslySetInnerHTML={{
         __html: `
   (function () {
-    function getImplicitPreference() {
-      var mediaQuery = '(prefers-color-scheme: dark)'
-      var mql = window.matchMedia(mediaQuery)
-      var hasImplicitPreference = typeof mql.matches === 'boolean'
-
-      if (hasImplicitPreference) {
-        return mql.matches ? 'dark' : 'light'
-      }
-
-      return null
-    }
-
-    function themeIsValid(theme) {
-      return theme === 'light' || theme === 'dark'
-    }
-
-    var themeToSet = '${defaultTheme}'
-    var preference = window.localStorage.getItem('${themeLocalStorageKey}')
-
-    if (themeIsValid(preference)) {
-      themeToSet = preference
-    } else {
-      var implicitPreference = getImplicitPreference()
-
-      if (implicitPreference) {
-        themeToSet = implicitPreference
-      }
-    }
-
+    // Forçar sempre o tema claro, ignorando preferências do sistema e localStorage
+    var themeToSet = 'light'
+    
+    // Garantir que o localStorage também está definido como light
+    window.localStorage.setItem('${themeLocalStorageKey}', 'light')
+    
     document.documentElement.setAttribute('data-theme', themeToSet)
   })();
   `,

@@ -265,8 +265,8 @@ export const borderRadii = {
 } as unknown as Record<string, string>;
 
 const config = {
-  darkMode: ['class'],
-  safelist: ['.dark'],
+  // Desabilitado completamente o modo dark
+  darkMode: 'media' as const, // Definido como 'media' mas nunca será ativado pois o ThemeProvider força light
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
