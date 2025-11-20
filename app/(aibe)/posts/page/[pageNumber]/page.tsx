@@ -134,10 +134,10 @@ export default async function Page({ params: paramsPromise }: Args) {
       <section className='pt-20 pb-16'>
         <div className='container mx-auto px-4'>
           <div className='text-center mb-16'>
-            <p className='text-subheading-sm text-text-soft-400 uppercase tracking-wider mb-4'>
+            <p className='text-text-soft-400 text-subheading-sm uppercase mb-4'>
               BLOG
             </p>
-            <h1 className='text-title-h2 text-text-strong-950'>
+            <h1 className='text-text-strong-950 text-title-h2'>
               Our latest news
             </h1>
           </div>

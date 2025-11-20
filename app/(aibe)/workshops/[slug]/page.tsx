@@ -123,10 +123,10 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
         <section className="mb-16">
           {/* Titles - Centered */}
           <div className="flex flex-col items-center gap-4 mb-14">
-            <h2 className="text-[#122368] text-[32px] font-semibold leading-none tracking-[-2.24px]">
+            <h2 className="text-primary-base text-title-h3 text-center">
               {workshop.title}
             </h2>
-            <h1 className="text-black text-[56px] font-semibold leading-[64px] tracking-[-3.92px] text-center">
+            <h1 className="text-text-strong-950 text-title-h1 text-center">
               {workshop.subject}
             </h1>
           </div>
@@ -137,20 +137,20 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
             <div className="flex flex-col gap-8 w-full lg:w-[428px] shrink-0">
               {/* Date */}
               <div className="flex flex-col gap-2">
-                <p className="text-black text-[18px] font-normal leading-[24px] tracking-[-0.198px]">
+                <p className="text-text-sub-600 text-paragraph-md">
                   Date
                 </p>
-                <p className="text-black text-[24px] font-semibold leading-[34.097px] tracking-[-1.2px]">
+                <p className="text-text-strong-950 text-title-h5">
                   {dateRange}
                 </p>
               </div>
 
               {/* Place */}
               <div className="flex flex-col gap-2">
-                <p className="text-black text-[18px] font-normal leading-[24px] tracking-[-0.198px]">
+                <p className="text-text-sub-600 text-paragraph-md">
                   Place
                 </p>
-                <p className="text-black text-[24px] font-semibold leading-[34.097px] tracking-[-1.2px]">
+                <p className="text-text-strong-950 text-title-h5">
                   {workshop.place}
                 </p>
               </div>
@@ -205,26 +205,26 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
                   <div className="flex flex-col gap-3">
                     {/* Badge */}
                     <div className="inline-flex items-center justify-center px-2 py-1 rounded-[4px] self-start">
-                      <p className="text-[#122368] text-[12px] font-medium leading-[16px] tracking-[0.48px] uppercase">
+                      <p className="text-primary-base text-subheading-xs uppercase">
                         keynote speaker
                       </p>
                     </div>
 
                     {/* Speaker Name */}
-                    <h2 className="text-[#122368] text-[48px] font-semibold leading-[64px] tracking-[-3.36px]">
+                    <h2 className="text-primary-base text-title-h2">
                       {workshop.speaker.name}
                     </h2>
 
                     {/* Role */}
                     {workshop.speaker.role && (
-                      <p className="text-text-strong-950 text-[18px] font-normal leading-[24px] tracking-[-0.198px] max-w-[428px]">
+                      <p className="text-text-strong-950 text-paragraph-md max-w-[428px]">
                         {workshop.speaker.role}
                       </p>
                     )}
 
                     {/* University */}
                     {workshop.speaker.university?.name && (
-                      <p className="text-text-strong-950 text-[18px] font-normal leading-[24px] tracking-[-0.198px] underline">
+                      <p className="text-text-strong-950 text-paragraph-md underline">
                         {workshop.speaker.university.link ? (
                           <Link
                             href={workshop.speaker.university.link}

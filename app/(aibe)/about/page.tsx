@@ -20,13 +20,13 @@ export default function About() {
               {/* About AIBE Section */}
               <div className="flex flex-col gap-6 mobile:gap-4 items-start justify-start w-full">
 
-                <h2 className="text-title-h1 mobile:text-title-h3 text-black w-full">
+                <h2 className="text-text-strong-950 text-title-h1 mobile:text-title-h3 w-full">
                   About AIBE
                 </h2>
-                <div className="text-paragraph-lg mobile:text-paragraph-md text-text-sub-600">
+                <div className="text-text-sub-600 text-paragraph-lg mobile:text-paragraph-md">
                   <p>We are a bilateral, non-profit association registered in Italy. We facilitate research collaboration between Brazilian and Italian economists. We also promote links between academia, policy-makers and industry.</p>
                 </div>
-                <div className="text-paragraph-lg mobile:text-paragraph-md text-text-sub-600">
+                <div className="text-text-sub-600 text-paragraph-lg mobile:text-paragraph-md">
                   <p>We are governed by a <Link href="/people" className="text-primary-base underline hover:opacity-80">Board of Directors</Link>, who are elected for three years by the Members&apos; Assembly.</p>
                 </div>
 
@@ -69,11 +69,11 @@ export default function About() {
           <div className="flex max-w-[1200px] flex-col gap-8 items-start w-full ">
             <div className="flex flex-col gap-6 mobile:gap-4 items-start justify-start w-full">
               <div className="flex gap-[2px] items-center justify-start overflow-clip px-[8px] py-[2px]">
-                <div className="font-medium not-italic text-[#99a0ae] text-[12px] text-nowrap tracking-[0.48px] uppercase">
-                  <p className="leading-4 whitespace-pre">Features</p>
+                <div className="text-text-soft-400 text-subheading-xs uppercase">
+                  <p>Features</p>
                 </div>
               </div>
-              <h2 className="text-title-h2 mobile:text-title-h4 text-black">
+              <h2 className="text-text-strong-950 text-title-h2 mobile:text-title-h4">
                 AIBE Activities              </h2>
             </div>
 
@@ -84,7 +84,7 @@ export default function About() {
                 <div className="flex-shrink-0">
                   <RiGroup3Line className="w-8 h-8 mobile:w-7 mobile:h-7 text-primary-base" />
                 </div>
-                <h3 className="text-title-h6 mobile:text-title-h6 text-black">
+                <h3 className="text-text-strong-950 text-title-h6 mobile:text-title-h6">
                   Organize an annual economics workshop.
                 </h3>
               </div>
@@ -94,7 +94,7 @@ export default function About() {
                 <div className="flex-shrink-0">
                   <RiTrophyLine className="w-8 h-8 mobile:w-7 mobile:h-7 text-primary-base" />
                 </div>
-                <h3 className="text-title-h6 mobile:text-title-h5 text-black">
+                <h3 className="text-text-strong-950 text-title-h6 mobile:text-title-h5">
                   Award an annual prize.
                 </h3>
               </div>
@@ -104,7 +104,7 @@ export default function About() {
                 <div className="flex-shrink-0">
                   <RiMenuSearchLine className="w-8 h-8 mobile:w-7 mobile:h-7 text-primary-base" />
                 </div>
-                <h3 className="text-title-h6 mobile:text-title-h5 text-black">
+                <h3 className="text-text-strong-950 text-title-h6 mobile:text-title-h5">
                   Disseminate information on joint research and funding opportunities.
                 </h3>
               </div>
@@ -119,11 +119,11 @@ export default function About() {
 
               <div className="flex flex-col items-start justify-center w-full  mobile:pt-4 gap-4">
                 <div className="flex gap-[2px] items-center justify-center overflow-clip px-[8px] py-[2px] relative shrink-0">
-                  <div className="font-medium not-italic text-text-white-0 text-[12px] text-nowrap tracking-[0.48px] uppercase">
-                    <p className="leading-4 whitespace-pre text-text-white-0">About AIBE</p>
+                  <div className="text-text-white-0 text-subheading-xs uppercase">
+                    <p className="text-text-white-0">About AIBE</p>
                   </div>
                 </div>
-                <h1 className="text-title-h1 mobile:text-title-h3 text-text-white-0 text-center">
+                <h1 className="text-text-white-0 text-title-h1 mobile:text-title-h3 text-center">
                   In context
                 </h1>
               </div>
@@ -139,8 +139,8 @@ export default function About() {
                       <div className="flex-shrink-0 mt-1">
                         <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-white-0" />
                       </div>
-                      <div className="text-paragraph-lg mobile:text-paragraph-md text-text-white-0">
-                        <p className="text-text-white-0">Strong commercial, historical and cultural links between Italy and Brazil.</p>
+                      <div className="text-text-white-0 text-paragraph-lg mobile:text-paragraph-md">
+                        <p>Strong commercial, historical and cultural links between Italy and Brazil.</p>
                       </div>
                     </div>
 
@@ -148,8 +148,8 @@ export default function About() {
                       <div className="flex-shrink-0 mt-1">
                         <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-white-0" />
                       </div>
-                      <div className="text-paragraph-lg mobile:text-paragraph-md text-text-white-0">
-                        <p className="text-text-white-0">A bilateral Agreement on Scientific and Technological Cooperation in force since December 1998.</p>
+                      <div className="text-text-white-0 text-paragraph-lg mobile:text-paragraph-md">
+                        <p>A bilateral Agreement on Scientific and Technological Cooperation in force since December 1998.</p>
                       </div>
                     </div>
 
@@ -157,8 +157,8 @@ export default function About() {
                       <div className="flex-shrink-0 mt-1">
                         <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-white-0" />
                       </div>
-                      <div className="text-paragraph-lg mobile:text-paragraph-md text-text-white-0">
-                        <p className="text-text-white-0">Joint calls for project funding.</p>
+                      <div className="text-text-white-0 text-paragraph-lg mobile:text-paragraph-md">
+                        <p>Joint calls for project funding.</p>
                       </div>
                     </div>
 
@@ -166,8 +166,8 @@ export default function About() {
                       <div className="flex-shrink-0 mt-1">
                         <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-white-0" />
                       </div>
-                      <div className="text-paragraph-lg mobile:text-paragraph-md text-text-white-0">
-                        <p className="text-text-white-0">Fast-growing community of Brazilians in the Italian academic system.</p>
+                      <div className="text-text-white-0 text-paragraph-lg mobile:text-paragraph-md">
+                        <p>Fast-growing community of Brazilians in the Italian academic system.</p>
                       </div>
                     </div>
 
@@ -175,8 +175,8 @@ export default function About() {
                       <div className="flex-shrink-0 mt-1">
                         <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-white-0" />
                       </div>
-                      <div className="text-paragraph-lg mobile:text-paragraph-md text-text-white-0">
-                        <p className="text-text-white-0">Growing number of co-authorships between Brazilian and Italian economists.</p>
+                      <div className="text-text-white-0 text-paragraph-lg mobile:text-paragraph-md">
+                        <p>Growing number of co-authorships between Brazilian and Italian economists.</p>
                       </div>
                     </div>
                   </div>

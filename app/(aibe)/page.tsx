@@ -31,8 +31,8 @@ function Badge({
     return 'inline-flex items-center justify-center font-medium';
   };
   const variantClasses = {
-    blue: 'bg-[#122368] text-white',
-    gray: 'bg-[#99a0ae] text-white',
+    blue: 'bg-primary-base text-text-white-0',
+    gray: 'bg-text-soft-400 text-text-white-0',
     'with-dot': 'bg-transparent text-text-soft-400',
   };
   const sizeClasses = {
@@ -47,7 +47,7 @@ function Badge({
     return sizeClasses[size];
   };
 
-  const dotClasses = 'h-1 w-1 rounded-full bg-[#99a0ae] mr-2';
+  const dotClasses = 'h-1 w-1 rounded-full bg-text-soft-400 mr-2';
 
   return (
     <span

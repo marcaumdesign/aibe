@@ -151,13 +151,13 @@ export default function EventsPage() {
             <h4 className="text-text-strong-950 w-full text-center text-title-h4">
               Call for Submissions
             </h4>
-            <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
+            <p className="text-text-sub-600 text-paragraph-md">
               The Italian-Brazilian Economics Association is awarding a prize worth 1,000 euros for the best paper in economics co-authored by an Italian-Brazilian research team.
             </p>
-            <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
+            <p className="text-text-sub-600 text-paragraph-md">
               The Scientific Committee of the prize is soliciting working papers from any area of economics and on any topic.
             </p>
-            <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
+            <p className="text-text-sub-600 text-paragraph-md">
               The winning article will be announced in early 2026. One member of the research team will be invited to attend the 2026 AIBE Workshop, which will take place in Italy, in order to present the paper.
             </p>
           </div>
@@ -167,13 +167,13 @@ export default function EventsPage() {
             <h2 className="text-text-strong-950 text-title-h5">
               To apply
             </h2>
-            <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
-              Submit a copy of your manuscript, together with contact details, names and affiliations of all co-authors, and proofs of AIBE membership. Annual membership can be obtained <Link href="/membership" className="text-blue-600 hover:underline">here</Link>. It is valid for 1 year and starts at 2 euros.
+            <p className="text-text-sub-600 text-paragraph-md">
+              Submit a copy of your manuscript, together with contact details, names and affiliations of all co-authors, and proofs of AIBE membership. Annual membership can be obtained <Link href="/membership" className="text-primary-base hover:underline">here</Link>. It is valid for 1 year and starts at 2 euros.
             </p>
           </div>
 
           <div className="py-6 flex flex-col gap-6 items-center">
-            <p className="text-error-base text-center leading-relaxed text-paragraph-md">
+            <p className="text-error-base text-center text-paragraph-md">
               <strong>The deadline for submission is 15 January 2026 (midnight, Italy)</strong>
             </p>
 
@@ -189,25 +189,25 @@ export default function EventsPage() {
             <h2 className="text-text-strong-950 text-title-h5">
               Eligibility and Rules
             </h2>
-            <ul className="flex flex-col gap-3 text-text-sub-600 leading-relaxed">
+            <ul className="flex flex-col gap-3 text-text-sub-600">
               <li className="flex items-start text-paragraph-md">
-                <span className="text-black-600 pr-2">•</span>
+                <span className="text-primary-base pr-2">•</span>
                 <span>Authors may be of any nationality. Yet, at least one co-author should be based at an Italian academic or research institution, AND at least one co-author should be based at a Brazilian academic or research institution.</span>
               </li>
               <li className="flex items-start text-paragraph-md">
-                <span className="text-black-600 pr-2">•</span>
+                <span className="text-primary-base pr-2">•</span>
                 <span>Submissions should be in English and must be working papers not yet accepted for publication at the time of submission. However, they may be under review.</span>
               </li>
               <li className="flex items-start text-paragraph-md">
-                <span className="text-black-600 pr-2">•</span>
+                <span className="text-primary-base pr-2">•</span>
                 <span>The Scientific Committee will consider contributions from any area of economics and on any topic, even if unrelated to Italy, Brazil or to the topic of the 2026 AIBE Workshop (yet to be announced).</span>
               </li>
               <li className="flex items-start text-paragraph-md">
-                <span className="text-black-600 pr-2">•</span>
+                <span className="text-primary-base pr-2">•</span>
                 <span>At least one co-author should be a member of AIBE.</span>
               </li>
               <li className="flex items-start text-paragraph-md">
-                <span className="text-black-600 pr-2">•</span>
+                <span className="text-primary-base pr-2">•</span>
                 <span>The winning paper will be selected based on academic criteria of originality, rigour, clarity and contribution to scholarship.</span>
               </li>
             </ul>
@@ -220,35 +220,35 @@ export default function EventsPage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <div className="flex items-start text-paragraph-md">
-                <span className="text-black-600 pr-2">•</span>
+                <span className="text-primary-base pr-2">•</span>
                 <span className="text-text-sub-600">Fernando L. Aiube, UERJ (Rio de Janeiro)</span>
               </div>
               <div className="flex items-start text-paragraph-md">
-                <span className="text-black-600 pr-2">•</span>
+                <span className="text-primary-base pr-2">•</span>
                 <span className="text-text-sub-600">Raphael B. Corbi, USP (Sao Paulo)</span>
               </div>
               <div className="flex items-start text-paragraph-md">
-                <span className="text-black-600 pr-2">•</span>
+                <span className="text-primary-base pr-2">•</span>
                 <span className="text-text-sub-600">Tito Cordella, SAIS Europe (Bologna)</span>
               </div>
               <div className="flex items-start text-paragraph-md">
-                <span className="text-black-600 pr-2">•</span>
+                <span className="text-primary-base pr-2">•</span>
                 <span className="text-text-sub-600">Chiara Falco, University of Milan (Milan) & USP (Sao Paulo)</span>
               </div>
               <div className="flex items-start text-paragraph-md">
-                <span className="text-black-600 pr-2">•</span>
+                <span className="text-primary-base pr-2">•</span>
                 <span className="text-text-sub-600">Alan de Gennaro, EAESP-FGV (Sao Paulo)</span>
               </div>
               <div className="flex items-start text-paragraph-md">
-                <span className="text-black-600 pr-2">•</span>
+                <span className="text-primary-base pr-2">•</span>
                 <span className="text-text-sub-600">Rafael F. Schiozer, EAESP-FGV (Sao Paulo)</span>
               </div>
               <div className="flex items-start text-paragraph-md">
-                <span className="text-black-600 pr-2">•</span>
+                <span className="text-primary-base pr-2">•</span>
                 <span className="text-text-sub-600">Luca J. Uberti, University of Milano-Bicocca (Milan)</span>
               </div>
               <div className="flex items-start text-paragraph-md">
-                <span className="text-black-600 pr-2">•</span>
+                <span className="text-primary-base pr-2">•</span>
                 <span className="text-text-sub-600">Andrea Ugolini, University of Milano-Bicocca (Milan)</span>
               </div>
             </div>
@@ -290,19 +290,19 @@ export default function EventsPage() {
             {/* Biography */}
             <div className="flex justify-start flex-col gap-4 lg:self-center">
               <div className="flex flex-col gap-3">
-                <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
+                <p className="text-text-sub-600 text-paragraph-md">
                   <strong>Annual prize in memory of Giorgio Mortara for the best paper co-authored by a junior Italian/Brazilian research team</strong>
                 </p>
-                <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
+                <p className="text-text-sub-600 text-paragraph-md">
                   Giorgio Mortara (Matua, 1885 - Rio de Janeiro, 1967) was an Italian-Brazilian economist and demographer. During 1924-38, he taught at Bocconi University in Milan.
                 </p>
-                <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
+                <p className="text-text-sub-600 text-paragraph-md">
                   In 1939, he emigrated to Rio de Janeiro to escape the fascist Racial Laws. Hired by the newly founded IBGE (Brazilian Institute for Geography and Statistics), he worked as technical advisor on the 1940 Brazilian National Census.
                 </p>
-                <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
+                <p className="text-text-sub-600 text-paragraph-md">
                   He started the IBGE&apos;s Laboratory of Statistics and is regarded as the founder of modern demographic analysis in Brazil. Except for a four-year stint at the Sapienza University of Rome (1956-60), he lived in Rio until the end of his life.
                 </p>
-                <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
+                <p className="text-text-sub-600 text-paragraph-md">
                   The prize is awarded jointly by the AIBE Board and by the Scientific Committee of the annual AIBE Workshop.
                 </p>
               </div>
@@ -325,7 +325,7 @@ export default function EventsPage() {
               <h2 className="text-text-strong-950 text-title-h2">
                 Official Launch of the Prize
               </h2>
-              <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
+              <p className="text-text-sub-600 text-paragraph-md">
                 The Giorgio Mortara prize was officially launched during the 1st AIBE Workshop, held on 4 July 2025 at the EAESP-FGV in Sao Paulo. The launch ceremony was opened by Luca J. Uberti, who highlighted Mortara&apos;s significance for our Association, and closed by Fábio Mortara, Giorgio&apos;s grandson, who presented a personal and professionional biography of the Italian-Brazilian economist.
               </p>
             </div>

@@ -82,7 +82,7 @@ export default async function WorkshopGalleryPage({ params: paramsPromise }: Arg
 
         {/* Page Header */}
         <div className="mb-12">
-          <p className="text-text-soft-400 font-medium tracking-wider uppercase mb-2 text-subheading-xs">
+          <p className="text-text-soft-400 text-subheading-xs uppercase mb-2">
             {workshop.type === 'past' ? 'Past Workshop' : 'Workshop'}
           </p>
           <h1 className="text-text-strong-950 text-title-h1 mobile:text-title-h2 mb-4">
@@ -108,10 +108,10 @@ export default async function WorkshopGalleryPage({ params: paramsPromise }: Arg
 
         {/* CTA Section */}
         <div className="mt-16 text-center">
-          <h2 className="text-title-h3 text-black mb-4">
+          <h2 className="text-text-strong-950 text-title-h3 mb-4">
             Want to see more?
           </h2>
-          <p className="text-paragraph-lg text-text-sub-600 mb-6 max-w-2xl mx-auto">
+          <p className="text-text-sub-600 text-paragraph-lg mb-6 max-w-2xl mx-auto">
             Explore other workshops and become part of the AIBE community.
           </p>
           <Link href="/workshops">

@@ -53,14 +53,14 @@ export default function ContactPage() {
             {/* Left side - Content */}
             <div className="space-y-3">
               <div className="space-y-10">
-                <p className="text-gray-400 font-medium tracking-wider uppercase pl-2" style={{ fontSize: '12px', lineHeight: '16px' }}>
+                <p className="text-text-soft-400 text-subheading-xs uppercase pl-2">
                   CONTACT US
                 </p>
-                <h1 className="text-title-h1 text-black">
+                <h1 className="text-title-h1 text-text-strong-950">
                   Stay Connected!
                 </h1>
               </div>
-              <p className="text-gray-700 text-base leading-relaxed max-w-md">
+              <p className="text-text-sub-600 text-paragraph-md max-w-md">
                 Reach out to us for questions about events, research opportunities, or becoming a member.
               </p>
             </div>
@@ -178,7 +178,7 @@ export default function ContactPage() {
       {/* Contact Us Section */}
       <section className="py-16 pb-44 px-8 mobile:px-4 bg-white relative z-10">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-title-h2 text-black mb-12 text-left">
+          <h2 className="text-title-h2 text-text-strong-950 mb-12 text-left">
             Contact Us
           </h2>
 
@@ -194,8 +194,8 @@ export default function ContactPage() {
                   className="w-8 h-8"
                 />
               </div>
-              <h3 className="text-title-h4 text-black mb-2 text-left">Get in touch</h3>
-              <p className="text-gray-600 text-left">aibe@aibe.website</p>
+              <h3 className="text-title-h4 text-text-strong-950 mb-2 text-left">Get in touch</h3>
+              <p className="text-text-sub-600 text-paragraph-md text-left">aibe@aibe.website</p>
             </div>
 
             {/* Newsletter Submissions card */}
@@ -209,10 +209,10 @@ export default function ContactPage() {
                   className="w-6 h-6"
                 />
               </div>
-              <h3 className="text-title-h4 text-black mb-2 text-left whitespace-nowrap">
+              <h3 className="text-title-h4 text-text-strong-950 mb-2 text-left whitespace-nowrap">
                 Newsletter Submissions
               </h3>
-              <p className="text-gray-600 text-left" style={{ fontSize: '18px', lineHeight: '24px' }}>
+              <p className="text-text-sub-600 text-paragraph-md text-left">
                 To suggest items for the bi-annual newsletter, write to: aibe@aibe.website
               </p>
             </div>
@@ -228,15 +228,15 @@ export default function ContactPage() {
                   className="w-8 h-8"
                 />
               </div>
-              <h3 className="text-title-h4 text-black mb-2 text-left">
+              <h3 className="text-title-h4 text-text-strong-950 mb-2 text-left">
                 Follow Us
               </h3>
               <div className="flex justify-start space-x-4">
                 <Link href="https://linkedin.com/company/aibe" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
-                  <RiLinkedinFill className="w-8 h-8 text-gray-600" />
+                  <RiLinkedinFill className="w-8 h-8 text-text-sub-600" />
                 </Link>
                 <Link href="https://twitter.com/aibe" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
-                  <RiTwitterXFill className="w-8 h-8 text-gray-600" />
+                  <RiTwitterXFill className="w-8 h-8 text-text-sub-600" />
                 </Link>
                 <Link href="https://aibe.website" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
                   <Image

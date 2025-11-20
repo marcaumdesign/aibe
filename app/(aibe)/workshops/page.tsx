@@ -94,12 +94,12 @@ export default async function WorkshopsPage() {
         {/* Workshops Section */}
         <section className="mb-0">
           {/* Small label */}
-          <p className="text-text-soft-400 font-medium tracking-wider uppercase text-center mb-4 text-subheading-xs">
+          <p className="text-text-soft-400 text-subheading-xs uppercase text-center mb-4">
             WORKSHOPS and CONGRESSES
           </p>
 
           {/* Main Title */}
-          <h1 className="text-text-strong-950 text-center mb-10 max-w-2xl mx-auto text-title-h2 px-4">
+          <h1 className="text-text-strong-950 text-title-h2 text-center mb-10 max-w-2xl mx-auto px-4">
             All Events
           </h1>
 

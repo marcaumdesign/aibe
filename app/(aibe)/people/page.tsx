@@ -41,11 +41,11 @@ export default function People() {
       <section className='pt-8 pb-16 mobile:pt-4 mobile:pb-8'>
         <div className='mx-auto max-w-[1200px] w-full px-4 mobile:px-4'>
           <div className='flex flex-col gap-8 mobile:gap-4 text-center'>
-            <div className='inline-flex items-center justify-center px-2 py-0.5 bg-transparent text-[#99a0ae] text-subheading-xs mobile:text-xs uppercase tracking-[0.48px]'>
-              <div className='h-1 w-1 rounded-full bg-[#99a0ae] mr-2'></div>
+            <div className='inline-flex items-center justify-center px-2 py-0.5 bg-transparent text-text-soft-400 text-subheading-xs mobile:text-xs uppercase'>
+              <div className='h-1 w-1 rounded-full bg-text-soft-400 mr-2'></div>
               PEOPLE
             </div>
-            <h1 className='text-title-h1 mobile:text-title-h2 text-black'>
+            <h1 className='text-text-strong-950 text-title-h1 mobile:text-title-h2'>
               Board of directors
             </h1>
           </div>
