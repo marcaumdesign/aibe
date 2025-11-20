@@ -416,8 +416,11 @@ export interface Category {
  */
 export interface User {
   id: number;
-  firstName?: string | null;
-  lastName?: string | null;
+  firstName: string;
+  lastName: string;
+  department: string;
+  universityCompany: string;
+  title: 'student' | 'phd_student' | 'post_doc' | 'assistant_professor' | 'associate_professor' | 'full_professor';
   roles?: ('admin' | 'user')[] | null;
   /**
    * Plano de assinatura atual do usuário
@@ -448,8 +451,6 @@ export interface User {
   resetPasswordExpiration?: string | null;
   salt?: string | null;
   hash?: string | null;
-  _verified?: boolean | null;
-  _verificationToken?: string | null;
   loginAttempts?: number | null;
   lockUntil?: string | null;
   sessions?:
@@ -1476,6 +1477,9 @@ export interface CategoriesSelect<T extends boolean = true> {
 export interface UsersSelect<T extends boolean = true> {
   firstName?: T;
   lastName?: T;
+  department?: T;
+  universityCompany?: T;
+  title?: T;
   roles?: T;
   subscriptionPlan?: T;
   stripeCustomerId?: T;
@@ -1489,8 +1493,6 @@ export interface UsersSelect<T extends boolean = true> {
   resetPasswordExpiration?: T;
   salt?: T;
   hash?: T;
-  _verified?: T;
-  _verificationToken?: T;
   loginAttempts?: T;
   lockUntil?: T;
   sessions?:

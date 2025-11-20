@@ -10,7 +10,7 @@ import { protectRoles } from '@/hooks/protectRoles';
 export const Users: CollectionConfig = {
   slug: 'users',
   auth: {
-    verify: true,
+    verify: false, // Disabled until email service is configured
     tokenExpiration: 28800, // 8 hours
     cookies: {
       sameSite: 'None',
@@ -80,10 +80,58 @@ export const Users: CollectionConfig = {
     {
       name: 'firstName',
       type: 'text',
+      required: true,
+      label: 'Name',
     },
     {
       name: 'lastName',
       type: 'text',
+      required: true,
+      label: 'Surname',
+    },
+    {
+      name: 'department',
+      type: 'text',
+      required: true,
+      label: 'Department',
+    },
+    {
+      name: 'universityCompany',
+      type: 'text',
+      required: true,
+      label: 'University/Company',
+    },
+    {
+      name: 'title',
+      type: 'select',
+      required: true,
+      label: 'Title',
+      options: [
+        {
+          label: 'Student',
+          value: 'student',
+        },
+        {
+          label: 'PhD Student',
+          value: 'phd_student',
+        },
+        {
+          label: 'Post-Doc',
+          value: 'post_doc',
+        },
+        {
+          label: 'Assistant Professor',
+          value: 'assistant_professor',
+        },
+        {
+          label: 'Associate Professor',
+          value: 'associate_professor',
+        },
+        {
+          label: 'Full Professor',
+          value: 'full_professor',
+        },
+      ],
     },
     {
       name: 'roles',
