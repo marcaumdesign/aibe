@@ -16,7 +16,7 @@ export default async function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white">
       <section className="py-16 px-8 mobile:px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 mobile:grid-cols-1 gap-12 items-start">
