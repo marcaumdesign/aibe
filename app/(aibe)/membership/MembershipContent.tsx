@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { PricingCard } from './PricingCard';
 import type { User } from '@/payload-types';
 
@@ -23,20 +24,22 @@ export function MembershipContent({ user, plans }: MembershipContentProps) {
 
   return (
     <section className="py-16 mobile:py-12 bg-gray-50">
-      <div className="mx-auto max-w-[1200px] px-4">
+      <div className="mx-auto max-w-7xl px-8 mobile:px-4">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-title-h2 text-black mb-4">
+        <div className="text-center mb-12 mobile:mb-8">
+          <p className="text-gray-400 font-medium tracking-wider uppercase mb-4" style={{ fontSize: '12px', lineHeight: '16px' }}>
+            CHOOSE YOUR PLAN
+          </p>
+          <h1 className="text-title-h1 text-black mb-4">
             Escolha Seu Plano
-          </h2>
+          </h1>
           <p className="text-paragraph-lg text-gray-600 max-w-2xl mx-auto">
-            Acesse conteúdo exclusivo, workshops e uma comunidade vibrante de profissionais
-            interessados em economia Brasil-Itália
+            Acesse conteúdo exclusivo, workshops e uma comunidade vibrante de profissionais interessados em economia Brasil-Itália
           </p>
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {plans.map((plan) => (
             <PricingCard
               key={plan.planId}
@@ -49,8 +52,8 @@ export function MembershipContent({ user, plans }: MembershipContentProps) {
         </div>
 
         {/* Stripe Badge */}
-        <div className="flex justify-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 border-2 border-gray-300 rounded-lg bg-white">
+        <div className="flex justify-center mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg bg-white shadow-sm">
             <span className="text-gray-600 text-sm font-normal">Powered by</span>
             <span className="text-gray-900 text-sm font-bold italic">stripe</span>
           </div>
@@ -58,8 +61,8 @@ export function MembershipContent({ user, plans }: MembershipContentProps) {
 
         {/* Additional Info */}
         {user && user.stripeCustomerId && (
-          <div className="mt-8 text-center">
-            <p className="text-sm text-gray-600 mb-4">
+          <div className="text-center bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
+            <p className="text-paragraph-md text-gray-700 mb-4 font-medium">
               Precisa gerenciar sua assinatura?
             </p>
             <ManageSubscriptionButton />
@@ -100,12 +103,9 @@ function ManageSubscriptionButton() {
     <button
       onClick={handlePortal}
       disabled={loading}
-      className="text-blue-600 hover:text-blue-700 underline text-sm font-medium"
+      className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-primary-base text-white font-medium hover:bg-primary-base/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
     >
       {loading ? 'Carregando...' : 'Gerenciar Assinatura'}
     </button>
   );
 }
-
-import { useState } from 'react';
-

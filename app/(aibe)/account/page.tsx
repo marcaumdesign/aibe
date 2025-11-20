@@ -6,11 +6,8 @@ import React, { Fragment } from 'react'
 
 import config from '../../../payload.config'
 import { Root as Button } from "@/components/ui/button";
-import { Gutter } from '../_components/Gutter'
 import { HydrateClientUser } from '../_components/HydrateClientUser'
-import { RenderParams } from '../_components/RenderParams'
 import { AccountForm } from './AccountForm'
-// import classes from './index.module.scss'
 
 export default async function Account() {
   const headers = await getHeaders()
@@ -19,35 +16,47 @@ export default async function Account() {
 
   if (!user) {
     redirect(
-      `/login?error=${encodeURIComponent('You must be logged in to access your account.')}&redirect=/account`,
+      `/sign-in?error=${encodeURIComponent('You must be logged in to access your account.')}&redirect=/account`,
     )
   }
 
   return (
     <Fragment>
       <HydrateClientUser permissions={permissions} user={user} />
-      <Gutter className={''}>
-        <RenderParams className={''} />
-        <h1>Account</h1>
-        <p>
-          {`This is your account dashboard. Here you can update your account information and more. To manage all users, `}
-          <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/users`}>
-            login to the admin dashboard
-          </Link>
-          .
-        </p>
-        <AccountForm />
-        {/* <Button appearance="secondary" href="/logout" label="Log out" /> */}
-        <Button
-          asChild
-          variant='neutral'
-          mode='stroke'
-          size='medium'
-          className='rounded-none'
-        >
-          <Link href='/logout'>Log out</Link>
-        </Button>
-      </Gutter>
+      <div className="bg-white">
+        <section className="py-16 px-8 mobile:px-4">
+          <div className="max-w-7xl mx-auto">
+            {/* Header */}
+            <div className="mb-12">
+              <p className="text-gray-400 font-medium tracking-wider uppercase mb-4" style={{ fontSize: '12px', lineHeight: '16px' }}>
+                YOUR PROFILE
+              </p>
+              <div className="flex justify-between items-center mobile:flex-col mobile:items-start mobile:gap-4">
+                <div>
+                  <h1 className="text-title-h1 text-black">
+                    Account Settings
+                  </h1>
+                  <p className="text-gray-700 text-base leading-relaxed mt-2">
+                    Manage your profile information and subscription plan
+                  </p>
+                </div>
+                <Button
+                  asChild
+                  variant='neutral'
+                  mode='stroke'
+                  size='medium'
+                  className='rounded-none h-12'
+                >
+                  <Link href='/logout'>Sign Out</Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* Account Form */}
+            <AccountForm />
+          </div>
+        </section>
+      </div>
     </Fragment>
   )
 }

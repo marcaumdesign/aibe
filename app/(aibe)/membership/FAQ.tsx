@@ -61,35 +61,43 @@ export function FAQ() {
   };
 
   return (
-    <section className="py-16 mobile:py-12 bg-white px-4">
-      <div className="mx-auto max-w-[1200px] w-full">
+    <section className="py-16 mobile:py-12 bg-white px-8 mobile:px-4">
+      <div className="mx-auto max-w-7xl w-full">
         <div className="flex flex-row mobile:flex-col gap-16 mobile:gap-8">
           {/* Left Column - Title */}
           <div className="w-1/2 mobile:w-full">
+            <p className="text-gray-400 font-medium tracking-wider uppercase mb-4" style={{ fontSize: '12px', lineHeight: '16px' }}>
+              FAQ
+            </p>
             <h2 className="text-title-h2 text-black">
               Perguntas <br /> Frequentes
             </h2>
+            <p className="text-paragraph-md text-gray-600 mt-4">
+              Encontre respostas para as dúvidas mais comuns sobre nossos planos e assinaturas
+            </p>
           </div>
 
           {/* Right Column - FAQ Items */}
           <div className="w-1/2 mobile:w-full">
             {faqData.map((faq) => (
-              <div key={faq.id} className="border-b border-gray-200">
+              <div key={faq.id} className="border-b border-gray-200 last:border-b-0">
                 <button
                   onClick={() => toggleFAQ(faq.id)}
-                  className="w-full py-6 text-left flex items-center gap-4 focus:outline-none"
+                  className="w-full py-6 text-left flex items-start gap-4 focus:outline-none hover:text-primary-base transition-colors group"
+                  aria-expanded={openFaqId === faq.id}
                 >
                   <span
-                    className={`w-6 h-6 text-gray-600 transition-transform duration-200 ${openFaqId === faq.id ? 'rotate-45' : ''
-                      }`}
+                    className={`flex-shrink-0 w-6 h-6 flex items-center justify-center text-xl font-light text-gray-600 group-hover:text-primary-base transition-all duration-200 ${
+                      openFaqId === faq.id ? 'rotate-45 text-primary-base' : ''
+                    }`}
                   >
                     +
                   </span>
-                  <span className="text-text-strong-950 text-title-h6">{faq.question}</span>
+                  <span className="text-text-strong-950 text-title-h6 flex-1">{faq.question}</span>
                 </button>
                 {openFaqId === faq.id && (
-                  <div className="pb-6">
-                    <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                  <div className="pb-6 pl-10 animate-in fade-in slide-in-from-top-2 duration-200">
+                    <p className="text-paragraph-md text-gray-600 leading-relaxed">{faq.answer}</p>
                   </div>
                 )}
               </div>
