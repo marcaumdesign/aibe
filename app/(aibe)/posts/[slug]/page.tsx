@@ -182,21 +182,21 @@ export default async function Post({ params: paramsPromise }: Args) {
       {/* Main Content - 2 Columns Layout */}
       <section className='pb-16'>
         <div className='container mx-auto px-4 max-w-7xl'>
-          <div className='flex flex-row gap-8'>
+          <div className='flex flex-col lg:flex-row gap-8'>
 
-            {/* Main Content - 8 columns */}
-            <div className='flex flex-col gap-8'>
+            {/* Main Content - 2/3 da largura no desktop */}
+            <div className='flex flex-col gap-8 flex-[2] min-w-0'>
               <PostsPostHero post={heroPostData} />
 
               {/* Se o usuário tem acesso, mostra o conteúdo completo */}
               {accessCheck.hasAccess ? (
-                <RichText className="max-w-none" data={post.content} enableGutter={false} enableProse={true} />
+                <RichText className="max-w-full break-words" data={post.content} enableGutter={false} enableProse={true} />
               ) : (
                 <>
                   {/* Mostra preview do conteúdo se disponível */}
                   {post.previewContent && (
                     <RichText
-                      className="max-w-none"
+                      className="max-w-full break-words"
                       data={post.previewContent}
                       enableGutter={false}
                       enableProse={true}
@@ -212,8 +212,8 @@ export default async function Post({ params: paramsPromise }: Args) {
               )}
             </div>
 
-            {/* Sidebar - 4 columns */}
-            <div className='flex-1 min-w-[300px]  sticky top-32 self-start'>
+            {/* Sidebar - 1/3 da largura no desktop */}
+            <div className='flex-1 min-w-[300px] lg:max-w-[350px] sticky top-32 self-start'>
               <PostsPostSidebar latest={latestPosts} tags={[]} />
             </div>
           </div>
