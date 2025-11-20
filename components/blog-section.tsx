@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import * as Button from '@/components/ui/button';
 
 interface NewsItem {
   id: string | number;
@@ -123,12 +124,11 @@ export default function BlogSection() {
               News
             </h2>
           </div>
-          <Link
-            href='/posts'
-            className='bg-[#0A1A4F] text-white text-sm font-medium px-5 py-2 hover:bg-[#0357B9] transition duration-200 ease-out'
-          >
-            See More
-          </Link>
+          <Button.Root variant='primary' size='medium' className='h-hug w-fit' asChild>
+            <Link href='/posts'>
+              See More
+            </Link>
+          </Button.Root>
         </header>
 
         {displayPosts.length > 0 ? (

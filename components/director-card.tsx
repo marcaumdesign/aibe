@@ -32,7 +32,7 @@ export default function DirectorCard({
         }`}
       onClick={handleClick}
     >
-      <div className='relative w-[300px] h-[420px] aspect-[3/4] mobile:w-full mobile:max-w-[300px] mobile:h-[420px] overflow-hidden shadow-sm pointer-events-none mx-auto'>
+      <div className='relative w-[200px] h-[200px] aspect-[3/4] mobile:w-full mobile:max-w-[300px] mobile:h-[420px] overflow-hidden shadow-sm pointer-events-none mx-auto'>
         {image && image !== '' ? (
           <Image
             src={image}

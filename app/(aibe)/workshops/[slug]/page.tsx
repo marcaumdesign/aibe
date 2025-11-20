@@ -341,40 +341,6 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
           </section>
         )}
 
-        {/* Studying Section - Only for Past Workshops */}
-        {workshop.type === 'past' && workshop.studyingSection?.studyingTitle && workshop.studyingSection?.studyingDescription && (
-          <section className="mt-20 mb-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-              {/* Texto à esquerda */}
-              <div>
-
-                <h2 className="text-text-strong-950 text-title-h2 mb-4">
-                  {workshop.studyingSection.studyingTitle}
-                </h2>
-                <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
-                  {workshop.studyingSection.studyingDescription}
-                </p>
-              </div>
-
-              {/* Imagem à direita */}
-              {workshop.studyingSection.studyingImage && typeof workshop.studyingSection.studyingImage === 'object' && (
-                <div className="flex md:justify-end">
-                  <div className="relative w-full max-w-[720px] h-[420px] md:max-w-[820px] md:h-[500px] lg:max-w-[960px] lg:h-[560px]">
-                    <Image
-                      src={getMediaUrl(workshop.studyingSection.studyingImage.url || '', workshop.studyingSection.studyingImage.updatedAt)}
-                      alt={workshop.studyingSection.studyingImage.alt || workshop.studyingSection.studyingTitle || 'Studying Section'}
-                      width={960}
-                      height={560}
-                      className="w-full h-full object-cover shadow-sm"
-                    />
-                  </div>
-                </div>
-              )}
-            </div>
-          </section>
-        )}
-
-        {/* Sponsors Section */}
         {workshop.sponsors && workshop.sponsors.length > 0 && (
           <section className="">
             <div className="max-w-7xl mx-auto">
@@ -410,6 +376,42 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
             </div>
           </section>
         )}
+
+        {/* Studying Section - Only for Past Workshops */}
+        {workshop.type === 'past' && workshop.studyingSection?.studyingTitle && workshop.studyingSection?.studyingDescription && (
+          <section className="mt-20 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+              {/* Texto à esquerda */}
+              <div>
+
+                <h2 className="text-text-strong-950 text-title-h2 mb-4">
+                  {workshop.studyingSection.studyingTitle}
+                </h2>
+                <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
+                  {workshop.studyingSection.studyingDescription}
+                </p>
+              </div>
+
+              {/* Imagem à direita */}
+              {workshop.studyingSection.studyingImage && typeof workshop.studyingSection.studyingImage === 'object' && (
+                <div className="flex md:justify-end">
+                  <div className="relative w-full max-w-[720px] h-[420px] md:max-w-[820px] md:h-[500px] lg:max-w-[960px] lg:h-[560px]">
+                    <Image
+                      src={getMediaUrl(workshop.studyingSection.studyingImage.url || '', workshop.studyingSection.studyingImage.updatedAt)}
+                      alt={workshop.studyingSection.studyingImage.alt || workshop.studyingSection.studyingTitle || 'Studying Section'}
+                      width={960}
+                      height={560}
+                      className="w-full h-full object-cover shadow-sm"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* Sponsors Section */}
+
       </main>
     </div>
   )

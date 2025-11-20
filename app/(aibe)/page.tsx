@@ -1,7 +1,6 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import * as Button from '@/components/ui/button';
 import BlogSection from '@/components/blog-section';
+import { MainItem } from '@/components/main-item';
 import { HighlightBanner } from '@/globals/HighlightBanner/Component';
 import { getCachedGlobal } from '@/utilities/getGlobals';
 import type { HighlightBanner as HighlightBannerType } from '@/payload-types';
@@ -163,7 +162,7 @@ export default async function Home() {
 
 
       {/* Features Section */}
-      <section className='py-8'>
+      <section className='pt-8 pb-20'>
         <div className='mx-auto max-w-[1200px] w-full flex flex-col gap-8 px-4 md:px-8'>
           <div className='flex flex-col gap-4 text-start'>
 
@@ -174,82 +173,32 @@ export default async function Home() {
 
           <div className='grid gap-8 md:grid-cols-3 animate-translate-y-up'>
             {/* The AIBE Annual Workshop */}
-            <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col justify-start overflow-hidden h-full'>
-              <div className='relative w-full h-[300px]'>
-                <Image
-                  src='/images/Workshop.jpeg'
-                  alt='The AIBE Annual Workshop'
-                  fill
-                  className='object-cover'
-                />
-              </div>
-              <div className='p-6 flex flex-col gap-4 flex-1'>
-
-                <h3 className='text-title-h4 text-black'>
-                  AIBE Workshop
-                </h3>
-                <p className='text-sub-600 text-paragraph-lg flex-1'>
-                  We organize an anual academic event held alternately in both countries.
-                </p>
-                <Button.Root variant='primary' size='medium' className='h-hug w-fit mt-auto' asChild>
-                  <Link href='/workshops/'>
-                    See More
-                  </Link>
-                </Button.Root>
-              </div>
-            </div>
+            <MainItem
+              imageSrc='/images/Workshop.jpeg'
+              imageAlt='The AIBE Annual Workshop'
+              title='AIBE Workshop'
+              description='We organize an anual academic event held alternately in both countries.'
+              linkHref='/workshops/'
+            />
 
             {/* Giorgio Mortara Prize */}
-            <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col flex-1 justify-start overflow-hidden h-full'>
-              <div className='relative w-full h-[300px]'>
-                <Image
-                  src='/images/giorgio.jpeg'
-                  alt='Giorgio Mortara Prize'
-                  fill
-                  className='object-cover'
-                />
-              </div>
-              <div className='p-6 flex flex-col gap-4 flex-1'>
-
-                <h3 className='text-title-h4 text-black'>
-                  Giorgio Mortara Prize
-                </h3>
-                <p className='text-sub-600 text-paragraph-lg flex-1'>
-                  We award a prize for the best paper by a junior Italian-Brazilian research team.
-                </p>
-                <Button.Root variant='primary' size='medium' className='h-hug w-fit mt-auto' asChild>
-                  <Link href='/prizes'>
-                    See More
-                  </Link>
-                </Button.Root>
-              </div>
-            </div>
+            <MainItem
+              imageSrc='/images/giorgio.jpeg'
+              imageAlt='Giorgio Mortara Prize'
+              title='Giorgio Mortara Prize'
+              description='We award a prize for the best paper by a junior Italian-Brazilian research team.'
+              linkHref='/prizes'
+              imageFocalPoint='top center'
+            />
 
             {/* AIBE at a glance */}
-            <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col flex-1 justify-start overflow-hidden h-full'>
-              <div className='relative w-full h-[300px]'>
-                <Image
-                  src='/images/scientific-friendship.jpg'
-                  alt='AIBE at a glance'
-                  fill
-                  className='object-cover'
-                />
-              </div>
-              <div className='p-6 flex flex-col gap-4 flex-1'>
-
-                <h3 className='text-title-h4 text-black'>
-                  Scientific Friendship
-                </h3>
-                <p className='text-sub-600 text-paragraph-lg flex-1'>
-                  We facilitate the spread of information and promote academic mobility.
-                </p>
-                <Button.Root variant='primary' size='medium' className='h-hug w-fit mt-auto' asChild>
-                  <Link href='/about'>
-                    See More
-                  </Link>
-                </Button.Root>
-              </div>
-            </div>
+            <MainItem
+              imageSrc='/images/scientific-friendship.jpg'
+              imageAlt='AIBE at a glance'
+              title='Scientific Friendship'
+              description='We facilitate the spread of information and promote academic mobility.'
+              linkHref='/about'
+            />
           </div>
         </div>
       </section>
