@@ -5,7 +5,7 @@ import React from 'react'
 
 import config from '../../../payload.config'
 // import { Gutter } from '../_components/Gutter'
-import classes from './index.module.scss'
+// import classes from './index.module.scss'
 import { LogoutPage } from './LogoutPage'
 
 export default async function Logout() {

@@ -467,6 +467,17 @@ Antes de testar, certifique-se de que:
 - Verifique se configurou o Customer Portal no Dashboard
 - Confirme que o usuário tem `stripeCustomerId`
 
+### Vejo mensagens "Evento não tratado" nos logs:
+
+**Isso é normal!** ✅ O Stripe envia diversos eventos, mas só processamos os relevantes:
+
+- `checkout.session.completed`
+- `customer.subscription.updated`
+- `customer.subscription.deleted`
+- `invoice.payment_failed`
+
+Eventos como `payment_intent.created`, `charge.succeeded`, `invoice.created`, etc. são **ignorados propositalmente** porque não precisam de ação da nossa parte.
+
 ---
 
 ## Próximo Passo: Deploy em Produção

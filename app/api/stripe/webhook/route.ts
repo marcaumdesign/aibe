@@ -246,19 +246,17 @@ async function updateUserSubscription(
   const plan = PRICE_TO_PLAN_MAP[priceId] || 'free';
   const status = mapStripeStatus(subscription.status);
 
-  // Acessar current_period_end de forma segura
-  const subscriptionData = subscription as Stripe.Subscription & {
+  // O current_period_end está dentro do subscription item, não na subscription raiz
+  const firstItem = subscription.items.data[0] as Stripe.SubscriptionItem & {
     current_period_end?: number;
   };
+  const currentPeriodEndTimestamp = firstItem?.current_period_end;
 
   // Debug: verificar o valor
-  console.log(
-    'DEBUG - current_period_end:',
-    subscriptionData.current_period_end,
-  );
+  console.log('DEBUG - current_period_end:', currentPeriodEndTimestamp);
 
-  const currentPeriodEnd = subscriptionData.current_period_end
-    ? new Date(subscriptionData.current_period_end * 1000).toISOString()
+  const currentPeriodEnd = currentPeriodEndTimestamp
+    ? new Date(currentPeriodEndTimestamp * 1000).toISOString()
     : null;
 
   console.log('DEBUG - currentPeriodEnd ISO:', currentPeriodEnd);
