@@ -5,7 +5,7 @@ if (!process.env.STRIPE_SECRET_KEY) {
 }
 
 /**
- * Instância do Stripe configurada
+ * Configured Stripe instance
  */
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2025-11-17.clover',
@@ -17,7 +17,7 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 });
 
 /**
- * IDs dos preços dos planos (configurados no Stripe Dashboard)
+ * Plan price IDs (configured in Stripe Dashboard)
  */
 export const STRIPE_PRICES = {
   premium: process.env.STRIPE_PRICE_PREMIUM || '',
@@ -25,7 +25,7 @@ export const STRIPE_PRICES = {
 } as const;
 
 /**
- * Mapeamento de price IDs para planos
+ * Mapping of price IDs to plans
  */
 export const PRICE_TO_PLAN_MAP: Record<string, 'premium' | 'founders'> = {
   [STRIPE_PRICES.premium]: 'premium',
@@ -33,56 +33,52 @@ export const PRICE_TO_PLAN_MAP: Record<string, 'premium' | 'founders'> = {
 };
 
 /**
- * Informações dos planos para exibição
+ * Plan information for display
  */
 export const PLAN_INFO = {
   free: {
     name: 'Free',
-    description: 'Acesso a conteúdo público',
+    description: 'Access to public content',
     price: 0,
-    currency: 'BRL',
+    currency: 'USD',
     interval: null,
-    features: [
-      'Acesso a posts públicos',
-      'Newsletter semanal',
-      'Eventos abertos',
-    ],
+    features: ['Access to public posts', 'Weekly newsletter', 'Open events'],
   },
   premium: {
     name: 'Premium',
-    description: 'Conteúdo exclusivo e comunidade',
-    price: 29.9, // Ajuste conforme necessário
-    currency: 'BRL',
+    description: 'Exclusive content and community',
+    price: 29.9,
+    currency: 'USD',
     interval: 'month' as const,
     stripePriceId: STRIPE_PRICES.premium,
     features: [
-      'Tudo do plano Free',
-      'Acesso a todos os posts premium',
-      'Workshops exclusivos',
-      'Comunidade privada',
-      'Networking com membros',
+      'Everything from Free plan',
+      'Access to all premium posts',
+      'Exclusive workshops',
+      'Private community',
+      'Networking with members',
     ],
   },
   founders: {
     name: 'Founders',
-    description: 'Experiência VIP completa',
-    price: 99.9, // Ajuste conforme necessário
-    currency: 'BRL',
+    description: 'Complete VIP experience',
+    price: 99.9,
+    currency: 'USD',
     interval: 'month' as const,
     stripePriceId: STRIPE_PRICES.founders,
     features: [
-      'Tudo do plano Premium',
-      'Conteúdo exclusivo Founders',
-      'Consultoria 1:1 mensal',
-      'Acesso antecipado a eventos',
-      'Badge especial de Founder',
-      'Networking VIP',
+      'Everything from Premium plan',
+      'Exclusive Founders content',
+      'Monthly 1:1 consulting',
+      'Early access to events',
+      'Special Founder badge',
+      'VIP networking',
     ],
   },
 } as const;
 
 /**
- * Cria ou recupera um cliente no Stripe
+ * Creates or retrieves a Stripe customer
  */
 export async function getOrCreateStripeCustomer(params: {
   email: string;
@@ -91,7 +87,7 @@ export async function getOrCreateStripeCustomer(params: {
 }): Promise<string> {
   const { email, userId, name } = params;
 
-  // Verificar se já existe um cliente com este email
+  // Check if a customer with this email already exists
   const existingCustomers = await stripe.customers.list({
     email,
     limit: 1,
@@ -101,7 +97,7 @@ export async function getOrCreateStripeCustomer(params: {
     return existingCustomers.data[0].id;
   }
 
-  // Criar novo cliente
+  // Create new customer
   const customer = await stripe.customers.create({
     email,
     name,
@@ -114,17 +110,17 @@ export async function getOrCreateStripeCustomer(params: {
 }
 
 /**
- * Formata valor monetário para exibição
+ * Formats monetary value for display
  */
-export function formatPrice(amount: number, currency: string = 'BRL'): string {
-  return new Intl.NumberFormat('pt-BR', {
+export function formatPrice(amount: number, currency: string = 'USD'): string {
+  return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency,
   }).format(amount);
 }
 
 /**
- * Verifica se uma assinatura está ativa
+ * Checks if a subscription is active
  */
 export function isSubscriptionActive(
   status: Stripe.Subscription.Status,
@@ -133,7 +129,7 @@ export function isSubscriptionActive(
 }
 
 /**
- * Mapeia status do Stripe para nosso tipo
+ * Maps Stripe status to our type
  */
 export function mapStripeStatus(
   status: Stripe.Subscription.Status,
@@ -145,7 +141,7 @@ export function mapStripeStatus(
   | 'incomplete'
   | 'incomplete_expired'
   | 'unpaid' {
-  // O tipo do Stripe já é compatível com nosso tipo
+  // Stripe type is already compatible with our type
   return status as
     | 'active'
     | 'canceled'

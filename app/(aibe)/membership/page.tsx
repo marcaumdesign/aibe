@@ -37,17 +37,17 @@ export default async function Membership() {
     {
       planId: 'free' as const,
       ...PLAN_INFO.free,
-      features: [...PLAN_INFO.free.features], // Converter readonly para mutável
+      features: [...PLAN_INFO.free.features], // Convert readonly to mutable
     },
     {
       planId: 'premium' as const,
       ...PLAN_INFO.premium,
-      features: [...PLAN_INFO.premium.features], // Converter readonly para mutável
+      features: [...PLAN_INFO.premium.features], // Convert readonly to mutable
     },
     {
       planId: 'founders' as const,
       ...PLAN_INFO.founders,
-      features: [...PLAN_INFO.founders.features], // Converter readonly para mutável
+      features: [...PLAN_INFO.founders.features], // Convert readonly to mutable
     },
   ];
 
