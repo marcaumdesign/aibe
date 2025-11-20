@@ -76,63 +76,107 @@ export default function EventsPage() {
       {/* Main Content */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Prizes Section */}
-        <section className="mb-16">
-          {/* Small label */}
-          <p className="text-text-soft-400 font-medium tracking-wider uppercase text-center mb-4 text-subheading-xs" >
-            PRIZES
-          </p>
+        <section className="pb-16">
+          <div className="flex flex-col gap-4 items-center justify-center">
+            {/* Small label */}
+            <p className="text-text-soft-400 font-medium tracking-wider uppercase text-center text-subheading-xs">
+              PRIZES
+            </p>
 
-          {/* Main Title */}
-          <h1 className="text-text-strong-950 text-center mb-4 max-w-2xl mx-auto text-title-h2">
-            Giorgio Mortara Prize
-          </h1>
 
-          {/* Subtitle */}
-          <p className="text-text-sub-600 text-center mb-5 max-w-3xl text-paragraph-lg">
-            For the best paper in economics co-authored by an Italian-Brazilian research team.
-          </p>
+            <div className="flex gap-8">
+              <div
+                className=' z-10 block mobile:hidden'
+                style={{
+                  right: '300px',
+                  top: '235px'
+                }}
+              >
+                <div className='relative w-16 h-16'>
+                  <div className='absolute inset-0 rounded-full overflow-hidden z-[100]'>
+                    <Image
+                      src='/images/italy-flag.png'
+                      alt='Italy Flag'
+                      fill
+                      className='object-cover'
+                    />
+                  </div>
 
-          {/* Main Image */}
-          <div className="mb-8">
-            <Image
-              src="/images/Reunionimage.png"
-              alt="AIBE Workshop presentation"
-              width={800}
-              height={400}
-              className="w-full h-auto"
-            />
+                  <div className='absolute inset-0 rounded-full bg-blue-100 scale-125 animate-pulse-custom z-40'></div>
+
+                  <div className='absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30'></div>
+                </div>
+              </div>
+              <h1 className="text-text-strong-950 text-center max-w-2xl mx-auto text-title-h2">
+                Giorgio Mortara Prize
+
+
+              </h1>
+
+
+              <div
+                className=' z-10 block mobile:hidden'
+                style={{
+                  left: '300px',
+                  top: ' 235px'
+                }}
+              >
+                <div className='relative w-16 h-16'>
+                  <div className='absolute inset-0 rounded-full overflow-hidden z-[100]'>
+                    <Image
+                      src='/images/brazil-flag.png'
+                      alt='Brazil Flag'
+                      fill
+                      className='object-cover'
+                    />
+                  </div>
+
+                  <div className='absolute inset-0 rounded-full bg-blue-100 scale-125 animate-pulse-custom z-40'></div>
+
+                  <div className='absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30'></div>
+                </div>
+              </div>
+            </div>
+            {/* Main Title */}
+
+
+            {/* Subtitle */}
+            <p className="text-text-sub-600 text-center max-w-3xl text-paragraph-lg pb-4">
+              For the best paper in economics co-authored by an Italian-Brazilian research team.
+            </p>
           </div>
 
           {/* Prize Description */}
-          <div className="prose prose-lg max-w-none mb-2">
-            <h4 className="text-text-strong-950 mb-4 text-title-h4">
+          <div className="prose prose-lg max-w-none py-8 flex flex-col gap-4">
+            <h4 className="text-text-strong-950 w-full text-center text-title-h4">
               Call for Submissions
             </h4>
-            <p className="text-text-sub-600 leading-relaxed mb-4 text-paragraph-md">
+            <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
               The Italian-Brazilian Economics Association is awarding a prize worth 1,000 euros for the best paper in economics co-authored by an Italian-Brazilian research team.
             </p>
-            <p className="text-text-sub-600 leading-relaxed mb-4 text-paragraph-md">
+            <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
               The Scientific Committee of the prize is soliciting working papers from any area of economics and on any topic.
             </p>
-            <p className="text-text-sub-600 leading-relaxed mb-6 text-paragraph-md">
+            <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
               The winning article will be announced in early 2026. One member of the research team will be invited to attend the 2026 AIBE Workshop, which will take place in Italy, in order to present the paper.
             </p>
           </div>
 
           {/* To Apply Section */}
-          <div className="mb-16">
-            <h2 className="text-text-strong-950 mb-4 text-title-h5">
+          <div className="py-8 flex flex-col gap-4">
+            <h2 className="text-text-strong-950 text-title-h5">
               To apply
             </h2>
-            <p className="text-text-sub-600 leading-relaxed mb-4 text-paragraph-md">
+            <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
               Submit a copy of your manuscript, together with contact details, names and affiliations of all co-authors, and proofs of AIBE membership. Annual membership can be obtained <Link href="/membership" className="text-blue-600 hover:underline">here</Link>. It is valid for 1 year and starts at 2 euros.
-            </p>
-            <p className="text-text-sub-600 leading-relaxed mb-6 text-paragraph-md">
-              <strong>The deadline for submission is 15 January 2026 (midnight, Italy)</strong>
             </p>
           </div>
 
-          <div className="w-full mb-16 flex justify-center">
+          <div className="py-6 flex flex-col gap-6 items-center">
+            <p className="text-error-base text-center leading-relaxed text-paragraph-md">
+              <strong>The deadline for submission is 15 January 2026 (midnight, Italy)</strong>
+            </p>
+
             <Link href="https://docs.google.com/forms/d/e/1FAIpQLSca4tZjGR29lnkhMC0Zrby471wRinhy68KGe1R8IzPpf6Hi4g/viewform" target="_blank" rel="noopener noreferrer">
               <Button variant="primary" mode="filled" size="medium">
                 Submit Paper
@@ -141,89 +185,94 @@ export default function EventsPage() {
           </div>
 
           {/* Eligibility and Rules */}
-          <div className="mb-12">
-            <h2 className="text-text-strong-950 mb-4 text-title-h5">
+          <div className="py-8 flex flex-col gap-4">
+            <h2 className="text-text-strong-950 text-title-h5">
               Eligibility and Rules
             </h2>
-            <ul className="space-y-3 text-text-sub-600 leading-relaxed">
+            <ul className="flex flex-col gap-3 text-text-sub-600 leading-relaxed">
               <li className="flex items-start text-paragraph-md">
-                <span className="text-black-600 mr-2">•</span>
+                <span className="text-black-600 pr-2">•</span>
                 <span>Authors may be of any nationality. Yet, at least one co-author should be based at an Italian academic or research institution, AND at least one co-author should be based at a Brazilian academic or research institution.</span>
               </li>
               <li className="flex items-start text-paragraph-md">
-                <span className="text-black-600 mr-2">•</span>
+                <span className="text-black-600 pr-2">•</span>
                 <span>Submissions should be in English and must be working papers not yet accepted for publication at the time of submission. However, they may be under review.</span>
               </li>
               <li className="flex items-start text-paragraph-md">
-                <span className="text-black-600 mr-2">•</span>
+                <span className="text-black-600 pr-2">•</span>
                 <span>The Scientific Committee will consider contributions from any area of economics and on any topic, even if unrelated to Italy, Brazil or to the topic of the 2026 AIBE Workshop (yet to be announced).</span>
               </li>
               <li className="flex items-start text-paragraph-md">
-                <span className="text-black-600 mr-2">•</span>
+                <span className="text-black-600 pr-2">•</span>
                 <span>At least one co-author should be a member of AIBE.</span>
               </li>
               <li className="flex items-start text-paragraph-md">
-                <span className="text-black-600 mr-2">•</span>
+                <span className="text-black-600 pr-2">•</span>
                 <span>The winning paper will be selected based on academic criteria of originality, rigour, clarity and contribution to scholarship.</span>
               </li>
             </ul>
           </div>
-          <div className="mb-12">
-            <h2 className="text-text-strong-950 mb-4 text-title-h5">
-              Scientific Committee            </h2>
-            <ul className="space-y-3 text-text-sub-600 leading-relaxed">
-              <li className="flex items-start text-paragraph-md">
-                <span className="text-black-600 mr-2">•</span>
-                <span>Fernando L. Aiube, UERJ (Rio de Janeiro)</span>
-              </li>
-              <li className="flex items-start text-paragraph-md">
-                <span className="text-black-600 mr-2">•</span>
-                <span>Raphael B. Corbi, USP (Sao Paulo)</span>
-              </li>
-              <li className="flex items-start text-paragraph-md">
-                <span className="text-black-600 mr-2">•</span>
-                <span>Tito Cordella, SAIS Europe (Bologna)</span>
-              </li>
-              <li className="flex items-start text-paragraph-md">
-                <span className="text-black-600 mr-2">•</span>
-                <span>Chiara Falco, University of Milan (Milan) & USP (Sao Paulo)</span>
-              </li>
-              <li className="flex items-start text-paragraph-md">
-                <span className="text-black-600 mr-2">•</span>
-                <span>Alan de Gennaro, EAESP-FGV (Sao Paulo)</span>
-              </li>
-              <li className="flex items-start text-paragraph-md">
-                <span className="text-black-600 mr-2">•</span>
-                <span>Rafael F. Schiozer, EAESP-FGV (Sao Paulo)</span>
-              </li>
-              <li className="flex items-start text-paragraph-md">
-                <span className="text-black-600 mr-2">•</span>
-                <span>Luca J. Uberti, University of Milano-Bicocca (Milan)</span>
-              </li>
-              <li className="flex items-start text-paragraph-md">
-                <span className="text-black-600 mr-2">•</span>
-                <span>Andrea Ugolini, University of Milano-Bicocca (Milan)</span>
-              </li>
-            </ul>
+
+          {/* Scientific Committee */}
+          <div className="p-8 flex w-full bg-primary-alpha-10 flex-col gap-4">
+            <h2 className="text-text-strong-950 text-title-h5">
+              Scientific Committee
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="flex items-start text-paragraph-md">
+                <span className="text-black-600 pr-2">•</span>
+                <span className="text-text-sub-600">Fernando L. Aiube, UERJ (Rio de Janeiro)</span>
+              </div>
+              <div className="flex items-start text-paragraph-md">
+                <span className="text-black-600 pr-2">•</span>
+                <span className="text-text-sub-600">Raphael B. Corbi, USP (Sao Paulo)</span>
+              </div>
+              <div className="flex items-start text-paragraph-md">
+                <span className="text-black-600 pr-2">•</span>
+                <span className="text-text-sub-600">Tito Cordella, SAIS Europe (Bologna)</span>
+              </div>
+              <div className="flex items-start text-paragraph-md">
+                <span className="text-black-600 pr-2">•</span>
+                <span className="text-text-sub-600">Chiara Falco, University of Milan (Milan) & USP (Sao Paulo)</span>
+              </div>
+              <div className="flex items-start text-paragraph-md">
+                <span className="text-black-600 pr-2">•</span>
+                <span className="text-text-sub-600">Alan de Gennaro, EAESP-FGV (Sao Paulo)</span>
+              </div>
+              <div className="flex items-start text-paragraph-md">
+                <span className="text-black-600 pr-2">•</span>
+                <span className="text-text-sub-600">Rafael F. Schiozer, EAESP-FGV (Sao Paulo)</span>
+              </div>
+              <div className="flex items-start text-paragraph-md">
+                <span className="text-black-600 pr-2">•</span>
+                <span className="text-text-sub-600">Luca J. Uberti, University of Milano-Bicocca (Milan)</span>
+              </div>
+              <div className="flex items-start text-paragraph-md">
+                <span className="text-black-600 pr-2">•</span>
+                <span className="text-text-sub-600">Andrea Ugolini, University of Milano-Bicocca (Milan)</span>
+              </div>
+            </div>
           </div>
 
           {/* Submit Button */}
-          <Link className="w-full flex justify-center" href="https://drive.google.com/file/d/1z41fsmEGp1WHKawgTBQbrcZi1Zw760F5/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-            <Button variant="primary" mode="filled" size="medium">
-              Download Call for Submissions
-            </Button>
-          </Link>
+          <div className="pt-8 flex justify-center">
+            <Link href="https://drive.google.com/file/d/1z41fsmEGp1WHKawgTBQbrcZi1Zw760F5/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+              <Button variant="primary" mode="filled" size="medium">
+                Download Call for Submissions
+              </Button>
+            </Link>
+          </div>
         </section>
       </main>
 
       {/* Who is Giorgio Mortara Section */}
-      <section id="giorgio-mortara" className="mb-16 bg-blue-50 py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-text-strong-950 mb-4 text-title-h3">
+      <section id="giorgio-mortara" className="bg-blue-50 py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto flex flex-col gap-12">
+          <div className="text-center flex flex-col gap-4 items-center">
+            <h2 className="text-text-strong-950 text-title-h3">
               Who is Giorgio Mortara?
             </h2>
-            <div className="w-20 h-1 bg-primary-base mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-primary-base"></div>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
@@ -240,8 +289,7 @@ export default function EventsPage() {
 
             {/* Biography */}
             <div className="flex justify-start flex-col gap-4 lg:self-center">
-
-              <div className="space-y-3">
+              <div className="flex flex-col gap-3">
                 <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
                   <strong>Annual prize in memory of Giorgio Mortara for the best paper co-authored by a junior Italian/Brazilian research team</strong>
                 </p>
@@ -258,25 +306,23 @@ export default function EventsPage() {
                   The prize is awarded jointly by the AIBE Board and by the Scientific Committee of the annual AIBE Workshop.
                 </p>
               </div>
-              <Link className="" href="https://www.bancaditalia.it/pubblicazioni/collezioni-biblioteca-baffi/2019-3-scritti-baffi/bibliografia/400-499/459.pdf" target="_blank" rel="noopener noreferrer">
+              <Link href="https://www.bancaditalia.it/pubblicazioni/collezioni-biblioteca-baffi/2019-3-scritti-baffi/bibliografia/400-499/459.pdf" target="_blank" rel="noopener noreferrer">
                 <Button variant="primary" mode="lighter" size="medium">
                   Know more
                 </Button>
               </Link>
             </div>
-
           </div>
         </div>
       </section>
 
       {/* Official Launch of the Prize Section */}
-      <section className="mt-20 mb-16">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* Texto à esquerda */}
-            <div>
-
-              <h2 className="text-text-strong-950 text-title-h2 mb-4">
+            <div className="flex flex-col gap-4">
+              <h2 className="text-text-strong-950 text-title-h2">
                 Official Launch of the Prize
               </h2>
               <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
@@ -292,7 +338,7 @@ export default function EventsPage() {
                   alt="Official Launch of the Prize"
                   width={960}
                   height={560}
-                  className="w-full h-full object-cover rounded-md shadow-sm"
+                  className="w-full h-full object-cover shadow-sm"
                 />
               </div>
             </div>
@@ -300,7 +346,7 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* Past Winners Section */}
+      {/* Past Winners Section 
       <section className="mb-32 bg-gradient-to-b from-blue-50/30 to-white py-20 w-full">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
@@ -310,8 +356,8 @@ export default function EventsPage() {
             <div className="w-20 h-1 bg-primary-base mx-auto rounded-full"></div>
           </div>
 
-          {/* Winners List */}
-          <div className="space-y-6">
+          
+        <div className="space-y-6">
             {sortedWinners.map((winner) => (
               <div
                 key={winner.year}
@@ -319,50 +365,51 @@ export default function EventsPage() {
               >
                 <div className="flex flex-col md:flex-row gap-8 items-start md:items-center">
                   <div className="flex-1">
-                    {/* Year Badge */}
-                    <div className="inline-block mb-4">
-                      <span className="bg-primary-base text-white px-4 py-1.5 rounded-full text-label-sm font-semibold">
-                        {winner.year}
-                      </span>
-                    </div>
+                    
+          <div className="inline-block mb-4">
+            <span className="bg-primary-base text-white px-4 py-1.5 rounded-full text-label-sm font-semibold">
+              {winner.year}
+            </span>
+          </div>
 
-                    <h3 className="text-text-strong-950 mb-3 text-title-h4 font-bold">
-                      {winner.title}
-                    </h3>
+          <h3 className="text-text-strong-950 mb-3 text-title-h4 font-bold">
+            {winner.title}
+          </h3>
 
-                    <div className="mb-4 pb-4 ">
-                      <p className="text-text-sub-600 text-paragraph-lg leading-relaxed">
-                        {winner.authors.map((author, authorIndex) => (
-                          <span key={authorIndex}>
-                            {authorIndex > 0 && <span className="text-text-sub-600"> & </span>}
-                            <span className="font-medium text-text-strong-950">{author.name}</span>
-                            <span className="text-text-sub-600"> ({author.institution}, {author.country})</span>
-                          </span>
-                        ))}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Link Button */}
-                  <div className="md:flex-shrink-0 w-full md:w-auto">
-                    <Button
-                      variant="primary"
-                      mode="stroke"
-                      size="medium"
-                      className="h-hug w-full md:w-fit"
-                      asChild
-                    >
-                      <Link href={winner.link} target="_blank" rel="noopener noreferrer">
-                        Open Paper
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="mb-4 pb-4 ">
+            <p className="text-text-sub-600 text-paragraph-lg leading-relaxed">
+              {winner.authors.map((author, authorIndex) => (
+                <span key={authorIndex}>
+                  {authorIndex > 0 && <span className="text-text-sub-600"> & </span>}
+                  <span className="font-medium text-text-strong-950">{author.name}</span>
+                  <span className="text-text-sub-600"> ({author.institution}, {author.country})</span>
+                </span>
+              ))}
+            </p>
           </div>
         </div>
-      </section>
+
+       
+        <div className="md:flex-shrink-0 w-full md:w-auto">
+          <Button
+            variant="primary"
+            mode="stroke"
+            size="medium"
+            className="h-hug w-full md:w-fit"
+            asChild
+          >
+            <Link href={winner.link} target="_blank" rel="noopener noreferrer">
+              Open Paper
+            </Link>
+          </Button>
+        </div>
+    </div>
+              </div >
+            ))
+}
+          </div >
+        </div >
+      </section >*/}
 
 
     </div >
