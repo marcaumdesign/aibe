@@ -119,99 +119,46 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Workshop Overview Section */}
+        {/* Workshop Hero Section */}
         <section className="mb-16">
-          {/* Small label */}
-          <p className="text-text-soft-400 font-medium tracking-wider uppercase mb-4 text-subheading-xs text-center">
-            WORKSHOPS
-          </p>
+          {/* Titles - Centered */}
+          <div className="flex flex-col items-center gap-4 mb-14">
+            <h2 className="text-[#122368] text-[32px] font-semibold leading-none tracking-[-2.24px]">
+              {workshop.title}
+            </h2>
+            <h1 className="text-black text-[56px] font-semibold leading-[64px] tracking-[-3.92px] text-center">
+              {workshop.subject}
+            </h1>
+          </div>
 
-          {/* Main Title */}
-          <h1 className="text-text-strong-950 mb-14 text-title-h1 text-center">
-            {workshop.title}
-          </h1>
-
-          {/* Two Column Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-            {/* Left Column */}
-            <div className="lg:col-span-2">
-              {/* Event Title */}
-              <h2 className="text-text-strong-950 mb-6 text-title-h2">
-                {workshop.subject}
-              </h2>
-
-              {/* Date & Location */}
-              <div className="mb-3">
-                <p className="text-text-strong-950 mb-2 text-paragraph-lg">
-                  <strong>{dateRange}</strong>
+          {/* Two Column Layout - Date/Place and Image */}
+          <div className="flex flex-col lg:flex-row gap-8 items-start">
+            {/* Left Column - Date & Place */}
+            <div className="flex flex-col gap-8 w-full lg:w-[428px] shrink-0">
+              {/* Date */}
+              <div className="flex flex-col gap-2">
+                <p className="text-black text-[18px] font-normal leading-[24px] tracking-[-0.198px]">
+                  Date
                 </p>
-                <p className="text-text-sub-600 text-paragraph-md">
+                <p className="text-black text-[24px] font-semibold leading-[34.097px] tracking-[-1.2px]">
+                  {dateRange}
+                </p>
+              </div>
+
+              {/* Place */}
+              <div className="flex flex-col gap-2">
+                <p className="text-black text-[18px] font-normal leading-[24px] tracking-[-0.198px]">
+                  Place
+                </p>
+                <p className="text-black text-[24px] font-semibold leading-[34.097px] tracking-[-1.2px]">
                   {workshop.place}
                 </p>
               </div>
 
-              {/* Keynote Speaker */}
-              {workshop.speaker && typeof workshop.speaker === 'object' && (
-                <div className="mb-8">
-                  <p className="text-text-sub-600 text-paragraph-md">Keynote by</p>
-                  <div className="mt-3 md:mt-6 md:grid md:grid-cols-[auto,1fr] md:items-start md:gap-8">
-                    {/* Foto à esquerda */}
-                    {workshop.speaker.avatar && typeof workshop.speaker.avatar === 'object' && (
-                      <div className="flex justify-center md:justify-start">
-                        <Image
-                          src={getMediaUrl(workshop.speaker.avatar.url || '', workshop.speaker.avatar.updatedAt)}
-                          alt={workshop.speaker.avatar.alt || workshop.speaker.name || 'Speaker'}
-                          width={135}
-                          height={180}
-                          className="w-[135px] h-[180px] aspect-[3/4] object-cover object-right rounded-md shadow-sm mx-auto"
-                        />
-                      </div>
-                    )}
-                    {/* Texto à direita */}
-                    <div className="mt-4 md:mt-0">
-                      <h3 className="text-label-md text-text-strong-950">
-                        {workshop.speaker.link ? (
-                          <Link
-                            href={workshop.speaker.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:underline"
-                            aria-label={`${workshop.speaker.name} (abrir site)`}
-                          >
-                            {workshop.speaker.name}
-                          </Link>
-                        ) : (
-                          <span>{workshop.speaker.name}</span>
-                        )}
-                      </h3>
-                      {workshop.speaker.role && (
-                        <p className="mt-4 text-text-sub-600 text-paragraph-md">
-                          {workshop.speaker.role}
-                        </p>
-                      )}
-                      {workshop.speaker.university?.name && workshop.speaker.university?.link && (
-                        <p className="mt-2 text-text-sub-600 text-paragraph-md">
-                          <Link
-                            href={workshop.speaker.university.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:underline"
-                            aria-label={`${workshop.speaker.university.name} (abrir site)`}
-                          >
-                            {workshop.speaker.university.name}
-                          </Link>
-                        </p>
-                      )}
-
-                    </div>
-                  </div>
-                </div>
-              )}
-
               {/* Download Button */}
               {workshop.firstButtonText && workshop.firstButtonLink && (
                 <Link href={workshop.firstButtonLink} target="_blank" rel="noopener noreferrer">
-                  <Button variant="primary" mode="filled" size="medium">
+                  <Button variant="primary" mode="filled" size="medium" className="w-full lg:w-auto">
                     {workshop.firstButtonText}
                   </Button>
                 </Link>
@@ -219,21 +166,106 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
             </div>
 
             {/* Right Column - Image */}
-            <div className="flex justify-center lg:justify-end lg:col-span-3 pl-8">
-              <div className="relative w-full h-[420px] md:h-[520px] lg:h-[620px]">
+            <div className="flex-1 w-full">
+              <div className="relative w-full h-[420px]">
                 {resolvedCover && (
                   <Image
                     src={resolvedCover.url}
                     alt={resolvedCover.alternativeText || workshop.title || 'Workshop cover'}
                     width={1600}
                     height={1000}
-                    className="w-full h-full object-cover rounded-none shadow-sm"
+                    className="w-full h-full object-cover"
                   />
                 )}
               </div>
             </div>
           </div>
         </section>
+
+        {/* Keynote Speaker Section */}
+        {workshop.speaker && typeof workshop.speaker === 'object' && (
+          <section className="mb-16">
+            <div className="bg-[#f0f6ff] w-full">
+              <div className="flex flex-col lg:flex-row gap-2">
+                {/* Speaker Image - Left */}
+                {workshop.speaker.avatar && typeof workshop.speaker.avatar === 'object' && (
+                  <div className="w-full lg:w-[426px] h-[604px] shrink-0">
+                    <Image
+                      src={getMediaUrl(workshop.speaker.avatar.url || '', workshop.speaker.avatar.updatedAt)}
+                      alt={workshop.speaker.avatar.alt || workshop.speaker.name || 'Speaker'}
+                      width={426}
+                      height={604}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+
+                {/* Speaker Info - Right */}
+                <div className="flex-1 p-8 flex flex-col gap-8 justify-center">
+                  <div className="flex flex-col gap-3">
+                    {/* Badge */}
+                    <div className="inline-flex items-center justify-center px-2 py-1 rounded-[4px] self-start">
+                      <p className="text-[#122368] text-[12px] font-medium leading-[16px] tracking-[0.48px] uppercase">
+                        keynote speaker
+                      </p>
+                    </div>
+
+                    {/* Speaker Name */}
+                    <h2 className="text-[#122368] text-[48px] font-semibold leading-[64px] tracking-[-3.36px]">
+                      {workshop.speaker.name}
+                    </h2>
+
+                    {/* Role */}
+                    {workshop.speaker.role && (
+                      <p className="text-text-strong-950 text-[18px] font-normal leading-[24px] tracking-[-0.198px] max-w-[428px]">
+                        {workshop.speaker.role}
+                      </p>
+                    )}
+
+                    {/* University */}
+                    {workshop.speaker.university?.name && (
+                      <p className="text-text-strong-950 text-[18px] font-normal leading-[24px] tracking-[-0.198px] underline">
+                        {workshop.speaker.university.link ? (
+                          <Link
+                            href={workshop.speaker.university.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:opacity-80"
+                          >
+                            {workshop.speaker.university.name}
+                          </Link>
+                        ) : (
+                          workshop.speaker.university.name
+                        )}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Bio */}
+                  {workshop.speaker.biography && (
+                    <p className="text-text-sub-600 text-paragraph-sm">
+                      {workshop.speaker.biography}
+                    </p>
+                  )}
+
+                  {/* Website Button */}
+                  {workshop.speaker.link && (
+                    <Link href={workshop.speaker.link} target="_blank" rel="noopener noreferrer">
+                      <Button
+                        variant="neutral"
+                        mode="stroke"
+                        size="medium"
+                        className="bg-white"
+                      >
+                        Open Personal Website
+                      </Button>
+                    </Link>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Workshop Details Section */}
         <section className="mb-16">
