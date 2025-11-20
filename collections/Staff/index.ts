@@ -55,6 +55,10 @@ export const Staff: CollectionConfig = {
       type: 'textarea',
     },
     {
+      name: 'link',
+      type: 'text',
+    },
+    {
       name: 'university',
       type: 'group',
       fields: [
@@ -69,10 +73,6 @@ export const Staff: CollectionConfig = {
           label: 'University Link',
         },
       ],
-    },
-    {
-      name: 'link',
-      type: 'text',
     },
   ],
   hooks: {
