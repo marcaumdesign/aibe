@@ -1,9 +1,9 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import React, { Fragment, useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
-
+import Link from 'next/link';
 import { Root as Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -44,16 +44,16 @@ export const AccountForm: React.FC = () => {
     async (data: FormData) => {
       if (user) {
         // Only send password if changing password
-        const updateData = changePassword 
-          ? data 
+        const updateData = changePassword
+          ? data
           : {
-              email: data.email,
-              firstName: data.firstName,
-              lastName: data.lastName,
-              department: data.department,
-              universityCompany: data.universityCompany,
-              title: data.title,
-            }
+            email: data.email,
+            firstName: data.firstName,
+            lastName: data.lastName,
+            department: data.department,
+            universityCompany: data.universityCompany,
+            title: data.title,
+          }
 
         const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/${user.id}`, {
           // Make sure to include cookies with fetch
@@ -145,11 +145,10 @@ export const AccountForm: React.FC = () => {
                 Current plan and billing information
               </CardDescription>
             </div>
-            <div className={`px-4 py-2 rounded-lg ${
-              subscriptionPlan === 'founders' ? 'bg-purple-100 text-purple-800' :
+            <div className={`px-4 py-2 rounded-lg ${subscriptionPlan === 'founders' ? 'bg-purple-100 text-purple-800' :
               subscriptionPlan === 'premium' ? 'bg-blue-100 text-blue-800' :
-              'bg-gray-100 text-gray-800'
-            }`}>
+                'bg-gray-100 text-gray-800'
+              }`}>
               <span className="font-semibold text-sm uppercase">{planNames[subscriptionPlan as keyof typeof planNames]}</span>
             </div>
           </div>
@@ -190,9 +189,9 @@ export const AccountForm: React.FC = () => {
             size="medium"
             className="rounded-none h-12"
           >
-            <a href="/membership">
+            <Link href="/membership">
               {subscriptionPlan === 'free' ? 'Upgrade Plan' : 'Manage Subscription'}
-            </a>
+            </Link>
           </Button>
         </CardFooter>
       </Card>
@@ -307,9 +306,8 @@ export const AccountForm: React.FC = () => {
               <select
                 id="title"
                 {...register("title", { required: "Title is required" })}
-                className={`h-12 mobile:h-10 border ${
-                  errors.title ? 'border-red-500' : 'border-gray-200'
-                } rounded-lg focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 transition-all px-4 py-3 bg-white`}
+                className={`h-12 mobile:h-10 border ${errors.title ? 'border-red-500' : 'border-gray-200'
+                  } rounded-lg focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 transition-all px-4 py-3 bg-white`}
               >
                 <option value="">Select your title...</option>
                 <option value="student">Student</option>
@@ -375,7 +373,7 @@ export const AccountForm: React.FC = () => {
                   type="password"
                   placeholder="••••••••"
                   hasError={!!errors.password}
-                  {...register("password", { 
+                  {...register("password", {
                     required: changePassword ? "Password is required" : false,
                     minLength: {
                       value: 8,
@@ -398,7 +396,7 @@ export const AccountForm: React.FC = () => {
                   type="password"
                   placeholder="••••••••"
                   hasError={!!errors.passwordConfirm}
-                  {...register("passwordConfirm", { 
+                  {...register("passwordConfirm", {
                     required: changePassword ? "Please confirm your password" : false,
                     validate: (value) => !changePassword || value === password.current || "Passwords do not match"
                   })}

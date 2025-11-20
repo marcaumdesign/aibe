@@ -34,13 +34,13 @@ export function PricingCard({
 
   const handleCheckout = async () => {
     if (!isLoggedIn) {
-      toast.error('Você precisa fazer login primeiro');
+      toast.error('You need to login first');
       window.location.href = '/sign-in?redirect=/membership';
       return;
     }
 
     if (!stripePriceId) {
-      return; // Plano gratuito
+      return; // Free plan
     }
 
     setLoading(true);
@@ -59,27 +59,27 @@ export function PricingCard({
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Erro ao criar checkout');
+        throw new Error(data.error || 'Error creating checkout');
       }
 
-      // Redirecionar para o Stripe Checkout
+      // Redirect to Stripe Checkout
       window.location.href = data.url;
     } catch (error) {
-      console.error('Erro no checkout:', error as Error);
-      toast.error(error instanceof Error ? error.message : 'Erro ao processar pagamento');
+      console.error('Checkout error:', error as Error);
+      toast.error(error instanceof Error ? error.message : 'Error processing payment');
       setLoading(false);
     }
   };
 
   const formatPrice = () => {
-    if (price === 0) return 'Grátis';
+    if (price === 0) return 'Free';
 
-    const formatted = new Intl.NumberFormat('pt-BR', {
+    const formatted = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency,
     }).format(price);
 
-    return interval ? `${formatted}/${interval === 'month' ? 'mês' : 'ano'}` : formatted;
+    return interval ? `${formatted}/${interval === 'month' ? 'month' : 'year'}` : formatted;
   };
 
   return (
@@ -91,13 +91,13 @@ export function PricingCard({
     >
       {isPopular && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary-base px-4 py-1 text-sm font-medium text-white shadow-md">
-          Mais Popular
+          Most Popular
         </div>
       )}
 
       {isCurrent && !isPopular && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-green-600 px-4 py-1 text-sm font-medium text-white shadow-md">
-          Plano Atual
+          Current Plan
         </div>
       )}
 
@@ -134,20 +134,20 @@ export function PricingCard({
         {loading ? (
           <span className="flex items-center justify-center gap-2">
             <RiLoader2Line className="h-5 w-5 animate-spin" />
-            Processando...
+            Processing...
           </span>
         ) : isCurrent ? (
-          'Plano Atual'
+          'Current Plan'
         ) : stripePriceId ? (
-          'Assinar Agora'
+          'Subscribe Now'
         ) : (
-          'Continuar Grátis'
+          'Continue Free'
         )}
       </Button>
 
       {stripePriceId && !isCurrent && (
         <p className="mt-4 text-center text-xs text-gray-500">
-          Cancele a qualquer momento
+          Cancel anytime
         </p>
       )}
     </div>

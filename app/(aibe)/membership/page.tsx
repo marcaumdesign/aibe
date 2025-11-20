@@ -3,7 +3,6 @@ import { PLAN_INFO } from '@/lib/stripe';
 import { MembershipContent } from './MembershipContent';
 import { FAQ } from './FAQ';
 import Image from 'next/image';
-import CTA from '@/components/cta';
 
 const membershipBenefits = [
   {
@@ -33,7 +32,7 @@ export default async function Membership() {
     // Usuário não logado
   }
 
-  // Preparar dados dos planos
+  // Prepare plan data
   const plans = [
     {
       planId: 'free' as const,
@@ -103,7 +102,7 @@ export default async function Membership() {
       </section>
 
       {/* Mobile CTA padronizado (Home) */}
-      <CTA />
+      {/* <CTA /> */}
 
       {/* FAQ Section */}
       <FAQ />

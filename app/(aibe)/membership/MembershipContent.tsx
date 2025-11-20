@@ -31,10 +31,10 @@ export function MembershipContent({ user, plans }: MembershipContentProps) {
             CHOOSE YOUR PLAN
           </p>
           <h1 className="text-title-h1 text-black mb-4">
-            Escolha Seu Plano
+            Choose Your Plan
           </h1>
           <p className="text-paragraph-lg text-gray-600 max-w-2xl mx-auto">
-            Acesse conteúdo exclusivo, workshops e uma comunidade vibrante de profissionais interessados em economia Brasil-Itália
+            Access exclusive content, workshops, and a vibrant community of professionals interested in Brazil-Italy economics
           </p>
         </div>
 
@@ -63,7 +63,7 @@ export function MembershipContent({ user, plans }: MembershipContentProps) {
         {user && user.stripeCustomerId && (
           <div className="text-center bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
             <p className="text-paragraph-md text-gray-700 mb-4 font-medium">
-              Precisa gerenciar sua assinatura?
+              Need to manage your subscription?
             </p>
             <ManageSubscriptionButton />
           </div>
@@ -87,14 +87,14 @@ function ManageSubscriptionButton() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Erro ao acessar portal');
+        throw new Error(data.error || 'Error accessing portal');
       }
 
       window.location.href = data.url;
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Erro ao acessar portal';
-      console.error('Erro ao acessar portal:', errorMessage);
-      alert(errorMessage || 'Erro ao acessar portal de cobrança');
+      const errorMessage = error instanceof Error ? error.message : 'Error accessing portal';
+      console.error('Error accessing portal:', errorMessage);
+      alert(errorMessage || 'Error accessing billing portal');
       setLoading(false);
     }
   };
@@ -105,7 +105,7 @@ function ManageSubscriptionButton() {
       disabled={loading}
       className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-primary-base text-white font-medium hover:bg-primary-base/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
     >
-      {loading ? 'Carregando...' : 'Gerenciar Assinatura'}
+      {loading ? 'Loading...' : 'Manage Subscription'}
     </button>
   );
 }

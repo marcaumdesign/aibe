@@ -5,51 +5,51 @@ import { useState } from 'react';
 const faqData = [
   {
     id: 1,
-    question: 'Quanto custa se tornar membro?',
+    question: 'How much does it cost to become a member?',
     answer:
-      'Oferecemos diferentes planos: Gratuito (acesso limitado), Premium (R$ 29,90/mês) com acesso a conteúdo exclusivo, e Founders (R$ 99,90/mês) com experiência VIP completa.',
+      'We offer different plans: Free (limited access), Premium ($29.90/month) with access to exclusive content, and Founders ($99.90/month) with complete VIP experience.',
   },
   {
     id: 2,
-    question: 'Como posso pagar minha assinatura?',
+    question: 'How can I pay for my subscription?',
     answer:
-      'Você pode pagar através do nosso sistema seguro de pagamento com cartão de crédito, processado pelo Stripe. Os pagamentos são seguros e criptografados.',
+      'You can pay through our secure credit card payment system, processed by Stripe. Payments are secure and encrypted.',
   },
   {
     id: 3,
-    question: 'Recebo comprovante de assinatura?',
+    question: 'Do I receive a subscription receipt?',
     answer:
-      'Sim, você receberá um email de confirmação e pode acessar suas faturas através do portal de cobrança a qualquer momento.',
+      'Yes, you will receive a confirmation email and can access your invoices through the billing portal at any time.',
   },
   {
     id: 4,
-    question: 'Quais benefícios os membros recebem?',
+    question: 'What benefits do members receive?',
     answer:
-      'Membros Premium e Founders têm acesso a conteúdo exclusivo, workshops, comunidade privada, networking e muito mais. Founders também recebem consultoria 1:1 e acesso VIP a eventos.',
+      'Premium and Founders members have access to exclusive content, workshops, private community, networking, and much more. Founders also receive 1:1 consulting and VIP access to events.',
   },
   {
     id: 5,
-    question: 'A assinatura é renovada automaticamente?',
+    question: 'Is the subscription renewed automatically?',
     answer:
-      'Sim, as assinaturas são renovadas mensalmente de forma automática. Você pode cancelar a qualquer momento através do portal de cobrança.',
+      'Yes, subscriptions are renewed automatically on a monthly basis. You can cancel at any time through the billing portal.',
   },
   {
     id: 6,
-    question: 'Quem pode se tornar membro?',
+    question: 'Who can become a member?',
     answer:
-      'Qualquer pessoa interessada em pesquisa econômica Brasil-Itália e cooperação acadêmica pode se tornar membro.',
+      'Anyone interested in Brazil-Italy economic research and academic cooperation can become a member.',
   },
   {
     id: 7,
-    question: 'Posso cancelar minha assinatura a qualquer momento?',
+    question: 'Can I cancel my subscription at any time?',
     answer:
-      'Sim! Você pode cancelar sua assinatura a qualquer momento através do portal de cobrança. Seu acesso permanecerá ativo até o final do período pago.',
+      'Yes! You can cancel your subscription at any time through the billing portal. Your access will remain active until the end of the paid period.',
   },
   {
     id: 8,
-    question: 'Posso mudar de plano depois?',
+    question: 'Can I change plans later?',
     answer:
-      'Sim, você pode fazer upgrade ou downgrade do seu plano a qualquer momento através do portal de cobrança. As mudanças são aplicadas imediatamente ou no próximo ciclo.',
+      'Yes, you can upgrade or downgrade your plan at any time through the billing portal. Changes are applied immediately or in the next billing cycle.',
   },
 ];
 
@@ -70,10 +70,10 @@ export function FAQ() {
               FAQ
             </p>
             <h2 className="text-title-h2 text-black">
-              Perguntas <br /> Frequentes
+              Frequently <br /> Asked Questions
             </h2>
             <p className="text-paragraph-md text-gray-600 mt-4">
-              Encontre respostas para as dúvidas mais comuns sobre nossos planos e assinaturas
+              Find answers to the most common questions about our plans and subscriptions
             </p>
           </div>
 
