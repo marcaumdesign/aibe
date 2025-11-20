@@ -112,6 +112,9 @@ export const seed = async ({
           lastName: 'Author',
           email: 'demo-author@example.com',
           password: 'password',
+          department: 'Economics',
+          universityCompany: 'AIBE Demo University',
+          title: 'full_professor',
         },
       }),
       payload.create({
