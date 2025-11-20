@@ -53,7 +53,7 @@ export default function RootLayout({
             <TooltipProvider>
               <div className='flex min-h-screen flex-col'>
                 <Header />
-                <main className='flex flex-1 flex-col pt-[80px]'>{children}</main>
+                <main className='flex flex-1 flex-col lg:pt-[80px]'>{children}</main>
                 <div className="relative mt-48 mobile:mt-48">
                   <CTA />
                 </div>

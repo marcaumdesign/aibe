@@ -8,7 +8,7 @@ export default function About() {
   return (
     <div className="flex flex-col items-center justify-start relative size-full">
       {/* Title Section */}
-      <div className="flex flex-col items-center justify-center w-full pt-[32px] mobile:pt-4 pb-8 gap-4">
+      <div className="flex flex-col items-center justify-center w-full pt-[32px] mobile:pt-4 pb-6 gap-4">
         <div className="flex gap-[2px] items-center justify-center overflow-clip px-[8px] py-[2px] relative shrink-0">
           <div className="font-medium not-italic text-[#99a0ae] text-[12px] text-nowrap tracking-[0.48px] uppercase">
             <p className="leading-4 whitespace-pre">About AIBE</p>
@@ -17,6 +17,18 @@ export default function About() {
         <h1 className="text-title-h1 mobile:text-title-h3 text-black text-center">
           At a glance
         </h1>
+      </div>
+
+      {/* Mobile Map Hero */}
+      <div className="w-full px-8 mobile:px-4 pb-6 md:hidden">
+        <div className="relative w-full h-[260px]">
+          <Image
+            src="/images/brasil-italia.png"
+            alt="Brasil e Italia"
+            fill
+            className="object-contain"
+          />
+        </div>
       </div>
 
       {/* Main Content Section - Two Columns */}
@@ -99,13 +111,13 @@ export default function About() {
               </div>
             </div>
 
-            {/* Right Column - Image */}
-            <div className="sticky top-[100px] w-full flex-1 min-w-[300px] h-[500px] mobile:h-[350px]">
+            {/* Right Column - Image (desktop / tablet) */}
+            <div className="relative sticky top-[100px] w-full flex-1 min-w-[300px] h-[500px] mobile:h-[350px] hidden md:block">
               <Image
-                src='/images/brasil-italia.png'
-                alt='Brasil e Italia'
+                src="/images/brasil-italia.png"
+                alt="Brasil e Italia"
                 fill
-                className='object-contain'
+                className="object-contain"
               />
             </div>
           </div>

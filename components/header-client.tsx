@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import * as Button from '@/components/ui/button';
 import MobileMenu from '@/components/mobile-menu';
 import type { Workshop } from '@/payload-types';
@@ -13,9 +14,20 @@ interface HeaderClientProps {
 
 export function HeaderClient({ workshops }: HeaderClientProps) {
   const router = useRouter();
+  const pathname = usePathname();
+
+  // Garantir que o scroll do body esteja sempre liberado ao navegar
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+    }
+  }, [pathname]);
 
   return (
-    <div className='fixed top-0 left-0 right-0 z-50 bg-white border-b border-stroke-soft-200 justify-center items-center flex w-full'>
+    <div className='relative lg:fixed lg:top-0 lg:left-0 lg:right-0 z-50 bg-white border-b border-stroke-soft-200 justify-center items-center flex w-full'>
       <header className='w-full max-w-[1200px] px-8 py-4 mobile:p-4 flex items-center justify-between'>
         {/* Logo */}
         <Link href='/' className='flex items-center gap-2'>
@@ -29,7 +41,7 @@ export function HeaderClient({ workshops }: HeaderClientProps) {
         </Link>
 
         {/* Navigation (desktop) */}
-        <nav className='text-lg hidden items-center gap-4 font-medium text-black md:flex'>
+        <nav className='text-lg hidden items-center gap-4 font-medium text-black lg:flex'>
           <Link href='/' className='transition-colors hover:text-primary-base'>
             Home
           </Link>
@@ -96,12 +108,12 @@ export function HeaderClient({ workshops }: HeaderClientProps) {
 
         {/* CTA/Button area */}
         <div className='flex items-center gap-4'>
-          {/* Mobile: Menu button replaces CTA */}
-          <div className='md:hidden'>
+          {/* Mobile / Tablet: Menu button replaces CTA */}
+          <div className='lg:hidden'>
             <MobileMenu workshops={workshops} />
           </div>
           {/* Desktop: Keep CTA */}
-          <div className='hidden md:flex items-center gap-4'>
+          <div className='hidden lg:flex items-center gap-4'>
             <Button.Root
               variant='primary'
               size='medium'

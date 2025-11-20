@@ -58,23 +58,32 @@ function calculateGridColumns(count: number): number {
 
 export default function DirectorsGrid({ directors }: DirectorsGridProps) {
   const [selectedDirector, setSelectedDirector] = useState<Director | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [viewportWidth, setViewportWidth] = useState<number | null>(null);
 
   // Calcula o número de colunas baseado no número de diretores
   const gridCols = useMemo(() => {
     return calculateGridColumns(directors.length);
   }, [directors.length]);
 
-  // Detecta se é mobile
+  // Detecta largura de tela para ajustar colunas por breakpoint
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 767);
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
     };
 
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  const isMobile = viewportWidth !== null && viewportWidth <= 767;
+  const isTablet = viewportWidth !== null && viewportWidth > 767 && viewportWidth < 1024;
+
+  const effectiveCols = useMemo(() => {
+    if (isMobile) return 1; // mobile: 1 coluna
+    if (isTablet) return Math.min(2, gridCols); // tablet: no máximo 2 colunas para fotos maiores
+    return gridCols; // desktop: usa cálculo completo
+  }, [isMobile, isTablet, gridCols]);
 
   const openDirectorModal = (director: Director) => {
     setSelectedDirector(director);
@@ -111,9 +120,7 @@ export default function DirectorsGrid({ directors }: DirectorsGridProps) {
           <div
             className='grid mobile:grid-cols-1 gap-8 mobile:gap-6'
             style={{
-              gridTemplateColumns: isMobile
-                ? '1fr'
-                : `repeat(${gridCols}, minmax(0, 1fr))`,
+              gridTemplateColumns: `repeat(${effectiveCols}, minmax(0, 1fr))`,
             }}
           >
             {directors.map((director) => {

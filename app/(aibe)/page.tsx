@@ -68,9 +68,9 @@ export default async function Home() {
     <div className='min-h-screen bg-white'>
       {/* Hero Section */}
       <section className='relative bg-white flex flex-col'>
-        <div className='w-full  mobile:px-4 flex-1 flex items-center pt-4 pb-8'>
+        <div className='w-full  mobile:px-4 flex-1 flex items-start lg:items-center pt-4 pb-8'>
           {/* Hero Content */}
-          <div className='flex flex-col mobile:flex-col items-center justify-center gap-8 mobile:gap-8 w-full'>
+          <div className='flex flex-col items-center justify-start lg:justify-center gap-8 w-full'>
             <div className='relative w-full mobile:w-full flex justify-center'>
               <div className='relative w-full h-[200px]'>
                 <Image
@@ -129,18 +129,18 @@ export default async function Home() {
                 </div>
               </div> */}
             </div>
-            <div className='flex-1 px-8 flex flex-col gap-8 items-center w-full'>
+            <div className='flex-1 px-8 mobile:px-0 flex flex-col gap-8 items-center mobile:items-start w-full'>
 
 
-              <div className='flex flex-col gap-4 items-center w-full'>
-                <h1 className='text-title-h1 text-text-strong-950'>
+              <div className='flex flex-col gap-4 items-center mobile:items-start w-full'>
+                <h1 className='text-title-h1 text-text-strong-950 mobile:text-left'>
                   Associação Italo-Brasileira de Economia
                 </h1>
-                <h1 className='text-title-h3 text-center text-text-strong-950'>
+                <h1 className='text-title-h3 text-center mobile:text-left text-text-strong-950'>
                   Associazione Italo-Brasiliana di Economia
                 </h1>
 
-                <p className='text-label-lg text-text-sub-600'>
+                <p className='text-label-lg text-text-sub-600 mobile:text-left'>
                   We are a bilateral, non-profit association that promotes scientific collaboration between Italian and Brazilian economists.
 
 
