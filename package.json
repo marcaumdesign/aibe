@@ -20,7 +20,7 @@
     "@payloadcms/admin-bar": "^3.62.1",
     "@payloadcms/db-sqlite": "^3.62.1",
     "@payloadcms/db-vercel-postgres": "^3.62.1",
-    "@payloadcms/email-nodemailer": "^3.64.0",
+    "@payloadcms/email-nodemailer": "^3.62.1",
     "@payloadcms/live-preview-react": "^3.62.1",
     "@payloadcms/next": "^3.62.1",
     "@payloadcms/payload-cloud": "^3.62.1",
@@ -82,7 +82,7 @@
     "tailwind-variants": "^0.2.1"
   },
   "devDependencies": {
-    "@payloadcms/graphql": "^3.64.0",
+    "@payloadcms/graphql": "^3.62.1",
     "@types/node": "latest",
     "@types/nodemailer": "^7.0.4",
     "@types/react": "^18",

@@ -21,8 +21,8 @@ importers:
         specifier: ^3.62.1
         version: 3.62.1(@libsql/client@0.15.15(bufferutil@4.0.9)(utf-8-validate@6.0.5))(@prisma/client@5.22.0(prisma@5.22.0))(@types/pg@8.11.6)(better-sqlite3@12.4.1)(kysely@0.28.8)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(prisma@5.22.0)
       '@payloadcms/email-nodemailer':
-        specifier: ^3.64.0
-        version: 3.64.0(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))
+        specifier: ^3.62.1
+        version: 3.62.1(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))
       '@payloadcms/live-preview-react':
         specifier: ^3.62.1
         version: 3.62.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -202,8 +202,8 @@ importers:
         version: 0.2.1(tailwindcss@3.4.14)
     devDependencies:
       '@payloadcms/graphql':
-        specifier: ^3.64.0
-        version: 3.64.0(graphql@16.11.0)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(typescript@5.6.3)
+        specifier: ^3.62.1
+        version: 3.62.1(graphql@16.11.0)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(typescript@5.6.3)
       '@types/node':
         specifier: latest
         version: 20.17.6
@@ -1561,25 +1561,12 @@ packages:
     peerDependencies:
       payload: 3.62.1
 
-  '@payloadcms/email-nodemailer@3.64.0':
-    resolution: {integrity: sha512-JgWq2B8HbKXXWHlWzKXKVUa50eGQPQPfSiIKvUsicsuOQ68OhE7fvy5GJIRMK0F50Wa8X6Lhd/p2NCcoRiYkOg==}
-    engines: {node: ^18.20.2 || >=20.9.0}
-    peerDependencies:
-      payload: 3.64.0
-
   '@payloadcms/graphql@3.62.1':
     resolution: {integrity: sha512-3M2yUwfgELPDKb/15rXe2Q1q/LZg8qQYSHFekg++vH/Gj2gMfM/9Tn5xK25ecoArmlznaxOwpxaYVXn9qQoKSw==}
     hasBin: true
     peerDependencies:
       graphql: ^16.8.1
       payload: 3.62.1
-
-  '@payloadcms/graphql@3.64.0':
-    resolution: {integrity: sha512-hh9KEuyEXY0SZMRG0ArLPIWZaT94CMLFLieOXm6+trGuVhS+7EQouOuRIHe4qWxzrNMYx+iidJk2TkT+6lgu/g==}
-    hasBin: true
-    peerDependencies:
-      graphql: ^16.8.1
-      payload: 3.64.0
 
   '@payloadcms/live-preview-react@3.62.1':
     resolution: {integrity: sha512-/fhQ6F4g0pAw/M5fxXXmxyDbWBAu9IFelJOAfeCaz/ZTkUZ2x2cjMSQ5ukcclwXJlhLZ/vmfg3/SuvOGAI5ERA==}
@@ -3704,6 +3691,10 @@ packages:
     resolution: {integrity: sha512-ecqj/sy1jcK1uWrwpR67UhYrIFQ+5WlGxth34WquCbamhFA6hkkwiu37o6J5xCHdo1oixJRfVRw+ywV+Hq/0Aw==}
     engines: {node: '>=8'}
 
+  detect-libc@2.1.2:
+    resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
+    engines: {node: '>=8'}
+
   detect-node-es@1.1.0:
     resolution: {integrity: sha512-ypdmJU/TbBby2Dxibuv7ZLW3Bs1QEmM7nHjEANfohJLvE0XVujisn1qPJcZxg+qDucsr+bP6fLD1rPS3AhJ7EQ==}
 
@@ -4941,8 +4932,8 @@ packages:
       sass:
         optional: true
 
-  node-abi@3.78.0:
-    resolution: {integrity: sha512-E2wEyrgX/CqvicaQYU3Ze1PFGjc4QYPGsjUrlYkqAE0WjHEZwgOsGMPMzkMse4LjJbDmaEuDX3CM036j5K2DSQ==}
+  node-abi@3.85.0:
+    resolution: {integrity: sha512-zsFhmbkAzwhTft6nd3VxcG0cvJsT70rL+BIGHWVq5fi6MwGrHwzqKaxXE+Hl2GmnGItnDKPPkO5/LQqjVkIdFg==}
     engines: {node: '>=10'}
 
   node-domexception@1.0.0:
@@ -5640,6 +5631,11 @@ packages:
 
   semver@7.7.2:
     resolution: {integrity: sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA==}
+    engines: {node: '>=10'}
+    hasBin: true
+
+  semver@7.7.3:
+    resolution: {integrity: sha512-SdsKMrI9TdgjdweUSR9MweHA4EJ8YxHn8DFaDisvhVlUOe4BF1tLD7GAj0lIqWVl+dPb/rExr0Btby5loQm20Q==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -8250,23 +8246,7 @@ snapshots:
       nodemailer: 7.0.9
       payload: 3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5)
 
-  '@payloadcms/email-nodemailer@3.64.0(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))':
-    dependencies:
-      nodemailer: 7.0.9
-      payload: 3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5)
-
   '@payloadcms/graphql@3.62.1(graphql@16.11.0)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(typescript@5.6.3)':
-    dependencies:
-      graphql: 16.11.0
-      graphql-scalars: 1.22.2(graphql@16.11.0)
-      payload: 3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5)
-      pluralize: 8.0.0
-      ts-essentials: 10.0.3(typescript@5.6.3)
-      tsx: 4.20.6
-    transitivePeerDependencies:
-      - typescript
-
-  '@payloadcms/graphql@3.64.0(graphql@16.11.0)(payload@3.62.1(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.6.3)(utf-8-validate@6.0.5))(typescript@5.6.3)':
     dependencies:
       graphql: 16.11.0
       graphql-scalars: 1.22.2(graphql@16.11.0)
@@ -11326,6 +11306,8 @@ snapshots:
 
   detect-libc@2.1.1: {}
 
+  detect-libc@2.1.2: {}
+
   detect-node-es@1.1.0: {}
 
   devlop@1.1.0:
@@ -12935,9 +12917,9 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  node-abi@3.78.0:
+  node-abi@3.85.0:
     dependencies:
-      semver: 7.7.2
+      semver: 7.7.3
 
   node-domexception@1.0.0: {}
 
@@ -13277,13 +13259,13 @@ snapshots:
 
   prebuild-install@7.1.3:
     dependencies:
-      detect-libc: 2.1.1
+      detect-libc: 2.1.2
       expand-template: 2.0.3
       github-from-package: 0.0.0
       minimist: 1.2.8
       mkdirp-classic: 0.5.3
       napi-build-utils: 2.0.0
-      node-abi: 3.78.0
+      node-abi: 3.85.0
       pump: 3.0.3
       rc: 1.2.8
       simple-get: 4.0.1
@@ -13730,6 +13712,8 @@ snapshots:
   semver@6.3.1: {}
 
   semver@7.7.2: {}
+
+  semver@7.7.3: {}
 
   set-cookie-parser@2.7.1: {}
 
