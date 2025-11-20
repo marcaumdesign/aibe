@@ -5,11 +5,10 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import React, { useCallback, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 
-// import * as Button from '@/components/ui/button'
 import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Message } from '../../_components/Message'
 import { useAuth } from '../../_providers/Auth'
-// import classes from './index.module.scss'
 import * as Label from "@/components/ui/label";
 import { Root as Button } from "@/components/ui/button";
 
@@ -30,12 +29,7 @@ export const LoginForm: React.FC = () => {
     formState: { errors, isLoading },
     handleSubmit,
     register,
-  } = useForm<FormData>({
-    defaultValues: {
-      email: 'demo@payloadcms.com',
-      password: 'demo',
-    },
-  })
+  } = useForm<FormData>()
 
   const onSubmit = useCallback(
     async (data: FormData) => {
@@ -51,52 +45,74 @@ export const LoginForm: React.FC = () => {
   )
 
   return (
-    <form className={''} onSubmit={handleSubmit(onSubmit)}>
-      <p>
-        {'To log in, use the email '}
-        <b>demo@payloadcms.com</b>
-        {' with the password '}
-        <b>demo</b>
-        {'. To manage your users, '}
-        <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/users`}>
-          login to the admin dashboard
-        </Link>
-        .
-      </p>
-      <Message className={''} error={error} />
-      <Label.Root htmlFor="email" className="text-label-sm text-text-strong-950">
-        Email Address
-      </Label.Root>
-      <Input
-        hasError={errors.email ? true : false}
-        {...register("email", { required: true })}
-        required
-        type="email"
-      />
-      <Label.Root htmlFor="password" className="text-label-sm text-text-strong-950">
-        Password
-      </Label.Root>
-      <Input
-        hasError={errors.password ? true : false}
-        {...register("password", { required: true })}
-        required
-        type="password"
-      />
-
-      <Button
-        size="medium"
-        variant="primary"
-        className="w-full h-12 mobile:h-10 rounded-none"
-        disabled={isLoading}
-        type="submit"
-      >
-        {isLoading ? 'Processing' : 'Login'}
-      </Button>
-      <div>
-        <Link href={`/create-account${allParams}`}>Create an account</Link>
-        <br />
-        <Link href={`/recover-password${allParams}`}>Recover your password</Link>
-      </div>
-    </form>
+    <Card className="w-full shadow-lg border-0">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <CardHeader>
+          <CardTitle className="text-title-h3 mobile:text-title-h4 text-text-strong-950">Sign In</CardTitle>
+          <CardDescription className="text-paragraph-md mobile:text-paragraph-sm text-text-sub-600">
+            Enter your email and password to access your account.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-6 mobile:gap-4">
+          {error && <Message className={''} error={error} />}
+          
+          <div className="grid gap-2">
+            <Label.Root htmlFor="email" className="text-label-sm text-text-strong-950">
+              Email
+            </Label.Root>
+            <Input
+              id="email"
+              type="email"
+              placeholder="you@example.com"
+              required
+              autoComplete="email"
+              hasError={!!errors.email}
+              {...register("email", { required: true })}
+              className="h-12 mobile:h-10 border border-gray-200 rounded-lg focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 transition-all px-4 py-3"
+            />
+          </div>
+          <div className="grid gap-2">
+            <div className="flex items-center justify-between">
+              <Label.Root htmlFor="password" className="text-label-sm text-text-strong-950">
+                Password
+              </Label.Root>
+              <Link
+                href={`/recover-password${allParams}`}
+                className="text-paragraph-sm text-primary-base hover:underline"
+              >
+                Forgot password?
+              </Link>
+            </div>
+            <Input
+              id="password"
+              type="password"
+              placeholder="••••••••"
+              required
+              autoComplete="current-password"
+              hasError={!!errors.password}
+              {...register("password", { required: true })}
+              className="h-12 mobile:h-10 border border-gray-200 rounded-lg focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 transition-all px-4 py-3"
+            />
+          </div>
+        </CardContent>
+        <CardFooter className="flex flex-col gap-4 pt-0">
+          <Button
+            type="submit"
+            variant="primary"
+            size="medium"
+            className="w-full h-12 mobile:h-10 rounded-none"
+            disabled={isLoading}
+          >
+            {isLoading ? 'Signing In...' : 'Sign In'}
+          </Button>
+          <div className="text-center text-paragraph-sm text-text-sub-600">
+            Don&apos;t have an account?{' '}
+            <Link href={`/create-account${allParams}`} className="text-primary-base text-label-sm hover:underline">
+              Create account
+            </Link>
+          </div>
+        </CardFooter>
+      </form>
+    </Card>
   )
 }
