@@ -125,75 +125,160 @@ export const AccountForm: React.FC = () => {
   }
 
   return (
-    <div className="grid gap-8">
+    <div className="flex gap-8">
       {/* Success/Error Messages */}
       {(error || success) && (
         <Message className={''} error={error} success={success} />
       )}
 
       {/* Membership Card */}
-      <Card className="w-full shadow-lg border-0">
-        <CardHeader>
-          <div className="flex justify-between items-start">
-            <div>
-              <CardTitle className="text-title-h3 mobile:text-title-h4 text-text-strong-950">
-                Your Membership
-              </CardTitle>
-              <CardDescription className="text-paragraph-md mobile:text-paragraph-sm text-text-sub-600">
-                Current membership status and information
-              </CardDescription>
-            </div>
-            <div className={`px-4 py-2 rounded-lg ${subscriptionPlan === 'premium' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800'
-              }`}>
-              <span className="font-semibold text-sm uppercase">{membershipNames[subscriptionPlan as keyof typeof membershipNames]}</span>
-            </div>
-          </div>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-            <p className="text-paragraph-md text-text-strong-950 font-medium mb-1">
-              {membershipNames[subscriptionPlan as keyof typeof membershipNames]} Membership
-            </p>
-            <p className="text-paragraph-sm text-text-sub-600">
-              {membershipDescriptions[subscriptionPlan as keyof typeof membershipDescriptions]}
-            </p>
-            {subscriptionStatus && (
-              <div className="mt-3 pt-3 border-t border-gray-200">
-                <p className="text-paragraph-sm text-text-sub-600">
-                  <strong>Status:</strong> {subscriptionStatus}
-                </p>
-                {subscriptionEndDate && (
-                  <p className="text-paragraph-sm text-text-sub-600 mt-1">
-                    <strong>Membership renewal:</strong> {new Date(subscriptionEndDate).toLocaleDateString()}
-                  </p>
-                )}
+      <div className="w-full flex flex-col gap-8">
+        <Card className="w-full shadow-lg border-0">
+          <CardHeader>
+            <div className="flex justify-between items-start">
+              <div>
+                <CardTitle className="text-title-h3 mobile:text-title-h4 text-text-strong-950">
+                  Your Membership
+                </CardTitle>
+                <CardDescription className="text-paragraph-md mobile:text-paragraph-sm text-text-sub-600">
+                  Current membership status and information
+                </CardDescription>
               </div>
-            )}
-          </div>
-          {subscriptionPlan === 'free' && (
-            <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-              <p className="text-paragraph-sm text-blue-900">
-                <strong>Become a Member</strong> to access exclusive academic content, workshops, and networking opportunities.
-              </p>
+
             </div>
-          )}
-        </CardContent>
-        <CardFooter>
-          <Button
-            asChild
-            variant="primary"
-            size="medium"
-            className="rounded-none h-12"
-          >
-            <Link href="/membership">
-              {subscriptionPlan === 'free' ? 'Become a Member' : 'Manage Membership'}
-            </Link>
-          </Button>
-        </CardFooter>
-      </Card>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+              <p className="text-paragraph-md text-text-strong-950 font-medium mb-1">
+                {membershipNames[subscriptionPlan as keyof typeof membershipNames]} Membership
+              </p>
+              <p className="text-paragraph-sm text-text-sub-600">
+                {membershipDescriptions[subscriptionPlan as keyof typeof membershipDescriptions]}
+              </p>
+              {subscriptionStatus && (
+                <div className="mt-3 pt-3 border-t border-gray-200">
+                  <p className="text-paragraph-sm text-text-sub-600">
+                    <strong>Status:</strong> {subscriptionStatus}
+                  </p>
+                  {subscriptionEndDate && (
+                    <p className="text-paragraph-sm text-text-sub-600 mt-1">
+                      <strong>Membership renewal:</strong> {new Date(subscriptionEndDate).toLocaleDateString()}
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
+
+          </CardContent>
+          <CardFooter>
+            <Button
+              asChild
+              variant="primary"
+              size="medium"
+              className="rounded-none h-12"
+            >
+              <Link href="/membership">
+                {subscriptionPlan === 'free' ? 'Become a Member' : 'Manage Membership'}
+              </Link>
+            </Button>
+          </CardFooter>
+        </Card>
+        <Card className="w-full shadow-lg border-0">
+          <CardHeader>
+            <CardTitle className="text-title-h3 mobile:text-title-h4 text-text-strong-950">
+              Password & Security
+            </CardTitle>
+            <CardDescription className="text-paragraph-md mobile:text-paragraph-sm text-text-sub-600">
+              Update your password to keep your account secure
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {!changePassword ? (
+              <div className="text-left py-6">
+
+                <Button
+                  type="button"
+                  variant="neutral"
+                  size="medium"
+                  className="rounded-none h-12"
+                  onClick={() => setChangePassword(true)}
+                >
+                  Change Password
+                </Button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <div className="grid gap-2">
+                  <Label.Root htmlFor="password" className="text-label-sm text-text-strong-950">
+                    New Password <span className="text-red-500">*</span>
+                  </Label.Root>
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="••••••••"
+                    hasError={!!errors.password}
+                    {...register("password", {
+                      required: changePassword ? "Password is required" : false,
+                      minLength: {
+                        value: 8,
+                        message: "Password must be at least 8 characters"
+                      }
+                    })}
+                    className="h-12 mobile:h-10 border border-gray-200 rounded-lg focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 transition-all px-4 py-3"
+                  />
+                  {errors.password && (
+                    <span className="text-sm text-red-500">{errors.password.message}</span>
+                  )}
+                </div>
+
+                <div className="grid gap-2">
+                  <Label.Root htmlFor="passwordConfirm" className="text-label-sm text-text-strong-950">
+                    Confirm New Password <span className="text-red-500">*</span>
+                  </Label.Root>
+                  <Input
+                    id="passwordConfirm"
+                    type="password"
+                    placeholder="••••••••"
+                    hasError={!!errors.passwordConfirm}
+                    {...register("passwordConfirm", {
+                      required: changePassword ? "Please confirm your password" : false,
+                      validate: (value) => !changePassword || value === password.current || "Passwords do not match"
+                    })}
+                    className="h-12 mobile:h-10 border border-gray-200 rounded-lg focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 transition-all px-4 py-3"
+                  />
+                  {errors.passwordConfirm && (
+                    <span className="text-sm text-red-500">{errors.passwordConfirm.message}</span>
+                  )}
+                </div>
+
+                <div className="flex gap-3 mobile:flex-col">
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    size="medium"
+                    className="flex-1 h-12 mobile:h-10 rounded-none"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? 'Updating...' : 'Update Password'}
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="neutral"
+                    size="medium"
+                    className="flex-1 h-12 mobile:h-10 rounded-none"
+                    onClick={() => setChangePassword(false)}
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              </form>
+            )}
+          </CardContent>
+        </Card>
+      </div>
 
       {/* Profile Information Card */}
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full">
         <Card className="w-full shadow-lg border-0">
           <CardHeader>
             <CardTitle className="text-title-h3 mobile:text-title-h4 text-text-strong-950">
@@ -333,100 +418,7 @@ export const AccountForm: React.FC = () => {
       </form>
 
       {/* Change Password Card */}
-      <Card className="w-full shadow-lg border-0">
-        <CardHeader>
-          <CardTitle className="text-title-h3 mobile:text-title-h4 text-text-strong-950">
-            Password & Security
-          </CardTitle>
-          <CardDescription className="text-paragraph-md mobile:text-paragraph-sm text-text-sub-600">
-            Update your password to keep your account secure
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          {!changePassword ? (
-            <div className="text-center py-6">
-              <p className="text-paragraph-md text-text-sub-600 mb-4">
-                Keep your account secure by using a strong, unique password.
-              </p>
-              <Button
-                type="button"
-                variant="neutral"
-                size="medium"
-                className="rounded-none h-12"
-                onClick={() => setChangePassword(true)}
-              >
-                Change Password
-              </Button>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid gap-2">
-                <Label.Root htmlFor="password" className="text-label-sm text-text-strong-950">
-                  New Password <span className="text-red-500">*</span>
-                </Label.Root>
-                <Input
-                  id="password"
-                  type="password"
-                  placeholder="••••••••"
-                  hasError={!!errors.password}
-                  {...register("password", {
-                    required: changePassword ? "Password is required" : false,
-                    minLength: {
-                      value: 8,
-                      message: "Password must be at least 8 characters"
-                    }
-                  })}
-                  className="h-12 mobile:h-10 border border-gray-200 rounded-lg focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 transition-all px-4 py-3"
-                />
-                {errors.password && (
-                  <span className="text-sm text-red-500">{errors.password.message}</span>
-                )}
-              </div>
 
-              <div className="grid gap-2">
-                <Label.Root htmlFor="passwordConfirm" className="text-label-sm text-text-strong-950">
-                  Confirm New Password <span className="text-red-500">*</span>
-                </Label.Root>
-                <Input
-                  id="passwordConfirm"
-                  type="password"
-                  placeholder="••••••••"
-                  hasError={!!errors.passwordConfirm}
-                  {...register("passwordConfirm", {
-                    required: changePassword ? "Please confirm your password" : false,
-                    validate: (value) => !changePassword || value === password.current || "Passwords do not match"
-                  })}
-                  className="h-12 mobile:h-10 border border-gray-200 rounded-lg focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 transition-all px-4 py-3"
-                />
-                {errors.passwordConfirm && (
-                  <span className="text-sm text-red-500">{errors.passwordConfirm.message}</span>
-                )}
-              </div>
-
-              <div className="flex gap-3 mobile:flex-col">
-                <Button
-                  type="submit"
-                  variant="primary"
-                  size="medium"
-                  className="flex-1 h-12 mobile:h-10 rounded-none"
-                  disabled={isLoading}
-                >
-                  {isLoading ? 'Updating...' : 'Update Password'}
-                </Button>
-                <Button
-                  type="button"
-                  variant="neutral"
-                  size="medium"
-                  className="flex-1 h-12 mobile:h-10 rounded-none"
-                  onClick={() => setChangePassword(false)}
-                >
-                  Cancel
-                </Button>
-              </div>
-            </form>
-          )}
-        </CardContent>
-      </Card>
     </div>
   )
 }

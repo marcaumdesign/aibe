@@ -21,9 +21,9 @@ export default async function CreateAccount() {
 
   return (
     <div className="bg-white">
-      <section className="py-16 px-8 mobile:px-4">
+      <section className="pt-16 pb-8 px-8 mobile:pt-8 mobile:pb-4 mobile:px-4">
         <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-2 mobile:grid-cols-1 gap-12 justify-start items-start">
+          <div className="grid grid-cols-2 mobile:grid-cols-1 gap-4 justify-start items-start">
             {/* Left side - Content */}
             <div className="space-y-3">
               <div className="space-y-10">

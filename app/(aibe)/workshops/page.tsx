@@ -86,29 +86,26 @@ export default async function WorkshopsPage() {
 
   return (
     <div className='min-h-screen bg-white'>
-      {/* Header Spacer */}
-      <div className="h-16"></div>
-
       {/* Main Content */}
-      <main className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-0">
+      <main className="max-w-[1200px] mx-auto pt-16 pb-8 px-8 mobile:pt-8 mobile:pb-4 mobile:px-4">
         {/* Workshops Section */}
-        <section className="mb-0">
+        <section className="flex flex-col gap-4">
           {/* Small label */}
-          <p className="text-text-soft-400 text-subheading-xs uppercase text-center mb-4">
+          <p className="text-text-soft-400 text-subheading-xs uppercase text-center">
             WORKSHOPS and CONGRESSES
           </p>
 
           {/* Main Title */}
-          <h1 className="text-text-strong-950 text-title-h2 text-center mb-10 max-w-2xl mx-auto px-4">
+          <h1 className="text-text-strong-950 text-title-h2 text-center max-w-2xl mx-auto">
             All Events
           </h1>
 
           {/* Workshop Images */}
-          <div className="flex flex-col md:flex-row gap-8 mb-10 -ml-4 md:-ml-8 px-4">
+          <div className="flex flex-col md:flex-row gap-8 -ml-4 md:-ml-8 px-4">
             {workshops.map((workshop) => (
-              <Link 
-                key={workshop.id} 
-                href={`/workshops/${workshop.slug}`} 
+              <Link
+                key={workshop.id}
+                href={`/workshops/${workshop.slug}`}
                 className="w-80 group cursor-pointer"
               >
                 <div className="aspect-[4/3] relative mb-4 overflow-hidden">

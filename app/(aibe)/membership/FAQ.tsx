@@ -61,8 +61,8 @@ export function FAQ() {
   };
 
   return (
-    <section className="py-16 mobile:py-12 bg-white px-8 mobile:px-4">
-      <div className="mx-auto max-w-7xl w-full">
+    <section className="p-8 mobile:p-4 bg-white">
+      <div className="mx-auto max-w-[1200px] w-full">
         <div className="flex flex-row mobile:flex-col gap-16 mobile:gap-8">
           {/* Left Column - Title */}
           <div className="w-1/2 mobile:w-full">

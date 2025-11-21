@@ -23,8 +23,8 @@ export function MembershipContent({ user, plans }: MembershipContentProps) {
   const isLoggedIn = !!user;
 
   return (
-    <section className="py-16 mobile:py-12 bg-gray-50">
-      <div className="mx-auto max-w-7xl px-8 mobile:px-4">
+    <section className="p-8 mobile:p-4 bg-gray-50">
+      <div className="mx-auto max-w-[1200px]">
         {/* Header */}
         <div className="text-center mb-12 mobile:mb-8">
           <p className="text-text-soft-400 text-subheading-xs uppercase mb-4">

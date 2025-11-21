@@ -52,9 +52,9 @@ export default async function Membership() {
       <MembershipContent user={user} plans={plans} />
 
       {/* Membership Benefits */}
-      <section className="py-16 mobile:py-12 bg-white px-8 mobile:px-4">
+      <section className="p-8 mobile:p-4 bg-white">
         <div className="mx-auto max-w-[1200px] w-full">
-          <div className="flex flex-col gap-12 mobile:gap-8">
+          <div className="flex flex-col gap-8">
             <div className="text-center">
               <p className="text-text-soft-400 text-subheading-xs uppercase mb-4">
                 MEMBER BENEFITS

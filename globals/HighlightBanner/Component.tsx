@@ -3,7 +3,7 @@ import Link from 'next/link'
 import * as Button from '@/components/ui/button'
 
 // Componente Badge reutilizável
-function Badge({
+export function Badge({
   children,
   variant = 'with-dot',
   size = 'medium',

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import * as Button from '@/components/ui/button';
+import { Badge } from '@/globals/HighlightBanner/Component';
 
 interface NewsItem {
   id: string | number;
@@ -92,8 +93,8 @@ export default function BlogSection() {
 
   if (loading) {
     return (
-      <section className='py-20'>
-        <div className='container mx-auto max-w-[1200px] px-4'>
+      <section className='p-8 mobile:p-4'>
+        <div className='mx-auto max-w-[1200px]'>
           <div className='text-center'>
             <p className='text-paragraph-lg text-text-sub-600'>Carregando posts...</p>
           </div>
@@ -104,8 +105,8 @@ export default function BlogSection() {
 
   if (error) {
     return (
-      <section className='py-20'>
-        <div className='container mx-auto max-w-[1200px] px-4'>
+      <section className='p-8 mobile:p-4'>
+        <div className='mx-auto max-w-[1200px]'>
           <div className='text-center'>
             <p className='text-paragraph-lg text-red-500'>{error}</p>
           </div>
@@ -115,11 +116,13 @@ export default function BlogSection() {
   }
 
   return (
-    <section className='py-20'>
-      <div className='container mx-auto max-w-[1200px] px-4'>
+    <section className='p-8 mobile:p-4'>
+      <div className='mx-auto max-w-[1200px]'>
         <header className='flex items-center justify-between mb-12'>
           <div>
-            <span className='text-sm text-gray-400 uppercase tracking-wide'>• BLOG</span>
+            <Badge variant='with-dot' size='medium'>
+              Blog
+            </Badge>
             <h2 className='text-title-h2 text-black mt-1'>
               News
             </h2>

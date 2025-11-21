@@ -12,9 +12,9 @@ export default function About() {
 
 
       {/* Main Content Section - Two Columns */}
-      <div className="flex flex-col items-center justify-center w-full ">
-        <div className=" flex flex-col gap-16 items-center justify-start pt-[64px] mobile:pt-8 w-full">
-          <div className="flex max-w-[1200px] flex-row mobile:flex-col gap-8 items-center justify-start w-full">
+      <div className="flex flex-col items-center justify-center w-full pt-16 pb-8 px-8 mobile:pt-8 mobile:pb-4 mobile:px-4">
+        <div className="flex flex-col gap-4 items-center justify-start w-full">
+          <div className="flex max-w-[1200px] flex-row mobile:flex-col gap-4 items-center justify-start w-full">
             {/* Left Column - Text Content */}
             <div className="flex flex-col gap-8 mobile:gap-6 items-start justify-start flex-1">
               {/* About AIBE Section */}

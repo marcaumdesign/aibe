@@ -112,9 +112,9 @@ export default async function Page() {
     <div className='min-h-screen bg-white'>
       <PageClient />
       {/* Header Section */}
-      <section className='pt-20 pb-16'>
-        <div className='max-w-[1200px] mx-auto px-4'>
-          <div className='text-center mb-16'>
+      <section className='pt-16 pb-8 px-8 mobile:pt-8 mobile:pb-4 mobile:px-4'>
+        <div className='max-w-[1200px] mx-auto'>
+          <div className='text-center mb-4'>
             <p className='text-text-soft-400 text-subheading-sm uppercase mb-4'>
               BLOG
             </p>

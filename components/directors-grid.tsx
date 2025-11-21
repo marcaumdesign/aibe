@@ -106,8 +106,7 @@ export default function DirectorsGrid({ directors }: DirectorsGridProps) {
 
   return (
     <>
-      <section className='pb-32 mobile:pb-16'>
-        <div className='mx-auto max-w-[1200px] w-full px-4 mobile:px-4'>
+      <div className='mx-auto max-w-[1200px] w-full'>
           <div
             className='grid mobile:grid-cols-1 gap-8 mobile:gap-6'
             style={{
@@ -125,6 +124,7 @@ export default function DirectorsGrid({ directors }: DirectorsGridProps) {
                   id={director.id}
                   name={director.Name || 'Nome não disponível'}
                   role={director.Role || 'Cargo não disponível'}
+                  description={director.Description}
                   image={imageUrl}
                   imageAlt={director.Avatar?.alternativeText}
                   clickable={true}
@@ -134,7 +134,6 @@ export default function DirectorsGrid({ directors }: DirectorsGridProps) {
             })}
           </div>
         </div>
-      </section>
 
       {/* Director Modal */}
       <DirectorModal
