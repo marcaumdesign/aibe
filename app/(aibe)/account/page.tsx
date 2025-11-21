@@ -25,15 +25,15 @@ export default async function Account() {
     <Fragment>
       <HydrateClientUser permissions={permissions} user={user} />
       <div className="bg-white">
-        <section className="pt-16 pb-8 px-8 mobile:pt-8 mobile:pb-4 mobile:px-4">
+        <section className="p-8 mobile:p-4">
           <div className="max-w-[1200px] mx-auto">
             {/* Header */}
-            <div className="mb-4 flex flex-col gap-4">
+            <div className="mb-8 mobile:mb-6 flex flex-col gap-4">
               <Badge variant='with-dot' size='medium'>
                 YOUR PROFILE
               </Badge>
-              <div className="flex justify-between items-center mobile:flex-col mobile:items-start mobile:gap-4">
-                <div>
+              <div className="flex justify-between items-start gap-4 mobile:flex-col mobile:w-full">
+                <div className="flex-1">
                   <h1 className="text-primary-base text-title-h1">
                     Account Settings
                   </h1>
@@ -46,7 +46,7 @@ export default async function Account() {
                   variant='neutral'
                   mode='stroke'
                   size='medium'
-                  className='rounded-none h-12'
+                  className='rounded-none h-12 mobile:w-full'
                 >
                   <Link href='/logout'>Sign Out</Link>
                 </Button>

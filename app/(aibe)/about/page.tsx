@@ -53,7 +53,7 @@ export default function About() {
             </div>
 
             {/* Right Column - Image */}
-            <div className="sticky top-[100px] w-full flex-1 min-w-[300px] h-[400px] mobile:h-[350px]">
+            <div className="md:sticky md:top-[100px] w-full md:flex-1 md:min-w-[300px] h-[400px] mobile:h-[300px] mobile:relative mobile:w-full">
               <Image
                 src='/images/about-hero.png'
                 alt='Brasil e Italia'
@@ -170,7 +170,7 @@ export default function About() {
                   In context
                 </h1>
               </div>
-              <div className="flex gap-8 items-center justify-center">
+              <div className="flex mobile:flex-col gap-8 items-center justify-center">
 
 
 
@@ -224,7 +224,7 @@ export default function About() {
                     </div>
                   </div>
                 </div>
-                <div className="relative w-[400px]  aspect-square mobile:w-[200px]  flex-shrink-0">
+                <div className="relative w-[400px]  aspect-square mobile:w-full  flex-shrink-0">
                   <Image
                     src='/images/brasil-italia-branco.png'
                     alt='AIBE Logo'

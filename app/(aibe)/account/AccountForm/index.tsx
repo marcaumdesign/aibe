@@ -125,14 +125,14 @@ export const AccountForm: React.FC = () => {
   }
 
   return (
-    <div className="flex gap-12">
+    <div className="flex gap-8 mobile:flex-col mobile:gap-6">
       {/* Success/Error Messages */}
       {(error || success) && (
         <Message className={''} error={error} success={success} />
       )}
 
       {/* Membership Card */}
-      <div className="w-full flex flex-col gap-8">
+      <div className="w-full flex flex-col gap-6 mobile:gap-4">
         <Card className="w-full shadow-lg border-0">
           <CardHeader>
             <div className="flex justify-between items-start">
@@ -147,8 +147,8 @@ export const AccountForm: React.FC = () => {
 
             </div>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+          <CardContent className="space-y-4 mobile:space-y-3">
+            <div className="bg-gray-50 p-4 mobile:p-3 rounded-lg border border-gray-200">
               <p className="text-paragraph-md text-text-strong-950 font-medium mb-1">
                 {membershipNames[subscriptionPlan as keyof typeof membershipNames]} Membership
               </p>
@@ -175,7 +175,7 @@ export const AccountForm: React.FC = () => {
               asChild
               variant="primary"
               size="medium"
-              className="rounded-none h-12"
+              className="rounded-none h-12 mobile:h-10 mobile:w-full"
             >
               <Link href="/membership">
                 {subscriptionPlan === 'free' ? 'Become a Member' : 'Manage Membership'}
@@ -200,14 +200,14 @@ export const AccountForm: React.FC = () => {
                   type="button"
                   variant="neutral"
                   size="medium"
-                  className="rounded-none h-12"
+                  className="rounded-none h-12 mobile:h-10 mobile:w-full"
                   onClick={() => setChangePassword(true)}
                 >
                   Change Password
                 </Button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mobile:space-y-4">
                 <div className="grid gap-2">
                   <Label.Root htmlFor="password" className="text-label-sm text-text-strong-950">
                     New Password <span className="text-red-500">*</span>
