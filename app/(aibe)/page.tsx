@@ -67,7 +67,7 @@ export default async function Home() {
     <div className='min-h-screen bg-white'>
       {/* Hero Section */}
       <section className='relative bg-white flex flex-col pt-4 pb-8 px-8 mobile:pt-8 mobile:pb-4 mobile:px-4'>
-        <div className='w-full max-w-[1200px] mx-auto flex-1 flex items-center'>
+        <div className='w-full mx-auto flex-1 flex items-center'>
           {/* Hero Content */}
           <div className='flex flex-col mobile:flex-col items-center justify-center gap-4 w-full'>
             <div className='relative w-full mobile:w-full flex justify-center'>

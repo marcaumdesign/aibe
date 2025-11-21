@@ -81,7 +81,7 @@ export default function DirectorModal({
             </div>
 
             {/* Name and Title */}
-            <h2 className="text-text-strong-950 text-title-h4 mobile:text-title-h5 mb-2 mobile:mb-1.5 flex-shrink-0">
+            <h2 className="text-primary-base text-title-h4 mobile:text-title-h5 mb-2 mobile:mb-1.5 flex-shrink-0">
               {director.Link ? (
                 <Link
                   href={director.Link}

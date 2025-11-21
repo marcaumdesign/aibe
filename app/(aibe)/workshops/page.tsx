@@ -97,7 +97,7 @@ export default async function WorkshopsPage() {
           </Badge>
 
           {/* Main Title */}
-          <h1 className="text-text-strong-950 text-title-h2 text-center max-w-2xl mx-auto">
+          <h1 className="text-primary-base text-title-h2 text-center max-w-2xl mx-auto">
             All Events
           </h1>
 

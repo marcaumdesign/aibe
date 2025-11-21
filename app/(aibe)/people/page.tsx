@@ -45,7 +45,7 @@ export default function People() {
             <Badge variant='with-dot' size='medium'>
               PEOPLE
             </Badge>
-            <h1 className='text-text-strong-950 text-title-h1 mobile:text-title-h2'>
+            <h1 className='text-primary-base text-title-h1 mobile:text-title-h2'>
               Board of directors
             </h1>
           </div>
