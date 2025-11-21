@@ -14,7 +14,7 @@ const Card: React.FC<
 const CardHeader: React.FC<
   { ref?: React.Ref<HTMLDivElement> } & React.HTMLAttributes<HTMLDivElement>
 > = ({ className, ref, ...props }) => (
-  <div className={cn('flex flex-col space-y-1.5 p-6', className)} ref={ref} {...props} />
+  <div className={cn('flex flex-col space-y-1.5 ', className)} ref={ref} {...props} />
 )
 
 const CardTitle: React.FC<
@@ -36,13 +36,13 @@ const CardDescription: React.FC<
 const CardContent: React.FC<
   { ref?: React.Ref<HTMLDivElement> } & React.HTMLAttributes<HTMLDivElement>
 > = ({ className, ref, ...props }) => (
-  <div className={cn('p-6 pt-0', className)} ref={ref} {...props} />
+  <div className={cn(' pt-0', className)} ref={ref} {...props} />
 )
 
 const CardFooter: React.FC<
   { ref?: React.Ref<HTMLDivElement> } & React.HTMLAttributes<HTMLDivElement>
 > = ({ className, ref, ...props }) => (
-  <div className={cn('flex items-center p-6 pt-0', className)} ref={ref} {...props} />
+  <div className={cn('flex items-center pt-0', className)} ref={ref} {...props} />
 )
 
 export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }

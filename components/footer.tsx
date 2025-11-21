@@ -66,11 +66,11 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <h3 className="text-text-white-0 text-title-h6 font-semibold">About</h3>
             <nav className="flex flex-col gap-3">
-              <Link href="/about" className="text-text-white-0/90 text-paragraph-md hover:text-text-white-0 transition-colors">
+              <Link href="/about" className="text-text-white-0 text-paragraph-md hover:opacity-80 transition-opacity">
                 About AIBE
               </Link>
 
-              <Link href="/people" className="text-text-white-0/90 text-paragraph-md hover:text-text-white-0 transition-colors">
+              <Link href="/people" className="text-text-white-0 text-paragraph-md hover:opacity-80 transition-opacity">
                 People
               </Link>
             </nav>
@@ -80,10 +80,10 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <h3 className="text-text-white-0 text-title-h6 font-semibold">Events & Prizes</h3>
             <nav className="flex flex-col gap-3">
-              <Link href="/workshop" className="text-text-white-0/90 text-paragraph-md hover:text-text-white-0 transition-colors">
+              <Link href="/workshop" className="text-text-white-0 text-paragraph-md hover:opacity-80 transition-opacity">
                 Workshops
               </Link>
-              <Link href="/prizes" className="text-text-white-0/90 text-paragraph-md hover:text-text-white-0 transition-colors">
+              <Link href="/prizes" className="text-text-white-0 text-paragraph-md hover:opacity-80 transition-opacity">
                 Prizes
               </Link>
 
@@ -94,13 +94,13 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <h3 className="text-text-white-0 text-title-h6 font-semibold">Resources</h3>
             <nav className="flex flex-col gap-3">
-              <Link href="/posts" className="text-text-white-0/90 text-paragraph-md hover:text-text-white-0 transition-colors">
+              <Link href="/posts" className="text-text-white-0 text-paragraph-md hover:opacity-80 transition-opacity">
                 Blog
               </Link>
-              <Link href="/membership" className="text-text-white-0/90 text-paragraph-md hover:text-text-white-0 transition-colors">
+              <Link href="/membership" className="text-text-white-0 text-paragraph-md hover:opacity-80 transition-opacity">
                 Membership
               </Link>
-              <Link href="/contact" className="text-text-white-0/90 text-paragraph-md hover:text-text-white-0 transition-colors">
+              <Link href="/contact" className="text-text-white-0 text-paragraph-md hover:opacity-80 transition-opacity">
                 Contact & Offices
               </Link>
             </nav>
@@ -112,7 +112,7 @@ export default function Footer() {
           <p className="text-text-white-0 text-paragraph-xs text-center md:text-left">
             © {new Date().getFullYear()} AIBE. All Rights Reserved | Codice Fiscale: 97970970154 | <a
               href="mailto:aibe@aibe.website"
-              className="text-text-white-0 hover:text-text-white-0/70 transition-colors text-paragraph-xs font-medium"
+              className="text-text-white-0 hover:opacity-80 transition-opacity text-paragraph-xs font-medium"
             >
               aibe@aibe.website
             </a>
@@ -123,25 +123,25 @@ export default function Footer() {
               href="https://www.iubenda.com/privacy-policy/33428132/cookie-policy"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-white-0 hover:text-text-white-0/70 transition-colors text-paragraph-xs"
+              className="text-text-white-0 hover:opacity-80 transition-opacity text-paragraph-xs"
             >
               Cookie Policy
             </Link>
-            <span className="text-text-white-0/50 text-paragraph-xs">|</span>
+            <span className="text-text-white-0 text-paragraph-xs">|</span>
             <Link
               href="https://www.iubenda.com/privacy-policy/33428132/cookie-policy"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-white-0 hover:text-text-white-0/70 transition-colors text-paragraph-xs"
+              className="text-text-white-0 hover:opacity-80 transition-opacity text-paragraph-xs"
             >
               Cookie Policy
             </Link>
-            <span className="text-text-white-0/50 text-paragraph-xs">|</span>
+            <span className="text-text-white-0 text-paragraph-xs">|</span>
             <Link
               href="https://mainnet.design"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-white-0 hover:text-text-white-0/70 transition-colors text-paragraph-xs"
+              className="text-text-white-0 hover:opacity-80 transition-opacity text-paragraph-xs"
             >
               Powered by Mainnet™
             </Link>

@@ -11,6 +11,7 @@ import { Root as Button } from "@/components/ui/button"
 import RichText from '@/components/RichText'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 import { Marquee } from '@/components/ui/marquee'
+import { Badge } from '@/components/ui/badge'
 
 import type { Workshop } from '@/payload-types'
 
@@ -336,10 +337,10 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
         {workshop.type === 'past' && workshop.gallery && workshop.gallery.length > 0 && (
           <section className="mb-10">
             <div className="flex items-center justify-between mb-5">
-              <div>
-                <p className="text-text-soft-400 font-medium tracking-wider uppercase mb-2 text-subheading-xs">
+              <div className="flex flex-col gap-2">
+                <Badge variant='with-dot' size='medium'>
                   Past Congress
-                </p>
+                </Badge>
                 <h2 className="text-text-strong-950 text-title-h2">
                   Gallery
                 </h2>

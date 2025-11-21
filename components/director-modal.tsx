@@ -56,7 +56,7 @@ export default function DirectorModal({
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 mobile:top-3 left-4 mobile:left-3 bg-[#122368] text-white w-8 h-8 mobile:w-7 mobile:h-7 flex items-center justify-center hover:opacity-80 transition-opacity z-10"
+          className="absolute top-4 mobile:top-3 left-4 mobile:left-3 bg-primary-base text-text-white-0 w-8 h-8 mobile:w-7 mobile:h-7 flex items-center justify-center hover:opacity-80 transition-opacity z-10"
         >
           <span className="text-lg mobile:text-base font-bold">×</span>
         </button>
@@ -74,14 +74,14 @@ export default function DirectorModal({
                   className="object-cover object-center"
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center text-[#99a0ae]">
+                <div className="w-full h-full flex items-center justify-center text-text-soft-400">
                   <span className="text-6xl mobile:text-4xl">👤</span>
                 </div>
               )}
             </div>
 
             {/* Name and Title */}
-            <h2 className="text-title-h4 mobile:text-[24px] leading-[40px] mobile:leading-[30px] tracking-[-1.28px] mobile:tracking-[-0.96px] mb-2 mobile:mb-1.5 flex-shrink-0">
+            <h2 className="text-text-strong-950 text-title-h4 mobile:text-title-h5 mb-2 mobile:mb-1.5 flex-shrink-0">
               {director.Link ? (
                 <Link
                   href={director.Link}
@@ -92,16 +92,16 @@ export default function DirectorModal({
                   {director.Name}
                 </Link>
               ) : (
-                <span className="text-black">{director.Name}</span>
+                <span>{director.Name}</span>
               )}
             </h2>
-            <h3 className="text-title-h5 mobile:text-title-h6 text-black mb-4 mobile:mb-3 flex-shrink-0">
+            <h3 className="text-text-strong-950 text-title-h5 mobile:text-title-h6 mb-4 mobile:mb-3 flex-shrink-0">
               {director.Role}
             </h3>
 
             {/* Description */}
             {director.Description && (
-              <p className="font-normal text-[#525866] text-[18px] mobile:text-[16px] tracking-[-0.36px] mobile:tracking-[-0.32px] mb-6 mobile:mb-4 text-left flex-shrink-0">
+              <p className="text-text-sub-600 text-paragraph-md mobile:text-paragraph-sm mb-6 mobile:mb-4 text-left flex-shrink-0">
                 {director.Description}
               </p>
             )}
@@ -110,7 +110,7 @@ export default function DirectorModal({
             {director.Biography && (
               <div className="w-full mb-8 mobile:mb-6 flex-shrink-0">
                 <div className="max-h-[300px] mobile:max-h-[200px] overflow-y-auto pr-2">
-                  <p className="font-normal text-[#525866] text-[18px] mobile:text-[16px] tracking-[-0.36px] mobile:tracking-[-0.32px] text-left leading-relaxed">
+                  <p className="text-text-sub-600 text-paragraph-md mobile:text-paragraph-sm text-left">
                     {director.Biography}
                   </p>
                 </div>
@@ -123,7 +123,7 @@ export default function DirectorModal({
                 href={director.Link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#122368] text-white px-6 mobile:px-4 py-3 mobile:py-2.5 hover:opacity-80 transition-opacity flex-shrink-0 text-sm mobile:text-xs"
+                className="bg-primary-base text-text-white-0 text-paragraph-sm mobile:text-paragraph-xs px-6 mobile:px-4 py-3 mobile:py-2.5 hover:opacity-80 transition-opacity flex-shrink-0"
               >
                 Explore Profile
               </Link>
@@ -136,13 +136,13 @@ export default function DirectorModal({
           <div className="absolute bottom-4 mobile:bottom-3 left-4 mobile:left-3 right-4 mobile:right-3 flex justify-between">
             <button
               onClick={() => onNavigate('prev')}
-              className="bg-[#122368] text-white w-10 h-10 mobile:w-9 mobile:h-9 rounded flex items-center justify-center hover:opacity-80 transition-opacity"
+              className="bg-primary-base text-text-white-0 w-10 h-10 mobile:w-9 mobile:h-9 rounded flex items-center justify-center hover:opacity-80 transition-opacity"
             >
               <RiArrowLeftLine className="w-5 h-5 mobile:w-4 mobile:h-4" />
             </button>
             <button
               onClick={() => onNavigate('next')}
-              className="bg-[#122368] text-white w-10 h-10 mobile:w-9 mobile:h-9 rounded flex items-center justify-center hover:opacity-80 transition-opacity"
+              className="bg-primary-base text-text-white-0 w-10 h-10 mobile:w-9 mobile:h-9 rounded flex items-center justify-center hover:opacity-80 transition-opacity"
             >
               <RiArrowRightLine className="w-5 h-5 mobile:w-4 mobile:h-4" />
             </button>

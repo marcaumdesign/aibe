@@ -5,6 +5,7 @@ import React from 'react'
 
 import config from '../../../payload.config'
 import { ResetPasswordForm } from './ResetPasswordForm'
+import { Badge } from '@/components/ui/badge'
 
 export default async function ResetPassword() {
   const headers = await getHeaders()
@@ -17,15 +18,15 @@ export default async function ResetPassword() {
 
   return (
     <div className="bg-white">
-      <section className="py-16 px-8 mobile:px-4">
+      <section className="pt-16 pb-8 px-8 mobile:pt-8 mobile:pb-4 mobile:px-4">
         <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-2 mobile:grid-cols-1 gap-12 items-start">
+          <div className="grid grid-cols-2 mobile:grid-cols-1 gap-4 items-start">
             {/* Left side - Content */}
             <div className="space-y-3">
               <div className="space-y-10">
-                <p className="text-text-soft-400 text-subheading-xs uppercase pl-2">
+                <Badge variant='with-dot' size='medium'>
                   SECURE ACCESS
-                </p>
+                </Badge>
                 <h1 className="text-text-strong-950 text-title-h1">
                   Set New Password
                 </h1>

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { RiAddLine } from '@remixicon/react';
 import { Root as Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Badge } from '@/components/ui/badge';
 
 // Componente Accordion para FAQ
 function AccordionItem({
@@ -81,14 +82,14 @@ export default function AIBEWorkshopPage() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Workshop Overview Section */}
-        <section className="mb-16">
+        <section className="mb-16 flex flex-col items-center gap-4">
           {/* Small label */}
-          <p className="text-text-soft-400 font-medium tracking-wider uppercase mb-4 text-subheading-xs text-center">
+          <Badge variant='with-dot' size='medium'>
             WORKSHOPS
-          </p>
+          </Badge>
 
           {/* Main Title */}
-          <h1 className="text-text-strong-950 mb-14 text-title-h1 text-center">
+          <h1 className="text-text-strong-950 text-title-h1 text-center">
             AIBE Workshop 2026
           </h1>
 

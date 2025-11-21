@@ -1,26 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import * as Button from '@/components/ui/button'
-
-// Componente Badge reutilizável
-function Badge({
-  children,
-  variant = 'with-dot',
-  size = 'medium',
-}: {
-  children: React.ReactNode
-  variant?: 'with-dot'
-  size?: 'medium'
-}) {
-  const dotClasses = 'h-1 w-1 rounded-full bg-[#99a0ae] mr-2'
-
-  return (
-    <span className='inline-flex items-center font-medium bg-transparent text-text-soft-400 text-subheading-xs uppercase px-0 py-0'>
-      <div className={dotClasses}></div>
-      {children}
-    </span>
-  )
-}
+import { Badge } from '@/components/ui/badge'
 
 interface HighlightBannerProps {
   title: string

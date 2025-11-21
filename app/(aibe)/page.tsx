@@ -66,10 +66,10 @@ export default async function Home() {
   return (
     <div className='min-h-screen bg-white'>
       {/* Hero Section */}
-      <section className='relative bg-white flex flex-col'>
-        <div className='w-full max-w-[1200px] mx-auto mobile:px-4 flex-1 flex items-center pt-4 pb-8'>
+      <section className='relative bg-white flex flex-col pt-4 pb-8 px-8 mobile:pt-8 mobile:pb-4 mobile:px-4'>
+        <div className='w-full max-w-[1200px] mx-auto flex-1 flex items-center'>
           {/* Hero Content */}
-          <div className='flex flex-col mobile:flex-col items-center justify-center gap-8 mobile:gap-8 w-full'>
+          <div className='flex flex-col mobile:flex-col items-center justify-center gap-4 w-full'>
             <div className='relative w-full mobile:w-full flex justify-center'>
               <div className='relative w-full h-[150px]'>
                 <Image
@@ -162,8 +162,8 @@ export default async function Home() {
 
 
       {/* Features Section */}
-      <section className='pt-8 pb-20'>
-        <div className='mx-auto max-w-[1200px] w-full flex flex-col gap-8 px-4 md:px-8'>
+      <section className='p-8 mobile:p-4'>
+        <div className='mx-auto max-w-[1200px] w-full flex flex-col gap-8'>
           <div className='flex flex-col gap-4 text-start'>
 
             {/* <h2 className='text-title-h2 text-black animate-translate-y-16'>

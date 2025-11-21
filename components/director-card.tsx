@@ -6,6 +6,7 @@ interface DirectorCardProps {
   id?: number;
   name: string;
   role: string;
+  description?: string;
   image: string;
   imageAlt?: string;
   onClick?: () => void;
@@ -15,6 +16,7 @@ interface DirectorCardProps {
 export default function DirectorCard({
   name,
   role,
+  description,
   image,
   imageAlt,
   onClick,
@@ -32,7 +34,7 @@ export default function DirectorCard({
         }`}
       onClick={handleClick}
     >
-      <div className='relative w-[200px] h-[200px] aspect-[3/4] mobile:w-full mobile:max-w-[300px] mobile:h-[420px] overflow-hidden shadow-sm pointer-events-none mx-auto'>
+      <div className='relative w-[200px] h-[200px] aspect-square mobile:w-full mobile:max-w-[300px] mobile:h-[300px] overflow-hidden rounded-full shadow-sm pointer-events-none mx-auto'>
         {image && image !== '' ? (
           <Image
             src={image}
@@ -47,8 +49,11 @@ export default function DirectorCard({
         )}
       </div>
       <div className='flex flex-col gap-2 mobile:gap-1.5 pointer-events-none'>
-        <h3 className='text-title-h5 mobile:text-title-h6 text-black'>{name}</h3>
-        <p className='text-paragraph-lg mobile:text-paragraph-md text-[#525866]'>{role}</p>
+        <h3 className='text-title-h5 mobile:text-title-h6 text-primary-base'>{name}</h3>
+        <p className='text-paragraph-lg mobile:text-paragraph-md text-text-strong-950'>{role}</p>
+        {description && (
+          <p className='text-paragraph-xs text-[#525866]'>{description}</p>
+        )}
       </div>
     </div>
   );
