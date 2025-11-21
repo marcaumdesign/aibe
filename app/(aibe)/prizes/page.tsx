@@ -4,6 +4,7 @@ import Image from "next/image";
 // import CTA from "@/components/cta";
 import { Root as Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Badge } from '@/components/ui/badge';
 
 interface Winner {
   year: number;
@@ -70,18 +71,15 @@ export default function EventsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header Spacer */}
-      <div className="h-20"></div>
-
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8 mobile:pt-8 mobile:pb-4">
         {/* Prizes Section */}
         <section className="pb-16">
           <div className="flex flex-col gap-4 items-center justify-center">
             {/* Small label */}
-            <p className="text-text-soft-400 font-medium tracking-wider uppercase text-center text-subheading-xs">
+            <Badge variant='with-dot' size='medium'>
               PRIZES
-            </p>
+            </Badge>
 
 
             <div className="flex gap-8">

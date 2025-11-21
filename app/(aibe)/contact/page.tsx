@@ -13,6 +13,7 @@ import { Root as Checkbox } from "@/components/ui/checkbox";
 import { Root as Button } from "@/components/ui/button";
 import { Root as Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
+import { Badge } from '@/components/ui/badge';
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -53,9 +54,9 @@ export default function ContactPage() {
             {/* Left side - Content */}
             <div className="space-y-3">
               <div className="space-y-10">
-                <p className="text-text-soft-400 text-subheading-xs uppercase pl-2">
+                <Badge variant='with-dot' size='medium'>
                   CONTACT US
-                </p>
+                </Badge>
                 <h1 className="text-title-h1 text-text-strong-950">
                   Stay Connected!
                 </h1>

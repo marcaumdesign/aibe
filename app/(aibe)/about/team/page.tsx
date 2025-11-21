@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import CTA from '@/components/cta';
 import DirectorsGrid from '@/components/directors-grid';
 import type { Director } from '@/lib/strapi';
+import { Badge } from '@/components/ui/badge';
 
 export default function Team() {
   const [directors, setDirectors] = useState<Director[]>([]);
@@ -37,11 +38,10 @@ export default function Team() {
       {/* Header Section */}
       <section className='pt-8 pb-16'>
         <div className='mx-auto max-w-[1200px] w-full px-4'>
-          <div className='flex flex-col gap-8 text-center'>
-            <div className='inline-flex items-center justify-center px-2 py-0.5 bg-transparent text-[#99a0ae] text-subheading-xs uppercase tracking-[0.48px]'>
-              <div className='h-1 w-1 rounded-full bg-[#99a0ae] mr-2'></div>
+          <div className='flex flex-col gap-8 text-center items-center'>
+            <Badge variant='with-dot' size='medium'>
               TEAM
-            </div>
+            </Badge>
             <h1 className='text-title-h1 text-black'>
               Board of directors
             </h1>

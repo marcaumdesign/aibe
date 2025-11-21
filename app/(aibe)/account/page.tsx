@@ -8,6 +8,7 @@ import config from '../../../payload.config'
 import { Root as Button } from "@/components/ui/button";
 import { HydrateClientUser } from '../_components/HydrateClientUser'
 import { AccountForm } from './AccountForm'
+import { Badge } from '@/components/ui/badge';
 
 export default async function Account() {
   const headers = await getHeaders()
@@ -27,10 +28,10 @@ export default async function Account() {
         <section className="pt-16 pb-8 px-8 mobile:pt-8 mobile:pb-4 mobile:px-4">
           <div className="max-w-[1200px] mx-auto">
             {/* Header */}
-            <div className="mb-4">
-              <p className="text-text-soft-400 text-subheading-xs uppercase mb-4">
+            <div className="mb-4 flex flex-col gap-4">
+              <Badge variant='with-dot' size='medium'>
                 YOUR PROFILE
-              </p>
+              </Badge>
               <div className="flex justify-between items-center mobile:flex-col mobile:items-start mobile:gap-4">
                 <div>
                   <h1 className="text-text-strong-950 text-title-h1">

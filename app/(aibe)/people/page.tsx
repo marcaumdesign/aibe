@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import DirectorsGrid from '@/components/directors-grid';
 import type { Director } from '@/lib/strapi';
+import { Badge } from '@/components/ui/badge';
 
 export default function People() {
   const [directors, setDirectors] = useState<Director[]>([]);
@@ -40,11 +41,10 @@ export default function People() {
       {/* Header Section */}
       <section className='pt-16 pb-8 px-8 mobile:pt-8 mobile:pb-4 mobile:px-4'>
         <div className='mx-auto max-w-[1200px] w-full'>
-          <div className='flex flex-col gap-4 mobile:gap-4 text-center'>
-            <div className='inline-flex items-center justify-center px-2 py-0.5 bg-transparent text-text-soft-400 text-subheading-xs mobile:text-xs uppercase'>
-              <div className='h-1 w-1 rounded-full bg-text-soft-400 mr-2'></div>
+          <div className='flex flex-col gap-4 mobile:gap-4 text-center items-center'>
+            <Badge variant='with-dot' size='medium'>
               PEOPLE
-            </div>
+            </Badge>
             <h1 className='text-text-strong-950 text-title-h1 mobile:text-title-h2'>
               Board of directors
             </h1>

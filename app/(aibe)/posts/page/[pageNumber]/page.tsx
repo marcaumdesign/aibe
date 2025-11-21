@@ -8,6 +8,7 @@ import type { Post } from '@/payload-types'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 import PageClient from './page.client'
 import { notFound } from 'next/navigation'
+import { Badge } from '@/components/ui/badge'
 
 export const revalidate = 600
 
@@ -133,10 +134,10 @@ export default async function Page({ params: paramsPromise }: Args) {
       {/* Header Section */}
       <section className='pt-20 pb-16'>
         <div className='container mx-auto px-4'>
-          <div className='text-center mb-16'>
-            <p className='text-text-soft-400 text-subheading-sm uppercase mb-4'>
+          <div className='text-center mb-16 flex flex-col items-center gap-4'>
+            <Badge variant='with-dot' size='medium'>
               BLOG
-            </p>
+            </Badge>
             <h1 className='text-text-strong-950 text-title-h2'>
               Our latest news
             </h1>

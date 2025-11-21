@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { Badge } from '@/components/ui/badge';
 
 interface BlogPostHeroProps {
   post: {
@@ -60,11 +61,11 @@ export default function BlogPostHero({ post }: BlogPostHeroProps) {
         </nav>
 
         {/* Header Content */}
-        <div className='text-center mb-16 max-w-4xl mx-auto'>
-          <p className='text-subheading-sm text-text-soft-400 uppercase tracking-wider mb-4'>
+        <div className='text-center mb-16 max-w-4xl mx-auto flex flex-col items-center gap-4'>
+          <Badge variant='with-dot' size='medium'>
             BLOG
-          </p>
-          <h1 className='text-title-h1 text-text-strong-950 font-semibold mb-6'>
+          </Badge>
+          <h1 className='text-title-h1 text-text-strong-950 font-semibold'>
             {post.title}
           </h1>
           {post.description && (

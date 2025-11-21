@@ -7,6 +7,7 @@ import { getPayload } from 'payload'
 import type { Post } from '@/payload-types'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 import PageClient from './page.client'
+import { Badge } from '@/components/ui/badge'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -114,10 +115,10 @@ export default async function Page() {
       {/* Header Section */}
       <section className='pt-16 pb-8 px-8 mobile:pt-8 mobile:pb-4 mobile:px-4'>
         <div className='max-w-[1200px] mx-auto'>
-          <div className='text-center mb-4'>
-            <p className='text-text-soft-400 text-subheading-sm uppercase mb-4'>
+          <div className='text-center mb-4 flex flex-col items-center gap-4'>
+            <Badge variant='with-dot' size='medium'>
               BLOG
-            </p>
+            </Badge>
             <h1 className='text-text-strong-950 text-title-h2'>
               Our latest news
             </h1>

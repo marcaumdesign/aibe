@@ -3,6 +3,7 @@ import { PLAN_INFO } from '@/lib/stripe';
 import { MembershipContent } from './MembershipContent';
 import { FAQ } from './FAQ';
 import Image from 'next/image';
+import { Badge } from '@/components/ui/badge';
 
 const membershipBenefits = [
   {
@@ -55,11 +56,11 @@ export default async function Membership() {
       <section className="p-8 mobile:p-4 bg-white">
         <div className="mx-auto max-w-[1200px] w-full">
           <div className="flex flex-col gap-8">
-            <div className="text-center">
-              <p className="text-text-soft-400 text-subheading-xs uppercase mb-4">
+            <div className="text-center flex flex-col items-center gap-4">
+              <Badge variant='with-dot' size='medium'>
                 MEMBER BENEFITS
-              </p>
-              <h2 className="text-text-strong-950 text-title-h2 mb-4">
+              </Badge>
+              <h2 className="text-text-strong-950 text-title-h2">
                 Membership Benefits
               </h2>
               <p className="text-text-sub-600 text-paragraph-lg max-w-2xl mx-auto">

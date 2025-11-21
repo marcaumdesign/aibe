@@ -6,6 +6,7 @@ import type { Workshop } from '@/payload-types'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Badge } from '@/components/ui/badge'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -89,11 +90,11 @@ export default async function WorkshopsPage() {
       {/* Main Content */}
       <main className="max-w-[1200px] mx-auto pt-16 pb-8 px-8 mobile:pt-8 mobile:pb-4 mobile:px-4">
         {/* Workshops Section */}
-        <section className="flex flex-col gap-4">
+        <section className="flex flex-col gap-4 items-center">
           {/* Small label */}
-          <p className="text-text-soft-400 text-subheading-xs uppercase text-center">
+          <Badge variant='with-dot' size='medium'>
             WORKSHOPS and CONGRESSES
-          </p>
+          </Badge>
 
           {/* Main Title */}
           <h1 className="text-text-strong-950 text-title-h2 text-center max-w-2xl mx-auto">

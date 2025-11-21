@@ -125,7 +125,7 @@ export const AccountForm: React.FC = () => {
   }
 
   return (
-    <div className="flex gap-8">
+    <div className="flex gap-12">
       {/* Success/Error Messages */}
       {(error || success) && (
         <Message className={''} error={error} success={success} />

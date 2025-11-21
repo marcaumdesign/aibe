@@ -9,6 +9,7 @@ import { RiArrowLeftLine } from "@remixicon/react";
 import { Root as Button } from "@/components/ui/button";
 import { getMediaUrl } from '@/utilities/getMediaUrl';
 import GalleryClient from './page.client';
+import { Badge } from '@/components/ui/badge';
 
 type Args = {
   params: Promise<{
@@ -81,11 +82,11 @@ export default async function WorkshopGalleryPage({ params: paramsPromise }: Arg
         </div>
 
         {/* Page Header */}
-        <div className="mb-12">
-          <p className="text-text-soft-400 text-subheading-xs uppercase mb-2">
+        <div className="mb-12 flex flex-col gap-2">
+          <Badge variant='with-dot' size='medium'>
             {workshop.type === 'past' ? 'Past Workshop' : 'Workshop'}
-          </p>
-          <h1 className="text-text-strong-950 text-title-h1 mobile:text-title-h2 mb-4">
+          </Badge>
+          <h1 className="text-text-strong-950 text-title-h1 mobile:text-title-h2">
             {workshop.title} - Gallery
           </h1>
           <p className="text-text-sub-600 text-paragraph-lg">

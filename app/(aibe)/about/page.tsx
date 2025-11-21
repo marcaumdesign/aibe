@@ -4,6 +4,7 @@ import { RiCheckLine, RiTrophyLine, RiTeamLine, RiMapPinLine, RiSendPlaneLine, R
 import Image from "next/image";
 import Link from "next/link";
 import * as Button from "@/components/ui/button";
+import { Badge } from '@/components/ui/badge';
 
 export default function About() {
   return (
@@ -68,11 +69,9 @@ export default function About() {
           {/* Our Main Initiatives Section */}
           <div className="flex max-w-[1200px] flex-col gap-8 items-start w-full px-4">
             <div className="flex flex-col gap-6 mobile:gap-4 items-start justify-start w-full">
-              <div className="flex gap-[2px] items-center justify-start overflow-clip px-[8px] py-[2px]">
-                <div className="text-text-soft-400 text-subheading-xs uppercase">
-                  <p>Features</p>
-                </div>
-              </div>
+              <Badge variant='with-dot' size='medium'>
+                Features
+              </Badge>
               <h2 className="text-text-strong-950 text-title-h2 mobile:text-title-h4">
                 AIBE Activities              </h2>
             </div>
@@ -118,11 +117,9 @@ export default function About() {
 
 
               <div className="flex flex-col items-start justify-center w-full  mobile:pt-4 gap-4">
-                <div className="flex gap-[2px] items-center justify-center overflow-clip px-[8px] py-[2px] relative shrink-0">
-                  <div className="text-text-white-0 text-subheading-xs uppercase">
-                    <p className="text-text-white-0">About AIBE</p>
-                  </div>
-                </div>
+                <Badge variant='with-dot' size='medium' color='white'>
+                  About AIBE
+                </Badge>
                 <h1 className="text-text-white-0 text-title-h1 mobile:text-title-h3 text-center">
                   In context
                 </h1>

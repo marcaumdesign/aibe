@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { PricingCard } from './PricingCard';
 import type { User } from '@/payload-types';
+import { Badge } from '@/components/ui/badge';
 
 interface MembershipContentProps {
   user: User | null;
@@ -26,11 +27,11 @@ export function MembershipContent({ user, plans }: MembershipContentProps) {
     <section className="p-8 mobile:p-4 bg-gray-50">
       <div className="mx-auto max-w-[1200px]">
         {/* Header */}
-        <div className="text-center mb-12 mobile:mb-8">
-          <p className="text-text-soft-400 text-subheading-xs uppercase mb-4">
+        <div className="text-center mb-12 mobile:mb-8 flex flex-col items-center gap-4">
+          <Badge variant='with-dot' size='medium'>
             MEMBERSHIP OPTIONS
-          </p>
-          <h1 className="text-text-strong-950 text-title-h1 mb-4">
+          </Badge>
+          <h1 className="text-text-strong-950 text-title-h1">
             Become a Member
           </h1>
           <p className="text-text-sub-600 text-paragraph-lg max-w-2xl mx-auto">
