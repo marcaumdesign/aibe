@@ -6,6 +6,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Root as Button } from "@/components/ui/button"
 import { useAuth } from '../../_providers/Auth'
+import { revalidateHeader } from '../../_actions/revalidate'
 
 export const LogoutPage: React.FC = () => {
   const { logout } = useAuth()
@@ -16,6 +17,8 @@ export const LogoutPage: React.FC = () => {
     const performLogout = async () => {
       try {
         await logout()
+        // Revalidar o header para atualizar o estado de autenticação
+        await revalidateHeader()
         setSuccess('Logged out successfully.')
       } catch {
         setError('You are already logged out.')

@@ -11,6 +11,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Message } from '../../_components/Message'
 import { useAuth } from '../../_providers/Auth'
 import * as Label from '@/components/ui/label'
+import { revalidateHeader } from '../../_actions/revalidate'
 
 type FormData = {
   email: string
@@ -65,6 +66,8 @@ export const CreateAccountForm: React.FC = () => {
 
       try {
         await login(data)
+        // Revalidar o header para atualizar o estado de autenticação
+        await revalidateHeader()
         clearTimeout(timer)
         if (redirect) { router.push(redirect) }
         else { router.push(`/account?success=${encodeURIComponent('Account created successfully')}`) }

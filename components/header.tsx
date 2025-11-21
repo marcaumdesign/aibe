@@ -1,9 +1,21 @@
 import { HeaderClient } from './header-client';
 import { getPayload } from 'payload';
 import config from '@/payload.config';
+import { headers as getHeaders } from 'next/headers';
 
 export default async function Header() {
   const payload = await getPayload({ config });
+
+  // Verificar se o usuário está logado usando a API do Payload
+  let isLoggedIn = false;
+  try {
+    const headers = await getHeaders();
+    const { user } = await payload.auth({ headers });
+    isLoggedIn = !!user; // Converte para boolean
+  } catch (error) {
+    // Usuário não está logado
+    isLoggedIn = false;
+  }
 
   // Buscar workshops - primeiro os current, depois os past ordenados por data
   const workshops = await payload.find({
@@ -25,5 +37,5 @@ export default async function Header() {
   // Ordenar: current primeiro, depois past por data decrescente
   const sortedWorkshops = [...currentWorkshops, ...pastWorkshops];
 
-  return <HeaderClient workshops={sortedWorkshops} />;
+  return <HeaderClient workshops={sortedWorkshops} isLoggedIn={isLoggedIn} />;
 }

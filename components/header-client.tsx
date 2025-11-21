@@ -9,9 +9,10 @@ import type { Workshop } from '@/payload-types';
 
 interface HeaderClientProps {
   workshops: Workshop[];
+  isLoggedIn: boolean;
 }
 
-export function HeaderClient({ workshops }: HeaderClientProps) {
+export function HeaderClient({ workshops, isLoggedIn }: HeaderClientProps) {
   const router = useRouter();
 
   return (
@@ -86,23 +87,38 @@ export function HeaderClient({ workshops }: HeaderClientProps) {
           </div>
           {/* Desktop: Keep CTA */}
           <div className='hidden md:flex items-center gap-4'>
-            <Button.Root
-              variant='primary'
-              size='medium'
-              className='rounded-none'
-              onClick={() => router.push('/membership')}
-            >
-              Become a Member
-            </Button.Root>
-            <Button.Root
-              variant='neutral'
-              mode='stroke'
-              size='medium'
-              className='rounded-none'
-              onClick={() => router.push('/sign-in')}
-            >
-              Sign In
-            </Button.Root>
+            {isLoggedIn ? (
+              // Estado logado: apenas botão My Membership
+              <Button.Root
+                variant='primary'
+                size='medium'
+                className='rounded-none'
+                onClick={() => router.push('/account')}
+              >
+                My Membership
+              </Button.Root>
+            ) : (
+              // Estado deslogado: botões Become a Member e Sign In
+              <>
+                <Button.Root
+                  variant='primary'
+                  size='medium'
+                  className='rounded-none'
+                  onClick={() => router.push('/membership')}
+                >
+                  Become a Member
+                </Button.Root>
+                <Button.Root
+                  variant='neutral'
+                  mode='stroke'
+                  size='medium'
+                  className='rounded-none'
+                  onClick={() => router.push('/sign-in')}
+                >
+                  Sign In
+                </Button.Root>
+              </>
+            )}
           </div>
         </div>
       </header>

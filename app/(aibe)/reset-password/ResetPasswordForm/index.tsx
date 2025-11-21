@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Message } from '../../_components/Message'
 import { useAuth } from '../../_providers/Auth'
 import * as Label from '@/components/ui/label';
+import { revalidateHeader } from '../../_actions/revalidate';
 
 type FormData = {
   password: string
@@ -48,6 +49,9 @@ export const ResetPasswordForm: React.FC = () => {
 
         // Automatically log the user in after they successfully reset password
         await login({ email: json.user.email, password: data.password })
+        
+        // Revalidar o header para atualizar o estado de autenticação
+        await revalidateHeader()
 
         // Redirect them to `/account` with success message in URL
         router.push('/account?success=Password reset successfully.')

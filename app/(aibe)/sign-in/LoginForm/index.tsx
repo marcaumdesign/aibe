@@ -11,6 +11,7 @@ import { Message } from '../../_components/Message'
 import { useAuth } from '../../_providers/Auth'
 import * as Label from "@/components/ui/label";
 import { Root as Button } from "@/components/ui/button";
+import { revalidateHeader } from '../../_actions/revalidate';
 
 type FormData = {
   email: string
@@ -35,6 +36,8 @@ export const LoginForm: React.FC = () => {
     async (data: FormData) => {
       try {
         await login(data)
+        // Revalidar o header para atualizar o estado de autenticação
+        await revalidateHeader()
         if (redirect?.current) { router.push(redirect.current) }
         else { router.push('/account') }
       } catch (_) {

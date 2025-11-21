@@ -122,6 +122,33 @@ EMAIL_FROM_ADDRESS=noreply@aibe.com
    - Documentação: https://www.register.it/assistenza/
    - Suporte técnico: suporte@register.it
 
+### SecureMail.pro (⭐ Configurado no projeto AIBE)
+
+- **Host SMTP (Envio):** `authsmtp.securemail.pro`
+- **Porta SMTP:** `465`
+- **Secure:** `true`
+- **Host POP3 (Recebimento):** `pop.securemail.pro`
+- **Porta POP3:** `993`
+- **User:** `aibe@aibe.website`
+- **Pass:** Senha definida na Area Clienti
+
+#### 📍 Configuração atual do AIBE:
+
+```env
+SMTP_HOST=authsmtp.securemail.pro
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=aibe@aibe.website
+SMTP_PASS=sua_senha_da_area_clienti
+EMAIL_FROM_NAME=AIBE
+EMAIL_FROM_ADDRESS=aibe@aibe.website
+```
+
+**Observações importantes:**
+- Use `authsmtp.securemail.pro` para **envio** de emails (SMTP)
+- Use `pop.securemail.pro` para **recebimento** de emails (POP3) - não necessário para o Payload CMS
+- A senha é a que você escolheu na Area Clienti do SecureMail.pro
+
 ### Mailtrap (Para desenvolvimento/testes)
 
 - **Host:** `smtp.mailtrap.io`
