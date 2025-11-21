@@ -22,14 +22,14 @@ export default async function Logout() {
               {/* Left side - Content */}
               <div className="space-y-3">
                 <div className="space-y-10">
-                  <p className="text-gray-400 font-medium tracking-wider uppercase pl-2" style={{ fontSize: '12px', lineHeight: '16px' }}>
+                  <p className="text-text-soft-400 text-subheading-xs uppercase pl-2">
                     SESSION ENDED
                   </p>
-                  <h1 className="text-title-h1 text-black">
+                  <h1 className="text-text-strong-950 text-title-h1">
                     Already Logged Out
                   </h1>
                 </div>
-                <p className="text-gray-700 text-base leading-relaxed max-w-md">
+                <p className="text-text-sub-600 text-paragraph-md max-w-md">
                   You are currently not signed in. Sign in to access your account or explore our content.
                 </p>
               </div>

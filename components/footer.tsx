@@ -22,10 +22,10 @@ export default function Footer() {
             </Link>
 
             <div className="flex flex-col gap-2">
-              <p className="text-white text-base max-w-sm">
+              <p className="text-text-white-0 text-paragraph-md max-w-sm">
                 Associazione Italo-Brasiliana di Economia
               </p>
-              <p className="text-white text-base max-w-sm">
+              <p className="text-text-white-0 text-paragraph-md max-w-sm">
                 Associação Italo-Brasileira de Economia
               </p>
             </div>
@@ -38,7 +38,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
               >
-                <RiLinkedinFill className="size-5 text-white transition-colors" />
+                <RiLinkedinFill className="size-5 text-text-white-0 transition-colors" />
               </Link>
               <Link
                 href="https://x.com/econ_aibe"
@@ -46,7 +46,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
               >
-                <RiTwitterXFill className="size-5 text-white transition-colors" />
+                <RiTwitterXFill className="size-5 text-text-white-0 transition-colors" />
               </Link>
               <Link
                 href="https://bsky.app/profile/econaibe.bsky.social"
@@ -54,7 +54,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-center size-10 rounded-lg border border-white/20 hover:border-white hover:bg-white/10 transition-all group"
               >
-                <RiBlueskyFill className="size-5 text-white transition-colors" />
+                <RiBlueskyFill className="size-5 text-text-white-0 transition-colors" />
               </Link>
             </div>
 
@@ -64,13 +64,13 @@ export default function Footer() {
           {/* Navigation Links - 3 columns on desktop */}
           {/* About Column */}
           <div className="flex flex-col gap-4">
-            <h3 className="font-semibold text-white text-lg">About</h3>
+            <h3 className="text-text-white-0 text-title-h6 font-semibold">About</h3>
             <nav className="flex flex-col gap-3">
-              <Link href="/about" className="text-white/90 hover:text-white transition-colors text-base">
+              <Link href="/about" className="text-text-white-0/90 text-paragraph-md hover:text-text-white-0 transition-colors">
                 About AIBE
               </Link>
 
-              <Link href="/people" className="text-white/90 hover:text-white transition-colors text-base">
+              <Link href="/people" className="text-text-white-0/90 text-paragraph-md hover:text-text-white-0 transition-colors">
                 People
               </Link>
             </nav>
@@ -78,12 +78,12 @@ export default function Footer() {
 
           {/* Events & Prizes Column */}
           <div className="flex flex-col gap-4">
-            <h3 className="font-semibold text-white text-lg">Events & Prizes</h3>
+            <h3 className="text-text-white-0 text-title-h6 font-semibold">Events & Prizes</h3>
             <nav className="flex flex-col gap-3">
-              <Link href="/workshop" className="text-white/90 hover:text-white transition-colors text-base">
+              <Link href="/workshop" className="text-text-white-0/90 text-paragraph-md hover:text-text-white-0 transition-colors">
                 Workshops
               </Link>
-              <Link href="/prizes" className="text-white/90 hover:text-white transition-colors text-base">
+              <Link href="/prizes" className="text-text-white-0/90 text-paragraph-md hover:text-text-white-0 transition-colors">
                 Prizes
               </Link>
 
@@ -92,15 +92,15 @@ export default function Footer() {
 
           {/* Resources & Contact Column */}
           <div className="flex flex-col gap-4">
-            <h3 className="font-semibold text-white text-lg">Resources</h3>
+            <h3 className="text-text-white-0 text-title-h6 font-semibold">Resources</h3>
             <nav className="flex flex-col gap-3">
-              <Link href="/posts" className="text-white/90 hover:text-white transition-colors text-base">
+              <Link href="/posts" className="text-text-white-0/90 text-paragraph-md hover:text-text-white-0 transition-colors">
                 Blog
               </Link>
-              <Link href="/membership" className="text-white/90 hover:text-white transition-colors text-base">
+              <Link href="/membership" className="text-text-white-0/90 text-paragraph-md hover:text-text-white-0 transition-colors">
                 Membership
               </Link>
-              <Link href="/contact" className="text-white/90 hover:text-white transition-colors text-base">
+              <Link href="/contact" className="text-text-white-0/90 text-paragraph-md hover:text-text-white-0 transition-colors">
                 Contact & Offices
               </Link>
             </nav>
@@ -109,10 +109,10 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/20 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white text-paragraph-xs text-center md:text-left">
+          <p className="text-text-white-0 text-paragraph-xs text-center md:text-left">
             © {new Date().getFullYear()} AIBE. All Rights Reserved | Codice Fiscale: 97970970154 | <a
               href="mailto:aibe@aibe.website"
-              className="text-white hover:text-gray-300 transition-colors text-paragraph-xs font-medium"
+              className="text-text-white-0 hover:text-text-white-0/70 transition-colors text-paragraph-xs font-medium"
             >
               aibe@aibe.website
             </a>
@@ -123,25 +123,25 @@ export default function Footer() {
               href="https://www.iubenda.com/privacy-policy/33428132/cookie-policy"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:text-gray-300 transition-colors text-paragraph-xs"
+              className="text-text-white-0 hover:text-text-white-0/70 transition-colors text-paragraph-xs"
             >
               Cookie Policy
             </Link>
-            <span className="text-white/50 text-paragraph-xs">|</span>
+            <span className="text-text-white-0/50 text-paragraph-xs">|</span>
             <Link
               href="https://www.iubenda.com/privacy-policy/33428132/cookie-policy"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:text-gray-300 transition-colors text-paragraph-xs"
+              className="text-text-white-0 hover:text-text-white-0/70 transition-colors text-paragraph-xs"
             >
               Cookie Policy
             </Link>
-            <span className="text-white/50 text-paragraph-xs">|</span>
+            <span className="text-text-white-0/50 text-paragraph-xs">|</span>
             <Link
               href="https://mainnet.design"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:text-gray-300 transition-colors text-paragraph-xs"
+              className="text-text-white-0 hover:text-text-white-0/70 transition-colors text-paragraph-xs"
             >
               Powered by Mainnet™
             </Link>

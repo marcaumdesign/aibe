@@ -28,15 +28,15 @@ export default async function Account() {
           <div className="max-w-7xl mx-auto">
             {/* Header */}
             <div className="mb-12">
-              <p className="text-gray-400 font-medium tracking-wider uppercase mb-4" style={{ fontSize: '12px', lineHeight: '16px' }}>
+              <p className="text-text-soft-400 text-subheading-xs uppercase mb-4">
                 YOUR PROFILE
               </p>
               <div className="flex justify-between items-center mobile:flex-col mobile:items-start mobile:gap-4">
                 <div>
-                  <h1 className="text-title-h1 text-black">
+                  <h1 className="text-text-strong-950 text-title-h1">
                     Account Settings
                   </h1>
-                  <p className="text-gray-700 text-base leading-relaxed mt-2">
+                  <p className="text-text-sub-600 text-paragraph-md mt-2">
                     Manage your profile information and subscription plan
                   </p>
                 </div>

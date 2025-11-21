@@ -30,7 +30,7 @@ export function HeaderClient({ workshops, isLoggedIn }: HeaderClientProps) {
         </Link>
 
         {/* Navigation (desktop) */}
-        <nav className='text-lg hidden items-center gap-4 font-medium text-black md:flex'>
+        <nav className='text-lg hidden items-center gap-4 font-medium text-text-strong-950 md:flex'>
           <Link href='/' className='transition-colors hover:text-primary-base'>
             Home
           </Link>
@@ -49,14 +49,14 @@ export function HeaderClient({ workshops, isLoggedIn }: HeaderClientProps) {
                   <Link
                     key={workshop.id}
                     href={`/workshops/${workshop.slug}`}
-                    className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
+                    className='block px-4 py-2 text-text-sub-600 text-paragraph-sm hover:bg-gray-50 hover:text-primary-base transition-colors'
                   >
                     {workshop.title}
                   </Link>
                 ))}
                 <Link
                   href='/workshops'
-                  className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-base transition-colors'
+                  className='block px-4 py-2 text-text-sub-600 text-paragraph-sm hover:bg-gray-50 hover:text-primary-base transition-colors'
                 >
                   Last Events
                 </Link>

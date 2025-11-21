@@ -23,14 +23,14 @@ export default async function RecoverPassword() {
             {/* Left side - Content */}
             <div className="space-y-3">
               <div className="space-y-10">
-                <p className="text-gray-400 font-medium tracking-wider uppercase pl-2" style={{ fontSize: '12px', lineHeight: '16px' }}>
+                <p className="text-text-soft-400 text-subheading-xs uppercase pl-2">
                   RESET PASSWORD
                 </p>
-                <h1 className="text-title-h1 text-black">
+                <h1 className="text-text-strong-950 text-title-h1">
                   Recover Your Account
                 </h1>
               </div>
-              <p className="text-gray-700 text-base leading-relaxed max-w-md">
+              <p className="text-text-sub-600 text-paragraph-md max-w-md">
                 Enter your email address and we&apos;ll send you instructions on how to reset your password securely.
               </p>
               <div className="mt-8 space-y-4">

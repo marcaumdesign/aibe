@@ -56,13 +56,13 @@ export default async function Membership() {
         <div className="mx-auto max-w-7xl w-full">
           <div className="flex flex-col gap-12 mobile:gap-8">
             <div className="text-center">
-              <p className="text-gray-400 font-medium tracking-wider uppercase mb-4" style={{ fontSize: '12px', lineHeight: '16px' }}>
+              <p className="text-text-soft-400 text-subheading-xs uppercase mb-4">
                 MEMBER BENEFITS
               </p>
-              <h2 className="text-title-h2 text-black mb-4">
+              <h2 className="text-text-strong-950 text-title-h2 mb-4">
                 Membership Benefits
               </h2>
-              <p className="text-paragraph-lg text-gray-600 max-w-2xl mx-auto">
+              <p className="text-text-sub-600 text-paragraph-lg max-w-2xl mx-auto">
                 Join our community and unlock exclusive benefits designed for researchers and professionals
               </p>
             </div>
@@ -81,10 +81,10 @@ export default async function Membership() {
                           className="w-6 h-6 brightness-0 invert"
                         />
                       </div>
-                      <h3 className="text-title-h5 text-black">
+                      <h3 className="text-text-strong-950 text-title-h5">
                         {benefit.title}
                       </h3>
-                      <p className="text-paragraph-md text-gray-600">
+                      <p className="text-text-sub-600 text-paragraph-md">
                         {benefit.description}
                       </p>
                     </div>

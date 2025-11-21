@@ -6,7 +6,7 @@ import React, { useCallback, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Message } from '../../_components/Message'
 import { useAuth } from '../../_providers/Auth'
 import * as Label from "@/components/ui/label";
@@ -50,15 +50,9 @@ export const LoginForm: React.FC = () => {
   return (
     <Card className="w-full shadow-lg border-0">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <CardHeader>
-          <CardTitle className="text-title-h3 mobile:text-title-h4 text-text-strong-950">Sign In</CardTitle>
-          <CardDescription className="text-paragraph-md mobile:text-paragraph-sm text-text-sub-600">
-            Enter your email and password to access your account.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="grid gap-6 mobile:gap-4">
+        <CardContent className="grid gap-6 mobile:gap-4 pt-16">
           {error && <Message className={''} error={error} />}
-          
+
           <div className="grid gap-2">
             <Label.Root htmlFor="email" className="text-label-sm text-text-strong-950">
               Email
