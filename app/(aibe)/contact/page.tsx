@@ -2,6 +2,8 @@
 
 import {
   RiLinkedinFill,
+  RiNewsLine,
+  RiSmartphoneLine,
   RiTwitterXFill,
 } from "@remixicon/react";
 import { useState } from "react";
@@ -202,13 +204,7 @@ export default function ContactPage() {
             {/* Newsletter Submissions card */}
             <div className="p-6 bg-gray-100 border-0 shadow-none">
               <div className="flex justify-start mb-4">
-                <Image
-                  src="/images/news-line.png"
-                  alt="Newsletter icon"
-                  width={32}
-                  height={32}
-                  className="w-6 h-6"
-                />
+                <RiNewsLine className="w-8 h-8 text-primary-base" />
               </div>
               <h4 className="text-primary-base text-title-h4 mb-2 text-left whitespace-nowrap">
                 Newsletter Submissions
@@ -221,13 +217,7 @@ export default function ContactPage() {
             {/* Follow Us card */}
             <div className="p-6 bg-gray-100 border-0 shadow-none">
               <div className="flex justify-start mb-4">
-                <Image
-                  src="/images/smartphone-line.png"
-                  alt="Smartphone icon"
-                  width={32}
-                  height={32}
-                  className="w-8 h-8"
-                />
+                <RiSmartphoneLine className="w-8 h-8 text-primary-base" />
               </div>
               <h4 className="text-primary-base text-title-h4 mb-2 text-left">
                 Follow Us
