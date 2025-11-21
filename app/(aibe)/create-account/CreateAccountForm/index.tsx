@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import React, { useCallback, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
@@ -20,6 +20,7 @@ type FormData = {
   department: string
   universityCompany: string
   title: string
+  donationAmount: number
   password: string
   passwordConfirm: string
 }
@@ -28,7 +29,6 @@ export const CreateAccountForm: React.FC = () => {
   const searchParams = useSearchParams()
   const allParams = searchParams.toString() ? `?${searchParams.toString()}` : ''
   const { login } = useAuth()
-  const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<null | string>(null)
 
@@ -44,6 +44,8 @@ export const CreateAccountForm: React.FC = () => {
 
   const onSubmit = useCallback(
     async (data: FormData) => {
+      setLoading(true)
+
       const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users`, {
         body: JSON.stringify(data),
         headers: {
@@ -55,28 +57,38 @@ export const CreateAccountForm: React.FC = () => {
       if (!response.ok) {
         const message = response.statusText || 'There was an error creating the account.'
         setError(message)
+        setLoading(false)
         return
       }
-
-      const redirect = searchParams.get('redirect')
-
-      const timer = setTimeout(() => {
-        setLoading(true)
-      }, 1000)
 
       try {
         await login(data)
         // Revalidar o header para atualizar o estado de autenticação
         await revalidateHeader()
-        clearTimeout(timer)
-        if (redirect) { router.push(redirect) }
-        else { router.push(`/account?success=${encodeURIComponent('Account created successfully')}`) }
-      } catch {
-        clearTimeout(timer)
-        setError('There was an error with the credentials provided. Please try again.')
+
+        // Create Stripe checkout session
+        const checkoutResponse = await fetch('/api/stripe/create-checkout-session', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+
+        const checkoutData = await checkoutResponse.json()
+
+        if (!checkoutResponse.ok) {
+          throw new Error(checkoutData.error || 'Error creating checkout session')
+        }
+
+        // Redirect to Stripe Checkout
+        window.location.href = checkoutData.url
+      } catch (error) {
+        setLoading(false)
+        const errorMessage = error instanceof Error ? error.message : 'There was an error with the credentials provided. Please try again.'
+        setError(errorMessage)
       }
     },
-    [login, router, searchParams],
+    [login],
   )
 
   return (
@@ -199,6 +211,46 @@ export const CreateAccountForm: React.FC = () => {
             )}
           </div>
 
+          {/* Donation Amount */}
+          <div className="grid gap-2">
+            <Label.Root htmlFor="donationAmount" className="text-label-sm text-text-strong-950">
+              Membership Donation Amount (€) <span className="text-red-500">*</span>
+            </Label.Root>
+            <Input
+              id="donationAmount"
+              type="number"
+              step="0.01"
+              min="2"
+              placeholder="2.00"
+              hasError={!!errors.donationAmount}
+              {...register("donationAmount", {
+                required: "Donation amount is required",
+                min: {
+                  value: 2,
+                  message: "Minimum donation amount is €2.00"
+                },
+                valueAsNumber: true
+              })}
+              className="h-12 mobile:h-10 border border-gray-200 rounded-lg focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 transition-all px-4 py-3"
+            />
+            {errors.donationAmount && (
+              <span className="text-sm text-red-500">{errors.donationAmount.message}</span>
+            )}
+            <p className="text-sm text-text-sub-600">
+              minimum €2.00, no maximum limit
+            </p>
+          </div>
+
+          {/* Payment Notice */}
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <p className="text-sm text-blue-900 font-medium mb-1">
+              Next step: Payment
+            </p>
+            <p className="text-sm text-blue-800">
+              After creating your account, you&apos;ll be redirected to complete your membership payment securely via Stripe.
+            </p>
+          </div>
+
           {/* Password */}
           <div className="grid gap-2">
             <Label.Root htmlFor="password" className="text-label-sm text-text-strong-950">
@@ -253,7 +305,7 @@ export const CreateAccountForm: React.FC = () => {
             className="w-full h-12 mobile:h-10 rounded-none"
             disabled={loading}
           >
-            {loading ? 'Creating Account...' : 'Create Account'}
+            {loading ? 'Creating Account...' : 'Create Account and Continue to Payment'}
           </Button>
           <div className="text-center text-paragraph-sm text-text-sub-600">
             Already have an account?{' '}

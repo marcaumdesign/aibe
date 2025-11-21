@@ -110,11 +110,13 @@ export interface Config {
     header: Header;
     footer: Footer;
     'highlight-banner': HighlightBanner;
+    'payload-jobs-stats': PayloadJobsStat;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     'highlight-banner': HighlightBannerSelect<false> | HighlightBannerSelect<true>;
+    'payload-jobs-stats': PayloadJobsStatsSelect<false> | PayloadJobsStatsSelect<true>;
   };
   locale: null;
   user: User & {
@@ -122,6 +124,7 @@ export interface Config {
   };
   jobs: {
     tasks: {
+      'expire-memberships': TaskExpireMemberships;
       schedulePublish: TaskSchedulePublish;
       inline: {
         input: unknown;
@@ -421,6 +424,10 @@ export interface User {
   department: string;
   universityCompany: string;
   title: 'student' | 'phd_student' | 'post_doc' | 'assistant_professor' | 'associate_professor' | 'full_professor';
+  /**
+   * Membership donation amount in euros (minimum €2.00)
+   */
+  donationAmount: number;
   roles?: ('admin' | 'user')[] | null;
   /**
    * Membership status of the user
@@ -1055,7 +1062,7 @@ export interface PayloadJob {
     | {
         executedAt: string;
         completedAt: string;
-        taskSlug: 'inline' | 'schedulePublish';
+        taskSlug: 'inline' | 'expire-memberships' | 'schedulePublish';
         taskID: string;
         input?:
           | {
@@ -1088,10 +1095,19 @@ export interface PayloadJob {
         id?: string | null;
       }[]
     | null;
-  taskSlug?: ('inline' | 'schedulePublish') | null;
+  taskSlug?: ('inline' | 'expire-memberships' | 'schedulePublish') | null;
   queue?: string | null;
   waitUntil?: string | null;
   processing?: boolean | null;
+  meta?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1480,6 +1496,7 @@ export interface UsersSelect<T extends boolean = true> {
   department?: T;
   universityCompany?: T;
   title?: T;
+  donationAmount?: T;
   roles?: T;
   subscriptionPlan?: T;
   stripeCustomerId?: T;
@@ -1808,6 +1825,7 @@ export interface PayloadJobsSelect<T extends boolean = true> {
   queue?: T;
   waitUntil?: T;
   processing?: T;
+  meta?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1927,6 +1945,24 @@ export interface HighlightBanner {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-jobs-stats".
+ */
+export interface PayloadJobsStat {
+  id: number;
+  stats?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -1987,6 +2023,24 @@ export interface HighlightBannerSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-jobs-stats_select".
+ */
+export interface PayloadJobsStatsSelect<T extends boolean = true> {
+  stats?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TaskExpire-memberships".
+ */
+export interface TaskExpireMemberships {
+  input?: unknown;
+  output?: unknown;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

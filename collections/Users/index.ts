@@ -134,6 +134,16 @@ export const Users: CollectionConfig = {
       ],
     },
     {
+      name: 'donationAmount',
+      type: 'number',
+      required: true,
+      label: 'Membership Donation Amount (€)',
+      min: 2,
+      admin: {
+        description: 'Membership donation amount in euros (minimum €2.00)',
+      },
+    },
+    {
       name: 'roles',
       type: 'select',
       hasMany: true,

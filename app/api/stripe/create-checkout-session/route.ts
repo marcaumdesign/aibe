@@ -13,36 +13,32 @@ export async function POST(req: NextRequest) {
 
     if (!user) {
       return NextResponse.json(
-        { error: 'Você precisa estar logado para assinar' },
+        { error: 'You need to be logged in to subscribe' },
         { status: 401 },
       );
     }
 
-    // Parse do body
-    const body = await req.json();
-    const { priceId } = body;
-
-    // Validar priceId
-    if (!priceId || !Object.values(STRIPE_PRICES).includes(priceId)) {
-      return NextResponse.json(
-        { error: 'Plano inválido selecionado' },
-        { status: 400 },
-      );
-    }
-
-    // Verificar se já tem assinatura ativa
-    if (
-      user.subscriptionStatus === 'active' ||
-      user.subscriptionStatus === 'trialing'
-    ) {
+    // Verificar se já tem membership ativa
+    if (user.subscriptionStatus === 'active') {
       return NextResponse.json(
         {
-          error:
-            'Você já tem uma assinatura ativa. Use o portal de cobrança para alterá-la.',
+          error: 'You already have an active membership',
         },
         { status: 400 },
       );
     }
+
+    // Verificar se o usuário tem donationAmount definido
+    if (!user.donationAmount || user.donationAmount < 2) {
+      return NextResponse.json(
+        { error: 'Invalid donation amount. Minimum is €2.00' },
+        { status: 400 },
+      );
+    }
+
+    // Calcular data de expiração (31 de dezembro do ano atual)
+    const currentYear = new Date().getFullYear();
+    const expirationDate = new Date(currentYear, 11, 31, 23, 59, 59); // 31/12/YYYY às 23:59:59
 
     // Criar ou recuperar customer no Stripe
     const customerId = user.stripeCustomerId
@@ -69,26 +65,33 @@ export async function POST(req: NextRequest) {
 
     const baseUrl = getServerSideURL();
 
-    // Criar sessão de checkout
+    // Converter donationAmount para centavos (Stripe usa centavos)
+    const amountInCents = Math.round(user.donationAmount * 100);
+
+    // Criar sessão de checkout com pagamento único
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
-      mode: 'subscription',
+      mode: 'payment', // One-time payment
       payment_method_types: ['card'],
       line_items: [
         {
-          price: priceId,
+          price_data: {
+            currency: 'eur',
+            unit_amount: amountInCents,
+            product_data: {
+              name: 'AIBE Membership',
+              description: `Annual membership valid until December 31, ${currentYear}`,
+            },
+          },
           quantity: 1,
         },
       ],
-      success_url: `${baseUrl}/account?success=true&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}/membership?canceled=true`,
+      success_url: `${baseUrl}/account?success=${encodeURIComponent('Membership activated successfully! Welcome to AIBE.')}&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${baseUrl}/membership?canceled=true&message=${encodeURIComponent('Payment was canceled. You can try again when ready.')}`,
       metadata: {
         userId: user.id.toString(),
-      },
-      subscription_data: {
-        metadata: {
-          userId: user.id.toString(),
-        },
+        membershipExpirationDate: expirationDate.toISOString(),
+        donationAmount: user.donationAmount.toString(),
       },
       // Permitir códigos promocionais
       allow_promotion_codes: true,

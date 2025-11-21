@@ -39,8 +39,9 @@ export function PricingCard({
       return;
     }
 
-    if (!stripePriceId) {
-      return; // Free plan
+    // For free plan, do nothing
+    if (price === 0) {
+      return;
     }
 
     setLoading(true);
@@ -51,9 +52,6 @@ export function PricingCard({
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          priceId: stripePriceId,
-        }),
       });
 
       const data = await response.json();
@@ -129,7 +127,7 @@ export function PricingCard({
         size="medium"
         className="w-full rounded-none h-12"
         onClick={handleCheckout}
-        disabled={loading || isCurrent || !stripePriceId}
+        disabled={loading || isCurrent || price === 0}
       >
         {loading ? (
           <span className="flex items-center justify-center gap-2">
@@ -138,16 +136,16 @@ export function PricingCard({
           </span>
         ) : isCurrent ? (
           'Current Plan'
-        ) : stripePriceId ? (
-          'Subscribe Now'
+        ) : price > 0 ? (
+          'Become a Member'
         ) : (
-          'Continue Free'
+          'Current Plan'
         )}
       </Button>
 
-      {stripePriceId && !isCurrent && (
+      {price > 0 && !isCurrent && (
         <p className="mt-4 text-center text-xs text-gray-500">
-          Cancel anytime
+          Valid until December 31st of the current year
         </p>
       )}
     </div>

@@ -110,8 +110,31 @@ async function handleCheckoutCompleted(
     return;
   }
 
-  // Buscar subscription se houver
-  if (session.subscription) {
+  // Verificar se é pagamento único (one-time payment)
+  if (session.mode === 'payment') {
+    // Processar pagamento único de membership
+    const membershipExpirationDate = session.metadata?.membershipExpirationDate;
+    
+    if (!membershipExpirationDate) {
+      console.error('membershipExpirationDate não encontrado nos metadados');
+      return;
+    }
+
+    await payload.update({
+      collection: 'users',
+      id: userId,
+      data: {
+        subscriptionPlan: 'premium',
+        subscriptionStatus: 'active',
+        subscriptionCurrentPeriodEnd: membershipExpirationDate,
+        stripeCustomerId: session.customer as string,
+      },
+    });
+
+    console.log(`Membership ativada para usuário ${userId} até ${membershipExpirationDate}`);
+  }
+  // Buscar subscription se houver (para compatibilidade com o modelo antigo)
+  else if (session.subscription) {
     const subscription = await stripe.subscriptions.retrieve(
       session.subscription as string,
     );

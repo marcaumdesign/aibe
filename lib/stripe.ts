@@ -38,16 +38,16 @@ export const PLAN_INFO = {
     name: 'Non-member',
     description: 'Access to public resources and content',
     price: 0,
-    currency: 'USD',
+    currency: 'EUR',
     interval: null,
     features: ['Access to public posts', 'Weekly newsletter', 'Open events'],
   },
   premium: {
     name: 'Member',
     description: 'Full access to academic resources and events',
-    price: 29.9,
-    currency: 'USD',
-    interval: 'month' as const,
+    price: 2,
+    currency: 'EUR',
+    interval: null,
     stripePriceId: STRIPE_PRICES.premium,
     features: [
       'Everything from Non-member',
@@ -55,6 +55,7 @@ export const PLAN_INFO = {
       'Exclusive workshops',
       'Academic community access',
       'Networking with members',
+      'Valid until December 31st of the current year',
     ],
   },
 } as const;

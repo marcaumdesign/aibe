@@ -111,6 +111,13 @@ export default buildConfig({
         return authHeader === `Bearer ${process.env.CRON_SECRET}`;
       },
     },
-    tasks: [],
+    tasks: [
+      {
+        slug: 'expire-memberships',
+        handler: './jobs/expireMemberships.ts',
+        schedule: '0 0 * * *', // Run daily at midnight
+        label: 'Expire Memberships',
+      },
+    ],
   },
 });

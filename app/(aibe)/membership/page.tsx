@@ -42,6 +42,8 @@ export default async function Membership() {
     {
       planId: 'premium' as const,
       ...PLAN_INFO.premium,
+      // Use user's donation amount if they have one, otherwise use default
+      price: user?.donationAmount || PLAN_INFO.premium.price,
       features: [...PLAN_INFO.premium.features], // Convert readonly to mutable
     },
   ];
