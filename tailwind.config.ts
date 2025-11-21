@@ -601,6 +601,8 @@ const config = {
       screens: {
         // Mobile styles will apply on viewports up to 900px wide
         mobile: { max: '900px' },
+        // Desktop/tablet styles will apply from 900px and up
+        md: '900px',
       },
       fontFamily: {
         sans: ['var(--font-sans)'],

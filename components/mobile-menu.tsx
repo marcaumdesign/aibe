@@ -36,7 +36,7 @@ export default function MobileMenu({ workshops, isLoggedIn }: MobileMenuProps) {
           <nav className='flex flex-col gap-1 text-label-md'>
             {/* Main Navigation */}
             <Item href='/' active={pathname === '/'}>Home</Item>
-            <Item href='/about' active={pathname === '/about'}>About US</Item>
+            <Item href='/about' active={pathname === '/about'}>About Us</Item>
             <Item href='/people' active={pathname === '/people'}>People</Item>
 
             {/* Workshop Section with subitems */}
@@ -46,8 +46,8 @@ export default function MobileMenu({ workshops, isLoggedIn }: MobileMenuProps) {
               </div>
               <div className='flex flex-col gap-1 pl-4'>
                 {workshops.map((workshop) => (
-                  <SubItem 
-                    key={workshop.id} 
+                  <SubItem
+                    key={workshop.id}
                     href={`/workshops/${workshop.slug}`}
                     active={pathname === `/workshops/${workshop.slug}`}
                   >
@@ -119,9 +119,8 @@ function Item({ href, children, active }: { href: string; children: React.ReactN
     <Drawer.Close asChild>
       <Link
         href={href}
-        className={`block px-4 py-3 hover:bg-gray-50 hover:text-primary-base transition-colors rounded-md font-medium ${
-          active ? 'text-primary-base' : 'text-gray-700'
-        }`}
+        className={`block px-4 py-3 hover:bg-gray-50 hover:text-primary-base transition-colors rounded-md font-medium ${active ? 'text-primary-base' : 'text-gray-700'
+          }`}
       >
         {children}
       </Link>
@@ -134,9 +133,8 @@ function SubItem({ href, children, active }: { href: string; children: React.Rea
     <Drawer.Close asChild>
       <Link
         href={href}
-        className={`block px-4 py-2 hover:bg-gray-50 hover:text-primary-base transition-colors rounded-md text-sm ${
-          active ? 'text-primary-base' : 'text-gray-600'
-        }`}
+        className={`block px-4 py-2 hover:bg-gray-50 hover:text-primary-base transition-colors rounded-md text-sm ${active ? 'text-primary-base' : 'text-gray-600'
+          }`}
       >
         {children}
       </Link>
