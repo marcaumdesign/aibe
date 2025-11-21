@@ -241,7 +241,7 @@ export const CreateAccountForm: React.FC = () => {
             </p>
           </div>
 
-          {/* Payment Notice */}
+          {/* Payment Notice
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
             <p className="text-sm text-blue-900 font-medium mb-1">
               Next step: Payment
@@ -249,7 +249,7 @@ export const CreateAccountForm: React.FC = () => {
             <p className="text-sm text-blue-800">
               After creating your account, you&apos;ll be redirected to complete your membership payment securely via Stripe.
             </p>
-          </div>
+          </div> */}
 
           {/* Password */}
           <div className="grid gap-2">
