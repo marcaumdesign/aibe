@@ -24,9 +24,9 @@ export default async function CreateAccount() {
     <div className="bg-white">
       <section className="pt-16 pb-8 px-8 mobile:pt-8 mobile:pb-4 mobile:px-4">
         <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-2 mobile:grid-cols-1 gap-4 justify-start items-start">
+          <div className="grid grid-cols-2 mobile:grid-cols-1 gap-8 justify-start items-start">
             {/* Left side - Content */}
-            <div className="space-y-3">
+            <div className="flex flex-col gap-8">
               <div className="space-y-10">
                 <Badge variant='with-dot' size='medium'>
                   JOIN US
@@ -36,7 +36,9 @@ export default async function CreateAccount() {
                 </h1>
               </div>
               <p className="text-text-sub-600 text-paragraph-md max-w-md">
-                Join the Italian-Brazilian Association of Economists and connect with researchers, access exclusive content, and participate in our events.
+                Become a member of AIBE for 1 year by making a free donation of at least 2 euros!
+
+
               </p>
               <div className="mt-8 space-y-4">
                 <div className="flex items-start gap-3">
@@ -61,6 +63,7 @@ export default async function CreateAccount() {
                   </div>
                 </div>
               </div>
+
               <div className="flex justify-start mb-8">
                 <div className="inline-flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg bg-white shadow-sm">
                   <span className="text-text-sub-600 text-paragraph-sm">Powered by</span>
@@ -75,6 +78,11 @@ export default async function CreateAccount() {
                   </svg>
                 </div>
               </div>
+
+              <p className="text-text-sub-600 text-paragraph-xs">To register and pay, click on the link below. You will be asked to complete and submit the AIBE Membership Form. You will next be directed to a payment page. Once payment is complete, you will receive a payment confirmation email, which contains a unique Member ID and serves as proof of membership. Membership lasts until 31 December of each year.</p>
+
+
+
             </div>
 
             {/* Right side - Registration Form */}
@@ -84,7 +92,7 @@ export default async function CreateAccount() {
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   )
 }

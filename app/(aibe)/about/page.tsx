@@ -15,7 +15,7 @@ export default function About() {
       {/* Main Content Section - Two Columns */}
       <div className="flex flex-col items-center justify-center w-full ">
         <div className=" flex flex-col gap-16 items-center justify-start pt-[64px] mobile:pt-8 w-full">
-          <div className="flex max-w-[1200px] flex-row mobile:flex-col gap-8 items-center justify-start w-full">
+          <div className="flex max-w-[1200px] px-8 mobile:px-4 flex-row mobile:flex-col gap-8 items-center justify-start w-full">
             {/* Left Column - Text Content */}
             <div className="flex flex-col gap-8 mobile:gap-6 items-start justify-start flex-1">
               {/* About AIBE Section */}
@@ -55,10 +55,10 @@ export default function About() {
             {/* Right Column - Image */}
             <div className="sticky top-[100px] w-full flex-1 min-w-[300px] h-[400px] mobile:h-[350px]">
               <Image
-                src='/images/brasil-italia.png'
+                src='/images/about-hero.png'
                 alt='Brasil e Italia'
                 fill
-                className='object-contain'
+                className='object-cover'
               />
             </div>
           </div>
@@ -67,7 +67,7 @@ export default function About() {
 
 
           {/* Our Main Initiatives Section */}
-          <div className="flex max-w-[1200px] flex-col gap-8 items-start w-full px-4">
+          <div className="flex max-w-[1200px] flex-col gap-8 items-start w-full px-8 mobile:px-4">
             <div className="flex flex-col gap-6 mobile:gap-4 items-start justify-start w-full">
               <Badge variant='with-dot' size='medium'>
                 Features
@@ -111,16 +111,16 @@ export default function About() {
           </div>
 
           {/* In context Section */}
-          <div className="bg-primary-base  w-full flex flex-col gap-4 items-center justify-center">
+          <div className="w-full flex flex-col gap-4 items-center justify-center">
             {/* Container */}
-            <div className="max-w-[1200px] p-8 mobile:p-4 w-full flex flex-col gap-4 items-center justify-center">
+            <div className="max-w-[1200px] bg-primary-alpha-10 p-8 mobile:p-4 w-full flex flex-col gap-4 items-center justify-center">
 
 
               <div className="flex flex-col items-start justify-center w-full  mobile:pt-4 gap-4">
-                <Badge variant='with-dot' size='medium' color='white'>
+                <Badge variant='with-dot' size='medium' color='gray'>
                   About AIBE
                 </Badge>
-                <h1 className="text-text-white-0 text-title-h1 mobile:text-title-h3 text-center">
+                <h1 className="text-primary-base text-title-h1 mobile:text-title-h3 text-center">
                   In context
                 </h1>
               </div>
@@ -134,53 +134,53 @@ export default function About() {
 
                     <div className="flex gap-4 mobile:gap-3 items-start">
                       <div className="flex-shrink-0 mt-1">
-                        <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-white-0" />
+                        <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-strong-950" />
                       </div>
-                      <div className="text-text-white-0 text-paragraph-lg mobile:text-paragraph-md">
+                      <div className="text-text-strong-950 text-paragraph-lg mobile:text-paragraph-md">
                         <p>Strong commercial, historical and cultural links between Italy and Brazil.</p>
                       </div>
                     </div>
 
                     <div className="flex gap-4 mobile:gap-3 items-start">
                       <div className="flex-shrink-0 mt-1">
-                        <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-white-0" />
+                        <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-strong-950" />
                       </div>
-                      <div className="text-text-white-0 text-paragraph-lg mobile:text-paragraph-md">
+                      <div className="text-text-strong-950 text-paragraph-lg mobile:text-paragraph-md">
                         <p>A bilateral Agreement on Scientific and Technological Cooperation in force since December 1998.</p>
                       </div>
                     </div>
 
                     <div className="flex gap-4 mobile:gap-3 items-start">
                       <div className="flex-shrink-0 mt-1">
-                        <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-white-0" />
+                        <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-strong-950" />
                       </div>
-                      <div className="text-text-white-0 text-paragraph-lg mobile:text-paragraph-md">
+                      <div className="text-text-strong-950 text-paragraph-lg mobile:text-paragraph-md">
                         <p>Joint calls for project funding.</p>
                       </div>
                     </div>
 
                     <div className="flex gap-4 mobile:gap-3 items-start">
                       <div className="flex-shrink-0 mt-1">
-                        <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-white-0" />
+                        <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-strong-950" />
                       </div>
-                      <div className="text-text-white-0 text-paragraph-lg mobile:text-paragraph-md">
+                      <div className="text-text-strong-950 text-paragraph-lg mobile:text-paragraph-md">
                         <p>Fast-growing community of Brazilians in the Italian academic system.</p>
                       </div>
                     </div>
 
                     <div className="flex gap-4 mobile:gap-3 items-start">
                       <div className="flex-shrink-0 mt-1">
-                        <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-white-0" />
+                        <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-strong-950" />
                       </div>
-                      <div className="text-text-white-0 text-paragraph-lg mobile:text-paragraph-md">
+                      <div className="text-text-strong-950 text-paragraph-lg mobile:text-paragraph-md">
                         <p>Growing number of co-authorships between Brazilian and Italian economists.</p>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="relative w-[500px]  aspect-square mobile:w-[200px]  flex-shrink-0">
+                <div className="relative w-[400px]  aspect-square mobile:w-[200px]  flex-shrink-0">
                   <Image
-                    src='/images/icon-logo.svg'
+                    src='/images/brasil-italia-branco.png'
                     alt='AIBE Logo'
                     fill
                     className='object-contain'
