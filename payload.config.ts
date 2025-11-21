@@ -115,7 +115,12 @@ export default buildConfig({
       {
         slug: 'expire-memberships',
         handler: './jobs/expireMemberships.ts',
-        schedule: '0 0 * * *', // Run daily at midnight
+        schedule: [
+          {
+            cron: '0 0 * * *', // Run daily at midnight
+            queue: 'default',
+          },
+        ],
         label: 'Expire Memberships',
       },
     ],

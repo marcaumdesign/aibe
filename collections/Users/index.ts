@@ -137,6 +137,7 @@ export const Users: CollectionConfig = {
       name: 'donationAmount',
       type: 'number',
       required: true,
+      defaultValue: 2,
       label: 'Membership Donation Amount (€)',
       min: 2,
       admin: {

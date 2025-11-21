@@ -44,13 +44,32 @@ export const expireMemberships: PayloadHandler = async ({ payload }) => {
       console.log(`Expired membership for user ${user.id} (${user.email})`);
     }
 
-    return {
-      success: true,
-      message: `Processed ${expiredUsers.docs.length} expired memberships`,
-    };
+    return new Response(
+      JSON.stringify({
+        success: true,
+        message: `Processed ${expiredUsers.docs.length} expired memberships`,
+      }),
+      {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
   } catch (error) {
     console.error('Error expiring memberships:', error);
-    throw error;
+    return new Response(
+      JSON.stringify({
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error',
+      }),
+      {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
   }
 };
 

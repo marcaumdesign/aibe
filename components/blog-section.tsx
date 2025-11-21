@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import * as Button from '@/components/ui/button';
-import { Badge } from '@/globals/HighlightBanner/Component';
+import { Badge } from '@/components/ui/badge';
 
 interface NewsItem {
   id: string | number;
