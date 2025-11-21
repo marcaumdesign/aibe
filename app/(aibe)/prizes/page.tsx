@@ -332,13 +332,12 @@ export default function EventsPage() {
 
             {/* Imagem à direita (pequena) */}
             <div className="flex md:justify-end">
-              <div className="relative w-full max-w-[720px] h-[20px] md:max-w-[820px] md:h-[500px] lg:max-w-[960px] lg:h-[560px]">
+              <div className="relative w-full max-w-[720px] h-[220px] sm:h-[260px] md:max-w-[820px] md:h-[500px] lg:max-w-[960px] lg:h-[560px]">
                 <Image
                   src="/images/WORKSHOP%20FOTO%209.jpeg"
                   alt="Official Launch of the Prize"
-                  width={960}
-                  height={560}
-                  className="w-full h-full object-cover shadow-sm"
+                  fill
+                  className="object-cover shadow-sm"
                 />
               </div>
             </div>
