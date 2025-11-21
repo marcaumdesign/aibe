@@ -115,7 +115,7 @@ export default async function Page() {
       {/* Header Section */}
       <section className='pt-16 pb-8 px-8 mobile:pt-8 mobile:pb-4 mobile:px-4'>
         <div className='max-w-[1200px] mx-auto'>
-          <div className='text-center mb-4 flex flex-col items-center gap-4'>
+          <div className='text-center mb-8 flex flex-col items-center gap-4'>
             <Badge variant='with-dot' size='medium'>
               BLOG
             </Badge>
