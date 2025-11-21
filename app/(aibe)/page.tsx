@@ -140,7 +140,7 @@ export default async function Home() {
                   Associazione Italo-Brasiliana di Economia
                 </h3>
 
-                <p className='text-label-lg text-text-sub-600'>
+                <p className='text-paragraph-lg text-text-sub-600'>
                   We are a bilateral, non-profit association that promotes scientific collaboration between Italian and Brazilian economists.
 
 

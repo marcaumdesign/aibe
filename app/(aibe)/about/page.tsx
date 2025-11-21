@@ -60,6 +60,52 @@ export default function About() {
                 fill
                 className='object-cover'
               />
+              <div
+                className='absolute z-10 block mobile:hidden'
+                style={{
+                  left: '-20px',
+                  top: '-20px'
+                }}
+              >
+                <div className='relative w-16 h-16'>
+                  <div className='absolute inset-0 rounded-full overflow-hidden z-[100]'>
+                    <Image
+                      src='/images/italy-flag.png'
+                      alt='Italy Flag'
+                      fill
+                      className='object-cover'
+                    />
+                  </div>
+
+                  <div className='absolute inset-0 rounded-full bg-blue-100 scale-125 animate-pulse-custom z-40'></div>
+
+                  <div className='absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30'></div>
+                </div>
+              </div>
+
+
+              <div
+                className='absolute z-10 block mobile:hidden'
+                style={{
+                  right: '-20px',
+                  bottom: '-20px'
+                }}
+              >
+                <div className='relative w-16 h-16'>
+                  <div className='absolute inset-0 rounded-full overflow-hidden z-[100]'>
+                    <Image
+                      src='/images/brazil-flag.png'
+                      alt='Brazil Flag'
+                      fill
+                      className='object-cover'
+                    />
+                  </div>
+
+                  <div className='absolute inset-0 rounded-full bg-blue-100 scale-125 animate-pulse-custom z-40'></div>
+
+                  <div className='absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30'></div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -83,9 +129,9 @@ export default function About() {
                 <div className="flex-shrink-0">
                   <RiGroup3Line className="w-8 h-8 mobile:w-7 mobile:h-7 text-primary-base" />
                 </div>
-                <h3 className="text-primary-base text-title-h6 mobile:text-title-h6">
+                <h6 className="text-text-strong-950 text-title-h6 mobile:text-title-h6">
                   Organize an annual economics workshop.
-                </h3>
+                </h6>
               </div>
 
               {/* Card 2 */}
@@ -93,9 +139,9 @@ export default function About() {
                 <div className="flex-shrink-0">
                   <RiTrophyLine className="w-8 h-8 mobile:w-7 mobile:h-7 text-primary-base" />
                 </div>
-                <h5 className="text-primary-base text-title-h5 mobile:text-title-h5">
+                <h6 className="text-text-strong-950 text-title-h6 mobile:text-title-h5">
                   Award an annual prize.
-                </h5>
+                </h6>
               </div>
 
               {/* Card 3 */}
@@ -103,9 +149,9 @@ export default function About() {
                 <div className="flex-shrink-0">
                   <RiMenuSearchLine className="w-8 h-8 mobile:w-7 mobile:h-7 text-primary-base" />
                 </div>
-                <h5 className="text-primary-base text-title-h5 mobile:text-title-h5">
+                <h6 className="text-text-strong-950 text-title-h6 mobile:text-title-h5">
                   Disseminate information on joint research and funding opportunities.
-                </h5>
+                </h6>
               </div>
             </div>
           </div>
