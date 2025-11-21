@@ -26,11 +26,11 @@ export default function PostsPostSidebar({ latest, tags }: PostsPostSidebarProps
     });
 
   return (
-    <aside className='pt-20 pb-16  space-y-12'>
+    <aside className='pt-20 mobile:pt-8 pb-16 mobile:pb-8 space-y-12 mobile:space-y-6'>
       {/* Latest Posts */}
       {latest && latest.length > 0 && (
-        <div className='bg-white rounded-lg border border-gray-200 p-6'>
-          <h3 className='text-title-h4 font-semibold text-text-strong-950 mb-6'>
+        <div className='bg-white rounded-lg border border-gray-200 p-6 mobile:p-4'>
+          <h3 className='text-title-h4 font-semibold text-text-strong-950 mb-6 mobile:mb-4'>
             Latest Publications
           </h3>
           <div className='space-y-4'>
@@ -68,7 +68,7 @@ export default function PostsPostSidebar({ latest, tags }: PostsPostSidebarProps
 
       {/* Tags */}
       {tags && tags.length > 0 && (
-        <div className='bg-white rounded-lg border border-gray-200 p-6'>
+        <div className='bg-white rounded-lg border border-gray-200 p-6 mobile:p-4'>
           <h3 className='text-title-h4 font-semibold text-text-strong-950 mb-4'>
             Tags
           </h3>
@@ -83,8 +83,8 @@ export default function PostsPostSidebar({ latest, tags }: PostsPostSidebarProps
       )}
 
       {/* CTA Section */}
-      <div className='sticky top-8 w-full max-w-md mx-auto'>
-        <div className='relative bg-primary-base rounded-lg p-8 text-center overflow-hidden group hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]'>
+      <div className='md:sticky md:top-8 w-full max-w-md mx-auto mobile:relative'>
+        <div className='relative bg-primary-base rounded-lg p-8 mobile:p-6 text-center overflow-hidden group hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]'>
           {/* Animated gradient background */}
           <div className='absolute inset-0 bg-gradient-to-br from-primary-base via-blue-700 to-primary-base opacity-0 group-hover:opacity-100 transition-opacity duration-700'></div>
 
@@ -94,10 +94,10 @@ export default function PostsPostSidebar({ latest, tags }: PostsPostSidebarProps
           </div>
 
           <div className='relative z-10'>
-            <h3 className='text-title-h4 font-semibold text-white mb-3 group-hover:scale-105 transition-transform duration-300'>
+            <h3 className='text-title-h4 font-semibold text-white mb-3 mobile:mb-2 group-hover:scale-105 transition-transform duration-300'>
               Join AIBE
             </h3>
-            <p className='text-paragraph-md text-white mb-6 group-hover:text-gray-50 transition-colors duration-300'>
+            <p className='text-paragraph-md text-white mb-6 mobile:mb-4 group-hover:text-gray-50 transition-colors duration-300'>
               Connect with researchers and strengthen academic cooperation between Brazil and Italy.
             </p>
             <Link

@@ -36,10 +36,10 @@ export default function PostsPostHero({ post }: PostsPostHeroProps) {
     : '';
 
   return (
-    <section className='pt-20 pb-16'>
+    <section className='pt-20 mobile:pt-8 pb-16 mobile:pb-8'>
       <div className='container items-start justify-start mx-auto px-4 max-w-7xl'>
         {/* Breadcrumb */}
-        <nav className='mb-8 '>
+        <nav className='mb-8 mobile:mb-6'>
           <ol className='flex items-center space-x-2 text-sm text-text-soft-400'>
             <li>
               <Link href='/' className='flex items-center hover:text-text-sub-600 transition-colors'>
@@ -57,13 +57,13 @@ export default function PostsPostHero({ post }: PostsPostHeroProps) {
         </nav>
 
         {/* Header Content */}
-        <div className='text-left mb-16 items-start max-w-4xl mx-auto'>
+        <div className='text-left mb-16 mobile:mb-8 items-start max-w-4xl mx-auto'>
 
-          <h1 className='text-title-h1 text-left text-text-strong-950 font-semibold mb-6'>
+          <h1 className='text-title-h1 text-left text-text-strong-950 font-semibold mb-6 mobile:mb-4'>
             {post.title}
           </h1>
           {post.description && (
-            <p className='text-paragraph-lg text-left text-text-sub-600  mx-auto mb-6'>
+            <p className='text-paragraph-lg text-left text-text-sub-600  mx-auto mb-6 mobile:mb-4'>
               {post.description}
             </p>
           )}
@@ -84,7 +84,7 @@ export default function PostsPostHero({ post }: PostsPostHeroProps) {
 
         {/* Featured Image */}
         {post.image && imageUrl && (
-          <div className='relative w-full aspect-square mb-12 overflow-hidden rounded-lg max-w-md mobile:max-w-full mx-auto'>
+          <div className='relative w-full aspect-square mb-12 mobile:mb-8 overflow-hidden rounded-lg max-w-md mobile:max-w-full mx-auto'>
             <Image
               src={imageUrl}
               alt={post.image.alternativeText || post.title}

@@ -180,12 +180,12 @@ export default async function Post({ params: paramsPromise }: Args) {
 
 
       {/* Main Content - 2 Columns Layout */}
-      <section className='pb-16'>
+      <section className='pb-16 mobile:pb-8'>
         <div className='container mx-auto px-4 max-w-7xl'>
-          <div className='flex flex-col lg:flex-row gap-8'>
+          <div className='flex flex-col lg:flex-row gap-8 mobile:gap-6'>
 
             {/* Main Content - 2/3 da largura no desktop */}
-            <div className='flex flex-col gap-8 flex-[2] min-w-0'>
+            <div className='flex flex-col gap-8 mobile:gap-6 flex-[2] min-w-0'>
               <PostsPostHero post={heroPostData} />
 
               {/* Se o usuário tem acesso, mostra o conteúdo completo */}
@@ -213,7 +213,7 @@ export default async function Post({ params: paramsPromise }: Args) {
             </div>
 
             {/* Sidebar - 1/3 da largura no desktop */}
-            <div className='flex-1 min-w-[300px] lg:max-w-[350px] sticky top-32 self-start'>
+            <div className='flex-1 min-w-[300px] lg:max-w-[350px] md:sticky md:top-32 self-start mobile:w-full'>
               <PostsPostSidebar latest={latestPosts} tags={[]} />
             </div>
           </div>
