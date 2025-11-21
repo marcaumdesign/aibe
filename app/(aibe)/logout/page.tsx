@@ -59,9 +59,11 @@ export default async function Logout() {
                     </Link>
                     <Link href="/" className="w-full">
                       <Button
-                        variant="neutral"
-                        size="medium"
-                        className="w-full h-12 mobile:h-10 rounded-none"
+                        variant='neutral'
+                        mode='stroke'
+                        size='medium'
+                        className='w-full rounded-none'
+
                       >
                         Go to Home
                       </Button>

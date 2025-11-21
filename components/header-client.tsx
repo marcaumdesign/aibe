@@ -104,7 +104,7 @@ export function HeaderClient({ workshops, isLoggedIn }: HeaderClientProps) {
                   variant='primary'
                   size='medium'
                   className='rounded-none'
-                  onClick={() => router.push('/membership')}
+                  onClick={() => router.push('/create-account')}
                 >
                   Become a Member
                 </Button.Root>

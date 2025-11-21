@@ -14,7 +14,7 @@ interface MembershipContentProps {
     interval: 'month' | 'year' | null;
     features: string[];
     stripePriceId?: string;
-    planId: 'free' | 'premium' | 'founders';
+    planId: 'free' | 'premium';
   }>;
 }
 
@@ -28,13 +28,13 @@ export function MembershipContent({ user, plans }: MembershipContentProps) {
         {/* Header */}
         <div className="text-center mb-12 mobile:mb-8">
           <p className="text-gray-400 font-medium tracking-wider uppercase mb-4" style={{ fontSize: '12px', lineHeight: '16px' }}>
-            CHOOSE YOUR PLAN
+            MEMBERSHIP OPTIONS
           </p>
           <h1 className="text-title-h1 text-black mb-4">
-            Choose Your Plan
+            Become a Member
           </h1>
           <p className="text-paragraph-lg text-gray-600 max-w-2xl mx-auto">
-            Access exclusive content, workshops, and a vibrant community of professionals interested in Brazil-Italy economics
+            Access exclusive academic content, workshops, and a vibrant community of professionals interested in Brazil-Italy economics
           </p>
         </div>
 
@@ -63,7 +63,7 @@ export function MembershipContent({ user, plans }: MembershipContentProps) {
         {user && user.stripeCustomerId && (
           <div className="text-center bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
             <p className="text-paragraph-md text-gray-700 mb-4 font-medium">
-              Need to manage your subscription?
+              Need to manage your membership?
             </p>
             <ManageSubscriptionButton />
           </div>
@@ -105,7 +105,7 @@ function ManageSubscriptionButton() {
       disabled={loading}
       className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-primary-base text-white font-medium hover:bg-primary-base/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
     >
-      {loading ? 'Loading...' : 'Manage Subscription'}
+      {loading ? 'Loading...' : 'Manage Membership'}
     </button>
   );
 }

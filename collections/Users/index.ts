@@ -165,7 +165,7 @@ export const Users: CollectionConfig = {
       saveToJWT: true,
       admin: {
         position: 'sidebar',
-        description: 'Plano de assinatura atual do usuário',
+        description: 'Membership status of the user',
       },
       access: {
         read: ({ req: { user }, id }) => {
@@ -178,16 +178,12 @@ export const Users: CollectionConfig = {
       },
       options: [
         {
-          label: 'Free',
+          label: 'Non-member',
           value: 'free',
         },
         {
-          label: 'Premium',
+          label: 'Member',
           value: 'premium',
-        },
-        {
-          label: 'Founders',
-          value: 'founders',
         },
       ],
     },

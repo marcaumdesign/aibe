@@ -252,9 +252,9 @@ export interface Post {
     description?: string | null;
   };
   /**
-   * Define quem pode acessar este post. Premium e Founders exigem assinatura.
+   * Define who can access this post. Member content requires membership.
    */
-  accessLevel: 'free' | 'premium' | 'founders';
+  accessLevel: 'free' | 'premium';
   /**
    * Flag rápida para identificar posts pagos (sincronizado automaticamente)
    */
@@ -423,9 +423,9 @@ export interface User {
   title: 'student' | 'phd_student' | 'post_doc' | 'assistant_professor' | 'associate_professor' | 'full_professor';
   roles?: ('admin' | 'user')[] | null;
   /**
-   * Plano de assinatura atual do usuário
+   * Membership status of the user
    */
-  subscriptionPlan?: ('free' | 'premium' | 'founders') | null;
+  subscriptionPlan?: ('free' | 'premium') | null;
   /**
    * ID do cliente no Stripe
    */

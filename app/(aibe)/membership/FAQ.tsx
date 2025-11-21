@@ -7,17 +7,17 @@ const faqData = [
     id: 1,
     question: 'How much does it cost to become a member?',
     answer:
-      'We offer different plans: Free (limited access), Premium ($29.90/month) with access to exclusive content, and Founders ($99.90/month) with complete VIP experience.',
+      'We offer two membership options: Non-member (free with limited access to public content), and Member ($29.90/month) with full access to exclusive academic content and events.',
   },
   {
     id: 2,
-    question: 'How can I pay for my subscription?',
+    question: 'How can I pay for my membership?',
     answer:
       'You can pay through our secure credit card payment system, processed by Stripe. Payments are secure and encrypted.',
   },
   {
     id: 3,
-    question: 'Do I receive a subscription receipt?',
+    question: 'Do I receive a membership receipt?',
     answer:
       'Yes, you will receive a confirmation email and can access your invoices through the billing portal at any time.',
   },
@@ -25,13 +25,13 @@ const faqData = [
     id: 4,
     question: 'What benefits do members receive?',
     answer:
-      'Premium and Founders members have access to exclusive content, workshops, private community, networking, and much more. Founders also receive 1:1 consulting and VIP access to events.',
+      'Members have access to exclusive academic content, workshops, private community, networking opportunities, and full access to all our resources and events.',
   },
   {
     id: 5,
-    question: 'Is the subscription renewed automatically?',
+    question: 'Is the membership renewed automatically?',
     answer:
-      'Yes, subscriptions are renewed automatically on a monthly basis. You can cancel at any time through the billing portal.',
+      'Yes, memberships are renewed automatically on a monthly basis. You can cancel at any time through the billing portal.',
   },
   {
     id: 6,
@@ -41,15 +41,15 @@ const faqData = [
   },
   {
     id: 7,
-    question: 'Can I cancel my subscription at any time?',
+    question: 'Can I cancel my membership at any time?',
     answer:
-      'Yes! You can cancel your subscription at any time through the billing portal. Your access will remain active until the end of the paid period.',
+      'Yes! You can cancel your membership at any time through the billing portal. Your access will remain active until the end of the paid period.',
   },
   {
     id: 8,
-    question: 'Can I change plans later?',
+    question: 'Can I change membership later?',
     answer:
-      'Yes, you can upgrade or downgrade your plan at any time through the billing portal. Changes are applied immediately or in the next billing cycle.',
+      'Yes, you can upgrade or downgrade your membership at any time through the billing portal. Changes are applied immediately or in the next billing cycle.',
   },
 ];
 
@@ -73,7 +73,7 @@ export function FAQ() {
               Frequently <br /> Asked Questions
             </h2>
             <p className="text-paragraph-md text-gray-600 mt-4">
-              Find answers to the most common questions about our plans and subscriptions
+              Find answers to the most common questions about our membership
             </p>
           </div>
 

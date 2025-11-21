@@ -32,7 +32,7 @@ export default async function Membership() {
     // Usuário não logado
   }
 
-  // Prepare plan data
+  // Prepare membership data
   const plans = [
     {
       planId: 'free' as const,
@@ -43,11 +43,6 @@ export default async function Membership() {
       planId: 'premium' as const,
       ...PLAN_INFO.premium,
       features: [...PLAN_INFO.premium.features], // Convert readonly to mutable
-    },
-    {
-      planId: 'founders' as const,
-      ...PLAN_INFO.founders,
-      features: [...PLAN_INFO.founders.features], // Convert readonly to mutable
     },
   ];
 

@@ -74,6 +74,7 @@ pnpm dev
 ### Configurações do SecureMail.pro
 
 #### POSTA IN USCITA (Envio de emails - SMTP)
+
 - **Servidor:** `authsmtp.securemail.pro`
 - **Porta:** `465`
 - **Segurança:** SSL/TLS (Secure: true)
@@ -81,6 +82,7 @@ pnpm dev
 - **Password:** A senha definida na Area Clienti
 
 #### POSTA IN ENTRATA (Recebimento de emails - POP3)
+
 - **Servidor:** `pop.securemail.pro`
 - **Porta:** `993`
 - **Username:** `aibe@aibe.website`
@@ -107,15 +109,18 @@ pnpm dev
 ## ❓ Problemas Comuns
 
 ### "Email attempted without being configured"
-- Verifique se todas as variáveis SMTP_* estão preenchidas
+
+- Verifique se todas as variáveis SMTP\_\* estão preenchidas
 - Reinicie o servidor após criar/modificar o `.env.local`
 
 ### "Invalid login" ou "Authentication failed"
+
 - Verifique se a senha está correta
 - Certifique-se de que está usando a senha da Area Clienti do SecureMail.pro
 - Tente fazer login manualmente no webmail para confirmar a senha
 
 ### Email não chega
+
 - Verifique a pasta de spam
 - Confirme que o email `aibe@aibe.website` está ativo e funcionando
 - Teste enviando um email manualmente deste endereço
@@ -123,6 +128,6 @@ pnpm dev
 ## 📞 Suporte
 
 Se precisar de ajuda com as credenciais do SecureMail.pro:
+
 - Acesse a Area Clienti onde você configurou o email
 - Entre em contato com o suporte do seu provedor de email
-

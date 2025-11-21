@@ -1,12 +1,12 @@
 import type { User } from '../payload-types';
 
 /**
- * Tipos de planos de assinatura
+ * Membership types
  */
-export type SubscriptionPlan = 'free' | 'premium' | 'founders';
+export type SubscriptionPlan = 'free' | 'premium';
 
 /**
- * Status de assinatura do Stripe
+ * Stripe subscription status
  */
 export type SubscriptionStatus =
   | 'active'
@@ -18,13 +18,13 @@ export type SubscriptionStatus =
   | 'unpaid';
 
 /**
- * Níveis de acesso a conteúdo
+ * Content access levels
  */
-export type AccessLevel = 'free' | 'premium' | 'founders';
+export type AccessLevel = 'free' | 'premium';
 
 /**
- * User estendido com campos de assinatura
- * (até que os tipos do Payload sejam regenerados)
+ * Extended user with subscription fields
+ * (until Payload types are regenerated)
  */
 // export interface User extends BaseUser {
 //   subscriptionPlan?: SubscriptionPlan
@@ -35,12 +35,11 @@ export type AccessLevel = 'free' | 'premium' | 'founders';
 // }
 
 /**
- * Hierarquia de planos (do menor para o maior)
+ * Membership hierarchy (from lowest to highest)
  */
 const PLAN_HIERARCHY: Record<SubscriptionPlan, number> = {
   free: 0,
   premium: 1,
-  founders: 2,
 };
 
 /**

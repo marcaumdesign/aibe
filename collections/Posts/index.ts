@@ -171,7 +171,7 @@ export const Posts: CollectionConfig<'posts'> = {
               required: true,
               admin: {
                 description:
-                  'Define quem pode acessar este post. Premium e Founders exigem assinatura.',
+                  'Define who can access this post. Member content requires membership.',
                 position: 'sidebar',
               },
               access: {
@@ -180,16 +180,12 @@ export const Posts: CollectionConfig<'posts'> = {
               },
               options: [
                 {
-                  label: '🌍 Free - Todos podem acessar',
+                  label: '🌍 Non-member - Everyone can access',
                   value: 'free',
                 },
                 {
-                  label: '⭐ Premium - Apenas assinantes Premium e Founders',
+                  label: '⭐ Member - Only members can access',
                   value: 'premium',
-                },
-                {
-                  label: '👑 Founders - Apenas assinantes Founders',
-                  value: 'founders',
                 },
               ],
             },

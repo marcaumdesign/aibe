@@ -17,62 +17,44 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 });
 
 /**
- * Plan price IDs (configured in Stripe Dashboard)
+ * Membership price IDs (configured in Stripe Dashboard)
  */
 export const STRIPE_PRICES = {
   premium: process.env.STRIPE_PRICE_PREMIUM || '',
-  founders: process.env.STRIPE_PRICE_FOUNDERS || '',
 } as const;
 
 /**
- * Mapping of price IDs to plans
+ * Mapping of price IDs to membership types
  */
-export const PRICE_TO_PLAN_MAP: Record<string, 'premium' | 'founders'> = {
+export const PRICE_TO_PLAN_MAP: Record<string, 'premium'> = {
   [STRIPE_PRICES.premium]: 'premium',
-  [STRIPE_PRICES.founders]: 'founders',
 };
 
 /**
- * Plan information for display
+ * Membership information for display
  */
 export const PLAN_INFO = {
   free: {
-    name: 'Free',
-    description: 'Access to public content',
+    name: 'Non-member',
+    description: 'Access to public resources and content',
     price: 0,
     currency: 'USD',
     interval: null,
     features: ['Access to public posts', 'Weekly newsletter', 'Open events'],
   },
   premium: {
-    name: 'Premium',
-    description: 'Exclusive content and community',
+    name: 'Member',
+    description: 'Full access to academic resources and events',
     price: 29.9,
     currency: 'USD',
     interval: 'month' as const,
     stripePriceId: STRIPE_PRICES.premium,
     features: [
-      'Everything from Free plan',
-      'Access to all premium posts',
+      'Everything from Non-member',
+      'Access to all member-only content',
       'Exclusive workshops',
-      'Private community',
+      'Academic community access',
       'Networking with members',
-    ],
-  },
-  founders: {
-    name: 'Founders',
-    description: 'Complete VIP experience',
-    price: 99.9,
-    currency: 'USD',
-    interval: 'month' as const,
-    stripePriceId: STRIPE_PRICES.founders,
-    features: [
-      'Everything from Premium plan',
-      'Exclusive Founders content',
-      'Monthly 1:1 consulting',
-      'Early access to events',
-      'Special Founder badge',
-      'VIP networking',
     ],
   },
 } as const;

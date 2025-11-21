@@ -15,19 +15,14 @@ interface PaywallBannerProps {
 
 const PLAN_INFO: Record<AccessLevel, { title: string; icon: React.ReactNode; color: string }> = {
   free: {
-    title: 'Gratuito',
+    title: 'Public',
     icon: <RiLockLine className="h-5 w-5" />,
     color: 'text-gray-600',
   },
   premium: {
-    title: 'Premium',
+    title: 'Member',
     icon: <RiVipCrownLine className="h-5 w-5" />,
     color: 'text-amber-600',
-  },
-  founders: {
-    title: 'Founders',
-    icon: <RiVipCrownLine className="h-5 w-5" />,
-    color: 'text-purple-600',
   },
 }
 
@@ -63,11 +58,11 @@ export function PaywallBanner({ requiredLevel, isLoggedIn, previewContent }: Pay
 
           {/* Title */}
           <div className="space-y-2">
-            <h3 className="text-2xl font-bold tracking-tight">Conteúdo {planInfo.title}</h3>
+            <h3 className="text-2xl font-bold tracking-tight">{planInfo.title} Content</h3>
             <p className="text-muted-foreground">
               {isLoggedIn
-                ? `Este conteúdo está disponível apenas para assinantes ${planInfo.title}.`
-                : `Faça login ou assine o plano ${planInfo.title} para continuar lendo.`}
+                ? `This content is available for ${planInfo.title} members only.`
+                : `Sign in or become a ${planInfo.title} to continue reading.`}
             </p>
           </div>
 
@@ -76,17 +71,17 @@ export function PaywallBanner({ requiredLevel, isLoggedIn, previewContent }: Pay
             {!isLoggedIn && (
               <>
                 <Button asChild size="medium" variant="primary">
-                  <Link href="/sign-in">Fazer Login</Link>
+                  <Link href="/sign-in">Sign In</Link>
                 </Button>
                 <Button asChild size="medium" variant="neutral" mode="stroke">
-                  <Link href="/create-account">Criar Conta</Link>
+                  <Link href="/create-account">Create Account</Link>
                 </Button>
               </>
             )}
 
             {isLoggedIn && (
               <Button asChild size="medium" variant="primary">
-                <Link href="/membership">Ver Planos</Link>
+                <Link href="/membership">View Membership</Link>
               </Button>
             )}
           </div>
@@ -94,9 +89,9 @@ export function PaywallBanner({ requiredLevel, isLoggedIn, previewContent }: Pay
           {/* Additional Info */}
           <div className="text-sm text-muted-foreground">
             <p>
-              Acesso ilimitado a conteúdo exclusivo, comunidade e muito mais.{' '}
+              Unlimited access to exclusive content, community and more.{' '}
               <Link href="/membership" className="underline hover:text-foreground">
-                Saiba mais
+                Learn more
               </Link>
             </p>
           </div>

@@ -11,8 +11,8 @@ interface AccessCheckResult {
   hasAccess: boolean;
   user: User | null;
   isLoggedIn: boolean;
-  userAccessLevel: 'free' | 'premium' | 'founders';
-  requiredLevel: 'free' | 'premium' | 'founders';
+  userAccessLevel: 'free' | 'premium';
+  requiredLevel: 'free' | 'premium';
 }
 
 /**
@@ -38,8 +38,7 @@ export async function checkPostAccess(post: Post): Promise<AccessCheckResult> {
   // Determina o nível de acesso necessário
   const requiredLevel = (post.accessLevel || 'free') as
     | 'free'
-    | 'premium'
-    | 'founders';
+    | 'premium';
 
   // Verifica se o usuário tem acesso
   const hasAccess = canAccessPost(user, post);

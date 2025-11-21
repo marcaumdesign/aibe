@@ -114,16 +114,14 @@ export const AccountForm: React.FC = () => {
   const subscriptionStatus = user?.subscriptionStatus
   const subscriptionEndDate = user?.subscriptionCurrentPeriodEnd
 
-  const planNames = {
-    free: 'Free',
-    premium: 'Premium',
-    founders: 'Founders'
+  const membershipNames = {
+    free: 'Non-member',
+    premium: 'Member'
   }
 
-  const planDescriptions = {
-    free: 'Basic access to public content',
-    premium: 'Full access to all content and events',
-    founders: 'Lifetime premium access with exclusive benefits'
+  const membershipDescriptions = {
+    free: 'Access to public resources and content',
+    premium: 'Full access to academic resources and events'
   }
 
   return (
@@ -133,33 +131,31 @@ export const AccountForm: React.FC = () => {
         <Message className={''} error={error} success={success} />
       )}
 
-      {/* Subscription Plan Card */}
+      {/* Membership Card */}
       <Card className="w-full shadow-lg border-0">
         <CardHeader>
           <div className="flex justify-between items-start">
             <div>
               <CardTitle className="text-title-h3 mobile:text-title-h4 text-text-strong-950">
-                Your Subscription
+                Your Membership
               </CardTitle>
               <CardDescription className="text-paragraph-md mobile:text-paragraph-sm text-text-sub-600">
-                Current plan and billing information
+                Current membership status and information
               </CardDescription>
             </div>
-            <div className={`px-4 py-2 rounded-lg ${subscriptionPlan === 'founders' ? 'bg-purple-100 text-purple-800' :
-              subscriptionPlan === 'premium' ? 'bg-blue-100 text-blue-800' :
-                'bg-gray-100 text-gray-800'
+            <div className={`px-4 py-2 rounded-lg ${subscriptionPlan === 'premium' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800'
               }`}>
-              <span className="font-semibold text-sm uppercase">{planNames[subscriptionPlan as keyof typeof planNames]}</span>
+              <span className="font-semibold text-sm uppercase">{membershipNames[subscriptionPlan as keyof typeof membershipNames]}</span>
             </div>
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
             <p className="text-paragraph-md text-text-strong-950 font-medium mb-1">
-              {planNames[subscriptionPlan as keyof typeof planNames]} Plan
+              {membershipNames[subscriptionPlan as keyof typeof membershipNames]} Membership
             </p>
             <p className="text-paragraph-sm text-text-sub-600">
-              {planDescriptions[subscriptionPlan as keyof typeof planDescriptions]}
+              {membershipDescriptions[subscriptionPlan as keyof typeof membershipDescriptions]}
             </p>
             {subscriptionStatus && (
               <div className="mt-3 pt-3 border-t border-gray-200">
@@ -168,7 +164,7 @@ export const AccountForm: React.FC = () => {
                 </p>
                 {subscriptionEndDate && (
                   <p className="text-paragraph-sm text-text-sub-600 mt-1">
-                    <strong>Next billing:</strong> {new Date(subscriptionEndDate).toLocaleDateString()}
+                    <strong>Membership renewal:</strong> {new Date(subscriptionEndDate).toLocaleDateString()}
                   </p>
                 )}
               </div>
@@ -177,7 +173,7 @@ export const AccountForm: React.FC = () => {
           {subscriptionPlan === 'free' && (
             <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
               <p className="text-paragraph-sm text-blue-900">
-                <strong>Upgrade to Premium</strong> to access exclusive content, workshops, and networking opportunities.
+                <strong>Become a Member</strong> to access exclusive academic content, workshops, and networking opportunities.
               </p>
             </div>
           )}
@@ -190,7 +186,7 @@ export const AccountForm: React.FC = () => {
             className="rounded-none h-12"
           >
             <Link href="/membership">
-              {subscriptionPlan === 'free' ? 'Upgrade Plan' : 'Manage Subscription'}
+              {subscriptionPlan === 'free' ? 'Become a Member' : 'Manage Membership'}
             </Link>
           </Button>
         </CardFooter>
