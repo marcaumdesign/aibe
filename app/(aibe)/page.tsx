@@ -133,7 +133,7 @@ export default async function Home() {
 
 
               <div className='flex flex-col gap-4 items-center w-full'>
-                <h1 className='text-primary-base text-title-h1'>
+                <h1 className='text-primary-base text-center text-title-h1 mobile:text-left'>
                   Associação Italo-Brasileira de Economia
                 </h1>
                 <h3 className='text-primary-base text-title-h3 text-left md:text-center'>
@@ -142,8 +142,6 @@ export default async function Home() {
 
                 <p className='text-paragraph-lg text-text-sub-600'>
                   We are a bilateral, non-profit association that promotes scientific collaboration between Italian and Brazilian economists.
-
-
                 </p>
               </div>
 

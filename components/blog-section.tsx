@@ -123,7 +123,7 @@ export default function BlogSection() {
             <Badge variant='with-dot' size='medium'>
               Blog
             </Badge>
-            <h2 className='text-primary-base text-title-h2'>
+            <h2 className='text-primary-base text-title-h2 '>
               News
             </h2>
           </div>

@@ -102,7 +102,7 @@ export function HeaderClient({ workshops, isLoggedIn }: HeaderClientProps) {
         <div className='flex items-center gap-4'>
           {/* Mobile: Menu button replaces CTA */}
           <div className='md:hidden'>
-            <MobileMenu workshops={workshops} />
+            <MobileMenu workshops={workshops} isLoggedIn={isLoggedIn} />
           </div>
           {/* Desktop: Keep CTA */}
           <div className='hidden md:flex items-center gap-4'>

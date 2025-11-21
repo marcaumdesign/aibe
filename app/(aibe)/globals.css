@@ -610,3 +610,65 @@
     transform: none;
   }
 }
+
+/* ============================================
+   SISTEMA DE TIPOGRAFIA RESPONSIVA
+   ============================================
+   Em mobile (≤900px), os headings descem 2 níveis:
+   - H1 (56px) → H3 (40px)
+   - H2 (48px) → H4 (30px)
+   - H3 (40px) → H5 (24px)
+   - H4 (30px) → H6 (20px)
+   - H5 (24px) → H6 (20px)
+   - H6 (20px) → H6 (20px - mantém)
+   ============================================ */
+
+@media (max-width: 900px) {
+  /* H1 → H3 em mobile */
+  .text-title-h1 {
+    font-size: 2.5rem !important;
+    line-height: 3rem !important;
+    letter-spacing: -2.36px !important;
+    font-weight: 600 !important;
+  }
+
+  /* H2 → H4 em mobile */
+  .text-title-h2 {
+    font-size: 30px !important;
+    line-height: 34px !important;
+    letter-spacing: -1.461px !important;
+    font-weight: 600 !important;
+  }
+
+  /* H3 → H5 em mobile */
+  .text-title-h3 {
+    font-size: 24px !important;
+    line-height: 32px !important;
+    letter-spacing: -0.96px !important;
+    font-weight: 600 !important;
+  }
+
+  /* H4 → H6 em mobile */
+  .text-title-h4 {
+    font-size: 20px !important;
+    line-height: 28px !important;
+    letter-spacing: -0.701px !important;
+    font-weight: 600 !important;
+  }
+
+  /* H5 → H6 em mobile */
+  .text-title-h5 {
+    font-size: 20px !important;
+    line-height: 28px !important;
+    letter-spacing: -0.701px !important;
+    font-weight: 600 !important;
+  }
+
+  /* H6 → mantém H6 em mobile */
+  .text-title-h6 {
+    font-size: 20px !important;
+    line-height: 28px !important;
+    letter-spacing: -0.701px !important;
+    font-weight: 600 !important;
+  }
+}
