@@ -71,6 +71,14 @@ export default function EventsPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <div className='relative mt-4 w-full h-[150px]'>
+        <Image
+          src='/images/heroimage.png'
+          alt='Hero'
+          fill
+          className='object-cover'
+        />
+      </div>
       {/* Main Content */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8 mobile:pt-8 mobile:pb-4">
         {/* Prizes Section */}
@@ -83,7 +91,7 @@ export default function EventsPage() {
 
 
             <div className="flex gap-8">
-              <div
+              {/* <div
                 className=' z-10 block mobile:hidden'
                 style={{
                   right: '300px',
@@ -104,15 +112,15 @@ export default function EventsPage() {
 
                   <div className='absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30'></div>
                 </div>
-              </div>
-              <h1 className="text-text-strong-950 text-center max-w-2xl mx-auto text-title-h2">
+              </div> */}
+              <h2 className="text-primary-base text-title-h2 text-center max-w-2xl mx-auto">
                 Giorgio Mortara Prize
 
 
-              </h1>
+              </h2>
 
 
-              <div
+              {/* <div
                 className=' z-10 block mobile:hidden'
                 style={{
                   left: '300px',
@@ -133,7 +141,7 @@ export default function EventsPage() {
 
                   <div className='absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30'></div>
                 </div>
-              </div>
+              </div> */}
             </div>
             {/* Main Title */}
 
@@ -146,7 +154,7 @@ export default function EventsPage() {
 
           {/* Prize Description */}
           <div className="prose prose-lg max-w-none py-8 flex flex-col gap-4">
-            <h4 className="text-text-strong-950 w-full text-center text-title-h4">
+            <h4 className="text-primary-base text-title-h4 w-full text-center">
               Call for Submissions
             </h4>
             <p className="text-text-sub-600 text-paragraph-md">
@@ -162,7 +170,7 @@ export default function EventsPage() {
 
           {/* To Apply Section */}
           <div className="py-8 flex flex-col gap-4">
-            <h2 className="text-text-strong-950 text-title-h5">
+            <h2 className="text-primary-base text-title-h5">
               To apply
             </h2>
             <p className="text-text-sub-600 text-paragraph-md">
@@ -184,7 +192,7 @@ export default function EventsPage() {
 
           {/* Eligibility and Rules */}
           <div className="py-8 flex flex-col gap-4">
-            <h2 className="text-text-strong-950 text-title-h5">
+            <h2 className="text-primary-base text-title-h5">
               Eligibility and Rules
             </h2>
             <ul className="flex flex-col gap-3 text-text-sub-600">
@@ -213,7 +221,7 @@ export default function EventsPage() {
 
           {/* Scientific Committee */}
           <div className="p-8 flex w-full bg-primary-alpha-10 flex-col gap-4">
-            <h2 className="text-text-strong-950 text-title-h5">
+            <h2 className="text-primary-base text-title-h5">
               Scientific Committee
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -267,9 +275,9 @@ export default function EventsPage() {
       <section id="giorgio-mortara" className="bg-blue-50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto flex flex-col gap-12">
           <div className="text-center flex flex-col gap-4 items-center">
-            <h2 className="text-text-strong-950 text-title-h3">
+            <h3 className="text-primary-base text-title-h3">
               Who is Giorgio Mortara?
-            </h2>
+            </h3>
             <div className="w-20 h-1 bg-primary-base"></div>
           </div>
 
@@ -320,7 +328,7 @@ export default function EventsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* Texto à esquerda */}
             <div className="flex flex-col gap-4">
-              <h2 className="text-text-strong-950 text-title-h2">
+              <h2 className="text-primary-base text-title-h2">
                 Official Launch of the Prize
               </h2>
               <p className="text-text-sub-600 text-paragraph-md">

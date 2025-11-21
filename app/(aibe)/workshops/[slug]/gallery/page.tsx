@@ -86,7 +86,7 @@ export default async function WorkshopGalleryPage({ params: paramsPromise }: Arg
           <Badge variant='with-dot' size='medium'>
             {workshop.type === 'past' ? 'Past Workshop' : 'Workshop'}
           </Badge>
-          <h1 className="text-text-strong-950 text-title-h1 mobile:text-title-h2">
+          <h1 className="text-primary-base text-title-h1 mobile:text-title-h2">
             {workshop.title} - Gallery
           </h1>
           <p className="text-text-sub-600 text-paragraph-lg">
@@ -109,9 +109,9 @@ export default async function WorkshopGalleryPage({ params: paramsPromise }: Arg
 
         {/* CTA Section */}
         <div className="mt-16 text-center">
-          <h2 className="text-text-strong-950 text-title-h3 mb-4">
+          <h3 className="text-primary-base text-title-h3 mb-4">
             Want to see more?
-          </h2>
+          </h3>
           <p className="text-text-sub-600 text-paragraph-lg mb-6 max-w-2xl mx-auto">
             Explore other workshops and become part of the AIBE community.
           </p>

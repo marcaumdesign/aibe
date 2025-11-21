@@ -21,9 +21,9 @@ export default function About() {
               {/* About AIBE Section */}
               <div className="flex flex-col gap-6 mobile:gap-4 items-start justify-start w-full">
 
-                <h2 className="text-text-strong-950 text-title-h1 mobile:text-title-h3 w-full">
+                <h1 className="text-primary-base text-title-h1 mobile:text-title-h3 w-full">
                   About AIBE
-                </h2>
+                </h1>
                 <div className="text-text-sub-600 text-paragraph-lg mobile:text-paragraph-md">
                   <p>We are a bilateral, non-profit association registered in Italy. We facilitate research collaboration between Brazilian and Italian economists. We also promote links between academia, policy-makers and industry.</p>
                 </div>
@@ -72,7 +72,7 @@ export default function About() {
               <Badge variant='with-dot' size='medium'>
                 Features
               </Badge>
-              <h2 className="text-text-strong-950 text-title-h2 mobile:text-title-h4">
+              <h2 className="text-primary-base text-title-h2 mobile:text-title-h4">
                 AIBE Activities              </h2>
             </div>
 
@@ -83,7 +83,7 @@ export default function About() {
                 <div className="flex-shrink-0">
                   <RiGroup3Line className="w-8 h-8 mobile:w-7 mobile:h-7 text-primary-base" />
                 </div>
-                <h3 className="text-text-strong-950 text-title-h6 mobile:text-title-h6">
+                <h3 className="text-primary-base text-title-h6 mobile:text-title-h6">
                   Organize an annual economics workshop.
                 </h3>
               </div>
@@ -93,9 +93,9 @@ export default function About() {
                 <div className="flex-shrink-0">
                   <RiTrophyLine className="w-8 h-8 mobile:w-7 mobile:h-7 text-primary-base" />
                 </div>
-                <h3 className="text-text-strong-950 text-title-h6 mobile:text-title-h5">
+                <h5 className="text-primary-base text-title-h5 mobile:text-title-h5">
                   Award an annual prize.
-                </h3>
+                </h5>
               </div>
 
               {/* Card 3 */}
@@ -103,9 +103,9 @@ export default function About() {
                 <div className="flex-shrink-0">
                   <RiMenuSearchLine className="w-8 h-8 mobile:w-7 mobile:h-7 text-primary-base" />
                 </div>
-                <h3 className="text-text-strong-950 text-title-h6 mobile:text-title-h5">
+                <h5 className="text-primary-base text-title-h5 mobile:text-title-h5">
                   Disseminate information on joint research and funding opportunities.
-                </h3>
+                </h5>
               </div>
             </div>
           </div>

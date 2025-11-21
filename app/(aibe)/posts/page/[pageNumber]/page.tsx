@@ -138,9 +138,9 @@ export default async function Page({ params: paramsPromise }: Args) {
             <Badge variant='with-dot' size='medium'>
               BLOG
             </Badge>
-            <h1 className='text-text-strong-950 text-title-h2'>
+            <h2 className='text-primary-base text-title-h2'>
               Our latest news
-            </h1>
+            </h2>
           </div>
 
           {/* Articles Grid */}

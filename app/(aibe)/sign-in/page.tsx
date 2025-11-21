@@ -27,7 +27,7 @@ export default async function Login() {
                 <Badge variant='with-dot' size='medium'>
                   WELCOME BACK
                 </Badge>
-                <h1 className="text-text-strong-950 text-title-h1">
+                <h1 className="text-primary-base text-title-h1">
                   Sign In
                 </h1>
               </div>
@@ -38,21 +38,21 @@ export default async function Login() {
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-primary-base mt-2"></div>
                   <div>
-                    <h3 className="text-title-h6 text-text-strong-950 mb-1">Access Exclusive Content</h3>
+                    <h6 className="text-primary-base text-title-h6 mb-1">Access Exclusive Content</h6>
                     <p className="text-paragraph-sm text-text-sub-600">Get access to workshops, events, and research materials.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-primary-base mt-2"></div>
                   <div>
-                    <h3 className="text-title-h6 text-text-strong-950 mb-1">Network with Researchers</h3>
+                    <h6 className="text-primary-base text-title-h6 mb-1">Network with Researchers</h6>
                     <p className="text-paragraph-sm text-text-sub-600">Connect with economists from Brazil and Italy.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-primary-base mt-2"></div>
                   <div>
-                    <h3 className="text-title-h6 text-text-strong-950 mb-1">Stay Updated</h3>
+                    <h6 className="text-primary-base text-title-h6 mb-1">Stay Updated</h6>
                     <p className="text-paragraph-sm text-text-sub-600">Receive newsletters and event notifications.</p>
                   </div>
                 </div>

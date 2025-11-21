@@ -26,7 +26,7 @@ export default async function Logout() {
                   <Badge variant='with-dot' size='medium'>
                     SESSION ENDED
                   </Badge>
-                  <h1 className="text-text-strong-950 text-title-h1">
+                  <h1 className="text-primary-base text-title-h1">
                     Already Logged Out
                   </h1>
                 </div>

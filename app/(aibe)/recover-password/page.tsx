@@ -27,7 +27,7 @@ export default async function RecoverPassword() {
                 <Badge variant='with-dot' size='medium'>
                   RESET PASSWORD
                 </Badge>
-                <h1 className="text-text-strong-950 text-title-h1">
+                <h1 className="text-primary-base text-title-h1">
                   Recover Your Account
                 </h1>
               </div>
@@ -38,21 +38,21 @@ export default async function RecoverPassword() {
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-primary-base mt-2"></div>
                   <div>
-                    <h3 className="text-title-h6 text-text-strong-950 mb-1">Secure Process</h3>
+                    <h6 className="text-primary-base text-title-h6 mb-1">Secure Process</h6>
                     <p className="text-paragraph-sm text-text-sub-600">We&apos;ll send a secure link to your email address.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-primary-base mt-2"></div>
                   <div>
-                    <h3 className="text-title-h6 text-text-strong-950 mb-1">Quick Recovery</h3>
+                    <h6 className="text-primary-base text-title-h6 mb-1">Quick Recovery</h6>
                     <p className="text-paragraph-sm text-text-sub-600">Reset your password in just a few minutes.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-primary-base mt-2"></div>
                   <div>
-                    <h3 className="text-title-h6 text-text-strong-950 mb-1">Stay Protected</h3>
+                    <h6 className="text-primary-base text-title-h6 mb-1">Stay Protected</h6>
                     <p className="text-paragraph-sm text-text-sub-600">Your account security is our priority.</p>
                   </div>
                 </div>

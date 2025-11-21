@@ -27,7 +27,7 @@ export default async function ResetPassword() {
                 <Badge variant='with-dot' size='medium'>
                   SECURE ACCESS
                 </Badge>
-                <h1 className="text-text-strong-950 text-title-h1">
+                <h1 className="text-primary-base text-title-h1">
                   Set New Password
                 </h1>
               </div>
@@ -38,21 +38,21 @@ export default async function ResetPassword() {
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-primary-base mt-2"></div>
                   <div>
-                    <h3 className="text-title-h6 text-text-strong-950 mb-1">Strong Password</h3>
+                    <h6 className="text-primary-base text-title-h6 mb-1">Strong Password</h6>
                     <p className="text-paragraph-sm text-text-sub-600">Use at least 8 characters with a mix of letters and numbers.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-primary-base mt-2"></div>
                   <div>
-                    <h3 className="text-title-h6 text-text-strong-950 mb-1">Account Security</h3>
+                    <h6 className="text-primary-base text-title-h6 mb-1">Account Security</h6>
                     <p className="text-paragraph-sm text-text-sub-600">Your password is encrypted and never stored in plain text.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-primary-base mt-2"></div>
                   <div>
-                    <h3 className="text-title-h6 text-text-strong-950 mb-1">Instant Access</h3>
+                    <h6 className="text-primary-base text-title-h6 mb-1">Instant Access</h6>
                     <p className="text-paragraph-sm text-text-sub-600">You&apos;ll be automatically signed in after resetting your password.</p>
                   </div>
                 </div>

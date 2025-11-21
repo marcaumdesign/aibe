@@ -57,7 +57,7 @@ export default function ContactPage() {
                 <Badge variant='with-dot' size='medium'>
                   CONTACT US
                 </Badge>
-                <h1 className="text-title-h1 text-text-strong-950">
+                <h1 className="text-primary-base text-title-h1">
                   Stay Connected!
                 </h1>
               </div>
@@ -179,7 +179,7 @@ export default function ContactPage() {
       {/* Contact Us Section */}
       <section className="py-16 pb-44 px-8 mobile:px-4 bg-white relative z-10">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-title-h2 text-text-strong-950 mb-12 text-left">
+          <h2 className="text-primary-base text-title-h2 mb-12 text-left">
             Contact Us
           </h2>
 
@@ -195,7 +195,7 @@ export default function ContactPage() {
                   className="w-8 h-8"
                 />
               </div>
-              <h3 className="text-title-h4 text-text-strong-950 mb-2 text-left">Get in touch</h3>
+              <h4 className="text-primary-base text-title-h4 mb-2 text-left">Get in touch</h4>
               <p className="text-text-sub-600 text-paragraph-md text-left">aibe@aibe.website</p>
             </div>
 
@@ -210,9 +210,9 @@ export default function ContactPage() {
                   className="w-6 h-6"
                 />
               </div>
-              <h3 className="text-title-h4 text-text-strong-950 mb-2 text-left whitespace-nowrap">
+              <h4 className="text-primary-base text-title-h4 mb-2 text-left whitespace-nowrap">
                 Newsletter Submissions
-              </h3>
+              </h4>
               <p className="text-text-sub-600 text-paragraph-md text-left">
                 To suggest items for the bi-annual newsletter, write to: aibe@aibe.website
               </p>
@@ -229,9 +229,9 @@ export default function ContactPage() {
                   className="w-8 h-8"
                 />
               </div>
-              <h3 className="text-title-h4 text-text-strong-950 mb-2 text-left">
+              <h4 className="text-primary-base text-title-h4 mb-2 text-left">
                 Follow Us
-              </h3>
+              </h4>
               <div className="flex justify-start space-x-4">
                 <Link href="https://linkedin.com/company/aibe" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
                   <RiLinkedinFill className="w-8 h-8 text-text-sub-600" />

@@ -97,9 +97,9 @@ export default async function WorkshopsPage() {
           </Badge>
 
           {/* Main Title */}
-          <h1 className="text-primary-base text-title-h2 text-center max-w-2xl mx-auto">
+          <h2 className="text-primary-base text-title-h2 text-center max-w-2xl mx-auto">
             All Events
-          </h1>
+          </h2>
 
           {/* Workshop Images */}
           <div className="flex flex-col md:flex-row gap-8 -ml-4 md:-ml-8 px-4">
@@ -119,9 +119,9 @@ export default async function WorkshopsPage() {
                     />
                   )}
                 </div>
-                <h3 className="text-text-strong-950 text-title-h6 text-center group-hover:text-primary-base transition-colors">
+                <h6 className="text-text-strong-950 text-title-h6 text-center group-hover:text-primary-base transition-colors">
                   {workshop.title}
-                </h3>
+                </h6>
               </Link>
             ))}
           </div>

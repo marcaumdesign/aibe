@@ -34,7 +34,7 @@ export default async function Account() {
               </Badge>
               <div className="flex justify-between items-center mobile:flex-col mobile:items-start mobile:gap-4">
                 <div>
-                  <h1 className="text-text-strong-950 text-title-h1">
+                  <h1 className="text-primary-base text-title-h1">
                     Account Settings
                   </h1>
                   <p className="text-text-sub-600 text-paragraph-md mt-2">

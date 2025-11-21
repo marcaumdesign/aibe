@@ -65,7 +65,6 @@ export default async function Home() {
 
   return (
     <div className='min-h-screen bg-white'>
-      {/* Hero Section */}
       <div className='relative mt-4 w-full h-[150px]'>
         <Image
           src='/images/heroimage.png'
@@ -74,6 +73,7 @@ export default async function Home() {
           className='object-cover'
         />
       </div>
+      {/* Hero Section */}
       <section className='relative bg-white flex flex-col pt-4 pb-8 px-8 mobile:pt-8 mobile:pb-4 mobile:px-4'>
         <div className='w-full mx-auto flex-1 flex items-center'>
           {/* Hero Content */}
@@ -133,12 +133,12 @@ export default async function Home() {
 
 
               <div className='flex flex-col gap-4 items-center w-full'>
-                <h1 className='text-title-h1 text-text-strong-950'>
+                <h1 className='text-primary-base text-title-h1'>
                   Associação Italo-Brasileira de Economia
                 </h1>
-                <h1 className='text-title-h3 text-left md:text-center text-text-strong-950'>
+                <h3 className='text-primary-base text-title-h3 text-left md:text-center'>
                   Associazione Italo-Brasiliana di Economia
-                </h1>
+                </h3>
 
                 <p className='text-label-lg text-text-sub-600'>
                   We are a bilateral, non-profit association that promotes scientific collaboration between Italian and Brazilian economists.

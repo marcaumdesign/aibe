@@ -84,9 +84,9 @@ export default async function Membership() {
                           className="w-6 h-6 brightness-0 invert"
                         />
                       </div>
-                      <h3 className="text-text-strong-950 text-title-h5">
+                      <h5 className="text-primary-base text-title-h5">
                         {benefit.title}
-                      </h3>
+                      </h5>
                       <p className="text-text-sub-600 text-paragraph-md">
                         {benefit.description}
                       </p>
