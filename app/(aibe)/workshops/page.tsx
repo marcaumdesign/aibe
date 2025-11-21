@@ -90,7 +90,7 @@ export default async function WorkshopsPage() {
       <div className="h-16"></div>
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-0">
+      <main className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-0">
         {/* Workshops Section */}
         <section className="mb-0">
           {/* Small label */}

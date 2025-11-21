@@ -53,7 +53,7 @@ export default async function Membership() {
 
       {/* Membership Benefits */}
       <section className="py-16 mobile:py-12 bg-white px-8 mobile:px-4">
-        <div className="mx-auto max-w-7xl w-full">
+        <div className="mx-auto max-w-[1200px] w-full">
           <div className="flex flex-col gap-12 mobile:gap-8">
             <div className="text-center">
               <p className="text-text-soft-400 text-subheading-xs uppercase mb-4">

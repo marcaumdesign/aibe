@@ -113,7 +113,7 @@ export default async function Page() {
       <PageClient />
       {/* Header Section */}
       <section className='pt-20 pb-16'>
-        <div className='container mx-auto px-4'>
+        <div className='max-w-[1200px] mx-auto px-4'>
           <div className='text-center mb-16'>
             <p className='text-text-soft-400 text-subheading-sm uppercase mb-4'>
               BLOG
@@ -124,7 +124,7 @@ export default async function Page() {
           </div>
 
           {/* Articles Grid */}
-          <div className='max-w-7xl mx-auto'>
+          <div className='w-full'>
             <PostsGrid posts={posts} />
           </div>
         </div>
@@ -132,7 +132,7 @@ export default async function Page() {
 
       {/* Pagination */}
       {pagination.totalPages > 1 && pagination.page && (
-        <div className='container mx-auto px-4 pb-16'>
+        <div className='max-w-[1200px] mx-auto px-4 pb-16'>
           <Pagination page={pagination.page} totalPages={pagination.totalPages} />
         </div>
       )}

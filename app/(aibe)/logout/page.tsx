@@ -17,7 +17,7 @@ export default async function Logout() {
     return (
       <div className="bg-white">
         <section className="py-16 px-8 mobile:px-4">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-[1200px] mx-auto">
             <div className="grid grid-cols-2 mobile:grid-cols-1 gap-12 items-start">
               {/* Left side - Content */}
               <div className="space-y-3">

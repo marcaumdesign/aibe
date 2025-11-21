@@ -25,7 +25,7 @@ export default async function Account() {
       <HydrateClientUser permissions={permissions} user={user} />
       <div className="bg-white">
         <section className="py-16 px-8 mobile:px-4">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-[1200px] mx-auto">
             {/* Header */}
             <div className="mb-12">
               <p className="text-text-soft-400 text-subheading-xs uppercase mb-4">
