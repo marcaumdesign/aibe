@@ -66,7 +66,7 @@ export default function PostsGrid({ posts, maxPosts }: PostsGridProps) {
               )}
 
               {/* Content */}
-              <div className='p-6'>
+              <div className='py-6'>
                 {/* Category and Date */}
                 <div className='flex items-center gap-2 mb-4 text-sm text-gray-500'>
                   {post.category && (

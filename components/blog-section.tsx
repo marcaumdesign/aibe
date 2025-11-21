@@ -123,7 +123,7 @@ export default function BlogSection() {
             <Badge variant='with-dot' size='medium'>
               Blog
             </Badge>
-            <h2 className='text-title-h2 text-black mt-1'>
+            <h2 className='text-primary-base text-title-h2'>
               News
             </h2>
           </div>
@@ -161,11 +161,11 @@ export default function BlogSection() {
                     <span>•</span>
                     <time>{formatDate(post.date)}</time>
                   </div>
-                  <h3 className='text-title-h5 text-black mt-2'>
+                  <h6 className='text-title-h6 text-black mt-2'>
                     {post.title}
-                  </h3>
+                  </h6>
                   {post.description && (
-                    <p className='text-sub-600 text-paragraph-lg mt-1 line-clamp-3'>
+                    <p className='text-sub-600 text-paragraph-sm mt-1 line-clamp-3'>
                       {post.description}
                     </p>
                   )}

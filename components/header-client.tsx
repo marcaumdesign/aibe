@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import * as Button from '@/components/ui/button';
 import MobileMenu from '@/components/mobile-menu';
 import type { Workshop } from '@/payload-types';
@@ -14,6 +14,7 @@ interface HeaderClientProps {
 
 export function HeaderClient({ workshops, isLoggedIn }: HeaderClientProps) {
   const router = useRouter();
+  const pathname = usePathname();
 
   return (
     <div className='fixed top-0 left-0 right-0 z-50 bg-white border-b border-stroke-soft-200 justify-center items-center flex w-full'>
@@ -31,17 +32,26 @@ export function HeaderClient({ workshops, isLoggedIn }: HeaderClientProps) {
 
         {/* Navigation (desktop) */}
         <nav className='text-lg hidden items-center gap-4 font-medium text-text-strong-950 md:flex'>
-          <Link href='/' className='transition-colors hover:text-primary-base'>
+          <Link 
+            href='/' 
+            className={`transition-colors hover:text-primary-base ${pathname === '/' ? 'text-primary-base' : ''}`}
+          >
             Home
           </Link>
-          <Link href='/about' className='transition-colors hover:text-primary-base'>
+          <Link 
+            href='/about' 
+            className={`transition-colors hover:text-primary-base ${pathname === '/about' ? 'text-primary-base' : ''}`}
+          >
             About Us
           </Link>
-          <Link href='/people' className='transition-colors hover:text-primary-base'>
+          <Link 
+            href='/people' 
+            className={`transition-colors hover:text-primary-base ${pathname === '/people' ? 'text-primary-base' : ''}`}
+          >
             People
           </Link>
           <div className='relative group'>
-            <button className='transition-colors '>Workshop</button>
+            <button className={`transition-colors ${pathname?.startsWith('/workshops') ? 'text-primary-base' : ''}`}>Workshop</button>
             {/* Dropdown Menu */}
             <div className='absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'>
               <div className='py-2'>
@@ -65,16 +75,25 @@ export function HeaderClient({ workshops, isLoggedIn }: HeaderClientProps) {
           </div>
 
           <div className='relative group'>
-            <Link href='/prizes' className='transition-colors hover:text-primary-base'>
+            <Link 
+              href='/prizes' 
+              className={`transition-colors hover:text-primary-base ${pathname === '/prizes' ? 'text-primary-base' : ''}`}
+            >
               Prizes
             </Link>
           </div>
           <div className='relative group'>
-            <Link href='/posts' className='transition-colors hover:text-primary-base'>
+            <Link 
+              href='/posts' 
+              className={`transition-colors hover:text-primary-base ${pathname?.startsWith('/posts') ? 'text-primary-base' : ''}`}
+            >
               Blog
             </Link>
           </div>
-          <Link href='/contact' className='transition-colors hover:text-primary-base'>
+          <Link 
+            href='/contact' 
+            className={`transition-colors hover:text-primary-base ${pathname === '/contact' ? 'text-primary-base' : ''}`}
+          >
             Contact
           </Link>
         </nav>
