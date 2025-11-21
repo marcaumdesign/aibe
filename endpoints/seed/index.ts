@@ -115,6 +115,7 @@ export const seed = async ({
           department: 'Economics',
           universityCompany: 'AIBE Demo University',
           title: 'full_professor',
+          donationAmount: 2,
         },
       }),
       payload.create({

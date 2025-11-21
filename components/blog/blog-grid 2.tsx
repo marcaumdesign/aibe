@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Root as Badge } from '@/components/ui/badge';
 
 interface NewsItem {
   id: string | number;
@@ -72,12 +71,9 @@ export default function BlogGrid({ posts, maxPosts }: BlogGridProps) {
                 {/* Category and Date */}
                 <div className='flex items-center gap-2 mb-4'>
                   {post.category && (
-                    <Badge
-                      variant='light'
-                      className='bg-blue-500 text-white text-xs font-medium px-3 py-1 rounded-none'
-                    >
+                    <span className='bg-blue-500 text-white text-xs font-medium px-3 py-1 rounded-none'>
                       {post.category.name.toUpperCase()}
-                    </Badge>
+                    </span>
                   )}
                   <span className='text-text-soft-400 text-sm'>•</span>
                   <span className='text-text-soft-400 text-sm'>{formatDate(post.date)}</span>

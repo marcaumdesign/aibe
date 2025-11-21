@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Root as Badge } from '@/components/ui/badge';
 
 interface LatestPost {
   id: string | number;
@@ -75,9 +74,9 @@ export default function PostsPostSidebar({ latest, tags }: PostsPostSidebarProps
           </h3>
           <div className='flex flex-wrap gap-2'>
             {tags.map((tag, index) => (
-              <Badge key={index} variant='light'>
+              <span key={index} className='inline-flex items-center px-3 py-1.5 text-sm font-medium bg-gray-100 text-gray-800 rounded-md hover:bg-gray-200 transition-colors'>
                 {tag}
-              </Badge>
+              </span>
             ))}
           </div>
         </div>

@@ -6,7 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Root as Badge } from '@/components/ui/badge';
 import { Root as Button } from '@/components/ui/button';
 import { fetchArticles } from '@/lib/strapi';
 
@@ -62,9 +61,9 @@ export default async function BlogList() {
           <CardHeader>
             <div className='mb-2 flex items-center gap-2'>
               {post.category?.name && (
-                <Badge variant='light' className='text-xs'>
+                <span className='inline-flex items-center px-3 py-1.5 text-xs font-medium bg-gray-100 text-gray-800 rounded-md'>
                   {post.category.name}
-                </Badge>
+                </span>
               )}
             </div>
 
