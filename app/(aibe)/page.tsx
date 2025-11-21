@@ -66,19 +66,20 @@ export default async function Home() {
   return (
     <div className='min-h-screen bg-white'>
       {/* Hero Section */}
+      <div className='relative mt-4 w-full h-[150px]'>
+        <Image
+          src='/images/heroimage.png'
+          alt='Hero'
+          fill
+          className='object-cover'
+        />
+      </div>
       <section className='relative bg-white flex flex-col pt-4 pb-8 px-8 mobile:pt-8 mobile:pb-4 mobile:px-4'>
         <div className='w-full mx-auto flex-1 flex items-center'>
           {/* Hero Content */}
           <div className='flex flex-col mobile:flex-col items-center justify-center gap-4 w-full'>
             <div className='relative w-full mobile:w-full flex justify-center'>
-              <div className='relative w-full h-[150px]'>
-                <Image
-                  src='/images/heroimage.png'
-                  alt='Hero'
-                  fill
-                  className='object-cover'
-                />
-              </div>
+
 
 
               {/* <div

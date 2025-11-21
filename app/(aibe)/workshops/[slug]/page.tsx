@@ -124,10 +124,10 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
         <section className="mb-16">
           {/* Titles - Centered */}
           <div className="flex flex-col items-center gap-4 mb-14">
-            <h2 className="text-primary-base text-title-h3 text-center">
+            <h2 className="text-text-strong-950 text-title-h3 text-center">
               {workshop.title}
             </h2>
-            <h1 className="text-text-strong-950 text-title-h1 text-center">
+            <h1 className="text-primary-base text-title-h1 text-center">
               {workshop.subject}
             </h1>
           </div>
@@ -183,6 +183,20 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
           </div>
         </section>
 
+        {/* Workshop Details Section */}
+        <section className="mb-16">
+          <div className="prose prose-lg max-w-none">
+            {workshop.content && (
+              <RichText
+                className="text-text-sub-600 leading-relaxed mb-6 text-paragraph-md max-w-none"
+                data={workshop.content}
+                enableGutter={false}
+                enableProse={true}
+              />
+            )}
+          </div>
+        </section>
+
         {/* Keynote Speaker Section */}
         {workshop.speaker && typeof workshop.speaker === 'object' && (
           <section className="mb-16">
@@ -205,14 +219,14 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
                 <div className="flex-1 p-8 flex flex-col gap-8 justify-center">
                   <div className="flex flex-col gap-3">
                     {/* Badge */}
-                    <div className="inline-flex items-center justify-center px-2 py-1 rounded-[4px] self-start">
-                      <p className="text-primary-base text-subheading-xs uppercase">
-                        keynote speaker
-                      </p>
-                    </div>
+
+                    <p className="text-text-sub-600 text-paragraph-md">
+                      Keynote Speaker
+                    </p>
+
 
                     {/* Speaker Name */}
-                    <h2 className="text-primary-base text-title-h2">
+                    <h2 className="text-text-strong-950 text-title-h2">
                       {workshop.speaker.name}
                     </h2>
 
@@ -268,19 +282,7 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
           </section>
         )}
 
-        {/* Workshop Details Section */}
-        <section className="mb-16">
-          <div className="prose prose-lg max-w-none">
-            {workshop.content && (
-              <RichText
-                className="text-text-sub-600 leading-relaxed mb-6 text-paragraph-md max-w-none"
-                data={workshop.content}
-                enableGutter={false}
-                enableProse={true}
-              />
-            )}
-          </div>
-        </section>
+
 
         {workshop.type === 'current' && workshop.secondButtonText && workshop.secondButtonLink && (
           <div className="w-full mb-16 flex justify-center">
@@ -446,7 +448,7 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
         {/* Sponsors Section */}
 
       </main>
-    </div>
+    </div >
   )
 }
 

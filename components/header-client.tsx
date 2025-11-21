@@ -49,14 +49,14 @@ export function HeaderClient({ workshops, isLoggedIn }: HeaderClientProps) {
                   <Link
                     key={workshop.id}
                     href={`/workshops/${workshop.slug}`}
-                    className='block px-4 py-2 text-text-sub-600 text-paragraph-sm hover:bg-gray-50 hover:text-primary-base transition-colors'
+                    className='block px-4 py-2 text-text-sub-600 text-label-sm hover:bg-gray-50 hover:text-primary-base transition-colors'
                   >
                     {workshop.title}
                   </Link>
                 ))}
                 <Link
                   href='/workshops'
-                  className='block px-4 py-2 text-text-sub-600 text-paragraph-sm hover:bg-gray-50 hover:text-primary-base transition-colors'
+                  className='block px-4 py-2 text-text-sub-600 text-label-sm hover:bg-gray-50 hover:text-primary-base transition-colors'
                 >
                   Last Events
                 </Link>

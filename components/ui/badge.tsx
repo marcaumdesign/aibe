@@ -1,7 +1,7 @@
 import React from 'react'
 
 export function Badge({
-  children,
+      children,
   variant = 'with-dot',
   size = 'medium',
   color = 'gray',
@@ -19,7 +19,7 @@ export function Badge({
     ? 'text-text-white-0'
     : 'text-text-soft-400'
 
-  return (
+    return (
     <span className={`inline-flex items-center font-medium bg-transparent ${textClasses} text-subheading-xs uppercase px-0 py-0`}>
       <div className={dotClasses}></div>
       {children}
