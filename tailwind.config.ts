@@ -599,7 +599,8 @@ const config = {
     },
     extend: {
       screens: {
-        mobile: { max: '767px' },
+        // Mobile styles will apply on viewports up to 900px wide
+        mobile: { max: '900px' },
       },
       fontFamily: {
         sans: ['var(--font-sans)'],

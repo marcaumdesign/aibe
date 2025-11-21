@@ -67,7 +67,7 @@ export default async function Home() {
     <div className='min-h-screen bg-white'>
       {/* Hero Section */}
       <section className='relative bg-white flex flex-col'>
-        <div className='w-full  mobile:px-4 flex-1 flex items-center pt-4 pb-8'>
+        <div className='w-full max-w-[1200px] mx-auto mobile:px-4 flex-1 flex items-center pt-4 pb-8'>
           {/* Hero Content */}
           <div className='flex flex-col mobile:flex-col items-center justify-center gap-8 mobile:gap-8 w-full'>
             <div className='relative w-full mobile:w-full flex justify-center'>
@@ -128,14 +128,14 @@ export default async function Home() {
                 </div>
               </div> */}
             </div>
-            <div className='flex-1 px-8 flex flex-col gap-8 items-center w-full'>
+            <div className='flex-1 px-8 mobile:px-4 flex flex-col gap-8 items-center w-full'>
 
 
               <div className='flex flex-col gap-4 items-center w-full'>
                 <h1 className='text-title-h1 text-text-strong-950'>
                   Associação Italo-Brasileira de Economia
                 </h1>
-                <h1 className='text-title-h3 text-center text-text-strong-950'>
+                <h1 className='text-title-h3 text-left md:text-center text-text-strong-950'>
                   Associazione Italo-Brasiliana di Economia
                 </h1>
 
