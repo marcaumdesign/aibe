@@ -29,7 +29,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'aibe.website',
+        hostname: 'www.aibe.website',
         port: '',
         pathname: '/**',
       },
