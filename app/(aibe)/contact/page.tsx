@@ -245,7 +245,7 @@ export default function ContactPage() {
       </section>
 
       {/* FGC Sponsor Section */}
-      <section className="w-full py-8 px-8 mobile:px-4 bg-gray-50">
+      <section className="w-full py-8 px-8 mobile:px-4 bg-[#F3F8FF]">
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-2 mobile:grid-cols-1 gap-8 items-center py-6">
             {/* Left side - Text */}
