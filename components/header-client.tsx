@@ -34,20 +34,20 @@ export function HeaderClient({ workshops, isLoggedIn }: HeaderClientProps) {
 
         {/* Navigation (desktop) */}
         <nav className='text-lg hidden items-center gap-4 font-medium text-text-strong-950 md:flex'>
-          <Link 
-            href='/' 
+          <Link
+            href='/'
             className={`transition-colors hover:text-primary-base ${pathname === '/' ? 'text-primary-base' : ''}`}
           >
             Home
           </Link>
-          <Link 
-            href='/about' 
+          <Link
+            href='/about'
             className={`transition-colors hover:text-primary-base ${pathname === '/about' ? 'text-primary-base' : ''}`}
           >
             About Us
           </Link>
-          <Link 
-            href='/people' 
+          <Link
+            href='/people'
             className={`transition-colors hover:text-primary-base ${pathname === '/people' ? 'text-primary-base' : ''}`}
           >
             People
@@ -70,30 +70,30 @@ export function HeaderClient({ workshops, isLoggedIn }: HeaderClientProps) {
                   href='/workshops'
                   className='block px-4 py-2 text-text-sub-600 text-label-sm hover:bg-gray-50 hover:text-primary-base transition-colors'
                 >
-                  Last Events
+                  All Events
                 </Link>
               </div>
             </div>
           </div>
 
           <div className='relative group'>
-            <Link 
-              href='/prizes' 
+            <Link
+              href='/prizes'
               className={`transition-colors hover:text-primary-base ${pathname === '/prizes' ? 'text-primary-base' : ''}`}
             >
               Prizes
             </Link>
           </div>
           <div className='relative group'>
-            <Link 
-              href='/posts' 
+            <Link
+              href='/posts'
               className={`transition-colors hover:text-primary-base ${pathname?.startsWith('/posts') ? 'text-primary-base' : ''}`}
             >
               Blog
             </Link>
           </div>
-          <Link 
-            href='/contact' 
+          <Link
+            href='/contact'
             className={`transition-colors hover:text-primary-base ${pathname === '/contact' ? 'text-primary-base' : ''}`}
           >
             Contact

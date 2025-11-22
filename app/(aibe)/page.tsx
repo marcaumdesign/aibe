@@ -136,7 +136,7 @@ export default async function Home() {
                 <h1 className='text-stroke-strong-950 text-center text-title-h1 lg:text-title-h1 md:text-title-h2 mobile:text-title-h3 mobile:text-left'>
                   Associação Italo-Brasileira de Economia
                 </h1>
-                <h3 className='text-stroke-strong-950 text-title-h3 lg:text-title-h3 md:text-title-h4 mobile:text-title-h5 text-center'>
+                <h3 className='text-stroke-strong-950 text-title-h3 lg:text-title-h3 md:text-title-h4 mobile:text-title-h5 text-center mobile:text-left'>
                   Associazione Italo-Brasiliana di Economia
                 </h3>
 

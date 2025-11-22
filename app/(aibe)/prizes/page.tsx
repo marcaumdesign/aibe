@@ -183,7 +183,7 @@ export default function EventsPage() {
               <strong>The deadline for submission is 15 January 2026 (midnight, Italy)</strong>
             </p>
 
-            <Link href="https://docs.google.com/forms/d/e/1FAIpQLSca4tZjGR29lnkhMC0Zrby471wRinhy68KGe1R8IzPpf6Hi4g/viewform" target="_blank" rel="noopener noreferrer">
+            <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdm48mF3Jtn0Hx_EeEa2QGn_WClyDK7KZyUApz9A-wVEBIPfg/viewform?usp=sharing&ouid=105093767266996443933" target="_blank" rel="noopener noreferrer">
               <Button variant="primary" mode="filled" size="medium">
                 Submit Paper
               </Button>
@@ -289,7 +289,7 @@ export default function EventsPage() {
                 alt="Giorgio Mortara portrait"
                 width={640}
                 height={640}
-                className="w-[400px] h-[400px] object-contain object-top mobile:w-full mobile:h-auto"
+                className="w-[350px] h-[350px] object-contain object-top mobile:w-full mobile:h-auto"
               />
             </div>
 
@@ -306,9 +306,7 @@ export default function EventsPage() {
                 <p className="text-text-sub-600 text-paragraph-md">
                   He started the IBGE&apos;s Laboratory of Statistics and is regarded as the founder of modern demographic analysis in Brazil. Except for a four-year stint at the Sapienza University of Rome (1956-60), he lived in Rio until the end of his life.
                 </p>
-                <p className="text-text-sub-600 text-paragraph-md">
-                  The prize is awarded jointly by the AIBE Board and by the Scientific Committee of the annual AIBE Workshop.
-                </p>
+
               </div>
               <Link href="https://www.bancaditalia.it/pubblicazioni/collezioni-biblioteca-baffi/2019-3-scritti-baffi/bibliografia/400-499/459.pdf" target="_blank" rel="noopener noreferrer">
                 <Button variant="primary" mode="lighter" size="medium">
@@ -325,18 +323,21 @@ export default function EventsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* Texto à esquerda */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-8">
               <h2 className="text-primary-base text-title-h2">
                 Official Launch of the Prize
               </h2>
               <p className="text-text-sub-600 text-paragraph-md">
-                The Giorgio Mortara prize was officially launched during the 1st AIBE Workshop, held on 4 July 2025 at the EAESP-FGV in Sao Paulo. The launch ceremony was opened by Luca J. Uberti, who highlighted Mortara&apos;s significance for our Association, and closed by Fábio Mortara, Giorgio&apos;s grandson, who presented a personal and professionional biography of the Italian-Brazilian economist.
+                The Giorgio Mortara prize was officially launched during the 1st AIBE Workshop, held on 4 July 2025 at the EAESP-FGV in Sao Paulo.
+              </p>
+              <p className="text-text-sub-600 text-paragraph-md">
+                The launch ceremony was opened by Luca J. Uberti, who highlighted Mortara&apos;s significance for our Association, and closed by Fábio Mortara, Giorgio&apos;s grandson, who presented a personal and professionional biography of the Italian-Brazilian economist.
               </p>
             </div>
 
             {/* Imagem à direita (pequena) */}
             <div className="flex md:justify-end">
-              <div className="relative w-full h-[400px]">
+              <div className="relative w-[400px] h-[400px]">
                 <Image
                   src="/images/WORKSHOP%20FOTO%209.jpeg"
                   alt="Official Launch of the Prize"
