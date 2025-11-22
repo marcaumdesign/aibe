@@ -434,9 +434,9 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
                 <h2 className="text-primary-base text-title-h2 lg:text-title-h2 md:text-title-h3 mobile:text-title-h4 mb-4 md:mb-3">
                   {workshop.studyingSection.studyingTitle}
                 </h2>
-                <div className="text-text-sub-600 leading-relaxed text-paragraph-md mobile:text-paragraph-sm">
-                  <RichText data={workshop.studyingSection.studyingDescription} enableGutter={false} />
-                </div>
+                <p className="text-text-sub-600 leading-relaxed text-paragraph-md mobile:text-paragraph-sm">
+                  {workshop.studyingSection.studyingDescription}
+                </p>
               </div>
 
               {/* Imagem à direita */}
