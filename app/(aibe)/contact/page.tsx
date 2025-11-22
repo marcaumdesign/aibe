@@ -54,7 +54,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 mobile:grid-cols-1 gap-12 items-start">
             {/* Left side - Content */}
-            <div className="space-y-3">
+            <div className="space-y-3 sticky top-24 mobile:static">
               <div className="space-y-10">
                 <Badge variant='with-dot' size='medium'>
                   CONTACT US
@@ -223,13 +223,13 @@ export default function ContactPage() {
                 Follow Us
               </h4>
               <div className="flex justify-start space-x-4">
-                <Link href="https://linkedin.com/company/aibe" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
+                <Link href="https://www.linkedin.com/in/associazione-italo-brasiliana-di-economia-aibe-6700b3356/" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
                   <RiLinkedinFill className="w-8 h-8 text-text-sub-600" />
                 </Link>
-                <Link href="https://twitter.com/aibe" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
+                <Link href="https://x.com/econ_aibe" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
                   <RiTwitterXFill className="w-8 h-8 text-text-sub-600" />
                 </Link>
-                <Link href="https://aibe.website" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
+                <Link href="https://bsky.app/profile/econaibe.bsky.social" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
                   <Image
                     src="/images/bluesky-fill.png"
                     alt="Website icon"

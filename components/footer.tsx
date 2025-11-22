@@ -97,7 +97,7 @@ export default function Footer() {
               <Link href="/posts" className="text-text-white-0 text-paragraph-md hover:opacity-80 transition-opacity">
                 Blog
               </Link>
-              <Link href="/membership" className="text-text-white-0 text-paragraph-md hover:opacity-80 transition-opacity">
+              <Link href="/create-account" className="text-text-white-0 text-paragraph-md hover:opacity-80 transition-opacity">
                 Membership
               </Link>
               <Link href="/contact" className="text-text-white-0 text-paragraph-md hover:opacity-80 transition-opacity">
