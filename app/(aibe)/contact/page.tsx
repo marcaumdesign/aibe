@@ -187,7 +187,7 @@ export default function ContactPage() {
 
           <div className="grid grid-cols-3 mobile:grid-cols-1 gap-6">
             {/* Get in touch card */}
-            <div className="p-6 bg-gray-100 border-0 shadow-none">
+            <div className="p-6 bg-[#F3F8FF] border-0 shadow-none">
               <div className="flex justify-start mb-4">
                 <Image
                   src="/images/mail-line.png"
@@ -202,7 +202,7 @@ export default function ContactPage() {
             </div>
 
             {/* Newsletter Submissions card */}
-            <div className="p-6 bg-gray-100 border-0 shadow-none">
+            <div className="p-6 bg-[#F3F8FF] border-0 shadow-none">
               <div className="flex justify-start mb-4">
                 <RiNewsLine className="w-8 h-8 text-primary-base" />
               </div>
@@ -215,7 +215,7 @@ export default function ContactPage() {
             </div>
 
             {/* Follow Us card */}
-            <div className="p-6 bg-gray-100 border-0 shadow-none">
+            <div className="p-6 bg-[#F3F8FF] border-0 shadow-none">
               <div className="flex justify-start mb-4">
                 <RiSmartphoneLine className="w-8 h-8 text-primary-base" />
               </div>
