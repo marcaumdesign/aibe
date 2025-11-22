@@ -14,20 +14,20 @@ export default function About() {
 
       {/* Main Content Section - Two Columns */}
       <div className="flex flex-col items-center justify-center w-full ">
-        <div className=" flex flex-col gap-16 items-center justify-start pt-[64px] mobile:pt-8 w-full">
-          <div className="flex max-w-[1200px] px-8 mobile:px-4 flex-row mobile:flex-col gap-8 items-center justify-start w-full">
+        <div className=" flex flex-col gap-16 lg:gap-16 md:gap-12 mobile:gap-8 items-center justify-start pt-[64px] md:pt-12 mobile:pt-8 w-full">
+          <div className="flex max-w-[1200px] px-8 md:px-6 mobile:px-4 flex-row lg:flex-row md:flex-col mobile:flex-col gap-8 md:gap-6 items-center justify-start w-full">
             {/* Left Column - Text Content */}
-            <div className="flex flex-col gap-8 mobile:gap-6 items-start justify-start flex-1">
+            <div className="flex flex-col gap-8 md:gap-6 mobile:gap-6 items-start justify-start flex-1 w-full">
               {/* About AIBE Section */}
-              <div className="flex flex-col gap-6 mobile:gap-4 items-start justify-start w-full">
+              <div className="flex flex-col gap-6 md:gap-5 mobile:gap-4 items-start justify-start w-full">
 
-                <h1 className="text-primary-base text-title-h1 mobile:text-title-h3 w-full">
+                <h1 className="text-primary-base text-title-h1 lg:text-title-h1 md:text-title-h2 mobile:text-title-h3 w-full">
                   About AIBE
                 </h1>
-                <div className="text-text-sub-600 text-paragraph-lg mobile:text-paragraph-md">
+                <div className="text-text-sub-600 text-paragraph-lg md:text-paragraph-md mobile:text-paragraph-md">
                   <p>We are a bilateral, non-profit association registered in Italy. We facilitate research collaboration between Brazilian and Italian economists. We also promote links between academia, policy-makers and industry.</p>
                 </div>
-                <div className="text-text-sub-600 text-paragraph-lg mobile:text-paragraph-md">
+                <div className="text-text-sub-600 text-paragraph-lg md:text-paragraph-md mobile:text-paragraph-md">
                   <p>We are governed by a <Link href="/people" className="text-primary-base underline hover:opacity-80">Board of Directors</Link>, who are elected for three years by the Members&apos; Assembly.</p>
                 </div>
 
@@ -36,7 +36,7 @@ export default function About() {
                   variant="primary"
                   mode="filled"
                   size="medium"
-                  className="mt-8"
+                  className="mt-8 md:mt-4 mobile:mt-4 w-full md:w-full lg:w-auto"
                 >
                   <Link
                     href="https://drive.google.com/file/d/1fAfZF52xDH3jCs1h3CNd3xD5t9mafUTo/view"
@@ -53,9 +53,9 @@ export default function About() {
             </div>
 
             {/* Right Column - Image */}
-            <div className="md:sticky md:top-[100px] w-full md:flex-1 md:min-w-[300px] h-[400px] mobile:h-[300px] mobile:relative mobile:w-full">
+            <div className="lg:sticky lg:top-[100px] w-full lg:w-[600px] lg:flex-1 lg:min-w-[400px] h-[500px] md:h-[400px] mobile:h-[300px] relative">
               <Image
-                src='/images/about-hero.png'
+                src='/images/hero-about-us-2.png'
                 alt='Brasil e Italia'
                 fill
                 className='object-cover'
@@ -113,43 +113,43 @@ export default function About() {
 
 
           {/* Our Main Initiatives Section */}
-          <div className="flex max-w-[1200px] flex-col gap-8 items-start w-full px-8 mobile:px-4">
-            <div className="flex flex-col gap-6 mobile:gap-4 items-start justify-start w-full">
+          <div className="flex max-w-[1200px] flex-col gap-8 md:gap-6 items-start w-full px-8 md:px-6 mobile:px-4">
+            <div className="flex flex-col gap-6 md:gap-5 mobile:gap-4 items-start justify-start w-full">
               <Badge variant='with-dot' size='medium'>
                 Features
               </Badge>
-              <h2 className="text-primary-base text-title-h2 mobile:text-title-h4">
+              <h2 className="text-primary-base text-title-h2 lg:text-title-h2 md:text-title-h3 mobile:text-title-h4">
                 AIBE Activities              </h2>
             </div>
 
             {/* Three Cards */}
-            <div className="flex flex-row mobile:flex-col gap-4 items-stretch justify-center w-full">
+            <div className="flex flex-row lg:flex-row md:flex-col mobile:flex-col gap-4 items-stretch justify-center w-full">
               {/* Card 1 */}
-              <div className="flex-1 bg-[#f3f3f3] border border-stroke-soft-200 flex flex-col gap-4 p-8 mobile:p-6">
+              <div className="flex-1 bg-[#f3f3f3] border border-stroke-soft-200 flex flex-col gap-4 p-8 md:p-6 mobile:p-6">
                 <div className="flex-shrink-0">
-                  <RiGroup3Line className="w-8 h-8 mobile:w-7 mobile:h-7 text-primary-base" />
+                  <RiGroup3Line className="w-8 h-8 md:w-7 md:h-7 mobile:w-7 mobile:h-7 text-primary-base" />
                 </div>
-                <h6 className="text-text-strong-950 text-title-h6 mobile:text-title-h6">
+                <h6 className="text-text-strong-950 text-title-h6 md:text-paragraph-lg mobile:text-paragraph-lg">
                   Organize an annual economics workshop.
                 </h6>
               </div>
 
               {/* Card 2 */}
-              <div className="flex-1 bg-[#f3f3f3] border border-stroke-soft-200 flex flex-col gap-4 p-8 mobile:p-6">
+              <div className="flex-1 bg-[#f3f3f3] border border-stroke-soft-200 flex flex-col gap-4 p-8 md:p-6 mobile:p-6">
                 <div className="flex-shrink-0">
-                  <RiTrophyLine className="w-8 h-8 mobile:w-7 mobile:h-7 text-primary-base" />
+                  <RiTrophyLine className="w-8 h-8 md:w-7 md:h-7 mobile:w-7 mobile:h-7 text-primary-base" />
                 </div>
-                <h6 className="text-text-strong-950 text-title-h6 mobile:text-title-h5">
+                <h6 className="text-text-strong-950 text-title-h6 md:text-paragraph-lg mobile:text-paragraph-lg">
                   Award an annual prize.
                 </h6>
               </div>
 
               {/* Card 3 */}
-              <div className="flex-1 bg-[#f3f3f3] border border-stroke-soft-200 flex flex-col gap-4 p-8 mobile:p-6">
+              <div className="flex-1 bg-[#f3f3f3] border border-stroke-soft-200 flex flex-col gap-4 p-8 md:p-6 mobile:p-6">
                 <div className="flex-shrink-0">
-                  <RiMenuSearchLine className="w-8 h-8 mobile:w-7 mobile:h-7 text-primary-base" />
+                  <RiMenuSearchLine className="w-8 h-8 md:w-7 md:h-7 mobile:w-7 mobile:h-7 text-primary-base" />
                 </div>
-                <h6 className="text-text-strong-950 text-title-h6 mobile:text-title-h5">
+                <h6 className="text-text-strong-950 text-title-h6 md:text-paragraph-lg mobile:text-paragraph-lg">
                   Disseminate information on joint research and funding opportunities.
                 </h6>
               </div>
@@ -159,72 +159,72 @@ export default function About() {
           {/* In context Section */}
           <div className="w-full flex flex-col gap-4 items-center justify-center">
             {/* Container */}
-            <div className="max-w-[1200px] bg-primary-alpha-10 p-8 mobile:p-4 w-full flex flex-col gap-4 items-center justify-center">
+            <div className="max-w-[1200px] bg-primary-alpha-10 p-8 md:p-6 mobile:p-4 w-full flex flex-col gap-4 items-center justify-center">
 
 
-              <div className="flex flex-col items-start justify-center w-full  mobile:pt-4 gap-4">
+              <div className="flex flex-col items-start justify-center w-full mobile:pt-4 gap-4 md:gap-3">
                 <Badge variant='with-dot' size='medium' color='gray'>
                   About AIBE
                 </Badge>
-                <h1 className="text-primary-base text-title-h1 mobile:text-title-h3 text-center">
+                <h1 className="text-primary-base text-title-h1 lg:text-title-h1 md:text-title-h2 mobile:text-title-h3">
                   In context
                 </h1>
               </div>
-              <div className="flex mobile:flex-col gap-8 items-center justify-center">
+              <div className="flex lg:flex-row md:flex-col mobile:flex-col gap-8 md:gap-6 items-center justify-center">
 
 
 
-                <div className="flex flex-col gap-6 mobile:gap-4 items-start justify-start w-full">
+                <div className="flex flex-col gap-6 md:gap-5 mobile:gap-4 items-start justify-start w-full">
 
-                  <div className="flex flex-col gap-6 mobile:gap-4 w-full">
+                  <div className="flex flex-col gap-6 md:gap-5 mobile:gap-4 w-full">
 
-                    <div className="flex gap-4 mobile:gap-3 items-start">
+                    <div className="flex gap-4 md:gap-3 mobile:gap-3 items-start">
                       <div className="flex-shrink-0 mt-1">
-                        <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-strong-950" />
+                        <RiCheckLine className="w-6 h-6 md:w-5 md:h-5 mobile:w-5 mobile:h-5 text-text-strong-950" />
                       </div>
-                      <div className="text-text-strong-950 text-paragraph-lg mobile:text-paragraph-md">
+                      <div className="text-text-strong-950 text-paragraph-lg md:text-paragraph-md mobile:text-paragraph-md">
                         <p>Strong commercial, historical and cultural links between Italy and Brazil.</p>
                       </div>
                     </div>
 
-                    <div className="flex gap-4 mobile:gap-3 items-start">
+                    <div className="flex gap-4 md:gap-3 mobile:gap-3 items-start">
                       <div className="flex-shrink-0 mt-1">
-                        <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-strong-950" />
+                        <RiCheckLine className="w-6 h-6 md:w-5 md:h-5 mobile:w-5 mobile:h-5 text-text-strong-950" />
                       </div>
-                      <div className="text-text-strong-950 text-paragraph-lg mobile:text-paragraph-md">
+                      <div className="text-text-strong-950 text-paragraph-lg md:text-paragraph-md mobile:text-paragraph-md">
                         <p>A bilateral Agreement on Scientific and Technological Cooperation in force since December 1998.</p>
                       </div>
                     </div>
 
-                    <div className="flex gap-4 mobile:gap-3 items-start">
+                    <div className="flex gap-4 md:gap-3 mobile:gap-3 items-start">
                       <div className="flex-shrink-0 mt-1">
-                        <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-strong-950" />
+                        <RiCheckLine className="w-6 h-6 md:w-5 md:h-5 mobile:w-5 mobile:h-5 text-text-strong-950" />
                       </div>
-                      <div className="text-text-strong-950 text-paragraph-lg mobile:text-paragraph-md">
+                      <div className="text-text-strong-950 text-paragraph-lg md:text-paragraph-md mobile:text-paragraph-md">
                         <p>Joint calls for project funding.</p>
                       </div>
                     </div>
 
-                    <div className="flex gap-4 mobile:gap-3 items-start">
+                    <div className="flex gap-4 md:gap-3 mobile:gap-3 items-start">
                       <div className="flex-shrink-0 mt-1">
-                        <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-strong-950" />
+                        <RiCheckLine className="w-6 h-6 md:w-5 md:h-5 mobile:w-5 mobile:h-5 text-text-strong-950" />
                       </div>
-                      <div className="text-text-strong-950 text-paragraph-lg mobile:text-paragraph-md">
+                      <div className="text-text-strong-950 text-paragraph-lg md:text-paragraph-md mobile:text-paragraph-md">
                         <p>Fast-growing community of Brazilians in the Italian academic system.</p>
                       </div>
                     </div>
 
-                    <div className="flex gap-4 mobile:gap-3 items-start">
+                    <div className="flex gap-4 md:gap-3 mobile:gap-3 items-start">
                       <div className="flex-shrink-0 mt-1">
-                        <RiCheckLine className="w-6 h-6 mobile:w-5 mobile:h-5 text-text-strong-950" />
+                        <RiCheckLine className="w-6 h-6 md:w-5 md:h-5 mobile:w-5 mobile:h-5 text-text-strong-950" />
                       </div>
-                      <div className="text-text-strong-950 text-paragraph-lg mobile:text-paragraph-md">
+                      <div className="text-text-strong-950 text-paragraph-lg md:text-paragraph-md mobile:text-paragraph-md">
                         <p>Growing number of co-authorships between Brazilian and Italian economists.</p>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="relative w-[400px]  aspect-square mobile:w-full  flex-shrink-0">
+                <div className="relative w-full lg:w-[400px] aspect-square flex-shrink-0">
                   <Image
                     src='/images/brasil-italia-branco.png'
                     alt='AIBE Logo'

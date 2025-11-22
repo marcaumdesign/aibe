@@ -296,11 +296,9 @@ export default function EventsPage() {
             {/* Biography */}
             <div className="flex justify-start flex-col gap-4 lg:self-center">
               <div className="flex flex-col gap-3">
+
                 <p className="text-text-sub-600 text-paragraph-md">
-                  <strong>Annual prize in memory of Giorgio Mortara for the best paper co-authored by a junior Italian/Brazilian research team</strong>
-                </p>
-                <p className="text-text-sub-600 text-paragraph-md">
-                  Giorgio Mortara (Matua, 1885 - Rio de Janeiro, 1967) was an Italian-Brazilian economist and demographer. During 1924-38, he taught at Bocconi University in Milan.
+                  Giorgio Mortara (Mantua, 1885 - Rio de Janeiro, 1967) was an Italian-Brazilian economist and demographer. During 1924-38, he taught at Bocconi University in Milan.
                 </p>
                 <p className="text-text-sub-600 text-paragraph-md">
                   In 1939, he emigrated to Rio de Janeiro to escape the fascist Racial Laws. Hired by the newly founded IBGE (Brazilian Institute for Geography and Statistics), he worked as technical advisor on the 1940 Brazilian National Census.

@@ -65,7 +65,7 @@ export default async function Home() {
 
   return (
     <div className='min-h-screen bg-white'>
-      <div className='relative mt-4 w-full h-[150px]'>
+      <div className='relative mt-4 w-full h-[150px] md:h-[120px] mobile:h-[100px]'>
         <Image
           src='/images/heroimage.png'
           alt='Hero'
@@ -74,10 +74,10 @@ export default async function Home() {
         />
       </div>
       {/* Hero Section */}
-      <section className='relative bg-white flex flex-col pt-4 pb-8 px-8 mobile:pt-8 mobile:pb-4 mobile:px-4'>
+      <section className='relative bg-white flex flex-col pt-4 pb-8 px-8 md:pt-6 md:pb-6 md:px-6 mobile:pt-8 mobile:pb-4 mobile:px-4'>
         <div className='w-full mx-auto flex-1 flex items-center'>
           {/* Hero Content */}
-          <div className='flex flex-col mobile:flex-col items-center justify-center gap-4 w-full'>
+          <div className='flex flex-col mobile:flex-col items-center justify-center gap-4 md:gap-3 w-full'>
             <div className='relative w-full mobile:w-full flex justify-center'>
 
 
@@ -129,18 +129,18 @@ export default async function Home() {
                 </div>
               </div> */}
             </div>
-            <div className='flex-1 px-8 mobile:px-4 flex flex-col gap-8 items-center w-full'>
+            <div className='flex-1 px-8 md:px-6 mobile:px-4 flex flex-col gap-8 md:gap-6 items-center w-full'>
 
 
-              <div className='flex flex-col gap-4 items-center w-full'>
-                <h1 className='text-primary-base text-center text-title-h1 mobile:text-left'>
+              <div className='flex flex-col gap-4 md:gap-3 items-center w-full'>
+                <h1 className='text-stroke-strong-950 text-center text-title-h1 lg:text-title-h1 md:text-title-h2 mobile:text-title-h3 mobile:text-left'>
                   Associação Italo-Brasileira de Economia
                 </h1>
-                <h3 className='text-primary-base text-title-h3 text-left md:text-center'>
+                <h3 className='text-stroke-strong-950 text-title-h3 lg:text-title-h3 md:text-title-h4 mobile:text-title-h5 text-center'>
                   Associazione Italo-Brasiliana di Economia
                 </h3>
 
-                <p className='text-paragraph-lg text-text-sub-600'>
+                <p className='text-paragraph-lg md:text-paragraph-md mobile:text-paragraph-md text-text-sub-600 text-center'>
                   We are a bilateral, non-profit association that promotes scientific collaboration between Italian and Brazilian economists.
                 </p>
               </div>
@@ -161,16 +161,16 @@ export default async function Home() {
 
 
       {/* Features Section */}
-      <section className='p-8 mobile:p-4'>
-        <div className='mx-auto max-w-[1200px] w-full flex flex-col gap-8'>
-          <div className='flex flex-col gap-4 text-start'>
+      <section className='p-8 md:p-6 mobile:p-4'>
+        <div className='mx-auto max-w-[1200px] w-full flex flex-col gap-8 md:gap-6'>
+          <div className='flex flex-col gap-4 md:gap-3 text-start'>
 
             {/* <h2 className='text-title-h2 text-black animate-translate-y-16'>
               Our Main Initiatives
             </h2> */}
           </div>
 
-          <div className='grid gap-8 md:grid-cols-3 animate-translate-y-up'>
+          <div className='grid gap-8 md:gap-6 lg:grid-cols-3 md:grid-cols-1 animate-translate-y-up'>
             {/* The AIBE Annual Workshop */}
             <MainItem
               imageSrc='/images/Workshop.jpeg'
@@ -178,6 +178,7 @@ export default async function Home() {
               title='AIBE Workshop'
               description='We organize an anual academic event held alternately in both countries.'
               linkHref='/workshops/'
+              imageFocalPoint='right'
             />
 
             {/* Giorgio Mortara Prize */}

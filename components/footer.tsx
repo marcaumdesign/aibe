@@ -80,7 +80,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <h3 className="text-text-white-0 text-title-h6 font-semibold">Events & Prizes</h3>
             <nav className="flex flex-col gap-3">
-              <Link href="/workshop" className="text-text-white-0 text-paragraph-md hover:opacity-80 transition-opacity">
+              <Link href="/workshops" className="text-text-white-0 text-paragraph-md hover:opacity-80 transition-opacity">
                 Workshops
               </Link>
               <Link href="/prizes" className="text-text-white-0 text-paragraph-md hover:opacity-80 transition-opacity">

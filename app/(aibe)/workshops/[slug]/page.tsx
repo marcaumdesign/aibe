@@ -113,62 +113,63 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
       <PageClient />
 
       {/* Header Spacer */}
-      <div className="h-20"></div>
+      <div className="h-20 md:h-16 mobile:h-16"></div>
 
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:px-6 py-12 md:py-8 mobile:py-6">
         {/* Workshop Hero Section */}
-        <section className="mb-16">
+        <section className="mb-16 md:mb-12 mobile:mb-8">
           {/* Titles - Centered */}
-          <div className="flex flex-col items-center gap-4 mb-14">
-            <h3 className="text-primary-base text-title-h3 text-center">
+          <div className="flex flex-col items-center gap-4 md:gap-3 mb-14 md:mb-10 mobile:mb-8">
+            <h3 className="text-text-strong-950  text-title-h5 mobile:text-title-h5 text-center">
               {workshop.title}
             </h3>
-            <h1 className="text-primary-base text-title-h1 text-center">
+            <h1 className="text-primary-base text-title-h1 lg:text-title-h1 md:text-title-h2 mobile:text-title-h3 text-center">
               {workshop.subject}
             </h1>
           </div>
 
           {/* Two Column Layout - Date/Place and Image */}
-          <div className="flex flex-col lg:flex-row gap-8 items-start">
+          <div className="flex flex-col lg:flex-row gap-8 md:gap-6 items-start">
             {/* Left Column - Date & Place */}
-            <div className="flex flex-col gap-8 w-full lg:w-[428px] shrink-0">
+            <div className="flex flex-col gap-8 md:gap-6 w-full lg:w-[428px] shrink-0">
               {/* Date */}
               <div className="flex flex-col gap-2">
-                <p className="text-text-sub-600 text-paragraph-md">
+                <p className="text-text-sub-600 text-paragraph-md mobile:text-paragraph-sm">
                   Date
                 </p>
-                <p className="text-text-strong-950 text-title-h5">
+                <p className="text-text-strong-950 text-title-h5 lg:text-title-h5 md:text-title-h6 mobile:text-paragraph-lg">
                   {dateRange}
                 </p>
               </div>
 
               {/* Place */}
               <div className="flex flex-col gap-2">
-                <p className="text-text-sub-600 text-paragraph-md">
+                <p className="text-text-sub-600 text-paragraph-md mobile:text-paragraph-sm">
                   Place
                 </p>
-                <p className="text-text-strong-950 text-title-h5">
+                <p className="text-text-strong-950 text-title-h5 lg:text-title-h5 md:text-title-h6 mobile:text-paragraph-lg">
                   {workshop.place}
                 </p>
               </div>
 
               {/* Download Button */}
               {workshop.firstButtonText && workshop.firstButtonLink && (
-                <Link href={workshop.firstButtonLink} target="_blank" rel="noopener noreferrer">
-                  <Button variant="primary" mode="filled" size="medium" className="w-full lg:w-auto">
-                    {workshop.firstButtonText}
-                  </Button>
-                </Link>
-              )}
+                <div className="w-full h-[100px] flex items-end justify-start">
+                  <Link href={workshop.firstButtonLink} target="_blank" rel="noopener noreferrer">
+                    <Button variant="primary" mode="filled" size="medium" className="w-full">
+                      {workshop.firstButtonText}
+                    </Button>
+                  </Link>
+                </div>)}
             </div>
 
             {/* Right Column - Image */}
             <div className="flex-1 w-full">
-              <div className="relative w-full h-[420px]">
+              <div className="relative w-full h-[420px] md:h-[350px] mobile:h-[280px]">
                 {resolvedCover && (
                   <Image
                     src={resolvedCover.url}
@@ -199,47 +200,47 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
 
         {/* Keynote Speaker Section */}
         {workshop.speaker && typeof workshop.speaker === 'object' && (
-          <section className="mb-16">
+          <section className="mb-16 md:mb-12 mobile:mb-8">
             <div className="bg-[#f0f6ff] w-full">
-              <div className="flex flex-col lg:flex-row gap-2">
+              <div className="flex flex-col lg:flex-row gap-2 lg:items-stretch">
                 {/* Speaker Image - Left */}
                 {workshop.speaker.avatar && typeof workshop.speaker.avatar === 'object' && (
-                  <div className="w-full lg:w-[426px] h-[604px] shrink-0">
+                  <div className="w-full lg:w-[426px] shrink-0 lg:self-stretch">
                     <Image
                       src={getMediaUrl(workshop.speaker.avatar.url || '', workshop.speaker.avatar.updatedAt)}
                       alt={workshop.speaker.avatar.alt || workshop.speaker.name || 'Speaker'}
                       width={426}
                       height={604}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full min-h-[350px] md:min-h-[300px] mobile:min-h-[280px] lg:min-h-full object-cover"
                     />
                   </div>
                 )}
 
                 {/* Speaker Info - Right */}
-                <div className="flex-1 p-8 flex flex-col gap-8 justify-center">
-                  <div className="flex flex-col gap-3">
+                <div className="flex-1 p-8 md:p-6 mobile:p-5 flex flex-col gap-8 md:gap-6 justify-center">
+                  <div className="flex flex-col gap-3 md:gap-2">
                     {/* Badge */}
 
-                    <p className="text-text-sub-600 text-paragraph-md">
+                    <p className="text-text-sub-600 text-paragraph-md mobile:text-paragraph-sm">
                       Keynote Speaker
                     </p>
 
 
                     {/* Speaker Name */}
-                    <h2 className="text-primary-base text-title-h2">
+                    <h2 className="text-primary-base text-title-h2 lg:text-title-h2 md:text-title-h3 mobile:text-title-h4">
                       {workshop.speaker.name}
                     </h2>
 
                     {/* Role */}
                     {workshop.speaker.role && (
-                      <p className="text-text-strong-950 text-paragraph-md max-w-[428px]">
+                      <p className="text-text-strong-950 text-paragraph-md mobile:text-paragraph-sm max-w-[428px]">
                         {workshop.speaker.role}
                       </p>
                     )}
 
                     {/* University */}
                     {workshop.speaker.university?.name && (
-                      <p className="text-text-strong-950 text-paragraph-md underline">
+                      <p className="text-text-strong-950 text-paragraph-md mobile:text-paragraph-sm underline">
                         {workshop.speaker.university.link ? (
                           <Link
                             href={workshop.speaker.university.link}
@@ -258,7 +259,7 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
 
                   {/* Bio */}
                   {workshop.speaker.biography && (
-                    <p className="text-text-sub-600 text-paragraph-sm">
+                    <p className="text-text-sub-600 text-paragraph-sm mobile:text-paragraph-xs">
                       {workshop.speaker.biography}
                     </p>
                   )}
@@ -285,9 +286,9 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
 
 
         {workshop.type === 'current' && workshop.secondButtonText && workshop.secondButtonLink && (
-          <div className="w-full mb-16 flex justify-center">
-            <Link href={workshop.secondButtonLink} target="_blank" rel="noopener noreferrer">
-              <Button variant="primary" mode="filled" size="medium">
+          <div className="w-full mb-16 md:mb-12 mobile:mb-8 flex justify-center px-4">
+            <Link href={workshop.secondButtonLink} target="_blank" rel="noopener noreferrer" className="w-full md:w-full lg:w-auto">
+              <Button variant="primary" mode="filled" size="medium" className="w-full">
                 {workshop.secondButtonText}
               </Button>
             </Link>
@@ -295,18 +296,18 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
         )}
 
         {/* Scientific Committee & Topics Section */}
-        <section className="mb-16">
-          <div className="bg-blue-50 p-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <section className="mb-16 md:mb-12 mobile:mb-8">
+          <div className="bg-blue-50 p-6 md:p-5 mobile:p-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-6">
               {/* Left Column - Scientific Committee */}
               {workshop.scientificCommittee && renderMarkdownList(workshop.scientificCommittee).length > 0 && (
                 <div>
-                  <h5 className="text-primary-base text-title-h5 mb-6">
+                  <h5 className="text-primary-base text-title-h5 lg:text-title-h5 md:text-title-h6 mobile:text-title-h6 mb-6 md:mb-5 mobile:mb-4">
                     Scientific Committees
                   </h5>
                   <ul className="space-y-1 text-text-sub-600">
                     {renderMarkdownList(workshop.scientificCommittee).map((item, index) => (
-                      <li key={index} className="flex items-start text-paragraph-md">
+                      <li key={index} className="flex items-start text-paragraph-md mobile:text-paragraph-sm">
                         <span className="text-primary-base mr-2">•</span>
                         <span>{item}</span>
                       </li>
@@ -318,12 +319,12 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
               {/* Right Column - Topics */}
               {workshop.topics && renderMarkdownList(workshop.topics).length > 0 && (
                 <div>
-                  <h5 className="text-primary-base text-title-h5 mb-6">
+                  <h5 className="text-primary-base text-title-h5 lg:text-title-h5 md:text-title-h6 mobile:text-title-h6 mb-6 md:mb-5 mobile:mb-4">
                     Topics
                   </h5>
                   <ul className="space-y-1 text-text-sub-600">
                     {renderMarkdownList(workshop.topics).map((item, index) => (
-                      <li key={index} className="flex items-start text-paragraph-md">
+                      <li key={index} className="flex items-start text-paragraph-md mobile:text-paragraph-sm">
                         <span className="text-primary-base mr-2">•</span>
                         <span>{item}</span>
                       </li>
@@ -337,25 +338,25 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
 
         {/* Gallery Section - Only for Past Workshops */}
         {workshop.type === 'past' && workshop.gallery && workshop.gallery.length > 0 && (
-          <section className="mb-10">
-            <div className="flex items-center justify-between mb-5">
+          <section className="mb-10 md:mb-8 mobile:mb-6">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-5 md:mb-4 gap-4">
               <div className="flex flex-col gap-2">
                 <Badge variant='with-dot' size='medium'>
                   Past Congress
                 </Badge>
-                <h2 className="text-primary-base text-title-h2">
+                <h2 className="text-primary-base text-title-h2 lg:text-title-h2 md:text-title-h3 mobile:text-title-h4">
                   Gallery
                 </h2>
               </div>
-              <Link href={`/workshops/${slug}/gallery`}>
-                <Button variant="primary" mode="filled" size="medium">
+              <Link href={`/workshops/${slug}/gallery`} className="w-full md:w-auto">
+                <Button variant="primary" mode="filled" size="medium" className="w-full md:w-auto">
                   View All
                 </Button>
               </Link>
             </div>
 
             {/* Gallery Images - Display up to 3 images */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4 md:gap-3">
               {workshop.gallery.slice(0, 3).map((item, index) => {
                 if (item.image && typeof item.image === 'object') {
                   return (
@@ -379,7 +380,7 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
         {workshop.sponsors && workshop.sponsors.length > 0 && (
           <section className="">
             <div className="max-w-7xl mx-auto">
-              <h3 className="text-primary-base text-title-h3 mb-12 text-center">
+              <h3 className="text-primary-base text-title-h3 lg:text-title-h3 md:text-title-h4 mobile:text-title-h5 mb-12 md:mb-10 mobile:mb-8 text-center">
                 Sponsors
               </h3>
 
@@ -414,23 +415,23 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
 
         {/* Studying Section - Only for Past Workshops */}
         {workshop.type === 'past' && workshop.studyingSection?.studyingTitle && workshop.studyingSection?.studyingDescription && (
-          <section className="mt-20 mb-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          <section className="mt-20 lg:mt-20 md:mt-16 mobile:mt-12 mb-16 md:mb-12 mobile:mb-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-6 items-start">
               {/* Texto à esquerda */}
               <div>
 
-                <h2 className="text-primary-base text-title-h2 mb-4">
+                <h2 className="text-primary-base text-title-h2 lg:text-title-h2 md:text-title-h3 mobile:text-title-h4 mb-4 md:mb-3">
                   {workshop.studyingSection.studyingTitle}
                 </h2>
-                <p className="text-text-sub-600 leading-relaxed text-paragraph-md">
+                <p className="text-text-sub-600 leading-relaxed text-paragraph-md mobile:text-paragraph-sm">
                   {workshop.studyingSection.studyingDescription}
                 </p>
               </div>
 
               {/* Imagem à direita */}
               {workshop.studyingSection.studyingImage && typeof workshop.studyingSection.studyingImage === 'object' && (
-                <div className="flex md:justify-end">
-                  <div className="relative w-full max-w-[720px] h-[420px] md:max-w-[820px] md:h-[500px] lg:max-w-[960px] lg:h-[560px]">
+                <div className="flex lg:justify-end">
+                  <div className="relative w-full h-[300px] md:h-[400px] lg:max-w-[960px] lg:h-[560px]">
                     <Image
                       src={getMediaUrl(workshop.studyingSection.studyingImage.url || '', workshop.studyingSection.studyingImage.updatedAt)}
                       alt={workshop.studyingSection.studyingImage.alt || workshop.studyingSection.studyingTitle || 'Studying Section'}
