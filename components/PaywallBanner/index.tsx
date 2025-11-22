@@ -1,9 +1,12 @@
+'use client'
+
 import React from 'react'
 import { RiLockLine, RiVipCrownLine } from '@remixicon/react'
 import Link from 'next/link'
 
 import { Root as Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+import { useMembershipRedirect } from '@/hooks/use-membership-redirect'
 
 import type { AccessLevel } from '@/utilities/subscription'
 
@@ -28,6 +31,7 @@ const PLAN_INFO: Record<AccessLevel, { title: string; icon: React.ReactNode; col
 
 export function PaywallBanner({ requiredLevel, isLoggedIn, previewContent }: PaywallBannerProps) {
   const planInfo = PLAN_INFO[requiredLevel]
+  const { redirectToMembership, isProcessing } = useMembershipRedirect({ isLoggedIn })
 
   return (
     <div className="relative my-8">
@@ -80,8 +84,13 @@ export function PaywallBanner({ requiredLevel, isLoggedIn, previewContent }: Pay
             )}
 
             {isLoggedIn && (
-              <Button asChild size="medium" variant="primary">
-                <Link href="/membership">View Membership</Link>
+              <Button 
+                size="medium" 
+                variant="primary"
+                onClick={redirectToMembership}
+                disabled={isProcessing}
+              >
+                {isProcessing ? 'Processing...' : 'Become a Member'}
               </Button>
             )}
           </div>

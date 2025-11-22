@@ -4,6 +4,7 @@ import Stripe from 'stripe';
 import { getPayload } from 'payload';
 import config from '@payload-config';
 import { stripe, PRICE_TO_PLAN_MAP, mapStripeStatus } from '@/lib/stripe';
+import { sendMembershipNotification } from '@/utilities/sendMembershipNotification';
 
 /**
  * Webhook do Stripe para sincronizar assinaturas
@@ -83,6 +84,12 @@ export async function POST(req: NextRequest) {
         break;
       }
 
+      case 'invoice.finalized': {
+        const invoice = event.data.object as Stripe.Invoice;
+        await handleInvoiceFinalized(invoice, payload);
+        break;
+      }
+
       default:
         console.log(`Evento não tratado: ${event.type}`);
     }
@@ -114,13 +121,25 @@ async function handleCheckoutCompleted(
   if (session.mode === 'payment') {
     // Processar pagamento único de membership
     const membershipExpirationDate = session.metadata?.membershipExpirationDate;
+    const donationAmount = session.metadata?.donationAmount;
     
     if (!membershipExpirationDate) {
       console.error('membershipExpirationDate não encontrado nos metadados');
       return;
     }
 
-    await payload.update({
+    // Get the invoice ID if available
+    let invoiceId: string | null = null;
+    let invoiceUrl: string | null = null;
+    
+    if (session.invoice) {
+      const invoice = await stripe.invoices.retrieve(session.invoice as string);
+      invoiceId = invoice.id;
+      invoiceUrl = invoice.hosted_invoice_url;
+    }
+
+    // Update user membership
+    const updatedUser = await payload.update({
       collection: 'users',
       id: userId,
       data: {
@@ -128,10 +147,33 @@ async function handleCheckoutCompleted(
         subscriptionStatus: 'active',
         subscriptionCurrentPeriodEnd: membershipExpirationDate,
         stripeCustomerId: session.customer as string,
+        ...(invoiceId && { stripeInvoiceId: invoiceId }),
+        ...(invoiceUrl && { stripeInvoiceUrl: invoiceUrl }),
       },
     });
 
     console.log(`Membership ativada para usuário ${userId} até ${membershipExpirationDate}`);
+
+    // Send notification email to admin
+    try {
+      const userName = `${updatedUser.firstName || ''} ${updatedUser.lastName || ''}`.trim() || 'Unknown User';
+      const userEmail = updatedUser.email || 'no-email@example.com';
+      const amount = donationAmount ? parseFloat(donationAmount) : 0;
+
+      await sendMembershipNotification({
+        userId,
+        userName,
+        userEmail,
+        amount,
+        currency: 'EUR',
+        invoiceId: invoiceId || undefined,
+        invoiceUrl: invoiceUrl || undefined,
+        membershipEndDate: membershipExpirationDate,
+      });
+    } catch (emailError) {
+      console.error('Failed to send membership notification email:', emailError);
+      // Don't fail the webhook if email fails
+    }
   }
   // Buscar subscription se houver (para compatibilidade com o modelo antigo)
   else if (session.subscription) {
@@ -343,4 +385,52 @@ async function findUserByStripeCustomerId(
   });
 
   return result.docs[0] || null;
+}
+
+/**
+ * Handles invoice finalization - stores invoice information
+ */
+async function handleInvoiceFinalized(
+  invoice: Stripe.Invoice,
+  payload: Awaited<ReturnType<typeof getPayload>>,
+) {
+  const userId = invoice.metadata?.userId;
+
+  if (!userId) {
+    // Try to find user by customer ID
+    const user = await findUserByStripeCustomerId(
+      invoice.customer as string,
+      payload,
+    );
+    
+    if (!user) {
+      console.error('User not found for invoice:', invoice.id);
+      return;
+    }
+
+    // Update user with invoice information
+    await payload.update({
+      collection: 'users',
+      id: user.id,
+      data: {
+        stripeInvoiceId: invoice.id,
+        stripeInvoiceUrl: invoice.hosted_invoice_url || null,
+      },
+    });
+
+    console.log(`Invoice ${invoice.id} stored for user ${user.id}`);
+    return;
+  }
+
+  // Update user with invoice information
+  await payload.update({
+    collection: 'users',
+    id: userId,
+    data: {
+      stripeInvoiceId: invoice.id,
+      stripeInvoiceUrl: invoice.hosted_invoice_url || null,
+    },
+  });
+
+  console.log(`Invoice ${invoice.id} stored for user ${userId}`);
 }

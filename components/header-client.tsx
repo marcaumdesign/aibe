@@ -6,6 +6,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import * as Button from '@/components/ui/button';
 import MobileMenu from '@/components/mobile-menu';
 import type { Workshop } from '@/payload-types';
+import { useMembershipRedirect } from '@/hooks/use-membership-redirect';
 
 interface HeaderClientProps {
   workshops: Workshop[];
@@ -15,6 +16,7 @@ interface HeaderClientProps {
 export function HeaderClient({ workshops, isLoggedIn }: HeaderClientProps) {
   const router = useRouter();
   const pathname = usePathname();
+  const { redirectToMembership, isProcessing } = useMembershipRedirect({ isLoggedIn });
 
   return (
     <div className='fixed top-0 left-0 right-0 z-50 bg-white border-b border-stroke-soft-200 justify-center items-center flex w-full'>
@@ -107,7 +109,7 @@ export function HeaderClient({ workshops, isLoggedIn }: HeaderClientProps) {
           {/* Desktop: Keep CTA */}
           <div className='hidden md:flex items-center gap-4'>
             {isLoggedIn ? (
-              // Estado logado: apenas botão My Membership
+              // Estado logado: botão My Membership
               <Button.Root
                 variant='primary'
                 size='medium'
@@ -123,9 +125,10 @@ export function HeaderClient({ workshops, isLoggedIn }: HeaderClientProps) {
                   variant='primary'
                   size='medium'
                   className='rounded-none'
-                  onClick={() => router.push('/create-account')}
+                  onClick={redirectToMembership}
+                  disabled={isProcessing}
                 >
-                  Become a Member
+                  {isProcessing ? 'Processing...' : 'Become a Member'}
                 </Button.Root>
                 <Button.Root
                   variant='neutral'

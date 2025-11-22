@@ -214,7 +214,7 @@ export default async function Post({ params: paramsPromise }: Args) {
 
             {/* Sidebar - 1/3 da largura no desktop */}
             <div className='flex-1 min-w-[300px] lg:max-w-[350px] md:sticky md:top-32 self-start mobile:w-full'>
-              <PostsPostSidebar latest={latestPosts} tags={[]} />
+              <PostsPostSidebar latest={latestPosts} tags={[]} isLoggedIn={accessCheck.isLoggedIn} />
             </div>
           </div>
         </div>

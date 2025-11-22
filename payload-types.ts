@@ -451,6 +451,14 @@ export interface User {
    * Data de renovação ou expiração da assinatura
    */
   subscriptionCurrentPeriodEnd?: string | null;
+  /**
+   * ID of the most recent invoice from Stripe
+   */
+  stripeInvoiceId?: string | null;
+  /**
+   * URL to view the invoice on Stripe
+   */
+  stripeInvoiceUrl?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -1503,6 +1511,8 @@ export interface UsersSelect<T extends boolean = true> {
   stripeSubscriptionId?: T;
   subscriptionStatus?: T;
   subscriptionCurrentPeriodEnd?: T;
+  stripeInvoiceId?: T;
+  stripeInvoiceUrl?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

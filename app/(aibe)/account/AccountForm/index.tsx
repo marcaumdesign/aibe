@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Message } from '../../_components/Message'
 import { useAuth } from '../../_providers/Auth'
 import * as Label from '@/components/ui/label';
+import { useMembershipRedirect } from '@/hooks/use-membership-redirect';
 
 type FormData = {
   email: string
@@ -28,6 +29,39 @@ export const AccountForm: React.FC = () => {
   const { setUser, user } = useAuth()
   const [changePassword, setChangePassword] = useState(false)
   const router = useRouter()
+  const { redirectToMembership, isProcessing: isMembershipProcessing } = useMembershipRedirect({ isLoggedIn: !!user })
+  const [isLoadingInvoice, setIsLoadingInvoice] = useState(false)
+
+  const handleDownloadInvoice = async () => {
+    setIsLoadingInvoice(true);
+    try {
+      const response = await fetch('/api/stripe/get-invoice', {
+        method: 'GET',
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Failed to retrieve invoice');
+      }
+
+      const data = await response.json();
+
+      // Open the invoice PDF in a new window
+      if (data.invoicePdf) {
+        window.open(data.invoicePdf, '_blank');
+      } else if (data.invoiceUrl) {
+        window.open(data.invoiceUrl, '_blank');
+      } else {
+        throw new Error('Invoice URL not available');
+      }
+    } catch (error) {
+      console.error('Error downloading invoice:', error);
+      setError(error instanceof Error ? error.message : 'Failed to download invoice');
+    } finally {
+      setIsLoadingInvoice(false);
+    }
+  }
 
   const {
     formState: { errors, isLoading },
@@ -169,18 +203,46 @@ export const AccountForm: React.FC = () => {
               )}
             </div>
 
+            {/* Download Invoice Button */}
+            {user?.stripeInvoiceId && subscriptionPlan === 'premium' && (
+              <div className="mt-4 pt-4 border-t border-gray-200">
+                <Button
+                  variant="neutral"
+                  mode="stroke"
+                  size="small"
+                  className="w-full rounded-none"
+                  onClick={handleDownloadInvoice}
+                  disabled={isLoadingInvoice}
+                >
+                  {isLoadingInvoice ? 'Loading...' : 'Download Invoice'}
+                </Button>
+              </div>
+            )}
+
           </CardContent>
           <CardFooter>
-            <Button
-              asChild
-              variant="primary"
-              size="medium"
-              className="rounded-none h-12 mobile:h-10 mobile:w-full"
-            >
-              <Link href="/membership">
-                {subscriptionPlan === 'free' ? 'Become a Member' : 'Manage Membership'}
-              </Link>
-            </Button>
+            {subscriptionPlan === 'free' ? (
+              <Button
+                variant="primary"
+                size="medium"
+                className="rounded-none h-12 mobile:h-10 mobile:w-full"
+                onClick={redirectToMembership}
+                disabled={isMembershipProcessing}
+              >
+                {isMembershipProcessing ? 'Processing...' : 'Become a Member'}
+              </Button>
+            ) : (
+              <Button
+                asChild
+                variant="primary"
+                size="medium"
+                className="rounded-none h-12 mobile:h-10 mobile:w-full"
+              >
+                <Link href="/membership">
+                  Manage Membership
+                </Link>
+              </Button>
+            )}
           </CardFooter>
         </Card>
         <Card className="w-full shadow-lg border-0">

@@ -6,6 +6,7 @@ import * as Drawer from '@/components/ui/drawer';
 import * as Button from '@/components/ui/button';
 import { RiMenuLine } from '@remixicon/react';
 import type { Workshop } from '@/payload-types';
+import { useMembershipRedirect } from '@/hooks/use-membership-redirect';
 
 interface MobileMenuProps {
   workshops: Workshop[];
@@ -15,6 +16,7 @@ interface MobileMenuProps {
 export default function MobileMenu({ workshops, isLoggedIn }: MobileMenuProps) {
   const pathname = usePathname();
   const router = useRouter();
+  const { redirectToMembership, isProcessing } = useMembershipRedirect({ isLoggedIn });
   return (
     <Drawer.Root>
       <Drawer.Trigger asChild>
@@ -71,7 +73,7 @@ export default function MobileMenu({ workshops, isLoggedIn }: MobileMenuProps) {
 
             {/* Botões de autenticação */}
             {isLoggedIn ? (
-              // Estado logado: apenas botão My Membership
+              // Estado logado: botão My Membership
               <div className='mt-2'>
                 <Drawer.Close asChild>
                   <button
@@ -87,12 +89,13 @@ export default function MobileMenu({ workshops, isLoggedIn }: MobileMenuProps) {
               <>
                 <div className='mt-2'>
                   <Drawer.Close asChild>
-                    <Link
-                      href='/create-account'
-                      className='block rounded-md bg-primary-base px-4 py-3 text-center text-static-white font-medium hover:opacity-90 transition-opacity'
+                    <button
+                      onClick={redirectToMembership}
+                      disabled={isProcessing}
+                      className='w-full block rounded-md bg-primary-base px-4 py-3 text-center text-static-white font-medium hover:opacity-90 transition-opacity disabled:opacity-50'
                     >
-                      Become a Member
-                    </Link>
+                      {isProcessing ? 'Processing...' : 'Become a Member'}
+                    </button>
                   </Drawer.Close>
                 </div>
                 <div className='mt-2'>

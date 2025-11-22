@@ -295,6 +295,42 @@ export const Users: CollectionConfig = {
         create: () => false,
       },
     },
+    {
+      name: 'stripeInvoiceId',
+      type: 'text',
+      admin: {
+        position: 'sidebar',
+        description: 'ID of the most recent invoice from Stripe',
+        readOnly: true,
+      },
+      access: {
+        read: ({ req: { user }, id }) => {
+          // Admins can read all, users can only read their own
+          if (checkRole(['admin'], user)) return true;
+          return user?.id === id;
+        },
+        update: ({ req: { user } }) => checkRole(['admin'], user),
+        create: () => false,
+      },
+    },
+    {
+      name: 'stripeInvoiceUrl',
+      type: 'text',
+      admin: {
+        position: 'sidebar',
+        description: 'URL to view the invoice on Stripe',
+        readOnly: true,
+      },
+      access: {
+        read: ({ req: { user }, id }) => {
+          // Admins can read all, users can only read their own
+          if (checkRole(['admin'], user)) return true;
+          return user?.id === id;
+        },
+        update: ({ req: { user } }) => checkRole(['admin'], user),
+        create: () => false,
+      },
+    },
   ],
   timestamps: true,
 };
