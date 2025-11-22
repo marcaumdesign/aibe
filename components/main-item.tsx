@@ -23,7 +23,7 @@ export function MainItem({
 }: MainItemProps) {
   return (
     <div className='border gap-4 border-stroke-sub-200 bg-white p-0 flex flex-col justify-start overflow-hidden h-full group'>
-      <div className='relative w-full h-[400px] md:h-[300px] mobile:h-[250px] overflow-hidden'>
+      <div className='relative w-full h-[400px]  mobile:h-[250px] overflow-hidden'>
         <Image
           src={imageSrc}
           alt={imageAlt}
