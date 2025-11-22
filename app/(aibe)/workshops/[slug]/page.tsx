@@ -133,9 +133,9 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
           </div>
 
           {/* Two Column Layout - Date/Place and Image */}
-          <div className="flex flex-col lg:flex-row gap-8 md:gap-6 items-start">
+          <div className="flex flex-col bg-[#F3F8FF] lg:flex-row gap-8 md:gap-6 items-start">
             {/* Left Column - Date & Place */}
-            <div className="flex flex-col gap-8 md:gap-6 w-full lg:w-[428px] shrink-0">
+            <div className="flex flex-col p-8 gap-8 md:gap-6 w-full lg:w-[428px] shrink-0">
               {/* Date */}
               <div className="flex flex-col gap-2">
                 <p className="text-text-sub-600 text-paragraph-md mobile:text-paragraph-sm">
@@ -202,29 +202,30 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
         {workshop.speaker && typeof workshop.speaker === 'object' && (
           <section className="mb-16 md:mb-12 mobile:mb-8">
             <div className="bg-[#f0f6ff] w-full">
-              <div className="flex flex-col lg:flex-row gap-2 lg:items-stretch">
-                {/* Speaker Image - Left */}
+              <div className="flex flex-col lg:flex-row gap-0 lg:items-stretch">
+                {/* Column 1: Speaker Image */}
                 {workshop.speaker.avatar && typeof workshop.speaker.avatar === 'object' && (
-                  <div className="w-full lg:w-[426px] shrink-0 lg:self-stretch">
-                    <Image
-                      src={getMediaUrl(workshop.speaker.avatar.url || '', workshop.speaker.avatar.updatedAt)}
-                      alt={workshop.speaker.avatar.alt || workshop.speaker.name || 'Speaker'}
-                      width={426}
-                      height={604}
-                      className="w-full h-full min-h-[350px] md:min-h-[300px] mobile:min-h-[280px] lg:min-h-full object-cover"
-                    />
+                  <div className="w-fit p-8 md:p-6 mobile:p-5 flex items-center justify-center lg:justify-start">
+                    <div className="relative w-[256px] h-[256px] rounded-full overflow-hidden shadow-sm shrink-0">
+                      <Image
+                        src={getMediaUrl(workshop.speaker.avatar.url || '', workshop.speaker.avatar.updatedAt)}
+                        alt={workshop.speaker.avatar.alt || workshop.speaker.name || 'Speaker'}
+                        width={256}
+                        height={256}
+                        className="w-full h-full object-top
+ object-cover"
+                      />
+                    </div>
                   </div>
                 )}
 
-                {/* Speaker Info - Right */}
-                <div className="flex-1 p-8 md:p-6 mobile:p-5 flex flex-col gap-8 md:gap-6 justify-center">
+                {/* Column 2: Speaker Info */}
+                <div className="w-full lg:w-full p-8 md:p-6 mobile:p-5 flex flex-col gap-6 md:gap-4 justify-center">
                   <div className="flex flex-col gap-3 md:gap-2">
                     {/* Badge */}
-
                     <p className="text-text-sub-600 text-paragraph-md mobile:text-paragraph-sm">
                       Keynote Speaker
                     </p>
-
 
                     {/* Speaker Name */}
                     <h2 className="text-primary-base text-title-h2 lg:text-title-h2 md:text-title-h3 mobile:text-title-h4">
@@ -233,7 +234,7 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
 
                     {/* Role */}
                     {workshop.speaker.role && (
-                      <p className="text-text-strong-950 text-paragraph-md mobile:text-paragraph-sm max-w-[428px]">
+                      <p className="text-text-strong-950 text-paragraph-md mobile:text-paragraph-sm">
                         {workshop.speaker.role}
                       </p>
                     )}
@@ -257,13 +258,6 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
                     )}
                   </div>
 
-                  {/* Bio */}
-                  {workshop.speaker.biography && (
-                    <p className="text-text-sub-600 text-paragraph-sm mobile:text-paragraph-xs">
-                      {workshop.speaker.biography}
-                    </p>
-                  )}
-
                   {/* Website Button */}
                   {workshop.speaker.link && (
                     <Link href={workshop.speaker.link} target="_blank" rel="noopener noreferrer">
@@ -276,6 +270,20 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
                         Open Personal Website
                       </Button>
                     </Link>
+                  )}
+                </div>
+
+                {/* Column 3: Bio */}
+                <div className="w-full  p-8 md:p-6 mobile:p-5 flex flex-col justify-center">
+                  {workshop.speaker.biography && (
+                    <>
+                      <h3 className="text-text-strong-950 text-title-h6 mobile:text-paragraph-lg mb-4 mobile:mb-3">
+                        Bio
+                      </h3>
+                      <p className="text-text-sub-600 text-paragraph-sm mobile:text-paragraph-xs leading-relaxed">
+                        {workshop.speaker.biography}
+                      </p>
+                    </>
                   )}
                 </div>
               </div>

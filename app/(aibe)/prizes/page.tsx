@@ -80,9 +80,9 @@ export default function EventsPage() {
         />
       </div>
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8 mobile:pt-8 mobile:pb-4">
+      <main className="flex flex-col items-center justify-center w-full px-4 sm:px-6 lg:px-8 pt-16 pb-8 mobile:pt-8 mobile:pb-4">
         {/* Prizes Section */}
-        <section className="pb-16">
+        <section className="max-w-[1200px] mx-auto w-full pb-16">
           <div className="flex flex-col gap-4 items-center justify-center">
             {/* Small label */}
             <Badge variant='with-dot' size='medium'>
@@ -220,7 +220,7 @@ export default function EventsPage() {
           </div>
 
           {/* Scientific Committee */}
-          <div className="p-8 flex w-full bg-primary-alpha-10 flex-col gap-4">
+          <div className="p-8 flex w-full bg-[#F3F8FF] flex-col gap-4">
             <h2 className="text-primary-base text-title-h5">
               Scientific Committee
             </h2>
@@ -336,12 +336,12 @@ export default function EventsPage() {
 
             {/* Imagem à direita (pequena) */}
             <div className="flex md:justify-end">
-              <div className="relative w-full max-w-[720px] h-[220px] sm:h-[260px] md:max-w-[820px] md:h-[500px] lg:max-w-[960px] lg:h-[560px]">
+              <div className="relative w-full h-[400px]">
                 <Image
                   src="/images/WORKSHOP%20FOTO%209.jpeg"
                   alt="Official Launch of the Prize"
                   fill
-                  className="object-cover shadow-sm"
+                  className="object-cover object-[25%_40%] shadow-sm"
                 />
               </div>
             </div>

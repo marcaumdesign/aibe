@@ -205,7 +205,7 @@ export default function About() {
             {/* Three Cards */}
             <div className="flex flex-row lg:flex-row md:flex-col mobile:flex-col gap-4 items-stretch justify-center w-full">
               {/* Card 1 */}
-              <div className="flex-1 bg-[#F3F8FF]  flex flex-col gap-4 p-8 md:p-6 mobile:p-6">
+              <div className="flex-1 bg-[#F3F8FF] flex flex-col gap-4 p-8 md:p-6 mobile:p-6">
                 <div className="flex-shrink-0">
                   <RiGroup3Line className="w-8 h-8 md:w-7 md:h-7 mobile:w-7 mobile:h-7 text-primary-base" />
                 </div>
