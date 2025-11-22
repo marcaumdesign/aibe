@@ -1,37 +1,10 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import CTA from '@/components/cta';
 import DirectorsGrid from '@/components/directors-grid';
-import type { Director } from '@/lib/strapi';
 import { Badge } from '@/components/ui/badge';
+import { getDirectors } from '@/utilities/getDirectors';
 
-export default function Team() {
-  const [directors, setDirectors] = useState<Director[]>([]);
-
-  useEffect(() => {
-    async function loadDirectors() {
-      try {
-        console.log('📡 Buscando diretores via API proxy (Team page)...');
-        const res = await fetch('/api/directors', {
-          cache: 'no-store',
-        });
-
-        if (!res.ok) {
-          console.error('❌ Erro na API proxy:', res.status);
-          return;
-        }
-
-        const json = await res.json();
-        const data = json.directors || [];
-        console.log('📥 Diretores carregados via API (Team page):', data.length);
-        setDirectors(data);
-      } catch (error) {
-        console.error('❌ Erro ao buscar diretores:', error);
-      }
-    }
-    loadDirectors();
-  }, []);
+export default async function Team() {
+  const directors = await getDirectors();
 
   return (
     <div className='min-h-screen bg-white'>

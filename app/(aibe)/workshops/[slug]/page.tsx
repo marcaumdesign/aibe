@@ -303,47 +303,6 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
           </div>
         )}
 
-        {/* Scientific Committee & Topics Section */}
-        <section className="mb-16 md:mb-12 mobile:mb-8">
-          <div className="bg-blue-50 p-6 md:p-5 mobile:p-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-6">
-              {/* Left Column - Scientific Committee */}
-              {workshop.scientificCommittee && renderMarkdownList(workshop.scientificCommittee).length > 0 && (
-                <div>
-                  <h5 className="text-primary-base text-title-h5 lg:text-title-h5 md:text-title-h6 mobile:text-title-h6 mb-6 md:mb-5 mobile:mb-4">
-                    Scientific Committees
-                  </h5>
-                  <ul className="space-y-1 text-text-sub-600">
-                    {renderMarkdownList(workshop.scientificCommittee).map((item, index) => (
-                      <li key={index} className="flex items-start text-paragraph-md mobile:text-paragraph-sm">
-                        <span className="text-primary-base mr-2">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Right Column - Topics */}
-              {workshop.topics && renderMarkdownList(workshop.topics).length > 0 && (
-                <div>
-                  <h5 className="text-primary-base text-title-h5 lg:text-title-h5 md:text-title-h6 mobile:text-title-h6 mb-6 md:mb-5 mobile:mb-4">
-                    Topics
-                  </h5>
-                  <ul className="space-y-1 text-text-sub-600">
-                    {renderMarkdownList(workshop.topics).map((item, index) => (
-                      <li key={index} className="flex items-start text-paragraph-md mobile:text-paragraph-sm">
-                        <span className="text-primary-base mr-2">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-
         {/* Gallery Section - Only for Past Workshops */}
         {workshop.type === 'past' && workshop.gallery && workshop.gallery.length > 0 && (
           <section className="mb-10 md:mb-8 mobile:mb-6">
@@ -384,6 +343,50 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
             </div>
           </section>
         )}
+
+
+        {/* Scientific Committee & Topics Section */}
+        <section className="mb-16 md:mb-12 mobile:mb-8">
+          <div className="bg-blue-50 p-6 md:p-5 mobile:p-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-6">
+              {/* Left Column - Scientific Committee */}
+              {workshop.scientificCommittee && renderMarkdownList(workshop.scientificCommittee).length > 0 && (
+                <div>
+                  <h5 className="text-primary-base text-title-h5 lg:text-title-h5 md:text-title-h6 mobile:text-title-h6 mb-6 md:mb-5 mobile:mb-4">
+                    Scientific Committee
+                  </h5>
+                  <ul className="space-y-1 text-text-sub-600">
+                    {renderMarkdownList(workshop.scientificCommittee).map((item, index) => (
+                      <li key={index} className="flex items-start text-paragraph-md mobile:text-paragraph-sm">
+                        <span className="text-primary-base mr-2">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Right Column - Topics */}
+              {workshop.topics && renderMarkdownList(workshop.topics).length > 0 && (
+                <div>
+                  <h5 className="text-primary-base text-title-h5 lg:text-title-h5 md:text-title-h6 mobile:text-title-h6 mb-6 md:mb-5 mobile:mb-4">
+                    Topics
+                  </h5>
+                  <ul className="space-y-1 text-text-sub-600">
+                    {renderMarkdownList(workshop.topics).map((item, index) => (
+                      <li key={index} className="flex items-start text-paragraph-md mobile:text-paragraph-sm">
+                        <span className="text-primary-base mr-2">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
+
 
         {workshop.sponsors && workshop.sponsors.length > 0 && (
           <section className="">
@@ -439,7 +442,7 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
               {/* Imagem à direita */}
               {workshop.studyingSection.studyingImage && typeof workshop.studyingSection.studyingImage === 'object' && (
                 <div className="flex lg:justify-end">
-                  <div className="relative w-full h-[300px] md:h-[400px] lg:max-w-[960px] lg:h-[560px]">
+                  <div className="relative w-full h-[450px]">
                     <Image
                       src={getMediaUrl(workshop.studyingSection.studyingImage.url || '', workshop.studyingSection.studyingImage.updatedAt)}
                       alt={workshop.studyingSection.studyingImage.alt || workshop.studyingSection.studyingTitle || 'Studying Section'}
