@@ -105,7 +105,7 @@ const getDirectors = unstable_cache(
   {
     tags: ['directors-api', 'staff-api'],
     revalidate: 60,
-  }
+  },
 );
 
 export async function GET() {

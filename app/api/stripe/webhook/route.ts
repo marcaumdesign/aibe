@@ -135,7 +135,7 @@ async function handleCheckoutCompleted(
     if (session.invoice) {
       const invoice = await stripe.invoices.retrieve(session.invoice as string);
       invoiceId = invoice.id;
-      invoiceUrl = invoice.hosted_invoice_url;
+      invoiceUrl = invoice.hosted_invoice_url || null;
     }
 
     // Update user membership
