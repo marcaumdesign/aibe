@@ -58,22 +58,22 @@ function calculateGridColumns(count: number): number {
 
 export default function DirectorsGrid({ directors }: DirectorsGridProps) {
   const [selectedDirector, setSelectedDirector] = useState<Director | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   // Calcula o número de colunas baseado no número de diretores
   const gridCols = useMemo(() => {
     return calculateGridColumns(directors.length);
   }, [directors.length]);
 
-  // Detecta se é mobile
+  // Detecta se é tela pequena (< 900px)
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 767);
+    const checkScreenSize = () => {
+      setIsSmallScreen(window.innerWidth < 900);
     };
 
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
   const openDirectorModal = (director: Director) => {
@@ -107,14 +107,9 @@ export default function DirectorsGrid({ directors }: DirectorsGridProps) {
   return (
     <>
       <div className='mx-auto max-w-[1200px] w-full'>
-          <div
-            className='grid mobile:grid-cols-1 gap-8 mobile:gap-6'
-            style={{
-              gridTemplateColumns: isMobile
-                ? '1fr'
-                : `repeat(${gridCols}, minmax(0, 1fr))`,
-            }}
-          >
+        {isSmallScreen ? (
+          // Lista vertical para telas < 900px
+          <div className='flex flex-col gap-6'>
             {directors.map((director) => {
               const imageUrl = director.Avatar?.url || '';
 
@@ -122,8 +117,8 @@ export default function DirectorsGrid({ directors }: DirectorsGridProps) {
                 <DirectorCard
                   key={director.id}
                   id={director.id}
-                  name={director.Name || 'Nome não disponível'}
-                  role={director.Role || 'Cargo não disponível'}
+                  name={director.Name || 'Name not available'}
+                  role={director.Role || 'Role not available'}
                   description={director.Description}
                   image={imageUrl}
                   imageAlt={director.Avatar?.alternativeText}
@@ -133,7 +128,34 @@ export default function DirectorsGrid({ directors }: DirectorsGridProps) {
               );
             })}
           </div>
-        </div>
+        ) : (
+          // Grid para telas >= 900px
+          <div
+            className='grid gap-8'
+            style={{
+              gridTemplateColumns: `repeat(${gridCols}, minmax(0, 1fr))`,
+            }}
+          >
+            {directors.map((director) => {
+              const imageUrl = director.Avatar?.url || '';
+
+              return (
+                <DirectorCard
+                  key={director.id}
+                  id={director.id}
+                  name={director.Name || 'Name not available'}
+                  role={director.Role || 'Role not available'}
+                  description={director.Description}
+                  image={imageUrl}
+                  imageAlt={director.Avatar?.alternativeText}
+                  clickable={true}
+                  onClick={() => openDirectorModal(director)}
+                />
+              );
+            })}
+          </div>
+        )}
+      </div>
 
       {/* Director Modal */}
       <DirectorModal
