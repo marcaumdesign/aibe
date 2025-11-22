@@ -87,16 +87,16 @@ export async function POST(req: NextRequest) {
         },
       ],
       success_url: `${baseUrl}/account?success=${encodeURIComponent('Membership activated successfully! Welcome to AIBE.')}&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}/membership?canceled=true&message=${encodeURIComponent('Payment was canceled. You can try again when ready.')}`,
+      cancel_url: `${baseUrl}/account?canceled=true&message=${encodeURIComponent('Payment was canceled. You can try again when ready.')}`,
       metadata: {
         userId: user.id.toString(),
         membershipExpirationDate: expirationDate.toISOString(),
         donationAmount: user.donationAmount.toString(),
       },
       // Permitir códigos promocionais
-      allow_promotion_codes: true,
+      allow_promotion_codes: false,
       // Coletar endereço de cobrança
-      billing_address_collection: 'required',
+      // billing_address_collection: 'required',
     });
 
     return NextResponse.json({ url: session.url });
