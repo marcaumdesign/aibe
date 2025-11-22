@@ -1933,12 +1933,16 @@ export interface HighlightBanner {
    * Texto principal do banner
    */
   title: string;
-  button: {
-    text: string;
+  button?: {
+    /**
+     * Ative ou desative o botão do banner
+     */
+    enabled?: boolean | null;
+    text?: string | null;
     /**
      * URL para onde o botão irá redirecionar (ex: /events/workshop)
      */
-    link: string;
+    link?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -2017,6 +2021,7 @@ export interface HighlightBannerSelect<T extends boolean = true> {
   button?:
     | T
     | {
+        enabled?: T;
         text?: T;
         link?: T;
       };

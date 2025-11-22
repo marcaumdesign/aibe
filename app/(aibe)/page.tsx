@@ -206,8 +206,7 @@ export default async function Home() {
       {highlightBanner?.enabled && (
         <HighlightBanner
           title={highlightBanner.title}
-          buttonText={highlightBanner.button.text}
-          buttonLink={highlightBanner.button.link}
+          button={highlightBanner.button}
         />
       )}
 

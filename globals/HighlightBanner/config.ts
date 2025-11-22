@@ -32,17 +32,26 @@ export const HighlightBanner: GlobalConfig = {
       label: 'Botão',
       fields: [
         {
+          name: 'enabled',
+          type: 'checkbox',
+          label: 'Mostrar Botão',
+          defaultValue: true,
+          admin: {
+            description: 'Ative ou desative o botão do banner',
+          },
+        },
+        {
           name: 'text',
           type: 'text',
           label: 'Texto do Botão',
-          required: true,
+          required: false,
           defaultValue: 'See Details',
         },
         {
           name: 'link',
           type: 'text',
           label: 'Link do Botão',
-          required: true,
+          required: false,
           defaultValue: '/events/workshop',
           admin: {
             description: 'URL para onde o botão irá redirecionar (ex: /events/workshop)',

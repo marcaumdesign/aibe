@@ -5,11 +5,14 @@ import { Badge } from '@/components/ui/badge'
 
 interface HighlightBannerProps {
   title: string
-  buttonText: string
-  buttonLink: string
+  button?: {
+    enabled?: boolean
+    text?: string
+    link?: string
+  }
 }
 
-export function HighlightBanner({ title, buttonText, buttonLink }: HighlightBannerProps) {
+export function HighlightBanner({ title, button }: HighlightBannerProps) {
   return (
     <div className='bg-[#f3f8ff] py-6 md:py-8'>
       <div className='w-full max-w-[1200px] mx-auto px-4 md:px-8'>
@@ -20,15 +23,17 @@ export function HighlightBanner({ title, buttonText, buttonLink }: HighlightBann
             </Badge>
             <h2 className='text-title-h4 text-black animate-translate-y-up'>{title}</h2>
           </div>
-          <Button.Root
-            variant='primary'
-            mode='filled'
-            size='medium'
-            className='h-hug'
-            asChild
-          >
-            <Link href={buttonLink}>{buttonText}</Link>
-          </Button.Root>
+          {button?.enabled && button?.text && button?.link && (
+            <Button.Root
+              variant='primary'
+              mode='filled'
+              size='medium'
+              className='h-hug'
+              asChild
+            >
+              <Link href={button.link}>{button.text}</Link>
+            </Button.Root>
+          )}
         </div>
       </div>
     </div>
