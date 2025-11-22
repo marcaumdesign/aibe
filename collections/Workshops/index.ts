@@ -244,8 +244,21 @@ export const Workshops: CollectionConfig = {
         },
         {
           name: 'studyingDescription',
-          type: 'textarea',
+          type: 'richText',
           label: 'Studying Description',
+          editor: lexicalEditor({
+            features: ({ rootFeatures }) => {
+              return [
+                ...rootFeatures,
+                HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                FixedToolbarFeature(),
+                InlineToolbarFeature(),
+                HorizontalRuleFeature(),
+                UnorderedListFeature(),
+                OrderedListFeature(),
+              ];
+            },
+          }),
         },
         {
           name: 'studyingImage',
