@@ -129,7 +129,7 @@ export default async function Home() {
                 </div>
               </div> */}
             </div>
-            <div className='flex-1 px-8 md:px-6 mobile:px-4 flex flex-col gap-8 md:gap-6 items-center w-full'>
+            <div className='flex-1  flex flex-col gap-8 md:gap-6 items-center w-full'>
 
 
               <div className='flex flex-col gap-4 md:gap-3 items-center w-full'>
@@ -140,7 +140,7 @@ export default async function Home() {
                   Associazione Italo-Brasiliana di Economia
                 </h3>
 
-                <p className='text-paragraph-lg md:text-paragraph-md mobile:text-paragraph-md text-text-sub-600 text-center'>
+                <p className='text-paragraph-lg md:text-paragraph-md mobile:text-paragraph-md text-text-sub-600 text-center mobile:text-left'>
                   We are a bilateral, non-profit association that promotes scientific collaboration between Italian and Brazilian economists.
                 </p>
               </div>
