@@ -27,6 +27,12 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.aibe.website',
+        port: '',
+        pathname: '/**',
+      },
     ],
     qualities: [75, 90, 95, 100],
   },

@@ -97,6 +97,28 @@ export async function POST(req: NextRequest) {
       allow_promotion_codes: false,
       // Coletar endereço de cobrança
       // billing_address_collection: 'required',
+      // Invoice settings - automatically send invoice email
+      invoice_creation: {
+        enabled: true,
+        invoice_data: {
+          description: `AIBE Annual Membership ${currentYear}`,
+          metadata: {
+            userId: user.id.toString(),
+            membershipYear: currentYear.toString(),
+          },
+          footer:
+            'Thank you for joining AIBE - Italian-Brazilian Economics Association',
+          // Send copy to AIBE admin email
+          custom_fields: [
+            {
+              name: 'Organization',
+              value: 'Italian-Brazilian Economics Association (AIBE)',
+            },
+          ],
+        },
+      },
+      // Note: CC emails are configured in Stripe Dashboard under Settings → Emails
+      // Additional recipient: aibe@aibe.website
     });
 
     return NextResponse.json({ url: session.url });

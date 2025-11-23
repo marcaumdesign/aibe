@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useMembershipRedirect } from '@/hooks/use-membership-redirect';
 // import CTA from '@/components/cta';
 
 interface LatestPost {
@@ -16,9 +19,11 @@ interface LatestPost {
 interface BlogPostSidebarProps {
   latest: LatestPost[];
   tags?: string[];
+  isLoggedIn: boolean;
 }
 
-export default function BlogPostSidebar({ latest, tags }: BlogPostSidebarProps) {
+export default function BlogPostSidebar({ latest, tags, isLoggedIn }: BlogPostSidebarProps) {
+  const { redirectToMembership, isProcessing } = useMembershipRedirect({ isLoggedIn });
   const formatDate = (dateString: string) =>
     new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -101,12 +106,13 @@ export default function BlogPostSidebar({ latest, tags }: BlogPostSidebarProps) 
             <p className='text-paragraph-md text-white mb-6 group-hover:text-gray-50 transition-colors duration-300'>
               Connect with researchers and strengthen academic cooperation between Brazil and Italy.
             </p>
-            <Link
-              href='/membership'
-              className='inline-block bg-white text-primary-base px-6 py-3 rounded-lg font-medium hover:bg-gray-50 hover:shadow-lg hover:scale-105 transition-all duration-300 hover:-translate-y-1'
+            <button
+              onClick={redirectToMembership}
+              disabled={isProcessing}
+              className='inline-block bg-white text-primary-base px-6 py-3 rounded-lg font-medium hover:bg-gray-50 hover:shadow-lg hover:scale-105 transition-all duration-300 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed'
             >
-              Become a Member
-            </Link>
+              {isProcessing ? 'Processing...' : 'Become a Member'}
+            </button>
           </div>
         </div>
       </div>
