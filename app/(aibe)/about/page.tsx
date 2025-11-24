@@ -53,7 +53,7 @@ export default function About() {
             </div>
 
             {/* Right Column - Image */}
-            <div className="lg:sticky lg:top-[100px] w-full lg:w-[400px] lg:flex-1 lg:min-w-[400px] h-[400px] md:h-[600px] mobile:h-[300px] relative">
+            <div className="lg:sticky lg:top-[100px] w-full lg:w-[400px] lg:flex-1 lg:min-w-[400px] h-[400px] md:h-[450px] mobile:h-[300px] relative">
               <Image
                 src='/images/hero-about-us-2.png'
                 alt='Brasil e Italia'
@@ -63,7 +63,7 @@ export default function About() {
               <div
                 className='absolute z-10 block mobile:hidden'
                 style={{
-                  left: '-20px',
+                  left: '80px',
                   top: '-20px'
                 }}
               >
@@ -87,7 +87,7 @@ export default function About() {
               <div
                 className='absolute z-10 block mobile:hidden'
                 style={{
-                  right: '-20px',
+                  right: '80px',
                   bottom: '-20px'
                 }}
               >
