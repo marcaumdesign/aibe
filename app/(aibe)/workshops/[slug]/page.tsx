@@ -442,7 +442,7 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
               {/* Imagem à direita */}
               {workshop.studyingSection.studyingImage && typeof workshop.studyingSection.studyingImage === 'object' && (
                 <div className="flex lg:justify-end">
-                  <div className="relative w-full h-[450px]">
+                  <div className="relative w-full h-[400px]">
                     <Image
                       src={getMediaUrl(workshop.studyingSection.studyingImage.url || '', workshop.studyingSection.studyingImage.updatedAt)}
                       alt={workshop.studyingSection.studyingImage.alt || workshop.studyingSection.studyingTitle || 'Studying Section'}
