@@ -16,6 +16,8 @@ import { Root as Button } from "@/components/ui/button";
 import { Root as Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import { Badge } from '@/components/ui/badge';
+import { notification } from '@/hooks/use-notification';
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -25,6 +27,7 @@ export default function ContactPage() {
     message: "",
     privacyPolicy: false
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -41,10 +44,87 @@ export default function ContactPage() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+
+    // Validate required fields
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
+      notification({
+        status: 'error',
+        title: 'Missing Information',
+        description: 'Please fill in all required fields.',
+      });
+      return;
+    }
+
+    // Validate privacy policy
+    if (!formData.privacyPolicy) {
+      notification({
+        status: 'error',
+        title: 'Privacy Policy Required',
+        description: 'Please agree to our privacy policy to continue.',
+      });
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      notification({
+        status: 'error',
+        title: 'Invalid Email',
+        description: 'Please enter a valid email address.',
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        notification({
+          status: 'success',
+          title: 'Message Sent!',
+          description: 'Thank you for contacting us. We will get back to you soon.',
+        });
+
+        // Reset form
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          message: "",
+          privacyPolicy: false
+        });
+      } else {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending contact form:', error);
+      notification({
+        status: 'error',
+        title: 'Error',
+        description: 'Failed to send message. Please try again later.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -167,8 +247,9 @@ export default function ContactPage() {
                       variant="primary"
                       size="medium"
                       className="w-full h-12 mobile:h-10 rounded-none"
+                      disabled={isSubmitting}
                     >
-                      Send Message
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
                     </Button>
                   </CardFooter>
                 </form>

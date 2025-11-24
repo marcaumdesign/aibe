@@ -113,7 +113,7 @@ export default function EventsPage() {
                   <div className='absolute inset-0 rounded-full bg-blue-50 scale-150 animate-pulse-custom-slow z-30'></div>
                 </div>
               </div> */}
-              <h2 className="text-primary-base text-title-h2 text-center max-w-2xl mx-auto">
+              <h2 className="text-text-strong-950 text-title-h2 text-center max-w-2xl mx-auto">
                 Giorgio Mortara Prize
 
 

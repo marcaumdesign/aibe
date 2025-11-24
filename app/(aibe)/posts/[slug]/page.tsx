@@ -143,6 +143,8 @@ export default async function Post({ params: paramsPromise }: Args) {
       resolvedImage = {
         url: getMediaUrl(url, metaImage.updatedAt),
         alternativeText: metaImage.alt || post.title || undefined,
+        width: metaImage.sizes?.large?.width || metaImage.width || undefined,
+        height: metaImage.sizes?.large?.height || metaImage.height || undefined,
         sizes: metaImage.sizes,
       }
     }
@@ -152,6 +154,8 @@ export default async function Post({ params: paramsPromise }: Args) {
       resolvedImage = {
         url: getMediaUrl(url, heroImage.updatedAt),
         alternativeText: heroImage.alt || post.title || undefined,
+        width: heroImage.sizes?.large?.width || heroImage.width || undefined,
+        height: heroImage.sizes?.large?.height || heroImage.height || undefined,
         sizes: heroImage.sizes,
       }
     }

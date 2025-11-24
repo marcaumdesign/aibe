@@ -10,6 +10,8 @@ interface PostsPostHeroProps {
     image: {
       url: string;
       alternativeText?: string;
+      width?: number;
+      height?: number;
       sizes?: Media['sizes'];
     } | null;
     publishedAt: string;
@@ -35,6 +37,10 @@ export default function PostsPostHero({ post }: PostsPostHeroProps) {
     })()
     : '';
 
+  // Get image dimensions
+  const imageWidth = post.image?.sizes?.large?.width || post.image?.width;
+  const imageHeight = post.image?.sizes?.large?.height || post.image?.height;
+
   return (
     <section className='pt-20 mobile:pt-8 pb-16 mobile:pb-8'>
       <div className='container items-start justify-start mx-auto px-4 max-w-7xl'>
@@ -59,9 +65,9 @@ export default function PostsPostHero({ post }: PostsPostHeroProps) {
         {/* Header Content */}
         <div className='text-left mb-16 mobile:mb-8 items-start max-w-4xl mx-auto'>
 
-          <h1 className='text-title-h1 text-left text-text-strong-950 font-semibold mb-6 mobile:mb-4'>
+          <h2 className='text-title-h2 text-left text-text-strong-950 font-semibold mb-6 mobile:mb-4'>
             {post.title}
-          </h1>
+          </h2>
           {post.description && (
             <p className='text-paragraph-lg text-left text-text-sub-600  mx-auto mb-6 mobile:mb-4'>
               {post.description}
@@ -83,17 +89,17 @@ export default function PostsPostHero({ post }: PostsPostHeroProps) {
         </div>
 
         {/* Featured Image */}
-        {post.image && imageUrl && (
-          <div className='relative w-full aspect-square mb-12 mobile:mb-8 overflow-hidden rounded-lg max-w-md mobile:max-w-full mx-auto'>
+        {post.image && imageUrl && imageWidth && imageHeight && (
+          <div className='w-full mb-12 mobile:mb-8 overflow-hidden rounded-lg max-w-4xl mx-auto'>
             <Image
               src={imageUrl}
               alt={post.image.alternativeText || post.title}
-              fill
-              className='object-cover'
+              width={imageWidth}
+              height={imageHeight}
+              className='w-full h-auto'
               priority
               quality={100}
-              sizes="(max-width: 768px) 100vw, 448px"
-              style={{ objectPosition: 'center 15%' }}
+              sizes="(max-width: 768px) 100vw, 896px"
             />
           </div>
         )}

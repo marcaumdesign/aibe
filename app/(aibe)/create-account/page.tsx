@@ -79,7 +79,7 @@ export default async function CreateAccount() {
                 </div>
               </div>
 
-              <p className="text-text-sub-600 text-paragraph-xs">To register and pay, click on the link below. You will be asked to complete and submit the AIBE Membership Form. You will next be directed to a payment page. Once payment is complete, you will receive a payment confirmation email, which contains a unique Member ID and serves as proof of membership. Membership lasts until 31 December of each year.</p>
+              <p className="text-text-sub-600 text-paragraph-xs">To become an AIBE Member, fill in the form on this page. Please indicate your institutional affiliation and set up a password. You will then be directed to a payment page. Once payment is complete, you will receive a payment confirmation email with a unique Member ID. This document serves as proof of membership. Membership lasts until 31 December of each year. You can then use your email and password to sign into your personal account on this website.</p>
 
 
 

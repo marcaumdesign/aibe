@@ -33,7 +33,7 @@ export function HeaderClient({ workshops, isLoggedIn }: HeaderClientProps) {
         </Link>
 
         {/* Navigation (desktop) */}
-        <nav className='text-lg hidden items-center gap-4 font-medium text-text-strong-950 md:flex'>
+        <nav className='text-lg hidden items-center gap-6 font-medium text-text-strong-950 md:flex'>
           <Link
             href='/'
             className={`transition-colors hover:text-primary-base ${pathname === '/' ? 'text-primary-base' : ''}`}

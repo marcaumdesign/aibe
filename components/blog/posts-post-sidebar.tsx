@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useMembershipRedirect } from '@/hooks/use-membership-redirect';
 
 interface LatestPost {
   id: string | number;
@@ -22,7 +21,6 @@ interface PostsPostSidebarProps {
 }
 
 export default function PostsPostSidebar({ latest, tags, isLoggedIn }: PostsPostSidebarProps) {
-  const { redirectToMembership, isProcessing } = useMembershipRedirect({ isLoggedIn });
   const formatDate = (dateString: string) =>
     new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -87,34 +85,35 @@ export default function PostsPostSidebar({ latest, tags, isLoggedIn }: PostsPost
         </div>
       )}
 
-      {/* CTA Section */}
-      <div className='md:sticky md:top-8 w-full max-w-md mx-auto mobile:relative'>
-        <div className='relative bg-primary-base rounded-lg p-8 mobile:p-6 text-center overflow-hidden group hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]'>
-          {/* Animated gradient background */}
-          <div className='absolute inset-0 bg-gradient-to-br from-primary-base via-blue-700 to-primary-base opacity-0 group-hover:opacity-100 transition-opacity duration-700'></div>
+      {/* CTA Section - Only show if user is not logged in */}
+      {!isLoggedIn && (
+        <div className='md:sticky md:top-8 w-full max-w-md mx-auto mobile:relative'>
+          <div className='relative bg-primary-base rounded-lg p-8 mobile:p-6 text-center overflow-hidden group hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]'>
+            {/* Animated gradient background */}
+            <div className='absolute inset-0 bg-gradient-to-br from-primary-base via-blue-700 to-primary-base opacity-0 group-hover:opacity-100 transition-opacity duration-700'></div>
 
-          {/* Shine effect */}
-          <div className='absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-1000'>
-            <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1500'></div>
-          </div>
+            {/* Shine effect */}
+            <div className='absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-1000'>
+              <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1500'></div>
+            </div>
 
-          <div className='relative z-10'>
-            <h3 className='text-title-h4 font-semibold text-white mb-3 mobile:mb-2 group-hover:scale-105 transition-transform duration-300'>
-              Join AIBE
-            </h3>
-            <p className='text-paragraph-md text-white mb-6 mobile:mb-4 group-hover:text-gray-50 transition-colors duration-300'>
-              Connect with researchers and strengthen academic cooperation between Brazil and Italy.
-            </p>
-            <button
-              onClick={redirectToMembership}
-              disabled={isProcessing}
-              className='inline-block bg-white text-primary-base px-6 py-3 rounded-lg font-medium hover:bg-gray-50 hover:shadow-lg hover:scale-105 transition-all duration-300 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed'
-            >
-              {isProcessing ? 'Processing...' : 'Become a Member'}
-            </button>
+            <div className='relative z-10'>
+              <h3 className='text-title-h4 font-semibold text-white mb-3 mobile:mb-2 group-hover:scale-105 transition-transform duration-300'>
+                Join AIBE
+              </h3>
+              <p className='text-paragraph-md text-white mb-6 mobile:mb-4 group-hover:text-gray-50 transition-colors duration-300'>
+                Connect with researchers and strengthen academic cooperation between Brazil and Italy.
+              </p>
+              <Link
+                href='/create-account'
+                className='inline-block bg-white text-primary-base px-6 py-3 rounded-lg font-medium hover:bg-gray-50 hover:shadow-lg hover:scale-105 transition-all duration-300 hover:-translate-y-1'
+              >
+                Become a Member
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </aside>
   );
 }
