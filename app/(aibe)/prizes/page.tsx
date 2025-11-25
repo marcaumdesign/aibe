@@ -257,9 +257,12 @@ export default function EventsPage() {
                 <span className="text-primary-base pr-2">•</span>
                 <span className="text-text-sub-600">Andrea Ugolini, University of Milano-Bicocca (Milan)</span>
               </div>
+              <div className="flex items-start text-paragraph-md">
+                <span className="text-primary-base pr-2">•</span>
+                <span className="text-text-sub-600">Fulvio Fontini, University of Salento (Lecce)</span>
+              </div>
             </div>
           </div>
-
           {/* Submit Button */}
           <div className="pt-8 flex justify-center">
             <Link href="https://drive.google.com/file/d/1z41fsmEGp1WHKawgTBQbrcZi1Zw760F5/view?usp=sharing" target="_blank" rel="noopener noreferrer">
