@@ -71,7 +71,7 @@ export default function EventsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className='relative mt-4 w-full h-[150px]'>
+      <div className='relative mt-4 w-full h-[150px] md:h-[120px] mobile:h-[100px]'>
         <Image
           src='/images/heroimage.png'
           alt='Hero'
@@ -80,7 +80,7 @@ export default function EventsPage() {
         />
       </div>
       {/* Main Content */}
-      <main className="flex flex-col items-center justify-center w-full px-4 sm:px-6 lg:px-8 pt-16 pb-8 mobile:pt-8 mobile:pb-4">
+      <main className="relative bg-white flex flex-col pt-4 pb-8 px-8 md:pt-6 md:pb-6 md:px-6 mobile:pt-8 mobile:pb-4 mobile:px-4">
         {/* Prizes Section */}
         <section className="max-w-[1200px] mx-auto w-full pb-16">
           <div className="flex flex-col gap-4 items-center justify-center">
