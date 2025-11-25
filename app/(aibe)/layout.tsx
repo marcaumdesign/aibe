@@ -25,6 +25,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: 'AIBE - Italian-Brazilian Association of Economics',
   description: 'The Italian-Brazilian Association of Economics (AIBE) is a non-profit organization that promotes scientific cooperation between Italian and Brazilian economists.',
+  icons: {
+    icon: '/images/aibe-logo-without-bg.png',
+  },
 };
 
 export default function RootLayout({
