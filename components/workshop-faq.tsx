@@ -22,11 +22,12 @@ export function WorkshopFAQSection({ items }: WorkshopFAQSectionProps) {
       }))
       .filter((item) => item.question && item.answer) ?? [];
 
-  if (validItems.length === 0) return null;
-
+  // useState must be called before any early returns
   const [openId, setOpenId] = useState<string | null>(
     validItems[0]?.id ? String(validItems[0].id) : null,
   );
+
+  if (validItems.length === 0) return null;
 
   const toggleFAQ = (id: string) => {
     setOpenId((current) => (current === id ? null : id));

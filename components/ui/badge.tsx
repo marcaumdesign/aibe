@@ -1,9 +1,10 @@
 import React from 'react'
 
 export function Badge({
-      children,
-  variant = 'with-dot',
-  size = 'medium',
+  children,
+  // variant and size are kept for API consistency but currently only one style is used
+  variant: _variant = 'with-dot',
+  size: _size = 'medium',
   color = 'gray',
 }: {
   children: React.ReactNode

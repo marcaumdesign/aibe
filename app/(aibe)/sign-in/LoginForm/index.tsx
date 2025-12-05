@@ -40,7 +40,7 @@ export const LoginForm: React.FC = () => {
         await revalidateHeader()
         if (redirect?.current) { router.push(redirect.current) }
         else { router.push('/account') }
-      } catch (_) {
+      } catch {
         setError('There was an error with the credentials provided. Please try again.')
       }
     },

@@ -10,10 +10,10 @@ import type { HighlightBanner as HighlightBannerType } from '@/payload-types';
 //     'Connecting science, cultures, and economies. A bilateral non-profit association dedicated to research, academic cooperation, and the exchange of knowledge.',
 // };
 
-// Componente Badge reutilizável
-function Badge({
+// Local Badge component for homepage
+function HomeBadge({
   children,
-  variant = 'blue',
+  variant = 'with-dot',
   size = 'medium',
   withDot = false,
   className,

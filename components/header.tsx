@@ -12,8 +12,8 @@ export default async function Header() {
     const headers = await getHeaders();
     const { user } = await payload.auth({ headers });
     isLoggedIn = !!user; // Converte para boolean
-  } catch (error) {
-    // Usuário não está logado
+  } catch {
+    // User is not logged in
     isLoggedIn = false;
   }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { RiCheckLine, RiTrophyLine, RiTeamLine, RiMapPinLine, RiSendPlaneLine, RiMenuSearchLine, RiGroup3Line } from "@remixicon/react";
+import { RiCheckLine, RiTrophyLine, RiMenuSearchLine, RiGroup3Line } from "@remixicon/react";
 import Image from "next/image";
 import Link from "next/link";
 import * as Button from "@/components/ui/button";

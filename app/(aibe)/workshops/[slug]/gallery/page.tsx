@@ -38,7 +38,7 @@ export async function generateStaticParams() {
 }
 
 export default async function WorkshopGalleryPage({ params: paramsPromise }: Args) {
-  const { isEnabled: draft } = await draftMode();
+  await draftMode();
   const { slug = '' } = await paramsPromise;
   const url = '/workshops/' + slug + '/gallery';
   const workshop = await queryWorkshopBySlug({ slug });
@@ -58,8 +58,6 @@ export default async function WorkshopGalleryPage({ params: paramsPromise }: Arg
       }
     });
   }
-
-  const totalPhotos = galleryImages.length;
 
   return (
     <div className=" bg-white">

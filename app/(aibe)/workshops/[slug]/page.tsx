@@ -14,8 +14,6 @@ import { Marquee } from '@/components/ui/marquee'
 import { Badge } from '@/components/ui/badge'
 import WorkshopFAQSection from '@/components/workshop-faq'
 
-import type { Workshop } from '@/payload-types'
-
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 
@@ -46,7 +44,7 @@ type Args = {
 }
 
 export default async function WorkshopPage({ params: paramsPromise }: Args) {
-  const { isEnabled: draft } = await draftMode()
+  await draftMode()
   const { slug = '' } = await paramsPromise
   const url = '/workshops/' + slug
   const workshop = await queryWorkshopBySlug({ slug })

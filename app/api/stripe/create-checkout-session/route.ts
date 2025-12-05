@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getPayload } from 'payload';
 import config from '@payload-config';
-import { stripe, getOrCreateStripeCustomer, STRIPE_PRICES } from '@/lib/stripe';
+import { stripe, getOrCreateStripeCustomer } from '@/lib/stripe';
 import { getServerSideURL } from '@/utilities/getURL';
 
 export async function POST(req: NextRequest) {

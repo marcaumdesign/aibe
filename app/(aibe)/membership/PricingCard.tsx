@@ -25,7 +25,7 @@ export function PricingCard({
   currency,
   interval,
   features,
-  stripePriceId,
+  stripePriceId: _stripePriceId,
   isPopular = false,
   isCurrent = false,
   isLoggedIn,
