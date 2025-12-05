@@ -12,6 +12,7 @@ import RichText from '@/components/RichText'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 import { Marquee } from '@/components/ui/marquee'
 import { Badge } from '@/components/ui/badge'
+import WorkshopFAQSection from '@/components/workshop-faq'
 
 import type { Workshop } from '@/payload-types'
 
@@ -385,8 +386,8 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
             </div>
           </div>
         </section>
-
-
+        {/* FAQ Section */}
+        <WorkshopFAQSection items={workshop.faq} />
 
         {workshop.sponsors && workshop.sponsors.length > 0 && (
           <section className="">
