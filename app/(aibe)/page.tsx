@@ -188,7 +188,7 @@ export default async function Home() {
               title='Giorgio Mortara Prize'
               description='We award a prize for the best paper by a junior Italian-Brazilian research team.'
               linkHref='/prizes'
-              imageFocalPoint='top center'
+              imageFocalPoint='center'
             />
 
             {/* AIBE at a glance */}
