@@ -120,11 +120,17 @@ export const Workshops: CollectionConfig = {
       name: 'firstButtonText',
       type: 'text',
       label: '1st Button Text',
+      admin: {
+        condition: (data) => data.type === 'current',
+      },
     },
     {
       name: 'firstButtonLink',
       type: 'text',
       label: '1st Button Link',
+      admin: {
+        condition: (data) => data.type === 'current',
+      },
     },
     {
       name: 'content',
@@ -157,16 +163,26 @@ export const Workshops: CollectionConfig = {
           required: true,
         },
       ],
+      admin: {
+        condition: (data) => data.type === 'past',
+        description: 'Photo gallery from the past workshop event',
+      },
     },
     {
       name: 'secondButtonText',
       type: 'text',
       label: '2nd Button Text',
+      admin: {
+        condition: (data) => data.type === 'current',
+      },
     },
     {
       name: 'secondButtonLink',
       type: 'text',
       label: '2nd Button Link',
+      admin: {
+        condition: (data) => data.type === 'current',
+      },
     },
     {
       name: 'scientificCommittee',
@@ -206,6 +222,7 @@ export const Workshops: CollectionConfig = {
         },
       ],
       admin: {
+        condition: (data) => data.type === 'current',
         description: 'Add frequently asked questions and answers',
       },
     },

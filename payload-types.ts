@@ -910,6 +910,9 @@ export interface Workshop {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Photo gallery from the past workshop event
+   */
   gallery?:
     | {
         image: number | Media;
