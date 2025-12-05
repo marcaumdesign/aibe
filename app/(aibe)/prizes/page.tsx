@@ -132,7 +132,7 @@ export default async function PrizesPage() {
                   Eligibility and Rules
                 </h2>
                 <RichText
-                  className="text-text-sub-600 text-paragraph-md max-w-none [&_ul]:flex [&_ul]:flex-col [&_ul]:gap-3 [&_li]:flex [&_li]:items-start [&_li]:text-paragraph-md"
+                  className="text-text-sub-600 text-paragraph-md max-w-none [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:flex [&_ul]:flex-col [&_ul]:gap-3 [&_li]:text-paragraph-md [&_li::marker]:text-primary-base"
                   data={callForSubmissions.eligibilityAndRules}
                   enableGutter={false}
                   enableProse={false}
@@ -309,15 +309,30 @@ export default async function PrizesPage() {
 
                         <div className="mb-4 pb-4">
                           <p className="text-text-sub-600 text-paragraph-lg leading-relaxed">
-                            {resolvedAuthors.map((author, authorIndex) => (
-                              <span key={author.id}>
-                                {authorIndex > 0 && <span className="text-text-sub-600"> & </span>}
-                                <span className="font-medium text-text-strong-950">
-                                  {formatAuthorName(author)}
+                            {resolvedAuthors.map((author, authorIndex) => {
+                              // personalWebsite may exist after schema update
+                              const personalWebsite = (author as User & { personalWebsite?: string }).personalWebsite;
+                              return (
+                                <span key={author.id}>
+                                  {authorIndex > 0 && <span className="text-text-sub-600"> & </span>}
+                                  {personalWebsite ? (
+                                    <Link
+                                      href={personalWebsite}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="font-medium text-primary-base hover:text-primary-darker hover:underline transition-colors"
+                                    >
+                                      {formatAuthorName(author)}
+                                    </Link>
+                                  ) : (
+                                    <span className="font-medium text-text-strong-950">
+                                      {formatAuthorName(author)}
+                                    </span>
+                                  )}
+                                  <span className="text-text-sub-600"> ({author.universityCompany})</span>
                                 </span>
-                                <span className="text-text-sub-600"> ({author.universityCompany})</span>
-                              </span>
-                            ))}
+                              );
+                            })}
                           </p>
                         </div>
                       </div>

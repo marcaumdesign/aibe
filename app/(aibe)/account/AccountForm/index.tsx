@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { Root as Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Message } from '../../_components/Message'
 import { useAuth } from '../../_providers/Auth'
 import * as Label from '@/components/ui/label';
 import { useMembershipRedirect } from '@/hooks/use-membership-redirect';
@@ -18,6 +17,7 @@ type FormData = {
   lastName: string
   department: string
   universityCompany: string
+  personalWebsite: string
   title: string
   password: string
   passwordConfirm: string
@@ -86,6 +86,7 @@ export const AccountForm: React.FC = () => {
             lastName: data.lastName,
             department: data.department,
             universityCompany: data.universityCompany,
+            personalWebsite: data.personalWebsite,
             title: data.title,
           }
 
@@ -111,6 +112,7 @@ export const AccountForm: React.FC = () => {
             lastName: json.doc.lastName || '',
             department: json.doc.department || '',
             universityCompany: json.doc.universityCompany || '',
+            personalWebsite: json.doc.personalWebsite || '',
             title: json.doc.title || '',
             password: '',
             passwordConfirm: '',
@@ -136,6 +138,7 @@ export const AccountForm: React.FC = () => {
         lastName: user.lastName || '',
         department: user.department || '',
         universityCompany: user.universityCompany || '',
+        personalWebsite: user.personalWebsite || '',
         title: user.title || '',
         password: '',
         passwordConfirm: '',
@@ -160,11 +163,6 @@ export const AccountForm: React.FC = () => {
 
   return (
     <div className="flex gap-8 mobile:flex-col mobile:gap-6">
-      {/* Success/Error Messages */}
-      {(error || success) && (
-        <Message className={''} error={error} success={success} />
-      )}
-
       {/* Membership Card */}
       <div className="w-full flex flex-col gap-6 mobile:gap-4">
         <Card className="w-full shadow-lg border-0">
@@ -441,6 +439,24 @@ export const AccountForm: React.FC = () => {
               )}
             </div>
 
+            {/* Personal Website */}
+            <div className="grid gap-2">
+              <Label.Root htmlFor="personalWebsite" className="text-label-sm text-text-strong-950">
+                Personal Website
+              </Label.Root>
+              <Input
+                id="personalWebsite"
+                type="url"
+                placeholder="https://yourwebsite.com"
+                hasError={!!errors.personalWebsite}
+                {...register("personalWebsite")}
+                className="h-12 mobile:h-10 border border-gray-200 rounded-lg focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 transition-all px-4 py-3"
+              />
+              <span className="text-paragraph-xs text-text-soft-400">
+                Optional - Your personal website or academic profile URL
+              </span>
+            </div>
+
             {/* Title */}
             <div className="grid gap-2">
               <Label.Root htmlFor="title" className="text-label-sm text-text-strong-950">
@@ -465,7 +481,7 @@ export const AccountForm: React.FC = () => {
               )}
             </div>
           </CardContent>
-          <CardFooter>
+          <CardFooter className="flex flex-col gap-3">
             <Button
               type="submit"
               variant="primary"
@@ -475,6 +491,17 @@ export const AccountForm: React.FC = () => {
             >
               {isLoading ? 'Updating...' : 'Update Profile'}
             </Button>
+            {/* Success/Error Messages */}
+            {success && (
+              <p className="text-paragraph-sm text-success-base text-center w-full">
+                {success}
+              </p>
+            )}
+            {error && (
+              <p className="text-paragraph-sm text-error-base text-center w-full">
+                {error}
+              </p>
+            )}
           </CardFooter>
         </Card>
       </form>

@@ -102,6 +102,14 @@ export const Users: CollectionConfig = {
       label: 'University/Company',
     },
     {
+      name: 'personalWebsite',
+      type: 'text',
+      label: 'Personal Website',
+      admin: {
+        description: 'URL of your personal website or academic profile (optional)',
+      },
+    },
+    {
       name: 'title',
       type: 'select',
       required: true,

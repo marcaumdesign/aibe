@@ -427,6 +427,10 @@ export interface User {
   lastName: string;
   department: string;
   universityCompany: string;
+  /**
+   * URL of your personal website or academic profile (optional)
+   */
+  personalWebsite?: string | null;
   title: 'student' | 'phd_student' | 'post_doc' | 'assistant_professor' | 'associate_professor' | 'full_professor';
   /**
    * Membership donation amount in euros (minimum €2.00)
@@ -1545,6 +1549,7 @@ export interface UsersSelect<T extends boolean = true> {
   lastName?: T;
   department?: T;
   universityCompany?: T;
+  personalWebsite?: T;
   title?: T;
   donationAmount?: T;
   roles?: T;

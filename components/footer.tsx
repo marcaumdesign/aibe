@@ -120,16 +120,16 @@ export default function Footer() {
 
           <div className="flex gap-2 items-center text-paragraph-xs">
             <Link
-              href="https://www.iubenda.com/privacy-policy/33428132/cookie-policy"
+              href="https://drive.google.com/file/d/1gLCkT2krsT5EV0zpgf9zJbqKC9s9BOde/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="text-text-white-0 hover:opacity-80 transition-opacity text-paragraph-xs"
             >
-              Cookie Policy
+              Privacy Policy
             </Link>
             <span className="text-text-white-0 text-paragraph-xs">|</span>
             <Link
-              href="https://www.iubenda.com/privacy-policy/33428132/cookie-policy"
+              href="https://drive.google.com/file/d/1WJCNNvmG12FIoG5XB-6ESONO47ubd27B/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="text-text-white-0 hover:opacity-80 transition-opacity text-paragraph-xs"
