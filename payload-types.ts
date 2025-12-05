@@ -73,6 +73,7 @@ export interface Config {
     categories: Category;
     users: User;
     staff: Staff;
+    winners: Winner;
     workshops: Workshop;
     redirects: Redirect;
     forms: Form;
@@ -92,6 +93,7 @@ export interface Config {
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     staff: StaffSelect<false> | StaffSelect<true>;
+    winners: WinnersSelect<false> | WinnersSelect<true>;
     workshops: WorkshopsSelect<false> | WorkshopsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
@@ -110,12 +112,14 @@ export interface Config {
     header: Header;
     footer: Footer;
     'highlight-banner': HighlightBanner;
+    'prizes-page': PrizesPage;
     'payload-jobs-stats': PayloadJobsStat;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     'highlight-banner': HighlightBannerSelect<false> | HighlightBannerSelect<true>;
+    'prizes-page': PrizesPageSelect<false> | PrizesPageSelect<true>;
     'payload-jobs-stats': PayloadJobsStatsSelect<false> | PayloadJobsStatsSelect<true>;
   };
   locale: null;
@@ -841,6 +845,37 @@ export interface Staff {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "winners".
+ */
+export interface Winner {
+  id: number;
+  /**
+   * Year the prize was awarded (e.g., 2024)
+   */
+  year: number;
+  /**
+   * Title of the winning paper
+   */
+  title: string;
+  /**
+   * List of authors of the winning paper
+   */
+  authors: {
+    /**
+     * Select an author from the users list
+     */
+    user: number | User;
+    id?: string | null;
+  }[];
+  /**
+   * URL to access the winning paper
+   */
+  link: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "workshops".
  */
 export interface Workshop {
@@ -1149,6 +1184,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'staff';
         value: number | Staff;
+      } | null)
+    | ({
+        relationTo: 'winners';
+        value: number | Winner;
       } | null)
     | ({
         relationTo: 'workshops';
@@ -1548,6 +1587,23 @@ export interface StaffSelect<T extends boolean = true> {
         name?: T;
         link?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "winners_select".
+ */
+export interface WinnersSelect<T extends boolean = true> {
+  year?: T;
+  title?: T;
+  authors?:
+    | T
+    | {
+        user?: T;
+        id?: T;
+      };
+  link?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1959,6 +2015,89 @@ export interface HighlightBanner {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prizes-page".
+ */
+export interface PrizesPage {
+  id: number;
+  callForSubmissions?: {
+    /**
+     * Toggle to show or hide the entire Call for Submissions section
+     */
+    enabled?: boolean | null;
+    /**
+     * Introduction text for the Call for Submissions section
+     */
+    introduction?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Deadline text (e.g., "15 January 2026 (midnight, Italy)")
+     */
+    deadline?: string | null;
+    firstButton?: {
+      text?: string | null;
+      /**
+       * URL for the submit paper button
+       */
+      link?: string | null;
+    };
+    /**
+     * Eligibility criteria and rules for submissions
+     */
+    eligibilityAndRules?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Use Markdown format. For bullet points, use "- " or "* " at the start of each line. Example:
+     * - Fernando L. Aiube, UERJ (Rio de Janeiro)
+     * - Raphael B. Corbi, USP (Sao Paulo)
+     */
+    scientificCommittee?: string | null;
+    secondButton?: {
+      text?: string | null;
+      /**
+       * URL for the download button
+       */
+      link?: string | null;
+    };
+  };
+  officialLaunch?: {
+    title?: string | null;
+    /**
+     * Description of the official launch event
+     */
+    text?: string | null;
+    image?: (number | null) | Media;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-jobs-stats".
  */
 export interface PayloadJobsStat {
@@ -2034,6 +2173,43 @@ export interface HighlightBannerSelect<T extends boolean = true> {
         enabled?: T;
         text?: T;
         link?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prizes-page_select".
+ */
+export interface PrizesPageSelect<T extends boolean = true> {
+  callForSubmissions?:
+    | T
+    | {
+        enabled?: T;
+        introduction?: T;
+        deadline?: T;
+        firstButton?:
+          | T
+          | {
+              text?: T;
+              link?: T;
+            };
+        eligibilityAndRules?: T;
+        scientificCommittee?: T;
+        secondButton?:
+          | T
+          | {
+              text?: T;
+              link?: T;
+            };
+      };
+  officialLaunch?:
+    | T
+    | {
+        title?: T;
+        text?: T;
+        image?: T;
       };
   updatedAt?: T;
   createdAt?: T;
