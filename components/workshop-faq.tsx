@@ -23,9 +23,7 @@ export function WorkshopFAQSection({ items }: WorkshopFAQSectionProps) {
       .filter((item) => item.question && item.answer) ?? [];
 
   // useState must be called before any early returns
-  const [openId, setOpenId] = useState<string | null>(
-    validItems[0]?.id ? String(validItems[0].id) : null,
-  );
+  const [openId, setOpenId] = useState<string | null>(null);
 
   if (validItems.length === 0) return null;
 
