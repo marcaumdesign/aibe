@@ -395,7 +395,7 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
           <section className="">
             <div className="max-w-7xl mx-auto">
               <h3 className="text-primary-base text-title-h3 lg:text-title-h3 md:text-title-h4 mobile:text-title-h5 mb-12 md:mb-10 mobile:mb-8 text-center">
-                Sponsors
+                Supporters
               </h3>
 
               <div className="relative flex w-full min-w-0 flex-col items-center justify-center overflow-hidden">
