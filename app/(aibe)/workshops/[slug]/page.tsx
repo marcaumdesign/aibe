@@ -108,7 +108,7 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-white">
       <PageClient />
 
       {/* Header Spacer */}
@@ -118,23 +118,23 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
       <PayloadRedirects disableNotFound url={url} />
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:px-6 py-12 md:py-8 mobile:py-6">
+      <main className="mx-auto min-w-0 max-w-7xl overflow-x-hidden px-3 sm:px-6 lg:px-8 md:px-6 py-12 md:py-8 mobile:py-6">
         {/* Workshop Hero Section */}
         <section className="mb-16 md:mb-12 mobile:mb-8">
           {/* Titles - Centered */}
-          <div className="flex flex-col items-center gap-4 md:gap-3 mb-14 md:mb-10 mobile:mb-8">
+          <div className="flex w-full max-w-full flex-col items-center gap-4 md:gap-3 mb-14 md:mb-10 mobile:mb-8">
             <h3 className="text-text-strong-950  text-title-h5 mobile:text-title-h5 text-center">
               {workshop.title}
             </h3>
-            <h1 className="text-primary-base text-title-h1 lg:text-title-h1 md:text-title-h2 mobile:text-title-h3 text-center">
+            <h1 className="w-full max-w-full break-words px-1 text-center text-primary-base text-title-h1 [hyphens:auto] lg:text-title-h1 md:text-title-h2 mobile:text-title-h3">
               {workshop.subject}
             </h1>
           </div>
 
           {/* Two Column Layout - Date/Place and Image */}
-          <div className="flex flex-col bg-[#F3F8FF] lg:flex-row gap-8 md:gap-6 items-start">
+          <div className="flex w-full min-w-0 flex-col items-start gap-8 overflow-hidden bg-[#F3F8FF] md:gap-6 lg:flex-row">
             {/* Left Column - Date & Place */}
-            <div className="flex flex-col p-8 gap-8 md:gap-6 w-full lg:w-[428px] shrink-0">
+            <div className="flex w-full min-w-0 shrink-0 flex-col gap-8 p-4 md:gap-6 md:p-6 lg:w-[428px] lg:p-8">
               {/* Date */}
               <div className="flex flex-col gap-2">
                 <p className="text-text-sub-600 text-paragraph-md mobile:text-paragraph-sm">
@@ -158,8 +158,13 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
               {/* Download Button */}
               {workshop.firstButtonText && workshop.firstButtonLink && (
                 <div className="w-full h-[100px] flex items-end justify-start">
-                  <Link href={workshop.firstButtonLink} target="_blank" rel="noopener noreferrer">
-                    <Button variant="primary" mode="filled" size="medium" className="w-full">
+                  <Link
+                    href={workshop.firstButtonLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full"
+                  >
+                    <Button variant="primary" mode="filled" size="medium" className="w-full min-w-0 whitespace-normal text-center">
                       {workshop.firstButtonText}
                     </Button>
                   </Link>
@@ -167,7 +172,7 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
             </div>
 
             {/* Right Column - Image */}
-            <div className="flex-1 w-full">
+            <div className="w-full min-w-0 flex-1 lg:w-auto">
               <div className="relative w-full h-[420px] md:h-[350px] mobile:h-[280px]">
                 {resolvedCover && (
                   <Image
@@ -188,7 +193,7 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
           <div className="prose prose-lg max-w-none">
             {workshop.content && (
               <RichText
-                className="text-text-sub-600 leading-relaxed mb-6 text-paragraph-md max-w-none"
+                className="mb-6 max-w-none break-words text-paragraph-md leading-relaxed text-text-sub-600 [&_a]:break-all"
                 data={workshop.content}
                 enableGutter={false}
                 enableProse={true}
@@ -200,26 +205,25 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
         {/* Keynote Speaker Section */}
         {workshop.speaker && typeof workshop.speaker === 'object' && (
           <section className="mb-16 md:mb-12 mobile:mb-8">
-            <div className="bg-[#f0f6ff] w-full">
-              <div className="flex flex-col lg:flex-row gap-0 lg:items-stretch">
+            <div className="w-full max-w-full overflow-hidden bg-[#f0f6ff]">
+              <div className="flex min-w-0 flex-col gap-0 lg:flex-row lg:items-stretch">
                 {/* Column 1: Speaker Image */}
                 {workshop.speaker.avatar && typeof workshop.speaker.avatar === 'object' && (
-                  <div className="w-fit p-8 md:p-6 mobile:p-5 flex items-center justify-center lg:justify-start">
-                    <div className="relative w-[256px] h-[256px] rounded-full overflow-hidden shadow-sm shrink-0">
+                  <div className="w-full p-4 md:p-6 mobile:p-3 flex items-center justify-center lg:justify-start">
+                    <div className="relative mx-auto h-[min(220px,80vw)] w-[min(220px,80vw)] max-w-full shrink-0 overflow-hidden rounded-full shadow-sm sm:h-[256px] sm:w-[256px]">
                       <Image
                         src={getMediaUrl(workshop.speaker.avatar.url || '', workshop.speaker.avatar.updatedAt)}
                         alt={workshop.speaker.avatar.alt || workshop.speaker.name || 'Speaker'}
                         width={256}
                         height={256}
-                        className="w-full h-full object-top
- object-cover"
+                        className="h-full w-full object-cover object-top"
                       />
                     </div>
                   </div>
                 )}
 
                 {/* Column 2: Speaker Info */}
-                <div className="w-full lg:w-full p-8 md:p-6 mobile:p-5 flex flex-col gap-6 md:gap-4 justify-center">
+                <div className="flex w-full min-w-0 flex-col justify-center gap-6 p-4 md:gap-4 md:p-6 mobile:p-5 lg:w-full lg:p-8">
                   <div className="flex flex-col gap-3 md:gap-2">
                     {/* Badge */}
                     <p className="text-text-sub-600 text-paragraph-md mobile:text-paragraph-sm">
@@ -273,7 +277,7 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
                 </div>
 
                 {/* Column 3: Bio */}
-                <div className="w-full  p-8 md:p-6 mobile:p-5 flex flex-col justify-center">
+                <div className="flex w-full min-w-0 flex-col justify-center p-4 md:p-6 mobile:p-5 lg:p-8">
                   {workshop.speaker.biography && (
                     <>
                       <h3 className="text-text-strong-950 text-title-h6 mobile:text-paragraph-lg mb-4 mobile:mb-3">
@@ -356,9 +360,9 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
                   </h5>
                   <ul className="space-y-1 text-text-sub-600">
                     {renderMarkdownList(workshop.scientificCommittee).map((item, index) => (
-                      <li key={index} className="flex items-start text-paragraph-md mobile:text-paragraph-sm">
-                        <span className="text-primary-base mr-2">•</span>
-                        <span>{item}</span>
+                      <li key={index} className="flex min-w-0 items-start text-paragraph-md mobile:text-paragraph-sm">
+                        <span className="mr-2 shrink-0 text-primary-base">•</span>
+                        <span className="min-w-0 break-words">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -373,9 +377,9 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
                   </h5>
                   <ul className="space-y-1 text-text-sub-600">
                     {renderMarkdownList(workshop.topics).map((item, index) => (
-                      <li key={index} className="flex items-start text-paragraph-md mobile:text-paragraph-sm">
-                        <span className="text-primary-base mr-2">•</span>
-                        <span>{item}</span>
+                      <li key={index} className="flex min-w-0 items-start text-paragraph-md mobile:text-paragraph-sm">
+                        <span className="mr-2 shrink-0 text-primary-base">•</span>
+                        <span className="min-w-0 break-words">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -394,14 +398,14 @@ export default async function WorkshopPage({ params: paramsPromise }: Args) {
                 Sponsors
               </h3>
 
-              <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-                <Marquee pauseOnHover className="[--duration:30s] [--gap:4rem]">
+              <div className="relative flex w-full min-w-0 flex-col items-center justify-center overflow-hidden">
+                <Marquee pauseOnHover className="[--duration:30s] [--gap:2rem] md:[--gap:4rem]">
                   {workshop.sponsors.map((sponsor, index) => {
                     if (sponsor.logo && typeof sponsor.logo === 'object') {
                       return (
                         <div
                           key={index}
-                          className="flex items-center justify-center h-32 w-48 mx-8"
+                          className="mx-3 flex h-32 w-36 shrink-0 items-center justify-center sm:mx-6 sm:w-44 md:mx-8 md:w-48"
                         >
                           <Image
                             src={getMediaUrl(sponsor.logo.url || '', sponsor.logo.updatedAt)}

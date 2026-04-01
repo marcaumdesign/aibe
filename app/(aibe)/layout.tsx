@@ -41,7 +41,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={cn(inter.variable, geistMono.variable, 'antialiased')}
     >
-      <body className='bg-bg-white-0 text-text-strong-950'>
+      <body className='bg-bg-white-0 text-text-strong-950 overflow-x-hidden'>
         <AuthProvider
           // To toggle between the REST and GraphQL APIs,
           // change the `api` prop to either `rest` or `gql`

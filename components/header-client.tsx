@@ -19,21 +19,21 @@ export function HeaderClient({ workshops, isLoggedIn }: HeaderClientProps) {
   const { redirectToMembership, isProcessing } = useMembershipRedirect({ isLoggedIn });
 
   return (
-    <div className='fixed top-0 left-0 right-0 z-50 bg-white border-b border-stroke-soft-200 justify-center items-center flex w-full'>
-      <header className='w-full max-w-[1200px] px-8 py-4 mobile:p-4 flex items-center justify-between'>
+    <div className='fixed top-0 left-0 right-0 z-50 flex w-full max-w-[100vw] justify-center overflow-x-hidden bg-white border-b border-stroke-soft-200'>
+      <header className='flex w-full min-w-0 max-w-[1200px] items-center justify-between px-4 py-4 sm:px-6 md:px-8'>
         {/* Logo */}
-        <Link href='/' className='flex items-center gap-2'>
+        <Link href='/' className='flex min-w-0 shrink items-center gap-2'>
           <Image
             src='/images/AIBE_corrected_bg 1.png'
             alt='AIBE Logo'
             width={113}
             height={42}
-            className='h-16 w-auto'
+            className='h-12 w-auto max-h-14 max-w-[min(50vw,113px)] md:h-16 md:max-w-none'
           />
         </Link>
 
-        {/* Navigation (desktop) */}
-        <nav className='text-lg hidden items-center gap-6 font-medium text-text-strong-950 md:flex'>
+        {/* Navigation (desktop) — lg+ only: 768–1023px is too narrow for all links + CTAs */}
+        <nav className='hidden items-center gap-6 text-lg font-medium text-text-strong-950 lg:flex'>
           <Link
             href='/'
             className={`transition-colors hover:text-primary-base ${pathname === '/' ? 'text-primary-base' : ''}`}
@@ -101,13 +101,13 @@ export function HeaderClient({ workshops, isLoggedIn }: HeaderClientProps) {
         </nav>
 
         {/* CTA/Button area */}
-        <div className='flex items-center gap-4'>
+        <div className='flex shrink-0 items-center gap-2 sm:gap-4'>
           {/* Mobile: Menu button replaces CTA */}
-          <div className='md:hidden'>
+          <div className='lg:hidden'>
             <MobileMenu workshops={workshops} isLoggedIn={isLoggedIn} />
           </div>
           {/* Desktop: Keep CTA */}
-          <div className='hidden md:flex items-center gap-4'>
+          <div className='hidden items-center gap-4 lg:flex'>
             {isLoggedIn ? (
               // Estado logado: botão My Membership
               <Button.Root

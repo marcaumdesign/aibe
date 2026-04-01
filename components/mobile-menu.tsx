@@ -24,7 +24,7 @@ export default function MobileMenu({ workshops, isLoggedIn }: MobileMenuProps) {
           variant='neutral'
           mode='stroke'
           size='medium'
-          className='md:hidden'
+          className='lg:hidden'
         >
           <Button.Icon as={RiMenuLine} />
         </Button.Root>
@@ -122,7 +122,7 @@ function Item({ href, children, active }: { href: string; children: React.ReactN
     <Drawer.Close asChild>
       <Link
         href={href}
-        className={`block px-4 py-3 hover:bg-gray-50 hover:text-primary-base transition-colors rounded-md font-medium ${active ? 'text-primary-base' : 'text-gray-700'
+        className={`block break-words px-4 py-3 font-medium transition-colors hover:bg-gray-50 hover:text-primary-base rounded-md ${active ? 'text-primary-base' : 'text-gray-700'
           }`}
       >
         {children}
@@ -136,7 +136,7 @@ function SubItem({ href, children, active }: { href: string; children: React.Rea
     <Drawer.Close asChild>
       <Link
         href={href}
-        className={`block px-4 py-2 hover:bg-gray-50 hover:text-primary-base transition-colors rounded-md text-sm ${active ? 'text-primary-base' : 'text-gray-600'
+        className={`block break-words px-4 py-2 text-sm transition-colors hover:bg-gray-50 hover:text-primary-base rounded-md ${active ? 'text-primary-base' : 'text-gray-600'
           }`}
       >
         {children}

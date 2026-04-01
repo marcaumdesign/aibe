@@ -599,10 +599,10 @@ const config = {
     },
     extend: {
       screens: {
-        // Mobile styles will apply on viewports up to 900px wide
-        mobile: { max: '900px' },
-        // Desktop/tablet styles will apply from 900px and up
-        md: '900px',
+        // Mobile styles apply up to 767px (aligns with common tablet/desktop split)
+        mobile: { max: '767px' },
+        // Desktop/tablet styles from 768px (matches Tailwind default `md`)
+        md: '768px',
       },
       fontFamily: {
         sans: ['var(--font-sans)'],
