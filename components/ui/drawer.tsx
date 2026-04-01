@@ -30,7 +30,7 @@ const DrawerOverlay = React.forwardRef<
       ref={forwardedRef}
       className={cn(
         // base
-        'fixed inset-0 z-50 grid grid-cols-1 place-items-end overflow-hidden bg-overlay backdrop-blur-[10px]',
+        'fixed inset-0 z-50 grid grid-cols-1 place-items-end overflow-x-hidden overflow-y-hidden bg-overlay backdrop-blur-[10px]',
         // animation
         'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
         className,
@@ -52,7 +52,7 @@ const DrawerContent = React.forwardRef<
           ref={forwardedRef}
           className={cn(
             // base
-            'size-full max-w-[400px] overflow-y-auto',
+            'h-full w-[min(400px,100vw)] max-w-[100vw] overflow-y-auto overflow-x-hidden',
             'border-l border-stroke-soft-200 bg-bg-white-0',
             // animation
             'data-[state=open]:duration-200 data-[state=open]:ease-out data-[state=open]:animate-in',

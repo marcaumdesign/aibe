@@ -672,3 +672,8 @@
     font-weight: 600 !important;
   }
 }
+
+/* Prevent horizontal scroll from off-screen transforms / min-content flex children */
+html {
+  overflow-x: clip;
+}
