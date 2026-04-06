@@ -65,12 +65,14 @@ export default async function Home() {
 
   return (
     <div className='min-h-screen bg-white'>
-      <div className='relative mt-4 w-full h-[150px] md:h-[120px] mobile:h-[100px]'>
+      <div className='relative isolate w-full overflow-hidden leading-none h-[150px] md:h-[120px] mobile:h-[100px] [&_span]:!block [&_span]:!h-full [&_span]:!leading-none'>
         <Image
           src='/images/heroimage.png'
           alt='Hero'
           fill
-          className='object-cover'
+          sizes='100vw'
+          priority
+          className='object-cover object-top !block'
         />
       </div>
       {/* Hero Section */}
