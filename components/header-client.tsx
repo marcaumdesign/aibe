@@ -19,7 +19,7 @@ export function HeaderClient({ workshops, isLoggedIn }: HeaderClientProps) {
   const { redirectToMembership, isProcessing } = useMembershipRedirect({ isLoggedIn });
 
   return (
-    <div className='fixed top-0 left-0 right-0 z-50 flex min-h-[81px] w-full max-w-[100vw] items-center justify-center overflow-x-hidden border-b border-stroke-soft-200 bg-white md:min-h-[97px]'>
+    <div className='fixed top-0 left-0 right-0 z-50 flex min-h-[81px] w-full max-w-[100vw] items-center justify-center overflow-x-clip border-b border-stroke-soft-200 bg-white md:min-h-[97px]'>
       <header className='flex w-full min-w-0 max-w-[1200px] items-center justify-between px-4 py-4 sm:px-6 md:px-8'>
         {/* Logo */}
         <Link href='/' className='flex min-w-0 shrink items-center gap-2'>
