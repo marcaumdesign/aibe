@@ -61,12 +61,15 @@ export default async function PrizesPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className='relative mt-4 w-full h-[150px] md:h-[120px] mobile:h-[100px]'>
+      <div className='relative w-full h-[150px] md:h-[120px] mobile:h-[100px]'>
         <Image
           src='/images/heroimage.png'
           alt='Hero'
           fill
-          className='object-cover'
+          sizes='100vw'
+          quality={90}
+          priority
+          className='object-cover object-center'
         />
       </div>
 
